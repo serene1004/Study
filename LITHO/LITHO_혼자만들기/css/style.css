@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+#wrap {width: 100%;}
+
+/* 헤더 */
+#wrap #header {z-index: 3;position: fixed;top: 0;left: 0;width: 100%;height: 80px;background: #000;}
+
+#wrap #header .wrap {width: 100%;height: 80px;}
+#wrap #header .wrap .gap {margin: 0 35px;}
+#wrap #header .wrap .gap .container {text-align: center;padding: 0 15px;}
+
+/* 헤더로고 */
+#wrap #header .wrap .gap .container .logo {float: left;padding: 22px 0;}
+#wrap #header .wrap .gap .container .logo a {display: inline-block;}
+#wrap #header .wrap .gap .container .logo a img {}
+
+/* 네비 메인메뉴 */
+#wrap #header .wrap .gap .container #nav {display: inline-block;}
+#wrap #header .wrap .gap .container #nav > ul {width: 100%;}
+#wrap #header .wrap .gap .container #nav > ul > li {position: relative;display: inline-block;height: 80px;line-height: 80px;}
+#wrap #header .wrap .gap .container #nav > ul > li > a {display: block;color: rgba(255, 255, 255, 1);font-size: 14px;margin: 0 18px;transition: color .3s ease-in-out;}
+#wrap #header .wrap .gap .container #nav > ul > li > a:hover {color: rgba(255, 255, 255, .6);}
+
+/* 네비 메인-서브메뉴 */
+#wrap #header .wrap .gap .container #nav > ul > li .sub {position: absolute;top: 80px;left: -300px;width: 600px;background: #fff;padding: 50px;}
+#wrap #header .wrap .gap .container #nav > ul > li .sub .sub-gap {}
+#wrap #header .wrap .gap .container #nav > ul > li .sub .sub-gap > ul {width: 100%;}
+#wrap #header .wrap .gap .container #nav > ul > li .sub .sub-gap > ul > li {float: left;width: 150px;display: inline-block;}
+#wrap #header .wrap .gap .container #nav > ul > li .sub .sub-gap > ul > li dl {}
+#wrap #header .wrap .gap .container #nav > ul > li .sub .sub-gap > ul > li dl dt {height: 40px;line-height: 40px;font-weight: 600;padding: 3px 5px;}
+#wrap #header .wrap .gap .container #nav > ul > li .sub .sub-gap > ul > li dl dd {height: 40px;line-height: 40px;padding: 3px 5px;}
+#wrap #header .wrap .gap .container #nav > ul > li .sub .sub-gap > ul > li dl dd a {display: block;color: #828282;font-size: 13px;transition: color .3s ease-in-out;background: rgba(200, 200, 255, .5);}
+#wrap #header .wrap .gap .container #nav > ul > li .sub .sub-gap > ul > li dl dd a:hover {color: #000;}
+
+/* 네비 메인-서브메뉴 제어 */
+#wrap #header .wrap .gap .container #nav > ul > li .sub1 {display: block;}
+/* #wrap #header .wrap .gap .container #nav > ul > li:hover .sub1 {display: block;} */
+
+
+
+/* 사이드 SNS메뉴 */
+#wrap #header .wrap .gap .container #aside {float: right;padding: 25px 0;}
+#wrap #header .wrap .gap .container #aside ul {width: 100%;}
+#wrap #header .wrap .gap .container #aside ul li {display: inline-block;margin: 0 10px;height: 30px;line-height: 25px;}
+#wrap #header .wrap .gap .container #aside ul li a {}
+#wrap #header .wrap .gap .container #aside ul li a i {color: rgba(255, 255, 255, 1);font-size: 15px;}
+#wrap #header .wrap .gap .container #aside ul li a i:hover {color: rgba(255, 255, 255, .6);transition: color .3s ease-in-out;}
+
+
+
+/* 메인 */
+#wrap #main {z-index: 2;position: absolute;top: 0;left: 0;}
+
+/* 섹션1 */
+#wrap #main #section1 {width: 100%;}
+#wrap #main #section1 .wrap {width: 100%;}
+#wrap #main #section1 .wrap .gap {width: 100%;}
+#wrap #main #section1 .wrap .gap .container {width: 100%;}
+#wrap #main #section1 .wrap .gap .container .container-wrap {width: 100%;}
+#wrap #main #section1 .wrap .gap .container .container-wrap .container-view {width: 100%;overflow: hidden;}
+#wrap #main #section1 .wrap .gap .container .container-wrap .container-view .slide-wrap {width: 500%;margin-left: -100%;}
+#wrap #main #section1 .wrap .gap .container .container-wrap .container-view .slide-wrap .slide {float: left;background: url(../img/home-interior-design-slider-img01.jpg) no-repeat 50% 50%;background-size: cover;}
+#wrap #main #section1 .wrap .gap .container .container-wrap .container-view .slide-wrap .slide0 {background-image: url(../img/home-interior-design-slider-img01.jpg);}
+#wrap #main #section1 .wrap .gap .container .container-wrap .container-view .slide-wrap .slide1 {background-image: url(../img/home-interior-design-slider-img02.jpg)}
+#wrap #main #section1 .wrap .gap .container .container-wrap .container-view .slide-wrap .slide2 {background-image: url(../img/home-interior-design-slider-img03.jpg)}
+
+/* 섹션2 */
+#wrap #main #section2 {width: 100%;padding: 100px 0;}
+#wrap #main #section2 .wrap {width: 100%;max-width: 1170px;margin: 0 auto;}
+#wrap #main #section2 .wrap .gap {margin: 0 15px;}
+#wrap #main #section2 .wrap .gap .container {width: 100%;height: 300px;background: rgba(200, 200, 255, .5);}
+
+/* 푸터 */
+#wrap #footer {z-index: 1;position: relative;}
+
+
+
+/*        행단위 큰 영역구분 위아래여백(패딩)
+   wrap - 문서의 좌우 너비 결정, 가운데정렬
+   gap  - 문서의 좌우 여백 결정
+   container  - 실제 컨텐츠영역 */
