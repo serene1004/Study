@@ -1,9 +1,14 @@
 브라우저 화면을 축소해도 반응없음
 모바일 화면페이지가 따로있음 /m/main.do#
-모바일 반응형
+
+전체 반응형으로 만들어볼것.
 // 헤더
 w100%, h50px
 ul li float:left, right 좌우박스
+
+메인화면에서는 앱솔루트 t50
+섹션2~7까지는 fixed t0을 주어서 상단에 고정
+
 
 left박스
 JOSUN HOTELS & RESORTS
@@ -24,6 +29,10 @@ w100%, h100px
 
 RESERVATION (이미지있음) h34
 ROOMS h155px
+
+gnbtitle  gnb1 gnb2 gnb3 gnb4 gnb5
+
+gnbtitle   lnb1 lnb3 lnb3 ...
 
 // 상단 위치고정버튼
 오른쪽 상단 고정버튼fixed w60px, h60px, top70 right50	:focus

@@ -1,0 +1,9 @@
+모바일메뉴 만들기
+
+모든 메뉴가 블록단위로
+포지션 absolute >> relative
+포지션 좌표값 모두 초기화 top right bottom left
+여백 초기화 padding margin
+플로팅 해제 float:none
+너비 >> 100%, 높이 >> 45~50 모두 초기화
+display:inline-block >> block
