@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 @media all and (max-width:1320px){
     
     /* 섹션3 */
@@ -12,7 +11,6 @@
     #wrap #main #section3 .wrap .gap .container .content .slide-box ul .right-box {float: left;width: 66.43vw;}
 }
 
-/* 메인메뉴(GNB) width:980px 이하 조건문 (;사용 절대금지) */
 @media all and (max-width:980px){
 
     /* 모바일메뉴 모두 초기화*/

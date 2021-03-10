@@ -17,23 +17,29 @@
 
     /* 모바일메뉴 모두 초기화*/
     /* 헤더 */
-    #wrap #header {height: 60px;}
+    #wrap #header {height: 60px;background: #fff;}
     #wrap #header .wrap {margin: 0;}
     #wrap #header .wrap .gap {margin: 0;}
     #wrap #header .wrap .gap .container {padding: 0;}
     #wrap #header .wrap .gap .container #logo {padding: 12px 0 12px 15px;}
 
+    /* 헤더스크롤 */
+    #wrap #header.addDown {background: rgba(255, 255, 255, 1);}
+
     /* 헤더 네비 */
     #wrap #header .wrap .gap .container #nav {display: none;width: 100%;top: 60px;background: transparent;position: fixed;left: 0;text-align: left;height: 100%;overflow-y: auto;}
     #wrap #header .wrap .gap .container #nav > ul {width: auto;padding-bottom: 60px;}
-    #wrap #header .wrap .gap .container #nav > ul > li {position: relative;display: block;padding: 20px 0;border-bottom: 1px solid #ddd;margin: 0;text-indent: 20px;background: #fff;}
-    #wrap #header .wrap .gap .container #nav > ul > li:last-child {border-bottom: 0;}
+    #wrap #header .wrap .gap .container #nav > ul > li {position: relative;display: block;padding: 20px 0;border-top: 1px solid #ddd;margin: 0;text-indent: 20px;background: #fff;}
+    /* #wrap #header .wrap .gap .container #nav > ul > li:last-child {border-bottom: 0;} */
 
     /* 헤더 사이드메뉴 조정 */
     #wrap #header .wrap .gap .container #aside {padding: 15px 15px 15px 0;}
+    #wrap #header .wrap .gap .container #aside ul li a {font-size: 14px;color:rgba(0, 0, 0, 1);transition: all .3s ease-in-out;}
+    #wrap #header .wrap .gap .container #aside ul li a:hover {color: rgba(255, 255, 255, .6);}
 
     /* 헤더 모바일메뉴버튼 */
     #wrap #header .wrap .gap .container .mobile-btn-wrap {display: block;}
+    #wrap #header .wrap .gap .container .mobile-btn-wrap a.mobile-btn i.bar {background: #000;}
    
     /* 서브메뉴(LNB) */
     /* 헤더 네비 서브 */
@@ -67,7 +73,10 @@
     #wrap #header .wrap .gap .container #nav > ul > li .sub .sub-gap > ul > li dl dd .sub-sub .sub-sub-gap > ul > li .sub-sub-sub .sub-sub-sub-gap ul li {padding: 0;width: 100%;}
     #wrap #header .wrap .gap .container #nav > ul > li .sub .sub-gap > ul > li dl dd .sub-sub .sub-sub-gap > ul > li .sub-sub-sub .sub-sub-sub-gap ul li a {display: block;padding: 0;color: #828282;font-weight: 500;transition: color .3s ease-in-out;}
     #wrap #header .wrap .gap .container #nav > ul > li .sub .sub-gap > ul > li dl dd .sub-sub .sub-sub-gap > ul > li .sub-sub-sub .sub-sub-sub-gap ul li a:hover {color: #000;}
-
+    
+    /* 서브7 이미지 */
+    #wrap #header .wrap .gap .container #nav > ul > li .sub .sub-gap > ul > li dl dd a img {max-width:30%;float: left;margin-left: 20px;}
+    
     /* 메뉴제어 display:block; */
     #wrap #header .wrap .gap .container #nav > ul > li .sub {display: none;}
     #wrap #header .wrap .gap .container #nav > ul > li .sub .sub-gap > ul > li dl dd .sub-sub {display: block;}
@@ -240,3 +249,24 @@
 
 
 }
+
+
+
+
+
+
+/* 창너비가 980이하이면서 가로형모드(orientation:landscape)이면 섹션1의 높이를 600px로 고정한다 */
+/* 자바스크립트에서 설정한 섹션1의 높이때문에 먹지않아서 보이고 안보이게끔만 설정해둠. */
+/* @media all and (max-width:980px) and (orientation:landscape){
+    #wrap #main #section1 {height: 600px;}
+
+    #wrap #main #section1 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .text-box {display: none;}
+} */
+
+/* 창너비가 980px 이하이면서 세로형모드(orientation:portrait)이면 섹션1의 높이를 창높이로 한다. */
+/* @media all and (max-width:980px) and (orientation:portrait){
+    #wrap #main #section1 {height: 600px;}
+
+    #wrap #main #section1 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .text-box {display: block;}
+} */
+
