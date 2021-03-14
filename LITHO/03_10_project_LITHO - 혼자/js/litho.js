@@ -1,9 +1,7 @@
 ;(function($){
 
     var litho = {
-        btn:0,  // 헤더영역에서 모바일버튼 클릭시 값 변경 - 스크롤이벤트에서 변경된 btn멤버변수 사용
         init:function(){
-            this.scrollEventFn();
             this.headerFn();
             this.section1Fn();
             this.section2Fn();
@@ -16,110 +14,6 @@
             this.section9Fn();
             this.section10Fn();
             this.footerFn();
-        },
-        scrollEventFn:function(){
-
-            var $win = $(window);
-            var scrollOld = 0;
-            var scrollNew = 0;
-            var result = null;
-            var $header = $('#header')
-
-            var that = this;
-            
-
-            function scrollEventFn(){
-                scrollNew = $win.scrollTop();
-                var scroll = function(){    // 리터럴함수(익명함수)
-                    
-                    result = scrollOld-scrollNew > 0 ? 'Up' : 'Down';
-                    // // 삼학연산자도 연습할것
-                    // if( scrollOld - scrollNew > 0 ){
-                    //     result = 'Up';
-                    // }
-                    // else{
-                    //     result = 'Down';
-                    // }
-                }
-                scroll();
-                
-                // 스크롤이벤트 조건문
-                if( scrollNew <= 20 ){  // 스크롤의 top값이 20보다 작거나 같을때(화면 최상단) // 부여됬던 클래스 모두삭제.
-                    $header.removeClass('addUp');
-                    $header.removeClass('addDown');
-                    $header.removeClass('addWhite');
-                }
-                else{
-                    if( result === 'Up' ){  // 화면 스크롤을 위로 올릴때
-                        if( that.btn === 1){    // 모바일 버튼이 클릭된 상태 // 헤더탑-80을 없애고 검정색으로 변경하고 흰색 추가
-                            $header.removeClass('addUp');
-                            $header.addClass('addDown');
-                            $header.addClass('addWhite');
-                        }
-                        else{   // 모바일 버튼이 클릭되지 않았을때 // 헤더 탑-80을 없애고 검정색으로 변경. 흰색 삭제
-                            $header.removeClass('addUp');
-                            $header.addClass('addDown');
-                            $header.removeClass('addWhite');
-                        }
-                    }
-                    if( result === 'Down' ){    // 화면 스크롤을 아래로 내릴때
-                        if( that.btn === 1){    // 모바일 버튼이 클릭된 상태 // 헤더탑-80 없애고 검정색으로 변경. 흰색 삭제
-                            $header.removeClass('addUp');
-                            $header.addClass('addDown');
-                            $header.removeClass('addWhite');
-                        }
-                        else{   // 모바일 버튼이 클릭되지 않았을때 // 헤더 탑-80 추가하고 검정색, 흰색 삭제
-                            $header.addClass('addUp');
-                            $header.removeClass('addDown');
-                            $header.removeClass('addWhite');
-                        }
-                    }
-                } 
-
-                // console.log( result );
-                scrollOld = scrollNew;
-            }
-
-            $win.scroll(function(){
-                scrollEventFn();
-            });
-
-            // var scrollPrev = 0;
-            // var scrollCurrent = 0;
-            // var $window = $(window);
-            // result = null;
-
-            // function wheelPositionFn(){
-            //     result = scrollPrev - scrollCurrent > 0 ? 'Up' :'Down'
-            //     return{
-            //         scrollPrev,
-            //         scrollCurrent,
-            //         result
-            //     }
-            // }
-
-            // $window.scroll(function(){
-            //     scrollCurrent = $(this).scrollTop();
-            //     if(scrollCurrent <= 50 ){
-            //         $('#header').removeClass('addDown');
-            //         $('#header').removeClass('addUp');
-            //     }
-            //     else{
-            //         wheelPositionFn();
-            //         if( result == 'Down' ){
-            //             $('#header').removeClass('addDown'); // 헤더가 내려오는걸 삭제
-            //             $('#header').addClass('addUp');      // 헤더가 위로 올라감
-            //         }
-    
-            //         if( result == 'Up' ){
-            //             $('#header').removeClass('addUp');   // 헤더가 올라가는걸 삭제
-            //             $('#header').addClass('addDown');    // 헤더가 아래로 내려감
-            //         }
-            //     }
-            //     scrollPrev = scrollCurrent;
-            // });
-
-
         },
         headerFn:function(){
 
@@ -192,29 +86,26 @@
                 ],
             };  // litho 객체 배열 메뉴
 
-            
             // 변수설정
             var txt = '';
-            var $col = $('#header #nav .col')
-            var $sub2Btn = $('#header .sub2 .sub-btn')
-            var $sub2Sub = $('#header .sub2 .subsub')
-            var $sub3Btn = $('#header .sub3 .sub-btn')
-            var $sub3sub = $('#header .sub3 .subsub')
+            var $col = $('#header #nav .col');
+            var $sub2Btn = $('#header .sub2 .sub-btn');
+            var $sub2Sub = $('#header .sub2 .subsub');
+            var $sub3Btn = $('#header .sub3 .sub-btn');
+            var $sub3sub = $('#header .sub3 .subsub');
             var icon = '';
-            var $col4 = $('#header .sub4 .col')
+            var $col4 = $('#header .sub4 .col');
             var $sub5Btn = $('#header .sub5 .sub-btn');
             var $sub5Sub = $('#header .sub5 .subsub');
-            var $sub6Btn = $('#header .sub6 .sub-btn')
-            var $sub6Sub = $('#header .sub6 .subsub')
+            var $sub6Btn = $('#header .sub6 .sub-btn');
+            var $sub6Sub = $('#header .sub6 .subsub');
             var $sub7Dl1 = $('#header .sub7 dl').eq(0);
             var $sub7Img = $('#header .sub7 dl img');    // 이미지2개
-         
+
             // litho 객체 배열 서브메뉴를 컴포넌트요소에 넣기
             function subObjectarrayFn(){
             // 서브1
-                // 서브1 : 1~4열까지 반복
-
-                // if문 사용 자동화
+            // 서브1 : 1~4열까지 반복
                 for(var i in lithoNav.sub1){
                     for(var j in lithoNav.sub1[i].sub){
                         if(j==0){
@@ -228,8 +119,7 @@
                     txt = '';
                     }
 
-                // 서브2
-                    
+                // 서브2   
                 for(var i in lithoNav.sub2){
                     txt = lithoNav.sub2[i].sub;
                     icon=$sub2Btn.eq(i).html();
@@ -272,7 +162,6 @@
                 txt = '';                
 
                 // 서브3
-
                 for(var i in lithoNav.sub3){
                     txt = lithoNav.sub3[i].sub;
                     icon=$sub3Btn.eq(i).html();
@@ -290,7 +179,6 @@
                 }
 
                 // 서브4
-
                 for(var i in lithoNav.sub4){
                     for(var j in lithoNav.sub4[i].sub){
                         if(j==0){
@@ -305,7 +193,6 @@
                 }                
 
                 //서브5
-
                 for(var i in lithoNav.sub5){
                     txt = lithoNav.sub5[i].sub;
                     icon = $sub5Btn.eq(i).html();
@@ -388,9 +275,7 @@
                 $('.sub5-sub1 > div > ul > li').eq(12).html(txt);
                 txt = '';   // 서브 5-1 끝
 
-
                 // 서브6
-
                 for(var i in lithoNav.sub6){
                     if(i<11){
                         txt = lithoNav.sub6[i].sub;
@@ -416,7 +301,6 @@
                 txt = '';
 
                 // 서브7
-        
                 for(var i in lithoNav.sub7[0].sub){
                     if(i==0 || i==6){   // || = or(또는)
                         txt += '<dt>'+ lithoNav.sub7[0].sub[i] + '</dt>';
@@ -429,7 +313,6 @@
                 txt = '';
 
                 // 이미지 경로정보 가져와서 객체 배열 이미지 추가
-
                 for(var i=0; i<$sub7Img.length; i++){
                     txt = $sub7Img.eq(i).attr('src');
                     txt += lithoNav.sub7[i+1].sub[0];
@@ -447,165 +330,196 @@
             var $winW = $(window).width();
             var $winH = $(window).height();
 
-            // function resizeFn(){
-            //     $winW = $(window).width();
-            //     $winH = $(window).height();
-            //     // console.log('리사이즈'+$winW);
-            // }
-            // resizeFn();
+            function resizeFn(){
+                $winW = $(window).width();
+                // console.log('리사이즈'+$winW);
+            }
+            resizeFn();
             
-            // $window.resize(function(){
-            //     resizeFn();
-            //     // console.log('윈도우.리사이즈'+$winW);
-            // });
+            var resizeTimer;
+            $window.resize(function(){
+                resizeFn();
+                isChanged = true;
+                // console.log('윈도우.리사이즈'+$winW);
+                if (resizeTimer) {
+                    clearTimeout(resizeTimer)
+                }
+                /**
+                 * [디바운싱] : 연속으로 발생되는 이벤트를 가장 마지막에만 발생시키게 하는 이벤트 컨트롤? 기법 => 이 기법은 퍼블리셔면 대부분이 아는 기법
+                 * 페이스북에 스크롤 내리면 요소들 받아올때도 사용되는 개념 (스크롤 이벤트로 오지게 발생하는데, 데이터는 1번만 딱 받아와지는거랑 같음)
+                 * resize 이벤트가 얼마나 발생하든지 마지막에 발생한 순간부터 0.5s 뒤에 pcMobileFn 실행
+                 */
+                 resizeTimer = setTimeout(function () {
+                    pcMobileFn();
+                    isChanged = false;
+                }, 500);
+            });
 
+
+            // 네비게이션 메인버튼(메뉴) 버튼이벤트
+            // 서브메뉴
+            var $mainBtn = $('.main-btn');
+            var $sub = $('.sub');
+            var $navUlLi = $('#nav > ul > li')  // 마우스가 떠나면 sub를 숨겨지게끔 하기위한 영역설정(메인버튼과 서브메뉴들을 감싸주는 li)
+           
+            // 서브서브
+            var $subBtn = $('.sub-btn');
+            var $subSub = $('.sub-sub');
             
-            // 네비게이션 메인버튼(메뉴)
-            var $mainBtn = $('#header .main-btn');
-            var $sub = $('#header .sub');
+            // 서브서브서브
+            var $subSubBtn = $('.sub-sub-btn');
+            var $subSubSub = $('.sub-sub-sub');
 
-            var $navUlLi = $('#header #nav > ul > li')  // 마우스가 떠나면 sub를 숨겨지게끔 하기위한 영역설정(메인버튼과 서브메뉴들을 감싸주는 li)
-            var $subBtn = $('#header .sub-btn')
-            var $subSub = $('#header .sub-sub')
-
-            var $subSubBtn = $('#header .sub-sub-btn')
-            var $subSubSub = $('#header .sub-sub-sub')
-            
-            var $nav = $('#header #nav')
+            // 모바일버튼
             var $mobileBtn = $('#header .mobile-btn');
-            var $bar = $('#header .mobile-btn .bar')
-            var pc         = 0;
-            var mobile     = 0;
-            var $logoImg   = $('#header #logo a img');
+            var $bar = $('#header .mobile-btn .bar');
+            var $nav = $('#header #nav');
 
-            var that = this;   // litho 객체
+            /**
+             * isChanged, currentDevice 이건 뭐 하드코딩이라 할말이 없는데 ㅎ
+             * 미디어쿼리 & jQuery 혼용 issue
+             */
+            var isChanged = true;
+            var currentDevice = "";
+            function pcMobileFn(){
+                if (!isChanged) return;
+                if($winW > 980){
+                    if (currentDevice === 'pc') return;
+                    $mainBtn.off('click');
+                    pcFn();
+                    currentDevice = 'pc';
+                    $nav.css({display:'inline-block'});
+                } else {
+                    if (currentDevice === 'mobile') return;
+                    $mainBtn.off('mouseenter');
+                    $subBtn.off('mouseenter');
+                    $subSubBtn.off('mouseenter');
+                    $navUlLi.off('mouseleave');
+                    $subSub.off('mouseleave');
+                    $bar.removeClass('addMobile');
+                    mobileFn();
+                    currentDevice = 'mobile';
+                }
+            }
+            pcMobileFn();
 
-            // pcFn
             function pcFn(){
-                $nav.stop().show();
-                $sub.stop().hide();
-                $subSub.stop().hide();
-                $subSubSub.stop().hide();
-                $nav.css({display:'inline-block'});
-
-                $logoImg.attr('src','./img/logo-yellow-ochre-light-alt.png');
-
                 $mainBtn.on({
-                    mouseenter:function(event){
-                        event.preventDefault();
-                        $(this).next().stop().show();
+                    mouseenter:function(){
+                        $(this).next().stop().slideDown(300);
                     }   
                 });
                
                 $navUlLi.on({
-                    mouseleave:function(event){
-                        event.preventDefault();
-                        $sub.stop().hide();
+                    mouseleave:function(){
+                        $sub.stop().hide(0);
                     }
                 });
     
                 $subBtn.on({
-                    mouseenter:function(event){
-                        event.preventDefault();
-                        $subSub.stop().hide();
-                        $(this).next().stop().show();
+                    mouseenter:function(){
+                        $subSub.stop().hide(0);
+                        $(this).next().stop().slideDown(0);
                     }
                 });
     
                 $navUlLi.on({
-                    mouseleave:function(event){
-                        event.preventDefault();
-                        $subSub.stop().hide();
+                    mouseleave:function(){
+                        $subSub.stop().hide(0);
                     }
                 });
     
                 $subSubBtn.on({
-                    mouseenter:function(event){
-                        event.preventDefault();
-                        $subSubSub.stop().hide();
-                        $(this).next().stop().show();
+                    mouseenter:function(){
+                        $subSubSub.stop().hide(0);
+                        $(this).next().stop().slideDown(0);
                     }
                 });
     
                 $subSub.on({
-                    mouseleave:function(event){
-                        event.preventDefault();
-                        $subSubSub.stop().hide();
+                    mouseleave:function(){
+                        $subSubSub.stop().hide(0);
                     }
                 });
-            }   // pcFn 끝
-
-            // mobileFn
-            function mobileFn(){
-                $sub.stop().hide();
-
-                $subSub.stop().show();
-                $subSubSub.stop().show();
-
-                $bar.removeClass('addMobile');
-                $nav.stop().slideUp(0);
-
-                $logoImg.attr('src','./img/logo-yellow-ochre-alt.png');
-
-                // 기존 이벤트 삭제하기
-                $mainBtn.off('mouseenter');
-                $navUlLi.off('mouseleave');
-                
-                $subBtn.off('mouseenter');
-                $subSubBtn.off('mouseenter');
-                $subSub.off('mouseleave');
-                             
-            }   // mobileFn 끝
-
-            // pc모드 / mobile모드
-            function pcMobileFn(){
-                if($window.innerWidth() > 980 ){
-                    
-                    pc = 1;
-                    mobile = 0;
-                    pcFn();
-                    that.btn = 0;   // pc 화면에서 0으로 초기화를 해놔야 다시 모바일로갔을때 모바일버튼스크롤기능이 정상적으로 작동함
-                }
-                else{
-                    pc = 0;
-                    mobile = 1;
-                    mobileFn();
-                }
             }
-            setTimeout(pcMobileFn,100); //로딩시
-            
-            $window.resize(function(){
-              pcMobileFn();                  
-            });
 
-            mobileFn();
-        
-            // 모바일 메뉴
-            $mainBtn.on({
-                click:function(){
-                    if(mobile == 1){
-                        $sub.stop().slideUp(300);
+            function mobileFn(){
+                $mainBtn.on({
+                    click:function(){
                         $(this).next().stop().slideToggle(300);
-                    }
-                }   
-            }); 
-              
-            // 3선 모바일메뉴
+                    }   
+                });
+            }
+
+            // // 메뉴 보이기
+            // $mainBtn.on({
+            //     click:function(){
+            //         if($winW <= 980){
+            //             $(this).next().toggle('active');
+            //         }
+            //     },
+            //     mouseenter:function(){
+            //         if($winW > 980){
+            //             $(this).stop().next().slideDown(300);
+            //         }
+            //     }   
+            // });
+           
+            // // 메뉴 숨기기
+            // $navUlLi.on({
+            //     mouseleave:function(){
+            //         if($winW > 980){
+            //             $sub.stop().hide(0);
+            //         }
+            //     }
+            // });
+
+            // // 서브메뉴 보이기
+            // $subBtn.on({
+            //     mouseenter:function(){
+            //         if($winW > 980){
+            //             $subSub.stop().hide(0);
+            //             $(this).stop().next().slideDown(0);
+            //         }
+            //     }
+            // });
+
+            // // 서브메뉴 숨기기
+            // $navUlLi.on({
+            //     mouseleave:function(){
+            //         if($winW > 980){
+            //             $subSub.stop().hide(0);
+            //         }
+            //     }
+            // });
+
+            // // 서브서브 보이기
+            // $subSubBtn.on({
+            //     mouseenter:function(){
+            //         if($winW > 980){
+            //             $subSubSub.stop().hide(0);
+            //             $(this).stop().next().slideDown(0);
+            //         }
+            //     }
+            // });
+
+            // //서브서브 숨기기
+            // $subSub.on({
+            //     mouseleave:function(){
+            //         if($winW > 980){
+            //             $subSubSub.stop().hide(0);
+            //         }
+            //     }
+            // });
+
+
+            // 모바일메뉴 이벤트
             $mobileBtn.on({
-                click:function(event){
-                    event.preventDefault();
+                click:function(){
                     $bar.toggleClass('addMobile');
                     $nav.stop().slideToggle(300);
-                    
-                    return that.btn === 0 ? that.btn = 1 : that.btn = 0;    // 전역변수 (전역 멤버 변수)
-                    // that.btn === 0 ? that.btn = 1 : that.btn = 0;    // 0이면 1로, 1이면 0으로
-                    // console.log(that.btn);
                 }
             });
-
-
-
-
         },
         section1Fn:function(){
             // 슬라이드의 너비와 높이를 창높이 창너비로 설정한다.(반응형)
@@ -628,164 +542,153 @@
 
 
 
-                // 슬라이드의 너비 높이 설정 완료  // 로딩시 설정
-                function resizeFn(){
-                    $winW = $(window).width();
-                    // $winH = $(window).height(); // 높이설정을 가로, 세로모드 반응형으로 하기위해 아래로 내림.
-                    $slide.css({width:$winW});
+            // 슬라이드의 너비 높이 설정 완료  // 로딩시 설정
+            function resizeFn(){
+                $winW = $(window).width();
+                // $winH = $(window).height(); // 높이설정을 가로, 세로모드 반응형으로 하기위해 아래로 내림.
+                $slide.css({width:$winW});
 
-                    // 가로형모드 반응형
-                    if(window.orientation == 0 || window.orientation == 180){
-                        $winH = $(window).height();
-                    }
-                    // 세로형모드 반응형
-                    else if (window.orientation == 90 || window.orientation == -90){
-                        if($winW > 980 ){
-                            $winH = $(window).height();
-                        }
-                        else{
-                            $winH = 600;
-                        }
-                    }
-
-
-                    $section1.css({width:$winW,height:$winH}); // 즉시 변환 너비 높이 적용 실행
-                    $slideWrap.stop().animate({left:-$winW*cnt}, 0);    // 즉시실행 0의 속도
-                    mainSlideFn();   // 메인슬라이드함수 전체를 가져오기때문에 300의 속도가 있음
+                // 가로형모드 반응형
+                if(window.orientation == 0 || window.orientation == 180){
+                    $winH = $(window).height();
                 }
-                resizeFn(); // 로딩시 실행
-                setTimeout(resizeFn, 10);  // 0.1초 뒤에 강제실행 (반응형 너비설정 resizeFn 이 즉각 실행되도록)
+                // 세로형모드 반응형
+                else if (window.orientation == 90 || window.orientation == -90){
+                    $winH = 600;
+                }
 
-                // 화면의 크기가(너비와높이) 1픽셀만 변경되어도 동작되는 반응형메서드
-                // $window.resize();
-                $window.resize(function(){
-                    setTimeout(resizeFn, 100);
+
+                $section1.css({width:$winW,height:$winH}); // 즉시 변환 너비 높이 적용 실행
+                $slideWrap.stop().animate({left:-$winW*cnt}, 0);    // 즉시실행 0의 속도
+                mainSlideFn();   // 메인슬라이드함수 전체를 가져오기때문에 300의 속도가 있음
+            }
+            // resizeFn(); // 로딩시 실행
+            setTimeout(resizeFn, 10);  // 0.1초 뒤에 강제실행 (반응형 너비설정 resizeFn 이 즉각 실행되도록)
+
+            // 화면의 크기가(너비와높이) 1픽셀만 변경되어도 동작되는 반응형메서드
+            // $window.resize();
+            $window.resize(function(){
+                resizeFn();
+            });
+            
+
+            // 메인슬라이드
+            function mainSlideFn(){
+                $slideWrap.stop().animate({left:-$winW*cnt}, 600, 'easeInOutCubic',function(){
+                    if(cnt>n-1){cnt=0}  // n의 값은 3이지만, 인덱스값은 0부터 시작하기때문에 -1을 해주어야함.
+                    if(cnt<0){cnt=n-1}
+                    $slideWrap.stop().animate({left:-$winW*cnt}, 0);
                 });
-                
+                pageBtnColorEnvetFn();  // 페이지버튼 이벤트함수 호출
+            }
 
-                // 메인슬라이드
-                function mainSlideFn(){
-                    $slideWrap.stop().animate({left:-$winW*cnt}, 600, 'easeInOutCubic',function(){
-                        if(cnt>n-1){cnt=0}  // n의 값은 3이지만, 인덱스값은 0부터 시작하기때문에 -1을 해주어야함.
-                        if(cnt<0){cnt=n-1}
-                        $slideWrap.stop().animate({left:-$winW*cnt}, 0);
-                    });
-                    pageBtnColorEnvetFn();  // 페이지버튼 이벤트함수 호출
-                }
+            // 슬라이드함수
+            function prevSlideCountFn(){
+                cnt --;
+                mainSlideFn();
+            }
 
-                // 슬라이드함수
-                function prevSlideCountFn(){
-                    cnt --;
-                    mainSlideFn();
-                }
+            function nextSlideCountFn(){
+                cnt ++;
+                mainSlideFn();
+            }
 
-                function nextSlideCountFn(){
-                    cnt ++;
-                    mainSlideFn();
-                }
-
-                // 화살버튼
-                $prevBtn.on({
-                    click:function(e){
-                        e.preventDefault();
-                        puaseTimerFn();
-                        if (!$slideWrap.is(':animated')) {
-                            prevSlideCountFn();
-                        }
+            // 화살버튼
+            $prevBtn.on({
+                click:function(e){
+                    e.preventDefault();
+                    puaseTimerFn();
+                    if (!$slideWrap.is(':animated')) {
+                        prevSlideCountFn();
                     }
-                })
-
-                $nextBtn.on({
-                    click:function(e){
-                        e.preventDefault();
-                        puaseTimerFn();
-                        if (!$slideWrap.is(':animated')) {
-                            nextSlideCountFn();
-                        }
-                    }
-                })
-
-
-                // 페이지버튼
-                // 해당 슬라이드 버튼색상 변경
-                function pageBtnColorEnvetFn(){
-                    var z = cnt;
-                    if(z>n-1){
-                        z=0;
-                    }
-                    // console.log(z); // 0,1,2,0,1,2...
-                    $pageBtn.removeClass('addPage');
-                    $pageBtn.eq(z).addClass('addPage');
                 }
-                pageBtnColorEnvetFn();  // 로딩시 페이지함수 실행!
+            })
 
-                // 페이지버튼 클릭시 해당 페이지로 이동
-                $pageBtn.each(function(idx){
-                    $(this).on({        // $pageBtn.eq(idx)=$(this)
-                        click:function(){
-                            cnt = idx;  // 클릭한 버튼 인덱스 번호가 슬라이드 번호
-                            mainSlideFn();
-                        }
-                    });
-                });
-
-                // $pageBtn.eq(0).on({
-                //     click:function(){
-                //         cnt = 0;
-                //         mainSlideFn();
-                //     }
-                // });
+            $nextBtn.on({
+                click:function(e){
+                    e.preventDefault();
+                    puaseTimerFn();
+                    if (!$slideWrap.is(':animated')) {
+                        nextSlideCountFn();
+                    }
+                }
+            })
 
 
-                // 터치 스와이프
-                // 슬라이드를 오른쪽에서 왼쪽으로 터치시 다음슬라이드 카운트 함수호출
-                // 슬라이드를 왼쪽에서 오른쪽으로 터치시 이전슬라이드 카운트 함수호출
-                $slideView.swipe({
-                    swipeLeft:function(e){
-                        e.preventDefault();
-                        puaseTimerFn();
-                        if (!$slideWrap.is(':animated')) {
-                            nextSlideCountFn()
-                        }
-                    },
-                    swipeRight:function(e){
-                        e.preventDefault();
-                        puaseTimerFn();
-                        if (!$slideWrap.is(':animated')) {
-                            prevSlideCountFn()
-                        }
+            // 페이지버튼
+            // 해당 슬라이드 버튼색상 변경
+            function pageBtnColorEnvetFn(){
+                var z = cnt;
+                if(z>n-1){
+                    z=0;
+                }
+                // console.log(z); // 0,1,2,0,1,2...
+                $pageBtn.removeClass('addPage');
+                $pageBtn.eq(z).addClass('addPage');
+            }
+            pageBtnColorEnvetFn();  // 로딩시 페이지함수 실행!
+
+            // 페이지버튼 클릭시 해당 페이지로 이동
+            $pageBtn.each(function(idx){
+                $(this).on({        // $pageBtn.eq(idx)=$(this)
+                    click:function(){
+                        cnt = idx;  // 클릭한 버튼 인덱스 번호가 슬라이드 번호
+                        mainSlideFn();
                     }
                 });
+            });
 
-                // 자동타이머 함수 4초에 한번씩 반복
-                function autoTimerFn(){
-                    setId = setInterval(nextSlideCountFn, 4000);
+            // $pageBtn.eq(0).on({
+            //     click:function(){
+            //         cnt = 0;
+            //         mainSlideFn();
+            //     }
+            // });
+
+
+            // 터치 스와이프
+            // 슬라이드를 오른쪽에서 왼쪽으로 터치시 다음슬라이드 카운트 함수호출
+            // 슬라이드를 왼쪽에서 오른쪽으로 터치시 이전슬라이드 카운트 함수호출
+            $slideView.swipe({
+                swipeLeft:function(e){
+                    e.preventDefault();
+                    puaseTimerFn();
+                    if (!$slideWrap.is(':animated')) {
+                        nextSlideCountFn()
+                    }
+                },
+                swipeRight:function(e){
+                    e.preventDefault();
+                    puaseTimerFn();
+                    if (!$slideWrap.is(':animated')) {
+                        prevSlideCountFn()
+                    }
                 }
-                autoTimerFn();
+            });
 
-                // 슬라이드에서 이벤트 발생시 자동 타이머를 일시중지
-                var setId2 = null;
-                function puaseTimerFn(){
-                    var t = 0;
-                    clearInterval(setId);
-                    clearInterval(setId2);
-                    // 4초동안 아무이벤트가 없으면 다시 자동타이머 실행
-                    setId2 = setInterval(function(){
-                        t ++;
-                        console.log(t);
-                        if(t >= 4){
-                            clearInterval(setId);
-                            clearInterval(setId2);
-                            nextSlideCountFn();
-                            autoTimerFn();
-                        }
-                    }, 1000)
-                }
+            // 자동타이머 함수 4초에 한번씩 반복
+            function autoTimerFn(){
+                setId = setInterval(nextSlideCountFn, 4000);
+            }
+            autoTimerFn();
 
-
-
-
-
+            // 슬라이드에서 이벤트 발생시 자동 타이머를 일시중지
+            var setId2 = null;
+            function puaseTimerFn(){
+                var t = 0;
+                clearInterval(setId);
+                clearInterval(setId2);
+                // 5초동안 아무이벤트가 없으면 다시 자동타이머 실행
+                setId2 = setInterval(function(){
+                    t++;
+                    if(t >= 4){
+                        clearInterval(setId);
+                        clearInterval(setId2);
+                        nextSlideCountFn();
+                        autoTimerFn();
+                    }
+                }, 1000)
+            }
         },
         section2Fn:function(){
 
@@ -793,8 +696,8 @@
         section3Fn:function(){
             
             var $slideWrap = $('#section3 .slide-wrap');
-            var $nextBtn = $('#section3 .next-btn')
-            var $prevBtn = $('#section3 .prev-btn')
+            var $nextBtn = $('#section3 .next-btn');
+            var $prevBtn = $('#section3 .prev-btn');
             var $slideView = $('#section3 .slide-view');
             var $slideViewEnter = $('#section3 .slide-view');
            
@@ -803,7 +706,7 @@
             
             var cnt = 0;
             var setId = null;
-            var n = $('#section3 .slide').length-(4+4)-1;
+            var n = $('#section3 .slide').length - ( 4 + 4 ) - 1;
 
             
             // 반응형 슬라이드
@@ -818,8 +721,7 @@
             // 2. 윈도우(window) 리사이즈(resize()) 메서드
             $window.resize(function(){
                 reponseFn();    // <<< 반응형 (크기가 조절이될때)
-            });
-
+            })
 
             function section3SlideFn(){
                 $slideWrap.stop().animate({left:-$slideW*cnt}, 300, 'easeInOutCubic',function(){
@@ -830,11 +732,11 @@
             }
 
             function prevSlideCountFn(){
-                cnt --;
+                cnt--;
                 section3SlideFn();
             }
             function nextSlideCountFn(){
-                cnt ++;
+                cnt++;
                 section3SlideFn();
             }
 
@@ -897,7 +799,7 @@
             var t = 0;
             var setId2 = null;
             function timerFn(){
-                t=0;
+                t = 0;
                 clearInterval(setId);
                 clearInterval(setId2);
                 setId2 = setInterval(function(){
@@ -930,11 +832,6 @@
             //         }
             //     }, 1000);
             // }
-
-
-
-
-
         },
         section4Fn:function(){
             
