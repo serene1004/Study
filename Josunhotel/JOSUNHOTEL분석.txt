@@ -21,8 +21,9 @@ right박스
 
 // 네비
 w100%, h100px
-메인로고 GRAND JOSUN
+메인로고 GRAND JOSUN 이미지파일
 
+네비영역에 마우스오버시 네비 배경 투명 > 흰색
 네비메뉴 버튼에 마우스오버시 #ba998c + 언더라인
 네비메뉴 오버시 슬라이드다운
 서브메뉴영역 w100% - 슬라이드마다 높이다름 padding:50px 0 55px 0
@@ -34,7 +35,7 @@ gnbtitle  gnb1 gnb2 gnb3 gnb4 gnb5
 
 gnbtitle   lnb1 lnb3 lnb3 ...
 
-// 상단 위치고정버튼
+// 사이드버튼
 오른쪽 상단 고정버튼fixed w60px, h60px, top70 right50	:focus
 마우스오버시 슬라이드다운(150px) h210px open offers
 클릭시 오른쪽에서 왼쪽으로 모달창나옴 close offers로 슬라이드 글자변경

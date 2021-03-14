@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+#wrap {width: 100%;}
+
+/* video 영상 */
+#wrap #section1 {width: 100%;}
+#wrap #section1 .wrap {width: 100%;}
+#wrap #section1 .wrap .gap {width: 100%;}
+#wrap #section1 .wrap .gap .container {width: 100%;overflow: hidden;}
+#wrap #section1 .wrap .gap .container .main-video {width: auto;height: auto;}
+
+
+/* iframe 유뷰트 영상 */
+#wrap #section2 {width: 100%;}
+#wrap #section2 .wrap {width: 100%;}
+#wrap #section2 .wrap .gap {width: 100%;}
+#wrap #section2 .wrap .gap .container {width: 100%;overflow: hidden;}
+#wrap #section2 .wrap .gap .container .youtube {width: 100vw;height: 56.25vw;border: 0;}
