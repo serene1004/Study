@@ -261,15 +261,82 @@
         },
 
         section3Fn:function(){
+            var $dinningWhiteBtn = $('#section3 .dinning-whitebtn');
+            var $dinningBlackBtn = $('#section3 .dinning-blackbtn');
+
+            $dinningWhiteBtn.on({
+                mouseenter:function(){
+                    $dinningBlackBtn.addClass('mouseon');
+                }
+            });
+            $dinningBlackBtn.on({
+                mouseleave:function(){
+                    $dinningBlackBtn.removeClass('mouseon');
+                }
+            });
 
         },
 
         section4Fn:function(){
+            var $slide0 = $('#section4 .slide0');
+            var $slide1 = $('#section4 .slide1');
+            var $slide2 = $('#section4 .slide2');
+
+            var $facilityWhiteBtn = $('#section4 .facility-whitebtn');
+            var $facilityBlackBtn = $('#section4 .facility-blackbtn');
+
+            $facilityWhiteBtn.on({
+                mouseenter:function(){
+                    $facilityBlackBtn.addClass('mouseon');
+                }
+            });
+            $facilityBlackBtn.on({
+                mouseleave:function(){
+                    $facilityBlackBtn.removeClass('mouseon');
+                }
+            });
+
+            $slide0.on({
+                mouseenter:function(){
+                    $slide0.addClass('mouseon');
+                    $slide1.removeClass('mouseon');
+                    $slide2.removeClass('mouseon');
+                }
+            });
+
+            $slide1.on({
+                mouseenter:function(){
+                    $slide1.addClass('mouseon');
+                    $slide0.removeClass('mouseon');
+                    $slide2.removeClass('mouseon');
+                }
+            });
+
+            $slide2.on({
+                mouseenter:function(){
+                    $slide2.addClass('mouseon');
+                    $slide0.removeClass('mouseon');
+                    $slide1.removeClass('mouseon');
+                }
+            });
+
 
         },
 
         section5Fn:function(){
+            var $activityCleanbtn = $('#section5 .activity-cleanbtn');
+            var $activityWhiteBtn = $('#section5 .activity-whitebtn');
 
+            $activityCleanbtn.on({
+                mouseenter:function(){
+                    $activityWhiteBtn.addClass('mouseon');
+                }
+            });
+            $activityWhiteBtn.on({
+                mouseleave:function(){
+                    $activityWhiteBtn.removeClass('mouseon');
+                }
+            });
         },
 
         section6Fn:function(){
