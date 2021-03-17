@@ -1052,6 +1052,7 @@
             // 패럴럭스
             $(window).scroll(function(){
                 if( $(window).scrollTop() >= $('#section5').offset().top ){
+                    // console.log($(window).scrollTop() >= $('#section5').offset().top);
                     if( t === 0 ){
                         t = 1;
                         $('#section6 .wrap .gap .container > ul').addClass('addCounter');
