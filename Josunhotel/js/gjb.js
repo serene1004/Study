@@ -16,6 +16,8 @@
             taht.section7Fn();
             taht.indicatorFn();
             taht.footerFn();
+            taht.offersFn();
+            taht.wheelEventFn();
         },
 
         scrollEventFn:function(){
@@ -26,15 +28,15 @@
             var $header = $('#header')
             var $nav = $('#header #nav');
             var $logo = $('#header #logo .logo-wrap');
+            var $mobileBtn = $('#header .mobile-btn');
+            var $bar = $('#header .bar');
+
+            var t = 0;
             var $footer = $('#footer');
             var $section7 = $('#section7');
 
 
-
             $header.addClass('addShow');    //  새로고침시 최상단의 헤더바가 다시나타나도록
-            
-            
-
 
             function scrollEventFn(){
                 scrollNew = $win.scrollTop();
@@ -50,6 +52,8 @@
                     $header.removeClass('addHide');
                     $nav.removeClass('mouseon');
                     $logo.removeClass('addBlack');
+                    // $bar.addClass('addWhite');
+                    $bar.removeClass('addBlack');
                     // $nav.removeClass('addLine');
                 }
                 else{
@@ -59,38 +63,55 @@
                         $nav.addClass('mouseon');
                         $logo.addClass('addBlack');
                         $footer.removeClass('addView');
-
+                        t = 0;
                     }
                     if( result === 'Down' ){    // 스크롤 내릴때
                         $header.addClass('addHide');
                         $header.removeClass('addShow');
                         $nav.addClass('mouseon');
                         $logo.addClass('addBlack');
+                        $bar.addClass('addBlack');
                         // $nav.addClass('addLine');
                     }
                 }
                 scrollOld = scrollNew;
             }
 
-            console.log( '스크롤탑이 섹션7오프셋탑이랑 크거나같다',$(window).scrollTop() >= $('#section7').offset().top );
-            console.log( '스크롤탑',$(window).scrollTop() );
-            console.log( '섹션7 오프셋탑',$('#section7').offset().top );
-            console.log( '푸터 오프셋탑',$('#footer').offset().top );
+            
+            // console.log( '스크롤탑이 섹션7오프셋탑이랑 크거나같다',$(window).scrollTop() >= $('#section7').offset().top );
+            // console.log( '스크롤탑',$(window).scrollTop() );
+            // console.log( '섹션7 오프셋탑',$('#section7').offset().top );
+            // console.log( '푸터 오프셋탑',$('#footer').offset().top );
+
+            // console.log($('#section7').offset().top);
+
+            // $win.scroll(function(){
+            //     if ( $(window).scrollTop() >= $('#section7').offset().top+1 ) {
+            //         $footer.addClass('addView');
+            //     }
+            // })
+
 
             $win.scroll(function(){
-                if ( $(window).scrollTop() >= $('#section7').offset().top ) {
-                    $footer.addClass('addView');
-                    // 섹션7에 fixed 추가하기
+                if ( $(window).scrollTop() >= $('#section7').offset().top+1 ) {
+                    if ( t === 0 ) {
+                        t = 1;
+                        $footer.addClass('addView');
+                    }
+                }
+                if ( $(window).scrollTop() <= $('#section7').offset().top ) {
+                    if ( t === 0 ) {
+                        t = 0;
+                        $footer.removeClass('addView');
+                    }
                 }
             })
             
-
 
             $win.scroll(function(){
                 scrollEventFn();
             });
 
-            
 
         },
         headerFn:function(){
@@ -105,6 +126,10 @@
             var $langKR = $('#header .lang-KR');
             var $langEN = $('#header .lang-EN');
 
+            var $mobileBtn = $('#header .mobile-btn');
+            var $bar = $('#header .bar');
+
+            var $sideBtnBox = $('#header .side-btn-box');
             var $sideBtn = $('#header .side-btn-box .side-btn')
             var $sideWrap = $('#header .side-btn-box .side-btn .side-wrap');
 
@@ -116,7 +141,7 @@
             // 배경이 흰색이면 글자색은 검정으로, 배경이 투명이면 글자색은 흰색으로
             // 네비에 마우스 오버시 로고 검정, 네비가 닫힐시 흰색으로
             // addLine를 넣어서 메인버튼하단부에 선을 그어서 영역나눔을 하는것에 대한 고민중.
-
+            
 
             $nav.on({
                 mouseleave:function(){
@@ -140,12 +165,14 @@
                     $nav.addClass('mouseon');
                     $lnbWrap.stop().slideUp(100);
                     $(this).next().stop().slideDown(300);
+                    $sideBtnBox.hide();
                 }
             });
             $gnbWrap.on({
                 mouseleave:function(){
                     $logo.removeClass('addBlack');
                     $lnbWrap.stop().slideUp(100);
+                    $sideBtnBox.show();
                 }
             });
 
@@ -164,6 +191,12 @@
                 }
             });
 
+            $mobileBtn.on({
+                click:function(){
+                    $bar.toggleClass('addMobile');
+                }
+            });
+            
         },
 
         section1Fn:function(){
@@ -219,6 +252,8 @@
                     bgSlideTimerFn();
                     if (!$mainBgSlideWrap.is(':animated')) {
                         bgPrevCountFn();
+                        $startBtn.removeClass('addClick');
+                        $stopBtn.removeClass('addClick');
                     }
                 }
             });
@@ -227,6 +262,8 @@
                     bgSlideTimerFn();
                     if (!$mainBgSlideWrap.is(':animated')) {
                         bgNextCountFn();
+                        $startBtn.removeClass('addClick');
+                        $stopBtn.removeClass('addClick');
                     }
                 }
             });
@@ -236,12 +273,16 @@
                     bgSlideTimerFn();
                     if (!$mainBgSlideWrap.is(':animated')) {
                         bgNextCountFn();
+                        $startBtn.removeClass('addClick');
+                        $stopBtn.removeClass('addClick');
                     }
                 },
                 swipeRight:function(){
                     bgSlideTimerFn();
                     if (!$mainBgSlideWrap.is(':animated')) {
                         bgPrevCountFn();
+                        $startBtn.removeClass('addClick');
+                        $stopBtn.removeClass('addClick');
                     }
                 }
             });
@@ -270,14 +311,17 @@
             // start 버튼클릭시 stopBtn에 클래스 제거 display:inline-block;
             $stopBtn.on({
                 click:function(){
-                    $stopBtn.addClass('mouseon');
-                    $startBtn.addClass('mouseon');
+                    $stopBtn.addClass('addClick');
+                    $startBtn.addClass('addClick');
+                    clearInterval(setId);
+                    clearInterval(setId2);
                 }
             });
             $startBtn.on({
                 click:function(){
-                    $startBtn.removeClass('mouseon');
-                    $stopBtn.removeClass('mouseon');
+                    $startBtn.removeClass('addClick');
+                    $stopBtn.removeClass('addClick');
+                    bgSlideTimerFn();
                 }
             });
             
@@ -289,6 +333,10 @@
             var $section2SlideWrap = $('#section2 .slide-wrap');
             var $section2Slide = $('#section2 .slide');
             var $s2SlideCnt = 0;
+            var $prevBtn = $('#section2 .prev-btn');
+            var $nextBtn = $('#section2 .next-btn');
+            var $s2StopBtn = $('#section2 .stop-btn');
+            var $s2startBtn = $('#section2 .start-btn');
 
             var $roomWhiteBtn = $('#section2 .room-whitebtn');
             var $roomBlackBtn = $('#section2 .room-blackbtn');
@@ -297,6 +345,11 @@
             var $winW = $(window).width;
             var $winH = $(window).height;
             var $section2 = $('#section2');
+            var $slideW = $('#section2 .slide').innerWidth();
+
+            var setId = null;
+            var setId2 = null;
+            var timercnt = 0;
 
             function resizeFn(){
                 $winW = $(window).width();
@@ -304,15 +357,24 @@
                 $section2.css({width:$winW,height:$winH});
             }
             resizeFn();
+
             $window.resize(function(){
                 resizeFn();
+                s2SlideReponseFn();
             });
 
+            function s2SlideReponseFn(){
+                $slideW = $('#section2 .slide').innerWidth();
+                section2SlideFn();
+            }
+            s2SlideReponseFn();
+            setTimeout(s2SlideReponseFn, 100);
+
             function section2SlideFn(){
-                $section2SlideWrap.stop().animate({left:-1050*$s2SlideCnt}, 300, 'easeOutCubic', function(){
+                $section2SlideWrap.stop().animate({left:-$slideW*$s2SlideCnt}, 300, 'easeOutCubic', function(){
                     if ( $s2SlideCnt > 4 ) { $s2SlideCnt = 0; }
                     if ( $s2SlideCnt < 0 ) { $s2SlideCnt = 4; }
-                    $section2SlideWrap.stop().animate({left:-1050*$s2SlideCnt}, 0)
+                    $section2SlideWrap.stop().animate({left:-$slideW*$s2SlideCnt}, 0)
                 })
             }
 
@@ -325,24 +387,83 @@
                 $s2SlideCnt++;
                 section2SlideFn();
             }
+            $prevBtn.on({
+                click:function(){
+                    section2SlideTimerFn();
+                    if (!$section2SlideWrap.is(':animated')) {
+                        section2PrevCountFn();
+                        $s2startBtn.removeClass('addClick');
+                        $s2StopBtn.removeClass('addClick');
+                    }
+                }
+            });
+
+            $nextBtn.on({
+                click:function(){
+                    section2SlideTimerFn();
+                    if (!$section2SlideWrap.is(':animated')) {
+                        section2NextCountFn();
+                        $s2startBtn.removeClass('addClick');
+                        $s2StopBtn.removeClass('addClick');
+                    }
+                }
+            });
+
+            $s2StopBtn.on({
+                click:function(){
+                    $s2StopBtn.addClass('addClick');
+                    $s2startBtn.addClass('addClick');
+                    clearInterval(setId);
+                    clearInterval(setId2);
+                }
+            });
+            $s2startBtn.on({
+                click:function(){
+                    $s2startBtn.removeClass('addClick');
+                    $s2StopBtn.removeClass('addClick');
+                    section2SlideTimerFn();
+                }
+            });
+
 
             $section2SlideView.swipe({
                 swipeLeft:function(){
+                    section2SlideTimerFn();
                     if (!$section2SlideWrap.is(':animated')) {
                         section2NextCountFn();
+                        $s2startBtn.removeClass('addClick');
+                        $s2StopBtn.removeClass('addClick');
                     }
                 },
                 swipeRight:function(){
+                    section2SlideTimerFn();
                     if (!$section2SlideWrap.is(':animated')) {
                         section2PrevCountFn();
+                        $s2startBtn.removeClass('addClick');
+                        $s2StopBtn.removeClass('addClick');
                     }
                 }
             });            
 
             function section2SlideAutoPlayFn(){
-                setInterval(section2NextCountFn, 4000)
+                setId = setInterval(section2NextCountFn, 4000)
             }
             section2SlideAutoPlayFn();
+
+            function section2SlideTimerFn(){
+                timercnt = 0;
+                clearInterval(setId);
+                clearInterval(setId2);
+                setId2 = setInterval(function(){
+                    timercnt++;
+                    // console.log(timercnt);
+                    if (timercnt >= 4) {
+                        clearInterval(setId2);
+                        section2NextCountFn();
+                        section2SlideAutoPlayFn();
+                    }
+                }, 1000);
+            }
 
             $roomWhiteBtn.on({
                 mouseenter:function(){
@@ -532,6 +653,126 @@
                     $familysiteBtnI.toggleClass('addView');
                 }
             });
+
+        },
+
+        offersFn:function(){
+            var $sideBtn = $('#header .side-btn');
+            var $offers = $('#offers');
+            var $closeOffersWrap = $('#offers .close-offers-wrap');
+            var $closeBtn = $('#offers .close-btn');
+            var $offersBlind = $('.offers-blind');
+            var $packagePrevBtn = $('#offers .package-prev-btn');
+            var $packageNextBtn = $('#offers .package-next-btn');
+            var $offerSlideWrap = $('#offers .slide-wrap');
+            var $offerSlideView = $('#offers .slide-view');
+            var offerCnt = 0;
+
+            $sideBtn.on({
+                click:function(){
+                    $offers.animate({right:0},700, 'easeInOutQuad')
+                    $closeOffersWrap.show(500);
+                    $offersBlind.show(0);
+                }
+            });
+            $closeBtn.on({
+                click:function(){
+                    $offers.animate({right:-1340},700, 'easeInOutQuad')
+                    $closeOffersWrap.hide();
+                    $offersBlind.hide();
+                }
+            });
+            $closeOffersWrap.on({
+                click:function(){
+                    $offers.animate({right:-1340},700, 'easeInOutQuad')
+                    $closeOffersWrap.hide();
+                    $offersBlind.hide();
+                }
+            });
+            $offersBlind.on({
+                click:function(){
+                    $offers.animate({right:-1340},700, 'easeInOutQuad')
+                    $closeOffersWrap.hide();
+                    $offersBlind.hide();
+                }
+            });
+
+            function offerSlideFn(){
+                $offerSlideWrap.stop().animate({left:-680*offerCnt}, 500, 'easeOutCubic',function(){
+                    if ( offerCnt > 2 ) { offerCnt = 0; }
+                    if ( offerCnt < 0 ) { offerCnt = 2; }
+                    $offerSlideWrap.stop().animate({left:-680*offerCnt}, 0)
+                })
+            }
+            function offerSlidePrevCountFn(){
+                offerCnt --;
+                offerSlideFn();
+            }
+            function offerSlideNextCountFn(){
+                offerCnt ++;
+                offerSlideFn();
+            }
+
+            $packagePrevBtn.on({
+                click:function(){
+                    if(!$offerSlideWrap.is(':animated')){
+                        offerSlidePrevCountFn();
+                    }
+                }
+            });
+            $packageNextBtn.on({
+                click:function(){
+                    if(!$offerSlideWrap.is(':animated')){
+                        offerSlideNextCountFn();
+                    }
+                }
+            });
+
+        },
+
+        wheelEventFn:function(){
+            var $main = $('#main');
+            var moveCnt = null;
+            var moveIndex = 0;
+            var moveCntTop = 0;
+            var time = false;
+
+            // 버벅거리면서 잘안됨ㅠㅠ
+            // https://codepen.io/recordboy/pen/JBmvpp 휠이벤트 참고
+
+            function readyWheelFn(){
+                $main.on('mousewheel', function(e){
+                    if( time === false ){
+                        wheel(e);
+                    }
+                });
+            }
+            readyWheelFn();
+            
+            var wheel = function(e){
+                if( e.originalEvent.wheelDelta < 0 ){
+                    if( moveIndex < 6 ){
+                        moveIndex += 1;
+                        moving(moveIndex);
+                    };
+                }
+                else{
+                    if( moveIndex > 0 ){
+                        moveIndex -= 1;
+                        moving(moveIndex);
+                    };
+                };
+            };
+
+            var moving = function(index){
+                time = true;
+                moveCnt = $main.children('section').eq(index);
+                moveCntTop = moveCnt.offset().top;
+                // console.log(moveCnt.offset().top);
+                $('html, body').stop().animate({scrollTop:moveCntTop}, 1200, function(){
+                    time = false;
+                });
+            };
 
         }
     }

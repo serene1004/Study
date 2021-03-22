@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+#wrap {width:100%; overflow: hidden;padding: 130px 0;}
+
+#wrap {}
+#wrap #gallery {background: #333;}
+#wrap #gallery .wrap {width: 100%;}
+#wrap #gallery .wrap .gap {width: 100%;}
+#wrap #gallery .wrap .gap .container {width: 100%;}
+#wrap #gallery .wrap .gap .container .title {width: 100%;text-align: center;padding-top: 100px;}
+#wrap #gallery .wrap .gap .container .title h2 {font-size: 35px;color: #d6634a;font-weight: 600;padding-bottom: 20px;letter-spacing: 2px;}
+#wrap #gallery .wrap .gap .container .title h3 {font-size: 15px;color: #ababab;letter-spacing: 1px;}
+
+#wrap #gallery .wrap .gap .container .content {width: 100%;}
+#wrap #gallery .wrap .gap .container .content #nav {width: 100%;padding: 100px 0 60px 0;}
+#wrap #gallery .wrap .gap .container .content #nav ul {text-align: center;}
+#wrap #gallery .wrap .gap .container .content #nav ul li {display: inline-block;margin: 0 10px;}
+#wrap #gallery .wrap .gap .container .content #nav ul li a {display: block;line-height: 30px;font-size: 13px;background: rgba(214, 110, 74, 0);color: #9b9b9b;padding: 0 15px;transition: all .3s ease-in-out;font-weight: 600;;}
+#wrap #gallery .wrap .gap .container .content #nav ul li a:hover {background: rgba(214, 110, 74, 1);color: #fff;}
+#wrap #gallery .wrap .gap .container .content #nav ul li a.addNav {background: rgba(214, 110, 74, 1);color: #fff;}
+
+#wrap #gallery .wrap .gap .container .content .gallery-wrap {width: 100%;}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul {width: 1914px;margin-left: -11px;}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li {float: left;width: 25%;}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li .gallery-gap {margin-left: 11px;margin-bottom: 11px;}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li .gallery-gap .gallery-content {width: 100%;height: 368.7063px;background: url(../img/travel-img17.jpg) no-repeat 50% 50%;background-size: cover;position: relative;overflow: hidden;}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col0 .gallery-gap .gallery-content {background-image: url(../img/travel-img17.jpg);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col1 .gallery-gap .gallery-content {background-image: url(../img/travel-img18.jpg);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col2 .gallery-gap .gallery-content {background-image: url(../img/travel-img19.jpg);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col3 .gallery-gap .gallery-content {background-image: url(../img/travel-img20-768x595.jpg);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col4 .gallery-gap .gallery-content {background-image: url(../img/travel-img21.jpg);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col5 .gallery-gap .gallery-content {background-image: url(../img/travel-img22.jpg);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col6 .gallery-gap .gallery-content {background-image: url(../img/travel-img23.jpg);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col7 .gallery-gap .gallery-content {background-image: url(../img/travel-img24-768x595.jpg);}
+
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col .gallery-gap .gallery-content > a {z-index: 1;position: relative;display: block;width: 100%;height: 100%;background: rgba(0, 0, 0, 0);cursor: url(../img/icon-zoom.png) pointer;transition: all .3s ease-in-out;}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col .gallery-gap .gallery-content > a:hover {background: rgba(0, 0, 0, .25);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col .gallery-gap .gallery-content .img-caption {z-index: 2;position: absolute;bottom: -37px;left: 0;width: 100%;height: 137px;background: rgba(0,0,0,.75);transition: all .3s ease-in-out;}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col:hover .gallery-gap .gallery-content .img-caption {bottom: 0;}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col .gallery-gap .gallery-content .img-caption .img-caption1 {}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col .gallery-gap .gallery-content .img-caption .img-caption1 .caption-gap {text-align: center;padding: 29px 0 30px 0;text-transform: uppercase;font-weight: 600;}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col .gallery-gap .gallery-content .img-caption .img-caption1 .caption-gap h4 {color: #fff;font-size: 13px;margin-bottom: 9px;}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col .gallery-gap .gallery-content .img-caption .img-caption1 .caption-gap h5 {color: #ababab;font-size: 11px;line-height: 180%;}
+
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col .gallery-gap .gallery-content .img-caption .img-caption2 {width: 100%;text-align: center;background: #d6624a;}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col .gallery-gap .gallery-content .img-caption .img-caption2 a {display: block;font-size: 13px;line-height: 37px;text-transform: uppercase;color: #fff;}
