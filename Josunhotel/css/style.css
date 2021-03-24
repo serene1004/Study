@@ -39,6 +39,7 @@
 
 /* header logo */
 #wrap #header .wrap .gap .container #logo {position: absolute;z-index: 2;top: 50px;left: 0;width: 118px;padding: 30px 90px 30px 50px;}
+#wrap #header .wrap .gap .container #logo.addHide {top: -50px;}
 #wrap #header .wrap .gap .container #logo h1 {text-indent: -2000px;overflow: hidden;display: none;}
 #wrap #header .wrap .gap .container #logo a {display: block;position: relative;overflow: hidden;}
 #wrap #header .wrap .gap .container #logo a .logo-white {display: inline-block;width: 118px;height: 42px;background: url(../img/bg_logo_grand.png) no-repeat;}
@@ -49,6 +50,7 @@
 
 /* Nav */
 #wrap #header .wrap .gap .container #nav {width: 100%;height: 100px;position: absolute;z-index: 1;top: 50px;left: 0;}
+#wrap #header .wrap .gap .container #nav.addHide {top: -50px;}
 /* #wrap #header .wrap .gap .container #nav.addLine {border-bottom: 1px solid #ccc;} */
 #wrap #header .wrap .gap .container #nav.mouseon {background: rgba(255, 255, 255, 1);}
 #wrap #header .wrap .gap .container #nav .nav-gap {margin: 0 200px 0 50px;}
@@ -194,7 +196,7 @@
 #wrap #main #section2 .box .section2bg-right {z-index:1;position:absolute;top:0;right: 0;width: 50%;height: 100%;background: #fff;}
 #wrap #main #section2 .box .wrap {z-index:2;position:relative;width:100%;height: 100%;display: table;}
 #wrap #main #section2 .box .wrap .gap {display: table-cell;vertical-align: middle;}
-#wrap #main #section2 .box .wrap .gap .container {width:1500px;margin:0 auto;margin-top: 80px;}
+#wrap #main #section2 .box .wrap .gap .container {width:1400px;margin:0 auto;margin-top: 80px;}
 
 /* section2 slide */
 #wrap #main #section2 .box .wrap .gap .container .slide-container {width: 1050px;position: relative;float: left;opacity: 1;}
@@ -336,6 +338,69 @@
 #wrap #main #section5 .wrap .gap .container .activity-box .activity-btn .activity-whitebtn {display: none;background: url(../img/btn_view.png);width: 168px;height: 42px;position: absolute;z-index: 2;top: 0;left: -126px;}
 #wrap #main #section5 .wrap .gap .container .activity-box .activity-btn .activity-whitebtn.mouseon {display: inline-block;}
 
+/* main gallery */
+#wrap #main #gallery {width: 100%;background: #fff;position: relative;}
+#wrap #main #gallery .wrap {width: 100%;}
+#wrap #main #gallery .wrap .gap {margin: 0 auto;}
+#wrap #main #gallery .wrap .gap .container {width: 100%;padding: 60px 0;}
+
+#wrap #main #gallery .wrap .gap .container .title {width: 1400px;margin: 0 auto;padding: 50px 0;}
+#wrap #main #gallery .wrap .gap .container .title h3 {font-size: 55px;font-family: 'Playfair Display';text-transform: uppercase;color:#000}
+#wrap #main #gallery .wrap .gap .container .title h3::first-letter {font-size: 120%;}
+#wrap #main #gallery .wrap .gap .container .title p {font-size: 20px;margin-top: 18px;font-weight: lighter;line-height: 180%;color:#000}
+
+#wrap #main #gallery .wrap .gap .container .content {width: 100%;}
+#wrap #main #gallery .wrap .gap .container .content #nav {width: 1400px;margin: 0 auto;}
+#wrap #main #gallery .wrap .gap .container .content #nav .gallery-btn-wrap {margin-bottom: 40px;}
+#wrap #main #gallery .wrap .gap .container .content #nav .gallery-btn-wrap li {display: inline-block;margin-right: 30px;}
+#wrap #main #gallery .wrap .gap .container .content #nav .gallery-btn-wrap li .gallery-btn {display: inline-block;font-size: 20px;color: #bbb;}
+#wrap #main #gallery .wrap .gap .container .content #nav .gallery-btn-wrap li .gallery-btn.addNav {font-size: 20px;color: #000;}
+
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap {width: 100%;}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul {position: relative;width: calc(1903px+6px);margin-left: -6px;height: calc(263.6448px*3);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list {position: absolute;width: 20%;height: 263.6448px;}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list0 {left: calc(20%*0);top: calc(263.6448px*0);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list1 {left: calc(20%*1);top: calc(263.6448px*0);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list2 {left: calc(20%*2);top: calc(263.6448px*0)}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list3 {left: calc(20%*3);top: calc(263.6448px*0)}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list4 {left: calc(20%*4);top: calc(263.6448px*0)}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list5 {left: calc(20%*0);top: calc(263.6448px*1)}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list6 {left: calc(20%*1);top: calc(263.6448px*1)}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list7 {left: calc(20%*2);top: calc(263.6448px*1)}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list8 {left: calc(20%*3);top: calc(263.6448px*1)}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list9 {left: calc(20%*4);top: calc(263.6448px*1)}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list10 {left: calc(20%*0);top: calc(263.6448px*2);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list11 {left: calc(20%*1);top: calc(263.6448px*2);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list12 {left: calc(20%*2);top: calc(263.6448px*2);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list13 {left: calc(20%*3);top: calc(263.6448px*2);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list14 {left: calc(20%*4);top: calc(263.6448px*2);}
+
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list .gallery-gap {padding-left: 6px;padding-bottom: 6px;width: 100%;height: 100%;box-sizing: border-box;}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list .gallery-gap .gallery-content {width: 100%;height: 100%;background: url(../img/meeting_ballroom.jpg) no-repeat 50% 50%;background-size: cover;position: relative;text-align: center;overflow: hidden;transition: all .4s ease-in-out;transform: scale(0);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list .gallery-gap .gallery-content.addZoom {transition: all .6s ease-in-out;transform: scale(1);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list0 .gallery-gap .gallery-content {background-image: url(../img/room_deluxe.jpg);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list1 .gallery-gap .gallery-content {background-image: url(../img/meeting_ballroom.jpg);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list2 .gallery-gap .gallery-content {background-image: url(../img/restaurants_loungebar.png);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list3 .gallery-gap .gallery-content {background-image: url(../img/restaurants_aira.jpg);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list4 .gallery-gap .gallery-content {background-image: url(../img/facilities_heavenlypool.jpg);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list5 .gallery-gap .gallery-content {background-image: url(../img/room_superior.jpg);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list6 .gallery-gap .gallery-content {background-image: url(../img/room_executivesuite.jpg);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list7 .gallery-gap .gallery-content {background-image: url(../img/restaurants_josundeli.png);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list8 .gallery-gap .gallery-content {background-image: url(../img/facilities_sauna1.png);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list9 .gallery-gap .gallery-content {background-image: url(../img/facilities_sauna2.jpg);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list10 .gallery-gap .gallery-content {background-image: url(../img/room_presidentialsuite.jpg);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list11 .gallery-gap .gallery-content {background-image: url(../img/room_kidssuite.jpg);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list12 .gallery-gap .gallery-content {background-image: url(../img/meeting_boardroom.jpg);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list13 .gallery-gap .gallery-content {background-image: url(../img/facilities_juicebar.png);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list14 .gallery-gap .gallery-content {background-image: url(../img/facilities_fitness.png);}
+
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list .gallery-gap .gallery-content .caption-gap {height: 100%;background: rgba(0, 0, 0, 0);position: relative;z-index: 2;}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list .gallery-gap .gallery-content .caption-gap:hover {background: rgba(44, 73, 66, .5);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list .gallery-gap .gallery-content .caption-gap a {display: block;width: 100%;height: 100%;}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list .gallery-gap .gallery-content .caption-gap a .caption-text {display: none;font-size: 18px;color: #e7c2a3;text-transform: uppercase;letter-spacing: 1px;position: relative;z-index: 1;top: 50%;}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list .gallery-gap .gallery-content .caption-gap:hover a .caption-text {display: inline-block;}
+
+
 
 /* main section6 */
 #wrap #main #section6 {width: 100%;background: url(../img/bg_membership.jpg) no-repeat 50% 50%;background-size: cover;display:table;position: relative;}
@@ -386,7 +451,7 @@
 
 
 /* main indicator */
-#wrap #main .main-indicator {width: 150px;height: 280px;left: 50px;position: fixed;z-index: 5;top: 35%;}
+#wrap #main .main-indicator {width: 150px;height: 280px;left: 50px;position: fixed;z-index: 5;top: 35%;display: none;}
 #wrap #main .main-indicator .indicator {height: 40px;border-left: 2px solid #ccc;}
 #wrap #main .main-indicator .indicator a {display: inline-block;font-size: 13px;line-height: 40px;color: #ccc;margin-left: 15px;}
 
@@ -475,7 +540,7 @@
 #wrap #offers .wrap .gap .container .close-btn-wrap .close-btn {display: inline-block;width: 25px;height: 25px;background: url(../img/btn_close_25x25.png) no-repeat;background-size: cover;}
 
 #wrap #offers .wrap .gap .container .side-left {float: left;position: relative;}
-#wrap #offers .wrap .gap .container .side-left .go-offers {display: block;font-size: 16px;line-height: 120%;height: 19px;margin-top: -19px;}
+#wrap #offers .wrap .gap .container .side-left .go-offers {display: block;font-size: 16px;line-height: 120%;height: 19px;margin-top: -19px;color: #000;}
 #wrap #offers .wrap .gap .container .side-left .go-offers .side-icon {display: inline-block;background: url(../img/icon_arr.png) no-repeat;background-size: cover;width: 7px;height: 13px;margin: -3px 0 0 10px;}
 
 #wrap #offers .wrap .gap .container .side-left h3 {font-size: 22px;font-weight: 600;margin: 14px 0;padding-right: 60px;}

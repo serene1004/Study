@@ -39,6 +39,12 @@
     /* main section5 */
     #wrap #main #section5 .wrap .gap {width: 93.33vw;}
 
+    /* main gallery */
+    #wrap #main #gallery .wrap .gap .container {padding: 60px 0;}
+    #wrap #main #gallery .wrap .gap .container .title {width: 93.33vw;margin: 0 60px;}
+    #wrap #main #gallery .wrap .gap .container .content #nav {width: 93.33vw;margin: 0 60px;}
+
+
     /* main section6 */
     #wrap #main #section6 .wrap .gap {width: 93.33vw;}
     #wrap #main #section6 .wrap .gap .container .membership-wrap .membership-left {width: 60vw;}
@@ -79,6 +85,7 @@
     /* Header 제어 */
     #wrap #header.addHide {top: -50px;}
     #wrap #header.addShow {top: 0;}
+    #wrap #header.addMobile {background: #fff;}
 
     /* Header */
     #wrap #header {width: 100%;height: 50px;background: transparent;}
@@ -115,17 +122,17 @@
     #wrap #header .wrap .gap .container #logo a.addBlack .logo-black {display: inline-block;}
 
     /* Nav */
-    #wrap #header .wrap .gap .container #nav {width: 100%;height: 600px;position: absolute;z-index: 1;top: 50px;left: 0;display: none; background:rgba(240, 240, 240, 1);}
-    #wrap #header .wrap .gap .container #nav.mouseon {background: rgba(255, 255, 255, 1);}
+    #wrap #header .wrap .gap .container #nav {width: 100%;height: 600px;position: absolute;z-index: 1;top: 50px;left: 0;display: none; background:rgba(255, 255, 255, 1);}
+    #wrap #header .wrap .gap .container #nav.mouseon {background: rgba(255, 255, 255, 1);} /* 마우스온 컬러변경 */
     #wrap #header .wrap .gap .container #nav .nav-gap {margin: 0;}
     
     #wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap {height: 100px;text-align: left;padding-left: 0;}
     #wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul {width: 100%;}
-    #wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li {display: block;width: auto;background: #ddd;}
+    #wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li {display: block;width: auto;background: #fff;}
 
     #wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .gnb-btn {display: inline-block;padding: 10px 0 10px 20px;}
-    #wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .gnb-btn span {display: inline-block;color: #fff;font-size: 16.5px;font-weight: 600;line-height: 150%;position: relative;}
-    #wrap #header .wrap .gap .container #nav.mouseon .nav-gap .gnb-wrap > ul > li .gnb-btn span {color: #000;}
+    #wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .gnb-btn span {display: inline-block;color: #000;font-size: 16.5px;font-weight: 600;line-height: 150%;position: relative;}
+    #wrap #header .wrap .gap .container #nav.mouseon .nav-gap .gnb-wrap > ul > li .gnb-btn span {color: #000;} /* 마우스온 컬러변경 */
     #wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .gnb-title-btn {margin: 0;}
     #wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .gnb-title-btn .title-btn-img {display: inline-block;position: absolute;top: 8px;right: -25px;width: 16px;height: 10px;}
     #wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .gnb-btn span .gnb-line {display: inline-block;width: 100%;height: 2px;position: absolute;bottom: -1px;left: 0;}
@@ -230,6 +237,17 @@
     #wrap #main #section5 .wrap .gap .container .activity-box p {margin: 10px 0;}
     #wrap #main #section5 .wrap .gap .container .activity-box .activity-btn {position: absolute;top: 130px;left: 370px;}
 
+    /* main gallery */
+    #wrap #main #gallery .wrap .gap .container .title {width: 93.33vw;margin: 0 60px;padding: 50px 0;}
+    #wrap #main #gallery .wrap .gap .container .title h3 {font-size: 30px;}
+    #wrap #main #gallery .wrap .gap .container .title p {font-size: 17px;margin-top: 12px;font-weight: lighter;line-height: 150%;color:#000}
+
+    #wrap #main #gallery .wrap .gap .container .content {width: 100%;}
+    #wrap #main #gallery .wrap .gap .container .content #nav {width: 93.33vw;margin: 0 60px;}
+    #wrap #main #gallery .wrap .gap .container .content #nav .gallery-btn-wrap {margin-bottom: 30px;}
+    #wrap #main #gallery .wrap .gap .container .content #nav .gallery-btn-wrap li {display: inline-block;margin-right: 30px;}
+    #wrap #main #gallery .wrap .gap .container .content #nav .gallery-btn-wrap li .gallery-btn {font-size: 18px;}
+    #wrap #main #gallery .wrap .gap .container .content #nav .gallery-btn-wrap li .gallery-btn.addNav {font-size: 18px;}
 
     /* main section6 */
     #wrap #main #section6 .wrap .gap {width: 93.33vw;}
@@ -246,23 +264,12 @@
     /* footer */
     #wrap #footer {position: relative;z-index: 2;top: 0;left: 0;background: #fff;}
     #wrap #footer.addView {top: 0;position: relative;}
-    #wrap #footer .wrap {width: 100%;height: 513px;}
-    #wrap #footer .wrap .gap {width: 1400px;margin: 0 auto;}
+    #wrap #footer .wrap {width: 100%;height: 460px;}
+    #wrap #footer .wrap .gap {width: 100%;margin: 0 auto;}
     #wrap #footer .wrap .gap .container {padding-top: 40px;}
     #wrap #footer .wrap .gap .container .hotels-wrap {width: 100%;display: none;}
-    #wrap #footer .wrap .gap .container .hotels-wrap .hotels {float: left;height: 38px;background: url(../img/img_logo_hotel01.gif) no-repeat 50% 50%;margin: 0 27px;}
-    #wrap #footer .wrap .gap .container .hotels-wrap .hotel0 {background-image: url(../img/logo_josunpalace.png);width: 70px;}
-    #wrap #footer .wrap .gap .container .hotels-wrap .hotel1 {background-image: url(../img/logo_wchosunseoul.png);width: 160px;}
-    #wrap #footer .wrap .gap .container .hotels-wrap .hotel2 {background-image: url(../img/logo_wchosunbusan.png);width: 160px;}
-    #wrap #footer .wrap .gap .container .hotels-wrap .hotel3 {background-image: url(../img/logo_grandjosun.png);width: 70px;}
-    #wrap #footer .wrap .gap .container .hotels-wrap .hotel4 {background-image: url(../img/logo_grandjosun02.png);width: 70px;}
-    #wrap #footer .wrap .gap .container .hotels-wrap .hotel5 {background-image: url(../img/logo_lescape.png);width: 80px;}
-    #wrap #footer .wrap .gap .container .hotels-wrap .hotel6 {background-image: url(../img/logo_gravity.png);width: 90px;}
-    #wrap #footer .wrap .gap .container .hotels-wrap .hotel7 {background-image: url(../img/logo_fourpoints.png);width: 105px;}
-    #wrap #footer .wrap .gap .container .hotels-wrap .hotel8 {background-image: url(../img/logo_fourpoints02.png);width: 105px;}
-    #wrap #footer .wrap .gap .container .hotels-wrap .hotels a {display: block;width: auto;height: 38px;}
 
-    #wrap #footer .wrap .gap .container .footer-box {position: relative;padding-top: 30px;margin-left: 30px;}
+    #wrap #footer .wrap .gap .container .footer-box {position: relative;padding-top: 30px;margin-left: 30px;padding-bottom: 30px;height: 360px;}
     #wrap #footer .wrap .gap .container .footer-box .footer-logo-wrap {float: left;width: 172px;margin-right: 0;}
     #wrap #footer .wrap .gap .container .footer-box .footer-logo-wrap .footer-logo {font-size: 20px;font-family: 'Playfair Display';text-transform: uppercase;line-height: 120%;color: #000;letter-spacing: 5px;}
 
@@ -276,14 +283,14 @@
     #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap #address {position: absolute;top: 15px;left: 200px;font-size: 14px;margin-top: 25px;color: #000;opacity: 1;}
     #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap #address span {display: inline-block;margin-right: 15px;}
     #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap #address p {width: 100%;}
-    #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap #address .copyright {width: 100%;position: absolute; bottom: -320px;left: -200px;width: 350px;}
+    #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap #address .copyright {width: 100%;position: absolute; bottom: -300px;left: -200px;width: 350px;}
 
-    #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap .familysite {position: absolute;top: -40px;left: -40px;margin-top: 0;width: 100%;height: 40px;padding: 0 30px;border-bottom: 1px solid #000;}
+    #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap .familysite {position: absolute;top: -40px;left: -30px;margin-top: 0;width: 100%;height: 40px;border-bottom: 1px solid #000;padding-left: 30px;}
     #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap .familysite .familysite-btn {color: #000;border-bottom: none;padding: 4px 0;}
     #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap .familysite .familysite-btn i {display: none;}
     #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap .familysite .familysite-btn i.addView {transform: rotate(225deg);top: 10px;}
-    #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap .familysite .familylist-wrap {position: absolute;top: -612px;left: 0;}
-    #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap .familysite .familylist-wrap .family-list {display: none;width: 230px;height: 576px;border: 1px solid #4d4d4d;background: #000;padding: 12px 0;}
+    #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap .familysite .familylist-wrap {position: absolute;top: -216px;left: 0;}
+    #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap .familysite .familylist-wrap .family-list {display: none;width: 230px;height: 190px;border: 1px solid #4d4d4d;background: #fff;padding: 12px 0;overflow-y:scroll;}
     #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap .familysite .familylist-wrap .family-list.addView {display: block;}
     #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap .familysite .familylist-wrap .family-list li {width: 100%;}
     #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap .familysite .familylist-wrap .family-list li a {display: block;font-size: 12px;font-weight: lighter;color: #000;padding: 10px 16px;}
