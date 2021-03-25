@@ -1,0 +1,38 @@
+모바일메뉴 만들기
+
+모든 메뉴가 블록단위로
+포지션 absolute >> relative
+포지션 좌표값 모두 초기화 top right bottom left
+여백 초기화 padding margin
+플로팅 해제 float:none
+너비 >> 100%, 높이 >> 45~50 모두 초기화
+display:inline-block >> block
+
+
+모바일 해상도에서의 작업
+미디어쿼리 980 해상도에서 반응형 스타일작업
+
+// 스크롤 아래로 내릴때 이벤트
+상단헤더영역 위치고정
+아래로 스크롤시 흰색으로 변경
+모바일버튼과 사이드 메뉴는 사라짐. (배경이 흰색이라 없어지는 효과로 착각하게만듬)
+
+기존 위로 올라가면서 사라지는 addClass를 removeClass
+addClass - addMDown 새로운 클래스를 추가
+Top:0
+
+
+// 스크롤 위로 올라갈때 이벤트
+addClass - addMUp 새로운 클래스를 추가
+
+
+
+// 스크립트
+모바일메뉴를 클릭시 - 기억변수 js
+데스크탑 해상도에서는 - 변수초기화
+
+아래로 스크롤하면 기존 모든클래스 삭제(removeClass)
+
+
+위로 스크롤하면 addUp클래스 삭제
+addwhite클래스 추가

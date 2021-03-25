@@ -1,8 +1,7 @@
 @charset "UTF-8";
 
-#wrap {width:100%; overflow: hidden;padding: 130px 0;}
+#wrap {width:100%; overflow: hidden;}
 
-#wrap {}
 #wrap #gallery {background: #333;}
 #wrap #gallery .wrap {width: 100%;}
 #wrap #gallery .wrap .gap {width: 100%;}
@@ -20,10 +19,20 @@
 #wrap #gallery .wrap .gap .container .content #nav ul li a.addNav {background: rgba(214, 110, 74, 1);color: #fff;}
 
 #wrap #gallery .wrap .gap .container .content .gallery-wrap {width: 100%;}
-#wrap #gallery .wrap .gap .container .content .gallery-wrap ul {width: 1914px;margin-left: -11px;}
-#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li {float: left;width: 25%;}
-#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li .gallery-gap {margin-left: 11px;margin-bottom: 11px;}
-#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li .gallery-gap .gallery-content {width: 100%;height: 368.7063px;background: url(../img/travel-img17.jpg) no-repeat 50% 50%;background-size: cover;position: relative;overflow: hidden;}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul {width: calc(1903px+11px);margin-left: -11px;position: relative;height: calc(368.70625px*2);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li {width: 25%;position: absolute;height: 368.70625px;}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li:nth-child(1) {left: calc(25%*0);top: calc(368.70625px*0);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li:nth-child(2) {left: calc(25%*1);top: calc(368.70625px*0);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li:nth-child(3) {left: calc(25%*2);top: calc(368.70625px*0);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li:nth-child(4) {left: calc(25%*3);top: calc(368.70625px*0);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li:nth-child(5) {left: calc(25%*0);top: calc(368.70625px*1);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li:nth-child(6) {left: calc(25%*1);top: calc(368.70625px*1);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li:nth-child(7) {left: calc(25%*2);top: calc(368.70625px*1);}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li:nth-child(8) {left: calc(25%*3);top: calc(368.70625px*1);}
+
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li .gallery-gap {padding-left: 11px;padding-bottom: 11px;width: 100%;height: 100%;box-sizing: border-box;}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li .gallery-gap .gallery-content {width: 100%;height: 100%;background: url(../img/travel-img17.jpg) no-repeat 50% 50%;background-size: cover;position: relative;overflow: hidden;transform: scale(0);transition: all .4s ease-in-out;}
+#wrap #gallery .wrap .gap .container .content .gallery-wrap ul li .gallery-gap .gallery-content.addZoom {transform: scale(1);transition: all .6s ease-in-out;}
 #wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col0 .gallery-gap .gallery-content {background-image: url(../img/travel-img17.jpg);}
 #wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col1 .gallery-gap .gallery-content {background-image: url(../img/travel-img18.jpg);}
 #wrap #gallery .wrap .gap .container .content .gallery-wrap ul .col2 .gallery-gap .gallery-content {background-image: url(../img/travel-img19.jpg);}

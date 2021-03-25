@@ -1111,12 +1111,7 @@
                     if( t === 0 ){
                         t = 1;
                         $('#section6 .wrap .gap .container > ul').addClass('addCounter');
-                        // setTimeout(countFn, 1000);
-
-                        setTimeout(function(){
-                            formatFn();
-                            setTimeout(countFn, 1000);
-                        }, 100);
+                        setTimeout(countFn, 1000);
                     }
                 }
                 if( $(window).scrollTop() === 0 ){
@@ -1125,25 +1120,19 @@
                     Cnt1 = [0,0,0,0];
                     Cnt2 = [0,0,0,0];
                     Cnt3 = [0,0,0,0];
-                    // formatFn();
+                    formatFn();
                     $('#section6 .wrap .gap .container > ul').removeClass('addCounter');
                 }
             });
+
 
 
             // 초기화함수
             function formatFn(){
                 $ul.css({top:0});
             }
-
             // setTimeout(formatFn, 100);
             // setTimeout(countFn, 1000);
-            
-            // setTimeout(function(){
-            //     formatFn();
-            //     countFn();
-
-            // }, 100);
 
 
             // countFn();
