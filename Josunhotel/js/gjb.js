@@ -28,10 +28,12 @@
             var scrollNew = 0;
             var result = null;
             var $header = $('#header')
+            var $headerBox = $('#header .header-box')
             var $nav = $('#header #nav');
             var $logo = $('#header #logo');
             var $logoColor = $('#header #logo .logo-wrap');
             var $mobileBtn = $('#header .mobile-btn');
+            var $mobileWrap = $('#header .mobile-btn-wrap');
             var $bar = $('#header .bar');
 
             var that = this;
@@ -58,28 +60,46 @@
                 if($win.innerWidth() > 1200){
 
                     if(scrollNew <= 0){  // 스크롤의 top=0 // 클래스 모두삭제.
-                        $header.removeClass('addHide');
-                        $nav.removeClass('mouseon');
-                        $logoColor.removeClass('addBlack');
+                        if(that.btn === 1){
+                            $header.removeClass('addHide');
+                            $nav.removeClass('mouseon');
+                            $logoColor.removeClass('addBlack');
+                        }
+                        else{
+                            $header.removeClass('addHide');
+                            $nav.removeClass('mouseon');
+                            $logoColor.removeClass('addBlack');
+                        }
                     }
                     else{
                         if(result === 'Up'){  // 화면 스크롤을 위로 올릴때
-                            if( that.btn === 1){    // 모바일 버튼이 클릭된 상태 // 
-    
+                            if(that.btn === 1){    // 모바일 버튼이 클릭된 상태 // 
+                                $nav.addClass('mouseon');
+                                $nav.removeClass('addHide');
+                                $logo.removeClass('addHide');
+                                $logoColor.addClass('addBlack');
                             }
                             else{   // 모바일 버튼이 클릭되지 않았을때 // 
-    
-                                t = 0;
+                                $nav.addClass('mouseon');
+                                $nav.removeClass('addHide');
+                                $logo.removeClass('addHide');
+                                $logoColor.addClass('addBlack');
                             }
                         }
                         if(result === 'Down'){    // 화면 스크롤을 아래로 내릴때
-                            if( that.btn === 1){    // 모바일 버튼이 클릭된 상태 // 
-    
+                            if(that.btn === 1){    // 모바일 버튼이 클릭된 상태 // 
+                                $header.addClass('addHide');
+                                $nav.removeClass('mouseon');
+                                $nav.addClass('addHide');
+                                $logo.addClass('addHide');
+                                $logoColor.removeClass('addBlack');
                             }
                             else{   // 모바일 버튼이 클릭되지 않았을때 // 
                                 $header.addClass('addHide');
-                                $nav.addClass('mouseon');
-                                $logoColor.addClass('addBlack');
+                                $nav.removeClass('mouseon');
+                                $nav.addClass('addHide');
+                                $logo.addClass('addHide');
+                                $logoColor.removeClass('addBlack');
                             }
                         }
                     }
@@ -88,7 +108,10 @@
                 else{
                     if(scrollNew <= 0){  // 스크롤의 top=0 // 클래스 모두삭제.
                         if(that.btn === 1){   // 
-                            console.log('버튼클릭됬을때');
+                            console.log('지금 버튼의 번호',that.btn);
+                            $header.removeClass('addMobile');
+                            $logoColor.removeClass('addBlack');
+                            $bar.removeClass('addBlack');
                         }
                         else{   // 모바일 버튼이 클릭되지 않았을때
                             $header.removeClass('addMobile');
@@ -99,27 +122,57 @@
                     else{
                         if(result === 'Up'){  // 화면 스크롤을 위로 올릴때
                             if(that.btn === 1){    // 모바일 버튼이 클릭된 상태 // 
+                                $logo.removeClass('addHide');
+                                $mobileWrap.removeClass('addHide');
+                                
                                 $header.addClass('addMobile');
-                                $logoColor.addClass('addBlack');
                                 $bar.addClass('addBlack');
+                                $logoColor.addClass('addBlack');
                             }
-                            else{   // 모바일 버튼이 클릭되지 않았을때 // 
+                            else{   // 모바일 버튼이 클릭되지 않았을때 // 로고, 모바일버튼, 헤더 나타남
+                                // 스크롤을 내렸다가 올렸을때(최상단이 아닐경우) 로고,모바일버튼이 검정색으로 바뀌었던것이
+                                // 모바일버튼 토글효과로인해 흰색으로 변경되어 보지않음. << 해당 문제는 토글버튼에 if문으로 해결함.
+                                $logo.removeClass('addHide');
+                                $mobileWrap.removeClass('addHide');
+                                
                                 $header.addClass('addMobile');
-                                $logoColor.addClass('addBlack');
                                 $bar.addClass('addBlack');
-                                t = 0;
+                                $logoColor.addClass('addBlack');
                             }
                         }
                         if(result === 'Down'){    // 화면 스크롤을 아래로 내릴때
-                            if( that.btn === 1 ){    // 모바일 버튼이 클릭된 상태 // 
-                                $header.addClass('addMobile');
-                                $logoColor.addClass('addBlack');
-                                $bar.addClass('addBlack');
+                            if( that.btn === 1 ){    // 모바일 버튼이 클릭된 상태 // 로고, 모바일버튼, 헤더, 헤더박스 사라지고, 네비 슬라이드업, 로고랑 모바일버튼 검정색 제거
+                                // 버튼이 눌려진 상태에서 스크롤내리면 네비가 닫히는데, 모바일버튼의 토글이 남아있는데 초기화되야함.
+                                $nav.stop().slideUp(0);
+
+                                $logo.addClass('addHide');
+                                $mobileWrap.addClass('addHide');
+
+                                if($bar.hasClass('addMobile') === true,
+                                   $bar.hasClass('addBlack') === true,
+                                   $header.hasClass('addMobile') === true,
+                                   $headerBox.hasClass('addView') === true,
+                                   $logoColor.hasClass('addBlack') === true
+                                ){
+                                    $bar.removeClass('addMobile');
+                                    $bar.removeClass('addBlack');
+                                    $header.removeClass('addMobile');
+                                    $headerBox.removeClass('addView');
+                                    $logoColor.removeClass('addBlack');
+                                }
                             }
-                            else{   // 모바일 버튼이 클릭되지 않았을때 // 
-                                $header.addClass('addMobile');
-                                $logoColor.addClass('addBlack');
-                                $bar.addClass('addBlack');
+                            else{   // 모바일 버튼이 클릭되지 않았을때 // 로고, 모바일버튼, 헤더 사라짐
+                                // 스크롤을 내리면 
+                                $header.removeClass('addMobile');
+                                $logo.addClass('addHide');
+                                $mobileWrap.addClass('addHide');
+
+                                $nav.stop().slideUp(0);
+                                if($bar.hasClass('addMobile') === true){
+                                    $bar.removeClass('addMobile');
+                                }
+                                $headerBox.removeClass('addView');
+                                // $logoColor.removeClass('addBlack');
                             }
                         }
                     }
@@ -160,6 +213,7 @@
             var $gnbBtn = $('#header #nav .gnb-wrap .gnb-btn');
             var $lnbWrap = $('#header #nav .gnb-wrap .lnb-wrap');
             var $lnbBtn = $('#header #nav .gnb-wrap .lnb-wrap .lnb-btn');
+            var $lnbSub = $('#header #nav .gnb-wrap .lnb-wrap ul > li > ul');
 
             var $main = $('#main');
 
@@ -182,6 +236,11 @@
 
 
             function pcFn(){
+                $nav.stop().show();
+                // 모바일화면에서 pc화면으로 넘어왔을떄 lnbSub가 사라지는 현상을 없애야함.
+                $lnbSub.stop().show();
+                $lnbSub.css({display:'block'});
+
 
                 $nav.on({
                     mouseleave:function(){
@@ -189,7 +248,6 @@
                         $lnbWrap.stop().slideUp(0);
                         $logoColor.removeClass('addBlack');
                         $main.css({filter:'brightness(100%)'})
-                        // $nav.removeClass('addLine');
                     }
                 });
                 $gnbWrap.on({
@@ -258,8 +316,7 @@
                 
                 $gnbBtn.on({
                     mouseenter:function(){
-                        $nav.addClass('mouseon');
-                        $lnbWrap.stop().slideUp(100);
+                        $lnbWrap.stop().slideUp(0);
                         $(this).next().stop().show();
                         $sideBtnBox.hide();
                         $lnbBtn.next().slideUp(300);
@@ -271,12 +328,6 @@
                         $lnbWrap.stop().hide();
                         $sideBtnBox.hide();
                         $lnbBtn.next().slideUp(300);
-                    }
-                });
-    
-                $langKR.on({
-                    click:function(){
-                        $langEN.toggle();
                     }
                 });
             };
@@ -293,12 +344,13 @@
                     mobile = 0;
                     pcFn();
                     that.btn = 0;
-
+                    console.log('현재는 pc상태');
                 }
                 else{
                     pc = 0;
                     mobile = 1;
                     mobileFn();
+                    console.log('현재는 mobile상태');
                 }
             };
             // // 이건 이렇게 안하고 밑에처럼 쉽게하면됨..
@@ -329,12 +381,26 @@
 
             $mobileBtn.on({
                 click:function(){
+                    // 스크롤탑값이 0이아닐때는 아래 이프문적용, 스크롤탑이 0일경우 else만이 되게끔 만들어야함.
+                    if($win.scrollTop() === 0){
+                        $bar.toggleClass('addBlack');
+                        $logoColor.toggleClass('addBlack');
+                    }
+                    else{
+                        if($bar.hasClass('addBlack') === true,
+                           $logoColor.hasClass('addBlack') === true
+                        ){
+    
+                        }
+                        else{
+                            $bar.toggleClass('addBlack');
+                            $logoColor.toggleClass('addBlack');
+                        }
+                    }
                     $bar.toggleClass('addMobile');
-                    $bar.toggleClass('addBlack');
                     $nav.stop().slideToggle(0);
                     $header.toggleClass('addMobile');
                     $headerBox.toggleClass('addView');
-                    $logoColor.toggleClass('addBlack');
                     return that.btn === 0 ? that.btn = 1 : that.btn = 0;
                 }
             });

@@ -80,10 +80,10 @@
 #wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .lnb-wrap .lnb-gap .lnb-title .lnb-title-btn {display: inline-block;font-size: 24px;}
 #wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .lnb-wrap .lnb-gap .lnb-title i {display: inline-block;font-size: 14px;border-bottom: 1px solid #000;padding-bottom: 5px;padding-top: 10px;}
 
-#wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .lnb-wrap .lnb-gap > ul {float: left;margin-left: 81px;}
-#wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .lnb-wrap .lnb-gap > ul > li {float: left;margin: 0 75px;}
-#wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .lnb-wrap .lnb-gap > ul > li .lnb-btn {display: inline-block;font-size: 15px;line-height: 150%;padding-bottom: 12px;}
-#wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .lnb-wrap .lnb-gap > ul > li .lnb-btn:hover {text-decoration: underline;}
+#wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .lnb-wrap .lnb-gap > ul {float: left;margin-left: 150px;}
+#wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .lnb-wrap .lnb-gap > ul > li {float: left;margin: 0 75px 0 0;}
+#wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .lnb-wrap .lnb-gap > ul > li .lnb-btn {display: inline-block;font-size: 15px;line-height: 150%;padding-bottom: 12px;position: relative;}
+#wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .lnb-wrap .lnb-gap > ul > li .lnb-btn .lnb-right-arrow {display: none;background: url(../img/icon_arr.png) no-repeat;width: 7px;height: 13px;transform: rotate(90deg);position: absolute;top: 5px;right: 0;}
 
 #wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .lnb-wrap .lnb-gap > ul > li > ul {width: 100%;}
 #wrap #header .wrap .gap .container #nav .nav-gap .gnb-wrap > ul > li .lnb-wrap .lnb-gap > ul > li > ul > li {width: 100%;}
@@ -147,10 +147,10 @@
 #wrap #main #section1 .wrap .gap .container .mainBg-slide-container {width: 100%;position: relative;}
 #wrap #main #section1 .wrap .gap .container .mainBg-slide-container .mainBg-slide-view {width: 100%;position: relative;z-index: 1;overflow: hidden;}
 #wrap #main #section1 .wrap .gap .container .mainBg-slide-container .mainBg-slide-view .mainBg-slide-wrap {width: 500%;left: 0;margin-left: -100%;position: relative;}
-#wrap #main #section1 .wrap .gap .container .mainBg-slide-container .mainBg-slide-view .mainBg-slide-wrap .mainBg-slide {float: left;position: relative;background: url(../img/01_Main-Top.jpg) no-repeat 50% 50%;background-size: cover;}
-#wrap #main #section1 .wrap .gap .container .mainBg-slide-container .mainBg-slide-view .mainBg-slide-wrap .mainBg-slide0 {background-image: url(../img/01_Main-Top.jpg);}
-#wrap #main #section1 .wrap .gap .container .mainBg-slide-container .mainBg-slide-view .mainBg-slide-wrap .mainBg-slide1 {background-image: url(../img/01_Main-Top.jpg);}
-#wrap #main #section1 .wrap .gap .container .mainBg-slide-container .mainBg-slide-view .mainBg-slide-wrap .mainBg-slide2 {background-image: url(../img/01_Main-Top.jpg);}
+#wrap #main #section1 .wrap .gap .container .mainBg-slide-container .mainBg-slide-view .mainBg-slide-wrap .mainBg-slide {float: left;position: relative;left: 0;width: 1903px;height: 969px;background: url(../img/01_main_bg1.jpg) no-repeat 50% 50%;background-size: cover;}
+#wrap #main #section1 .wrap .gap .container .mainBg-slide-container .mainBg-slide-view .mainBg-slide-wrap .slide0 {background-image: url(../img/01_main_bg1.jpg);}
+#wrap #main #section1 .wrap .gap .container .mainBg-slide-container .mainBg-slide-view .mainBg-slide-wrap .slide1 {background-image: url(../img/01_main_bg2.jpg);}
+#wrap #main #section1 .wrap .gap .container .mainBg-slide-container .mainBg-slide-view .mainBg-slide-wrap .slide2 {background-image: url(../img/01_main_bg3.jpg);}
 
 /* main text */
 #wrap #main #section1 .wrap .gap .container .mainBg-slide-container .mainBg-slide-view .main-text-wrap {position: absolute;z-index: 2;top: 35%;left: 13.5%;opacity: 1;transition: all 1s ease-in-out;animation: maintext 1.5s;}
@@ -284,7 +284,6 @@
 #wrap #main #section3 .wrap .gap .container .dinning-content .dinning-gap .promotion-wrap .promotion-btn > span > img {display: inline-block;width: 290px;height: 150px;}
 
 
-
 /* main section4 */
 #wrap #main #section4 {width: 100%;display:table;background: #fff;position: relative;}
 #wrap #main #section4 .wrap {height: 723px;display: table-cell;}
@@ -294,7 +293,7 @@
 #wrap #main #section4 .wrap .gap .container .facility-gap .facility-textbox {margin-bottom: 30px;position: relative;}
 #wrap #main #section4 .wrap .gap .container .facility-gap .facility-textbox h3 {display: inline-block;font-size: 35px;font-family: 'Playfair Display';text-transform: uppercase;line-height: 150%;color: #000;}
 #wrap #main #section4 .wrap .gap .container .facility-gap .facility-textbox p {display: inline-block;font-size: 14px;font-weight: 600;color: #ba998c;;line-height: 180%;margin-left: 20px;letter-spacing: 1px;}
-#wrap #main #section4 .wrap .gap .container .facility-gap .facility-textbox .facility-btn {display: inline-block;position: absolute;bottom: 0;right: 0;overflow: hidden;}
+#wrap #main #section4 .wrap .gap .container .facility-gap .facility-textbox .facility-btn {display: inline-block;position: absolute;bottom: 0;right: 0;overflow: hidden;width: 42px;height: 42px;}
 #wrap #main #section4 .wrap .gap .container .facility-gap .facility-textbox .facility-btn .facility-whitebtn {display: inline-block;background: url(../img/btn_view.png);width: 42px;height: 42px;position: relative;}
 #wrap #main #section4 .wrap .gap .container .facility-gap .facility-textbox .facility-btn .facility-blackbtn {display: none;background: url(../img/btn_view.png);width: 84px;height: 42px;position: absolute;z-index: 2;top: 0;left: -42px;}
 #wrap #main #section4 .wrap .gap .container .facility-gap .facility-textbox .facility-btn .facility-blackbtn.mouseon {display: inline-block;}
@@ -324,7 +323,7 @@
 #wrap #main #section5 .wrap .gap .container .activity-box h3::first-letter {font-size: 110%;}
 #wrap #main #section5 .wrap .gap .container .activity-box p {font-size: 18px;line-height: 180%;color: #fff;}
 #wrap #main #section5 .wrap .gap .container .activity-box .activity {display: block;font-size: 14px;color: #fff;line-height: 180%;letter-spacing: 1px;font-weight: 600;margin-top: 8px;}
-#wrap #main #section5 .wrap .gap .container .activity-box .activity-btn {display: inline-block;position: absolute;bottom: 0;left: 0;overflow: hidden;}
+#wrap #main #section5 .wrap .gap .container .activity-box .activity-btn {display: inline-block;position: absolute;bottom: 0;left: 0;overflow: hidden;width: 42px;height: 42px;}
 #wrap #main #section5 .wrap .gap .container .activity-box .activity-btn .activity-cleanbtn {display: inline-block;background: url(../img/btn_view.png);width: 126px;height: 42px;position: relative;left: -84px;}
 #wrap #main #section5 .wrap .gap .container .activity-box .activity-btn .activity-whitebtn {display: none;background: url(../img/btn_view.png);width: 168px;height: 42px;position: absolute;z-index: 2;top: 0;left: -126px;}
 #wrap #main #section5 .wrap .gap .container .activity-box .activity-btn .activity-whitebtn.mouseon {display: inline-block;}
