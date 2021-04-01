@@ -49,7 +49,7 @@
             function scrollEventFn(){
                 scrollNew = $win.scrollTop();
                 var scroll = function(){
-                    if( scrollOld - scrollNew > 0 ){ result = 'Up'; }
+                    if(scrollOld - scrollNew > 0){ result = 'Up'; }
                     else{ result = 'Down'; }
                     // result = scrollOld-scrollNew > 0 ? 'Up' : 'Down';
                 }
@@ -78,12 +78,14 @@
                                 $nav.removeClass('addHide');
                                 $logo.removeClass('addHide');
                                 $logoColor.addClass('addBlack');
+                                t = 0;
                             }
                             else{   // 모바일 버튼이 클릭되지 않았을때 // 
                                 $nav.addClass('mouseon');
                                 $nav.removeClass('addHide');
                                 $logo.removeClass('addHide');
                                 $logoColor.addClass('addBlack');
+                                t = 0;
                             }
                         }
                         if(result === 'Down'){    // 화면 스크롤을 아래로 내릴때
@@ -128,16 +130,18 @@
                                 $header.addClass('addMobile');
                                 $bar.addClass('addBlack');
                                 $logoColor.addClass('addBlack');
+                                t = 0;
                             }
                             else{   // 모바일 버튼이 클릭되지 않았을때 // 로고, 모바일버튼, 헤더 나타남
                                 // 스크롤을 내렸다가 올렸을때(최상단이 아닐경우) 로고,모바일버튼이 검정색으로 바뀌었던것이
-                                // 모바일버튼 토글효과로인해 흰색으로 변경되어 보지않음. << 해당 문제는 토글버튼에 if문으로 해결함.
+                                // 모바일버튼 토글효과로인해 흰색으로 변경되어 보지않음. << 해당 문제는 토글버튼에서 if문으로 해결함.
                                 $logo.removeClass('addHide');
                                 $mobileWrap.removeClass('addHide');
                                 
                                 $header.addClass('addMobile');
                                 $bar.addClass('addBlack');
                                 $logoColor.addClass('addBlack');
+                                t = 0;
                             }
                         }
                         if(result === 'Down'){    // 화면 스크롤을 아래로 내릴때
@@ -172,7 +176,6 @@
                                     $bar.removeClass('addMobile');
                                 }
                                 $headerBox.removeClass('addView');
-                                // $logoColor.removeClass('addBlack');
                             }
                         }
                     }
@@ -183,15 +186,28 @@
             // 푸터 슬라이드 업다운효과
             $win.scroll(function(){
                 if ( $(window).scrollTop() >= $('#section7').offset().top+1 ) {
-                    if ( t === 0 ) {
+                    if (t === 0) {
                         t = 1;
                         $footer.addClass('addView');
                     }
                 }
                 if ( $(window).scrollTop() <= $('#section7').offset().top ) {
-                    if ( t === 0 ) {
+                    if (t === 0) {
                         t = 0;
                         $footer.removeClass('addView');
+
+
+                        // 패밀리사이트 버튼 초기화
+                        var $familyList = $('#footer .family-list');
+                        var $familysiteBtnI = $('#footer .familysite-btn i');
+
+                        if($familyList.hasClass('addView') === true,
+                           $familysiteBtnI.hasClass('addView') === true
+                        ){
+                            $familyList.removeClass('addView');
+                            $familysiteBtnI.removeClass('addView');
+                        }
+
                     }
                 }
             })
@@ -239,7 +255,12 @@
                 $nav.stop().show();
                 // 모바일화면에서 pc화면으로 넘어왔을떄 lnbSub가 사라지는 현상을 없애야함.
                 $lnbSub.stop().show();
+                $lnbSub.stop().slideDown(0);
                 $lnbSub.css({display:'block'});
+                // $lnbBtn.next().slideDown(0); // lnb버튼에 넥스트 슬라이드다운으로 넣었어서 이렇게도 해봤는데 안돌아와짐
+                // $lnbBtn.next().show();
+                // $lnbBtn.next().css({display:'block'});
+                
 
 
                 $nav.on({
@@ -260,10 +281,14 @@
                 
                 $gnbBtn.on({
                     mouseenter:function(){
-                        $nav.addClass('mouseon');
-                        $lnbWrap.stop().slideUp(100);
-                        $(this).next().stop().slideDown(300);
-                        $sideBtnBox.hide();
+                        if( $(window).innerWidth() > 1200 ){
+                            $lnbSub.stop().show(0);
+                            $lnbSub.stop().slideDown(0);
+                            $nav.addClass('mouseon');
+                            $lnbWrap.stop().slideUp(100);
+                            $(this).next().stop().slideDown(300);                        
+                            $sideBtnBox.hide();    
+                        }
                     }
                 });
                 $gnbWrap.on({
@@ -291,12 +316,19 @@
             };
             // pcFn끝!!!
 
-
             // 버튼들에 마우스엔터 이벤트 전부제거
             // 스크롤이벤트도 모바일메뉴에선 제거해야함
-
             function mobileFn(){
                 $sideBtnBox.hide();
+                if(that.btn = 1){
+                    $nav.stop().hide();
+                    if($bar.hasClass('addMobile') === true,
+                       $headerBox.hasClass('addView') === true
+                    ){
+                        $bar.removeClass('addMobile');
+                        $headerBox.removeClass('addView');
+                    }
+                }
 
                 $nav.on({
                     mouseleave:function(){
@@ -316,18 +348,22 @@
                 
                 $gnbBtn.on({
                     mouseenter:function(){
-                        $lnbWrap.stop().slideUp(0);
-                        $(this).next().stop().show();
-                        $sideBtnBox.hide();
-                        $lnbBtn.next().slideUp(300);
+                        if( $(window).innerWidth() <= 1200 ){
+                            $lnbWrap.stop().slideUp(0);
+                            $(this).next().stop().show();
+                            $sideBtnBox.hide();
+                            $lnbBtn.next().slideUp(300);
+                        }
                     }
                 });
                 $gnbWrap.on({
                     mouseleave:function(){
-                        $logoColor.addClass('addBlack');
-                        $lnbWrap.stop().hide();
-                        $sideBtnBox.hide();
-                        $lnbBtn.next().slideUp(300);
+                        if( $(window).innerWidth() <= 1200 ){
+                            $logoColor.addClass('addBlack');
+                            $lnbWrap.stop().hide();
+                            $sideBtnBox.hide();
+                            $lnbBtn.next().slideUp(300);
+                        }
                     }
                 });
             };
@@ -448,8 +484,8 @@
             // Background slide event
             function bgSlideFn(){
                 $mainBgSlideWrap.stop().animate({left:-$winW*slideCnt}, 500, 'easeOutCubic',function(){
-                    if ( slideCnt > 2 ) { slideCnt = 0; }
-                    if ( slideCnt < 0 ) { slideCnt = 2; }
+                    if (slideCnt > 2) {slideCnt = 0;}
+                    if (slideCnt < 0) {slideCnt = 2;}
                     $mainBgSlideWrap.stop().animate({left:-$winW*slideCnt}, 0)
                 })
             }
@@ -588,8 +624,8 @@
 
             function section2SlideFn(){
                 $section2SlideWrap.stop().animate({left:-$slideW*$s2SlideCnt}, 300, 'easeOutCubic', function(){
-                    if ( $s2SlideCnt > 4 ) { $s2SlideCnt = 0; }
-                    if ( $s2SlideCnt < 0 ) { $s2SlideCnt = 4; }
+                    if ($s2SlideCnt > 4) {$s2SlideCnt = 0;}
+                    if ($s2SlideCnt < 0) {$s2SlideCnt = 4;}
                     $section2SlideWrap.stop().animate({left:-$slideW*$s2SlideCnt}, 0)
                 })
             }
@@ -923,8 +959,8 @@
 
             function offerSlideFn(){
                 $offerSlideWrap.stop().animate({left:-680*offerCnt}, 500, 'easeOutCubic',function(){
-                    if ( offerCnt > 2 ) { offerCnt = 0; }
-                    if ( offerCnt < 0 ) { offerCnt = 2; }
+                    if (offerCnt > 2) {offerCnt = 0;}
+                    if (offerCnt < 0) {offerCnt = 2;}
                     $offerSlideWrap.stop().animate({left:-680*offerCnt}, 0)
                 })
             }
@@ -973,13 +1009,13 @@
             function galleryResizeFn(){
                 $winW = $(window).innerWidth()+6;
 
-                if( $winW > 1200 ){
+                if($winW > 1200){
                     cols = 5;
                 }
-                else if( $winW > 980 ){
+                else if($winW > 980){
                     cols = 4;
                 }
-                else if( $winW > 680 ){
+                else if($winW > 680){
                     cols = 3;
                 }
                 else{
@@ -991,14 +1027,14 @@
 
                 $galleryLi.css({width:imgW, height:imgH});
 
-                if( btnNum === 0 ){     // all
+                if(btnNum === 0){     // all
                     n = 15;
                     rows = Math.ceil(n/cols);
                     $galleryUl.css({width:$winW, height:imgH*rows});
                     $galleryLi.css({width:imgW, height:imgH});
                     $galleryContent.removeClass('addZoom');
 
-                    if( cols === 5 ){
+                    if(cols === 5){
                         $galleryLi.eq(0).stop().show().animate({left:imgW*0 ,top:imgH*0}, 500);
                         $galleryLi.eq(1).stop().show().animate({left:imgW*1 ,top:imgH*0}, 500);
                         $galleryLi.eq(2).stop().show().animate({left:imgW*2 ,top:imgH*0}, 500);
@@ -1015,7 +1051,7 @@
                         $galleryLi.eq(13).stop().show().animate({left:imgW*3 ,top:imgH*2}, 500);
                         $galleryLi.eq(14).stop().show().animate({left:imgW*4 ,top:imgH*2}, 500);
                     }
-                    else if( cols === 4 ){
+                    else if(cols === 4){
                         $galleryLi.eq(0).stop().show().animate({left:imgW*0 ,top:imgH*0}, 500);
                         $galleryLi.eq(1).stop().show().animate({left:imgW*1 ,top:imgH*0}, 500);
                         $galleryLi.eq(2).stop().show().animate({left:imgW*2 ,top:imgH*0}, 500);
@@ -1032,7 +1068,7 @@
                         $galleryLi.eq(13).stop().show().animate({left:imgW*1 ,top:imgH*3}, 500);
                         $galleryLi.eq(14).stop().show().animate({left:imgW*2 ,top:imgH*3}, 500);
                     }
-                    else if( cols === 3 ){
+                    else if(cols === 3){
                         $galleryLi.eq(0).stop().show().animate({left:imgW*0 ,top:imgH*0}, 500);
                         $galleryLi.eq(1).stop().show().animate({left:imgW*1 ,top:imgH*0}, 500);
                         $galleryLi.eq(2).stop().show().animate({left:imgW*2 ,top:imgH*0}, 500);
@@ -1083,7 +1119,7 @@
                     $galleryContent.eq(13).addClass('addZoom');
                     $galleryContent.eq(14).addClass('addZoom');
                 }
-                else if( btnNum === 1 ){    // 0 5 6 10 11
+                else if(btnNum === 1){    // 0 5 6 10 11
                     n = 5;
                     rows = Math.ceil(n/cols);
                     $galleryUl.css({width:$winW, height:imgH*rows});
@@ -1100,21 +1136,21 @@
                     $galleryLi.eq(13).stop().hide();
                     $galleryLi.eq(14).stop().hide();
 
-                    if( cols === 5 ){
+                    if(cols === 5){
                         $galleryLi.eq(0).stop().show().animate({left:imgW*0 ,top:imgH*0}, 500);
                         $galleryLi.eq(5).stop().show().animate({left:imgW*1 ,top:imgH*0}, 500);
                         $galleryLi.eq(6).stop().show().animate({left:imgW*2 ,top:imgH*0}, 500);
                         $galleryLi.eq(10).stop().show().animate({left:imgW*3 ,top:imgH*0}, 500);
                         $galleryLi.eq(11).stop().show().animate({left:imgW*4 ,top:imgH*0}, 500);
                     }
-                    else if( cols === 4 ){
+                    else if(cols === 4){
                         $galleryLi.eq(0).stop().show().animate({left:imgW*0 ,top:imgH*0}, 500);
                         $galleryLi.eq(5).stop().show().animate({left:imgW*1 ,top:imgH*0}, 500);
                         $galleryLi.eq(6).stop().show().animate({left:imgW*2 ,top:imgH*0}, 500);
                         $galleryLi.eq(10).stop().show().animate({left:imgW*3 ,top:imgH*0}, 500);
                         $galleryLi.eq(11).stop().show().animate({left:imgW*0 ,top:imgH*1}, 500);
                     }
-                    else if( cols === 3 ){
+                    else if(cols === 3){
                         $galleryLi.eq(0).stop().show().animate({left:imgW*0 ,top:imgH*0}, 500);
                         $galleryLi.eq(5).stop().show().animate({left:imgW*1 ,top:imgH*0}, 500);
                         $galleryLi.eq(6).stop().show().animate({left:imgW*2 ,top:imgH*0}, 500);
@@ -1135,7 +1171,7 @@
                     $galleryContent.eq(10).addClass('addZoom');
                     $galleryContent.eq(11).addClass('addZoom');
                 }
-                else if( btnNum === 2 ){    // 2 3 7
+                else if(btnNum === 2){    // 2 3 7
                     n = 3;
                     rows = Math.ceil(n/cols);
                     $galleryUl.css({width:$winW, height:imgH*rows});
@@ -1154,17 +1190,17 @@
                     $galleryLi.eq(13).stop().hide();
                     $galleryLi.eq(14).stop().hide();
 
-                    if( cols === 5 ){
+                    if(cols === 5){
                         $galleryLi.eq(2).stop().show().animate({left:imgW*0 ,top:imgH*0}, 500);
                         $galleryLi.eq(3).stop().show().animate({left:imgW*1 ,top:imgH*0}, 500);
                         $galleryLi.eq(7).stop().show().animate({left:imgW*2 ,top:imgH*0}, 500);
                     }
-                    else if( cols === 4 ){
+                    else if(cols === 4){
                         $galleryLi.eq(2).stop().show().animate({left:imgW*0 ,top:imgH*0}, 500);
                         $galleryLi.eq(3).stop().show().animate({left:imgW*1 ,top:imgH*0}, 500);
                         $galleryLi.eq(7).stop().show().animate({left:imgW*2 ,top:imgH*0}, 500);
                     }
-                    else if( cols === 3 ){
+                    else if(cols === 3){
                         $galleryLi.eq(2).stop().show().animate({left:imgW*0 ,top:imgH*0}, 500);
                         $galleryLi.eq(3).stop().show().animate({left:imgW*1 ,top:imgH*0}, 500);
                         $galleryLi.eq(7).stop().show().animate({left:imgW*2 ,top:imgH*0}, 500);
@@ -1179,7 +1215,7 @@
                     $galleryContent.eq(3).addClass('addZoom');
                     $galleryContent.eq(7).addClass('addZoom');
                 }
-                else if( btnNum === 3 ){    // 4 8 9 13 14
+                else if(btnNum === 3){    // 4 8 9 13 14
                     n = 5;
                     rows = Math.ceil(n/cols);
                     $galleryUl.css({width:$winW, height:imgH*rows});
@@ -1196,21 +1232,21 @@
                     $galleryLi.eq(11).stop().hide();
                     $galleryLi.eq(12).stop().hide();
                     
-                    if( cols === 5 ){
+                    if(cols === 5){
                         $galleryLi.eq(4).stop().show().animate({left:imgW*0 ,top:imgH*0}, 500);
                         $galleryLi.eq(8).stop().show().animate({left:imgW*1 ,top:imgH*0}, 500);
                         $galleryLi.eq(9).stop().show().animate({left:imgW*2 ,top:imgH*0}, 500);
                         $galleryLi.eq(13).stop().show().animate({left:imgW*3 ,top:imgH*0}, 500);
                         $galleryLi.eq(14).stop().show().animate({left:imgW*4 ,top:imgH*0}, 500);
                     }
-                    else if( cols === 4 ){
+                    else if(cols === 4){
                         $galleryLi.eq(4).stop().show().animate({left:imgW*0 ,top:imgH*0}, 500);
                         $galleryLi.eq(8).stop().show().animate({left:imgW*1 ,top:imgH*0}, 500);
                         $galleryLi.eq(9).stop().show().animate({left:imgW*2 ,top:imgH*0}, 500);
                         $galleryLi.eq(13).stop().show().animate({left:imgW*3 ,top:imgH*0}, 500);
                         $galleryLi.eq(14).stop().show().animate({left:imgW*0 ,top:imgH*1}, 500);
                     }
-                    else if( cols === 3 ){
+                    else if(cols === 3){
                         $galleryLi.eq(4).stop().show().animate({left:imgW*0 ,top:imgH*0}, 500);
                         $galleryLi.eq(8).stop().show().animate({left:imgW*1 ,top:imgH*0}, 500);
                         $galleryLi.eq(9).stop().show().animate({left:imgW*2 ,top:imgH*0}, 500);
@@ -1251,15 +1287,15 @@
                     $galleryLi.eq(13).stop().hide();
                     $galleryLi.eq(14).stop().hide();
 
-                    if( cols === 5 ){
+                    if(cols === 5){
                         $galleryLi.eq(1).stop().show().animate({left:imgW*0 ,top:imgH*0}, 500);
                         $galleryLi.eq(12).stop().show().animate({left:imgW*1 ,top:imgH*0}, 500);
                     }
-                    else if( cols === 4 ){
+                    else if(cols === 4){
                         $galleryLi.eq(1).stop().show().animate({left:imgW*0 ,top:imgH*0}, 500);
                         $galleryLi.eq(12).stop().show().animate({left:imgW*1 ,top:imgH*0}, 500);
                     }
-                    else if( cols === 3 ){
+                    else if(cols === 3){
                         $galleryLi.eq(1).stop().show().animate({left:imgW*0 ,top:imgH*0}, 500);
                         $galleryLi.eq(12).stop().show().animate({left:imgW*1 ,top:imgH*0}, 500);
                     }
@@ -1304,22 +1340,23 @@
 
             function readyWheelFn(){
                 $main.on('mousewheel', function(e){
-                    if( time === false ){
+                    if(time === false){
                         wheel(e);
+                        // time = true;
                     }
                 });
             }
             readyWheelFn();
             
             var wheel = function(e){
-                if( e.originalEvent.wheelDelta < 0 ){
-                    if( moveIndex < 7 ){
+                if(e.originalEvent.wheelDelta < 0){
+                    if(moveIndex < 7){
                         moveIndex += 1;
                         moving(moveIndex);
                     };
                 }
                 else{
-                    if( moveIndex > 0 ){
+                    if(moveIndex > 0){
                         moveIndex -= 1;
                         moving(moveIndex);
                     };
@@ -1330,6 +1367,7 @@
                 time = true;
                 moveCnt = $main.children('section').eq(index);
                 moveCntTop = moveCnt.offset().top;
+                console.log($main.children('section').eq(index));
                 // console.log(moveCnt.offset().top);
                 $('html, body').stop().animate({scrollTop:moveCntTop}, 1200, function(){
                     time = false;
