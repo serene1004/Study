@@ -79,8 +79,8 @@
                 $slide.stop().animate({opacity:.75})
                 $slideContent.css({transform:'scale(1)'});
                 $slideWrap.css({transform: 'perspective(' + tZ*2 + 'px) translateZ('+ -tZ +'px) rotateY('+ (-angle*cnt) +'deg) rotateX(-5deg)'});
-                $slide.eq(cnt%n).stop().animate({opacity:1}, 1000)
-                $slideContent.eq(cnt%n).css({transform:'scale(1.15)',transition:'all 1s'});
+                $slide.eq(cnt%n).stop().animate({opacity:1}, 400)
+                $slideContent.eq(cnt%n).css({transform:'scale(1.15)',transition:'all .4s'});
             };
 
             function prevCountFn(){
@@ -94,16 +94,41 @@
 
             $prevBtn.on({
                 click:function(){
-                    prevCountFn();
+                    if(!$slide.is(':animated')){
+                        prevCountFn();
+                    }
                 }
             });
             $nextBtn.on({
                 click:function(){
-                    nextCountFn();
+                    if(!$slide.is(':animated')){
+                        nextCountFn();
+                    }
                 }
             });
 
+            var wheel = 0;
+            $slideWrap.on('mousewheel DOMMouseScroll', function(event){
+                event.preventDefault();
 
+                if(event.originalEvent.wheelDelta){
+                    wheel = event.originalEvent.wheelDelta;
+                }
+                else{
+                    wheel = event.detail*-1;
+                }
+
+                if(wheel < 0){
+                    if(!$slide.is(':animated')){
+                        nextCountFn();
+                    }
+                }
+                else{
+                    if(!$slide.is(':animated')){
+                        prevCountFn();
+                    }
+                }
+            });
         }
     }
 

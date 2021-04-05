@@ -19,7 +19,7 @@
             that.footerFn();
             that.offersFn();
             that.galleryFn();
-            // that.wheelEventFn();
+            that.wheelEventFn();
         },
 
         scrollEventFn:function(){
@@ -1329,50 +1329,78 @@
         },
 
         wheelEventFn:function(){
-            var $main = $('#main');
-            var moveCnt = null;
-            var moveIndex = 0;
-            var moveCntTop = 0;
-            var time = false;
+            var $section = $('.section');
+            var wheel = 0;
 
-            // 버벅거리면서 잘안됨ㅠㅠ
-            // https://codepen.io/recordboy/pen/JBmvpp 휠이벤트 참고
+            $section.each(function(idx){
+                $(this).on('mousewheel DOMMouseScroll', function(event){
+                    event.preventDefault();
+                    if(event.originalEvent.wheelDelta){
+                        wheel = event.originalEvent.wheelDelta;
+                    }
+                    else{
+                        wheel = event.detail*-1;
+                    };
 
-            function readyWheelFn(){
-                $main.on('mousewheel', function(e){
-                    if(time === false){
-                        wheel(e);
-                        // time = true;
+                    if(wheel < 0){
+                        if(idx < 8){
+                            $('html,body').stop().animate({scrollTop:$(this).next().offset().top}, 800, 'swing');
+                        }
+                    }
+                    if(wheel > 0){
+                        if(idx > 0){
+                            $('html,body').stop().animate({scrollTop:$(this).prev().offset().top},800, 'swing');
+                        }
                     }
                 });
-            }
-            readyWheelFn();
-            
-            var wheel = function(e){
-                if(e.originalEvent.wheelDelta < 0){
-                    if(moveIndex < 7){
-                        moveIndex += 1;
-                        moving(moveIndex);
-                    };
-                }
-                else{
-                    if(moveIndex > 0){
-                        moveIndex -= 1;
-                        moving(moveIndex);
-                    };
-                };
-            };
+            });
 
-            var moving = function(index){
-                time = true;
-                moveCnt = $main.children('section').eq(index);
-                moveCntTop = moveCnt.offset().top;
-                console.log($main.children('section').eq(index));
-                // console.log(moveCnt.offset().top);
-                $('html, body').stop().animate({scrollTop:moveCntTop}, 1200, function(){
-                    time = false;
-                });
-            };
+
+
+            // var $main = $('#main');
+            // var moveCnt = null;
+            // var moveIndex = 0;
+            // var moveCntTop = 0;
+            // var time = false;
+
+            // // 버벅거리면서 잘안됨ㅠㅠ
+            // // https://codepen.io/recordboy/pen/JBmvpp 휠이벤트 참고
+            // function readyWheelFn(){
+            //     $main.on('mousewheel', function(e){
+            //         e.preventDefault();
+            //         if(time === false){
+            //             wheel(e);
+            //             // time = true;
+            //         }
+            //     });
+            // }
+            // readyWheelFn();
+            
+            // var wheel = function(e){
+            //     if(e.originalEvent.wheelDelta < 0){
+            //         if(moveIndex < 7){
+            //             moveIndex += 1;
+            //             moving(moveIndex);
+            //         };
+            //     }
+            //     else{
+            //         if(moveIndex > 0){
+            //             moveIndex -= 1;
+            //             moving(moveIndex);
+            //         };
+            //     };
+            // };
+
+            // var moving = function(index){
+            //     time = true;
+            //     moveCnt = $main.children('section').eq(index);
+            //     moveCntTop = moveCnt.offset().top;
+            //     console.log($main.children('section').eq(index));
+            //     // console.log(moveCnt.offset().top);
+            //     $('html, body').stop().animate({scrollTop:moveCntTop}, 1200, function(){
+            //         time = false;
+            //     });
+            // };
 
         }
 

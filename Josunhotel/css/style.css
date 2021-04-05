@@ -340,14 +340,14 @@
 #wrap #main #gallery .wrap .gap .container .title p {font-size: 17px;margin-top: 10px;font-weight: lighter;line-height: 180%;color:#000}
 
 #wrap #main #gallery .wrap .gap .container .content {width: 100%;}
-#wrap #main #gallery .wrap .gap .container .content #nav {width: 1400px;margin: 0 auto;}
-#wrap #main #gallery .wrap .gap .container .content #nav .gallery-btn-wrap {margin-bottom: 30px;}
-#wrap #main #gallery .wrap .gap .container .content #nav .gallery-btn-wrap li {display: inline-block;margin-right: 30px;}
-#wrap #main #gallery .wrap .gap .container .content #nav .gallery-btn-wrap li .gallery-btn {display: inline-block;font-size: 18px;color: #bbb;}
-#wrap #main #gallery .wrap .gap .container .content #nav .gallery-btn-wrap li .gallery-btn.addNav {font-size: 18px;color: #000;}
+#wrap #main #gallery .wrap .gap .container .content #gallery-nav {width: 1400px;margin: 0 auto;}
+#wrap #main #gallery .wrap .gap .container .content #gallery-nav .gallery-btn-wrap {margin-bottom: 30px;}
+#wrap #main #gallery .wrap .gap .container .content #gallery-nav .gallery-btn-wrap li {display: inline-block;margin-right: 30px;}
+#wrap #main #gallery .wrap .gap .container .content #gallery-nav .gallery-btn-wrap li .gallery-btn {display: inline-block;font-size: 18px;color: #bbb;}
+#wrap #main #gallery .wrap .gap .container .content #gallery-nav .gallery-btn-wrap li .gallery-btn.addNav {font-size: 18px;color: #000;}
 
 #wrap #main #gallery .wrap .gap .container .content .gallery-wrap {width: 100%;}
-#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul {position: relative;width: calc(1903px+6px);margin-left: -6px;height: calc(263.6448px*3);}
+#wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul {position: relative;width: calc(1909px);margin-left: -6px;height: calc(263.6448px*3);}
 #wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list {position: absolute;width: 20%;height: 263.6448px;}
 #wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list0 {left: calc(20%*0);top: calc(263.6448px*0);}
 #wrap #main #gallery .wrap .gap .container .content .gallery-wrap ul .gallery-list1 {left: calc(20%*1);top: calc(263.6448px*0);}
@@ -508,6 +508,10 @@
 #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap .familysite .familylist-wrap .family-list.addView {display: block;}
 #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap .familysite .familylist-wrap .family-list li {width: 100%;}
 #wrap #footer .wrap .gap .container .footer-box .hotelinfo-wrap .familysite .familylist-wrap .family-list li a {display: block;font-size: 12px;font-weight: lighter;color: #fff;padding: 10px 16px;}
+
+/* footer w3c */
+#wrap #footer .wrap .gap .container .w3c {position: absolute;bottom: 50px;right: 30px;display: none;}
+
 
 /* offers madal */
 .offers-blind {position: absolute;z-index: 7;top: 0;left: 0;width: 100%;height: 100%;background: rgba(44, 73, 66, .7);display: none;}
