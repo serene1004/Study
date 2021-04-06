@@ -185,7 +185,7 @@
 
             // 푸터 슬라이드 업다운효과
             $win.scroll(function(){
-                if ( $(window).scrollTop() >= $('#section7').offset().top+1 ) {
+                if ( $(window).scrollTop() >= $('#section7').offset().top ) {
                     if (t === 0) {
                         t = 1;
                         $footer.addClass('addView');
@@ -481,28 +481,37 @@
                 setTimeout(resizeFn, 10);
             });
 
-            // Background slide event
-            function bgSlideFn(){
-                $mainBgSlideWrap.stop().animate({left:-$winW*slideCnt}, 500, 'easeOutCubic',function(){
-                    if (slideCnt > 2) {slideCnt = 0;}
-                    if (slideCnt < 0) {slideCnt = 2;}
-                    $mainBgSlideWrap.stop().animate({left:-$winW*slideCnt}, 0)
-                })
+            // Main Background slide event
+            function mainPrevSlideFn(){
+                $mainBgSlide.css({zIndex:1}).stop().animate({opacity:1},0);
+                $mainBgSlide.eq(slideCnt).css({zIndex:2});
+                $mainBgSlide.eq(slideCnt===2?0:slideCnt+1).css({zIndex:3}).stop().animate({opacity:1},0).animate({opacity:0},1000);
+            }
+            function mainNextSlideFn(){
+                $mainBgSlide.css({zIndex:1});
+                $mainBgSlide.eq(slideCnt-1).css({zIndex:2});
+                $mainBgSlide.eq(slideCnt).css({zIndex:3}).stop().animate({opacity:0},0).animate({opacity:1},1000);
             }
 
             function bgPrevCountFn(){
                 slideCnt--;
-                bgSlideFn();
+                if(slideCnt<0){
+                    slideCnt=2;
+                }
+                mainPrevSlideFn();
             }
             function bgNextCountFn(){
                 slideCnt++;
-                bgSlideFn();
+                if(slideCnt>2){
+                    slideCnt=0;
+                }
+                mainNextSlideFn();
             }
 
             $prevBtn.on({
                 click:function(){
                     bgSlideTimerFn();
-                    if (!$mainBgSlideWrap.is(':animated')) {
+                    if (!$mainBgSlide.is(':animated')) {
                         bgPrevCountFn();
                         $startBtn.removeClass('addClick');
                         $stopBtn.removeClass('addClick');
@@ -512,7 +521,7 @@
             $nextBtn.on({
                 click:function(){
                     bgSlideTimerFn();
-                    if (!$mainBgSlideWrap.is(':animated')) {
+                    if (!$mainBgSlide.is(':animated')) {
                         bgNextCountFn();
                         $startBtn.removeClass('addClick');
                         $stopBtn.removeClass('addClick');
@@ -523,7 +532,7 @@
             $mainBgSlideView.swipe({
                 swipeLeft:function(){
                     bgSlideTimerFn();
-                    if (!$mainBgSlideWrap.is(':animated')) {
+                    if (!$mainBgSlide.is(':animated')) {
                         bgNextCountFn();
                         $startBtn.removeClass('addClick');
                         $stopBtn.removeClass('addClick');
@@ -531,7 +540,7 @@
                 },
                 swipeRight:function(){
                     bgSlideTimerFn();
-                    if (!$mainBgSlideWrap.is(':animated')) {
+                    if (!$mainBgSlide.is(':animated')) {
                         bgPrevCountFn();
                         $startBtn.removeClass('addClick');
                         $stopBtn.removeClass('addClick');
@@ -540,7 +549,7 @@
             });
 
             function bgSlideAutoPlayFn(){
-                setId = setInterval(bgNextCountFn, 4000);
+                setId = setInterval(bgNextCountFn, 5000);
             }
             bgSlideAutoPlayFn();
 
@@ -550,7 +559,7 @@
                 clearInterval(setId2);
                 setId2 = setInterval(function(){
                     timercnt++;
-                    if (timercnt >= 4) {
+                    if (timercnt >= 5) {
                         clearInterval(setId2);
                         bgNextCountFn();
                         bgSlideAutoPlayFn();
@@ -1341,15 +1350,16 @@
                     else{
                         wheel = event.detail*-1;
                     };
-
-                    if(wheel < 0){
-                        if(idx < 8){
-                            $('html,body').stop().animate({scrollTop:$(this).next().offset().top}, 800, 'swing');
+                    if(!$('html,body').is(':animated')){
+                        if(wheel < 0){
+                            if(idx < 8){
+                                $('html,body').stop().animate({scrollTop:$(this).next().offset().top}, 800, 'swing');
+                            }
                         }
-                    }
-                    if(wheel > 0){
-                        if(idx > 0){
-                            $('html,body').stop().animate({scrollTop:$(this).prev().offset().top},800, 'swing');
+                        if(wheel > 0){
+                            if(idx > 0){
+                                $('html,body').stop().animate({scrollTop:$(this).prev().offset().top},800, 'swing');
+                            }
                         }
                     }
                 });

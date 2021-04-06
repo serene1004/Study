@@ -107,28 +107,41 @@
                 }
             });
 
-            var wheel = 0;
-            $slideWrap.on('mousewheel DOMMouseScroll', function(event){
-                event.preventDefault();
-
-                if(event.originalEvent.wheelDelta){
-                    wheel = event.originalEvent.wheelDelta;
-                }
-                else{
-                    wheel = event.detail*-1;
-                }
-
-                if(wheel < 0){
+            $slideWrap.swipe({
+                swipeLeft:function(){
                     if(!$slide.is(':animated')){
                         nextCountFn();
                     }
-                }
-                else{
+                },
+                swipeRight:function(){
                     if(!$slide.is(':animated')){
                         prevCountFn();
                     }
                 }
-            });
+            })
+
+            // var wheel = 0;
+            // $slideWrap.on('mousewheel DOMMouseScroll', function(event){
+            //     event.preventDefault();
+
+            //     if(event.originalEvent.wheelDelta){
+            //         wheel = event.originalEvent.wheelDelta;
+            //     }
+            //     else{
+            //         wheel = event.detail*-1;
+            //     }
+
+            //     if(wheel < 0){
+            //         if(!$slide.is(':animated')){
+            //             nextCountFn();
+            //         }
+            //     }
+            //     else{
+            //         if(!$slide.is(':animated')){
+            //             prevCountFn();
+            //         }
+            //     }
+            // });
         }
     }
 
