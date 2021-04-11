@@ -665,12 +665,14 @@
                 $slide.css({zIndex:1}).find('.col').stop().animate({width:25+'%'},0);
                 $slide.eq(cnt).css({zIndex:2});
                 $slide.eq(cnt===2?0:cnt+1).css({zIndex:3}).find('.col').stop().animate({width:25+'%'},0).animate({width:0},1000);
+                pageBtnColorEventFn();
             }
 
             function mainNextSlideFn(){
                 $slide.css({zIndex:1});
                 $slide.eq(cnt===0?2:cnt-1).css({zIndex:2});
                 $slide.eq(cnt).css({zIndex:3}).find('.col').stop().animate({width:0},0).animate({width:25+'%'},1000);
+                pageBtnColorEventFn();
             }
 
 
@@ -712,36 +714,30 @@
                 }
             })
 
-
-            // 페이지버튼
-            // 해당 슬라이드 버튼색상 변경
-            function pageBtnColorEnvetFn(){
-                var z = cnt;
-                if(z>n-1){
-                    z=0;
-                }
-                // console.log(z); // 0,1,2,0,1,2...
-                $pageBtn.removeClass('addPage');
-                $pageBtn.eq(z).addClass('addPage');
+            // 페이지 버튼 색상변경 이벤트 함수
+            function pageBtnColorEventFn(){
+              $pageBtn.removeClass('addPage');
+              $pageBtn.eq(cnt > n-1 ? 0 : cnt).addClass('addPage'); //0 1 2 0 1 2
             }
-            pageBtnColorEnvetFn();  // 로딩시 페이지함수 실행!
+            pageBtnColorEventFn(); //로딩시 페이지함수 실행
 
             // 페이지버튼 클릭시 해당 페이지로 이동
-            $pageBtn.each(function(idx){
-                $(this).on({        // $pageBtn.eq(idx)=$(this)
-                    click:function(){
-                        cnt = idx;  // 클릭한 버튼 인덱스 번호가 슬라이드 번호
-                        mainSlideFn();
+            $pageBtn.each(function(idx){                  
+                $(this).on({  //첫번째 슬라이드 호출
+                    click:  function(){
+                    puaseTimerFn();
+
+                        if( cnt < idx ){
+                          cnt = idx;
+                          mainNextSlideFn() // 슬라이드 메인 다음 함수 호출
+                        }
+                        if( cnt > idx ){
+                          cnt = idx;
+                          mainPrevSlideFn() // 슬라이드 메인 이전 함수 호출
+                        }
                     }
                 });
-            });
-
-            // $pageBtn.eq(0).on({
-            //     click:function(){
-            //         cnt = 0;
-            //         mainSlideFn();
-            //     }
-            // });
+            });            
 
 
             // 터치 스와이프
