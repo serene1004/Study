@@ -134,9 +134,11 @@
 #wrap #header .wrap .gap .container #aside {float: right;display: block;padding: 26px 0;}
 #wrap #header .wrap .gap .container #aside ul {display: block;width: 100%;}
 #wrap #header .wrap .gap .container #aside ul li {display: inline-block;padding: 0 5px;}
+#wrap #header .wrap .gap .container #aside ul li i {font-size: 14px;color: rgba(255, 255, 255, .9);font-weight: 500;line-height: 130%;}
+#wrap #header .wrap .gap .container #aside ul li .tel {margin-left: 5px;}
 #wrap #header .wrap .gap .container #aside ul li a {display: block;width: 100%;}
-#wrap #header .wrap .gap .container #aside ul li a i {font-size: 18px;color: rgba(255, 255, 255, .9);line-height: 160%;}
-#wrap #header .wrap .gap .container #aside ul li a .tel {font-size: 14px;color: rgba(255, 255, 255, .9);font-weight: 500;margin-left: 5px;line-height: 130%;}
+#wrap #header .wrap .gap .container #aside ul li a i {font-size: 18px;color: rgba(255, 255, 255, .9);line-height: 160%;transition: color .4s;}
+#wrap #header .wrap .gap .container #aside ul li a:hover i {color: rgba(255, 255, 255, .5);}
 
 /* main */
 #wrap #main {width: 100%;position: relative;z-index: 2;}
@@ -159,22 +161,93 @@
 #wrap #main #section1 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap .slide-content {color: #fff;text-transform: uppercase;width: 555px;}
 #wrap #main #section1 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap .slide-content p {font-size: 16px;font-weight: 600;padding-bottom: 30px;letter-spacing: 3px;}
 #wrap #main #section1 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap .slide-content h2 {font-size: 100px;font-weight: 800;padding-bottom: 40px;letter-spacing: -4px;text-shadow: 3px 3px 50px rgba(0, 0, 0, 1);}
-#wrap #main #section1 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap .slide-content span {display: inline-block;border: 2px solid #000;background: #000;position: relative;overflow: hidden;transition: all .6s;}
-#wrap #main #section1 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap .slide-content span a {display: block;font-size: 13px;color: #fff;letter-spacing: 1px;padding: 14px 32px;position: relative;z-index: 2;transition: all .6s ease-in-out;}
-#wrap #main #section1 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap .slide-content span:hover a {color: #000;}
-#wrap #main #section1 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap .slide-content span i {position: absolute;z-index: 1;top: 0;left: -120%;width: 110%;height: 100%;background: #fff;transform: skewX(-20deg);transition: all .6s ease-in-out;}
-#wrap #main #section1 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap .slide-content span:hover i {left: -5%;}
+#wrap #main #section1 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap .slide-content > span {display: inline-block;border: 2px solid #000;background: #000;position: relative;overflow: hidden;transition: all .6s;}
+#wrap #main #section1 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap .slide-content > span a {display: block;font-size: 13px;color: #fff;letter-spacing: 1px;padding: 14px 32px;position: relative;z-index: 2;transition: all .6s ease-in-out;}
+#wrap #main #section1 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap .slide-content > span:hover a {color: #000;}
+#wrap #main #section1 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap .slide-content > span i {position: absolute;z-index: 1;top: 0;left: -120%;width: 110%;height: 100%;background: #fff;transform: skewX(-20deg);transition: all .6s ease-in-out;}
+#wrap #main #section1 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap .slide-content > span:hover i {left: -5%;}
 
 /* main section2 */
-#wrap #main #section2 {width: 100%;}
+#wrap #main #section2 {width: 100%;padding: 80px 0;border-bottom: 1px solid #e4e4e4;}
 #wrap #main #section2 .wrap {width: 100%;}
-#wrap #main #section2 .wrap .gap {width: 100%;}
-#wrap #main #section2 .wrap .gap .container {width: 100%;}
+#wrap #main #section2 .wrap .gap {margin: 0;}
+#wrap #main #section2 .wrap .gap .container {width: 100%;max-width: 1170px;margin: 0 auto;}
+
+#wrap #main #section2 .wrap .gap .container .content-wrap {width: 100%;display: flex;justify-content: center;}
+#wrap #main #section2 .wrap .gap .container .content-wrap .content {width: 25%;}
+#wrap #main #section2 .wrap .gap .container .content-wrap .content .content-gap {margin: 0 15px;}
+#wrap #main #section2 .wrap .gap .container .content-wrap .content .content-gap .title-icons {float: left;width: 47px;height: 47px;text-align: center;line-height: 45px;background: #fcdfcd;border-radius: 50%;}
+#wrap #main #section2 .wrap .gap .container .content-wrap .content .content-gap .title-icons i {color: #ff7a56;font-size: 30px;}
+
+#wrap #main #section2 .wrap .gap .container .content-wrap .content .content-gap .title {float: left;margin-left: 25px;}
+#wrap #main #section2 .wrap .gap .container .content-wrap .content .content-gap .title h4 {font-size: 15px;color: #262b35;line-height: 140%;padding-bottom: 5px;}
+#wrap #main #section2 .wrap .gap .container .content-wrap .content .content-gap .title p {font-size: 15px;color: #828282;line-height: 140%;font-family: 'Roboto';}
+
+/* main section3 */
+#wrap #main #section3 {width: 100%;padding: 130px 0;background: url(../img/home-travel-agency-about-bg.jpg) no-repeat 0 100%;}
+#wrap #main #section3 .wrap {width: 100%;}
+#wrap #main #section3 .wrap .gap {margin: 0;}
+#wrap #main #section3 .wrap .gap .container {width: 100%;max-width: 1170px;margin: 0 auto;}
+
+#wrap #main #section3 .wrap .gap .container .img-box {width: 50%;float: left;}
+#wrap #main #section3 .wrap .gap .container .img-box .img-gap {margin: 0 15px;}
+#wrap #main #section3 .wrap .gap .container .img-box .img-gap .content {width: 100%;height: 426.36px;/* 높이비율 0.768235294 */background: url(../img/home-travel-agency-about.jpg) no-repeat 50% 50%;background-size: cover;}
+#wrap #main #section3 .wrap .gap .container .img-box .img-gap .content .content-gap {display: flex;justify-content: center;align-items: center;height: 100%;}
+#wrap #main #section3 .wrap .gap .container .img-box .img-gap .content .content-gap span {display: inline-block;position: relative;}
+#wrap #main #section3 .wrap .gap .container .img-box .img-gap .content .content-gap span a {display: block;background: #fff;width: 75px;height: 75px;border-radius: 50%;position: relative;z-index: 2;}
+#wrap #main #section3 .wrap .gap .container .img-box .img-gap .content .content-gap span .zoom {display: block;position: absolute;z-index: 1;top: 0;left: 0;background: #fff;width: 75px;height: 75px;border-radius: 50%;animation: zoom 2s infinite;transform: scale(0);opacity: 1;}
+#wrap #main #section3 .wrap .gap .container .img-box .img-gap .content .content-gap span a i {font-size: 30px;color: #ff7a56;line-height: 74px;margin-left: 26px;}
+
+@keyframes zoom {
+    0% {transform: scale(0);opacity: 1;}
+    100% {transform: scale(2);opacity: 0;}
+}
+
+#wrap #main #section3 .wrap .gap .container .title-box {width: 50%;float: right;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap {margin-left: 97.5px;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title {width: 100%;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap {margin: 0 15px;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap h2 {font-size: 32.2px;width: 80%;line-height: 140%;padding-bottom: 35px;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap h2 strong {display: inline-block;margin-bottom: 10px;font-family: 'Roboto';}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap ul {width: 100%;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap ul li {width: 100%;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap ul li .title-icon {float: left;margin-right: 25px;padding-top: 5px;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap ul li .title-icon span {display: inline-block;width: 25px;height: 25px;border-radius: 50%;background: #ff7a56;text-align: center;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap ul li .title-icon span i {font-size: 12px;color: #fff;line-height: 25px;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap ul li .title-text {float: left;width: 80%;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap ul li .title-text h4 {font-size: 16px;color: #232323;line-height: 200%;padding-bottom: 5px;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap ul li .title-text p {font-size: 15px;color: #828282;line-height: 200%;padding-bottom: 30px;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn {padding-top: 2px;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn .neon-btn {display: inline-block;position: relative;padding: 10px 24px;color: #000;text-transform: uppercase;letter-spacing: 1px;font-size: 11px;overflow: hidden;transition: all .2s;margin-right: 35px;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn .neon-btn:hover {color: #fff;background: #ff7a56;box-shadow: 0 0 10px #ff7a56,0 0 20px #ff7a56,0 0 40px #ff7a56;transition-delay: 1s;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn .neon-btn .neon-line {position: absolute;display: block;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn .neon-btn .neon-line:nth-child(1) {top: 0;left: -100%;width: 100%;height: 2px;background: linear-gradient(90deg, transparent, #ff7a56);}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn .neon-btn:hover .neon-line:nth-child(1) {left: 100%;transition: all 1s;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn .neon-btn .neon-line:nth-child(2) {top: -100%;right: 0;width: 2px;height: 100%;background: linear-gradient(180deg, transparent, #ff7a56);}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn .neon-btn:hover .neon-line:nth-child(2) {top: 100%;transition: all 1s;transition-delay: .25s;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn .neon-btn .neon-line:nth-child(3) {bottom: 0;right: -100%;width: 100%;height: 2px;background: linear-gradient(270deg, transparent, #ff7a56);}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn .neon-btn:hover .neon-line:nth-child(3) {right: 100%;transition: all 1s;transition-delay: .5s;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn .neon-btn .neon-line:nth-child(4) {bottom: -100%;left: 0;width: 2px;height: 100%;background: linear-gradient(360deg, transparent, #ff7a56);}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn .neon-btn:hover .neon-line:nth-child(4) {bottom: 100%;transition: all 1s;transition-delay: .75s;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn .right-btn {display: inline-block;border-bottom: 2px solid rgba(0, 0, 0, 1);transition: all .4s;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn .right-btn:hover {border-bottom: 2px solid rgba(0, 0, 0, .5);}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn .right-btn a {display: block;font-size: 13px;color: rgba(0, 0, 0, 1);padding: 5px 0 5px 0;text-transform: uppercase;letter-spacing: 1px;transition: all .4s;}
+#wrap #main #section3 .wrap .gap .container .title-box .box-gap .title .title-gap .title-btn .right-btn:hover a {color: rgba(0, 0, 0, .5);}
+
+/* neon btn */
+/* .neon-btn {display: inline-block;position: relative;padding: 12px 24px;color: #000;text-transform: uppercase;letter-spacing: 1px;font-size: 15px;overflow: hidden;transition: all .2s;margin-right: 35px;}
+.neon-btn:hover {color: #fff;background: #2196f3;box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0, 0, 80px #2196f3;transition-delay: 1s;}
+.neon-btn .neon-line {position: absolute;display: block;}
+.neon-btn .neon-line:nth-child(1) {top: 0;left: -100%;width: 100%;height: 2px;background: linear-gradient(90deg, transparent, #2196f3);}
+.neon-btn:hover .neon-line:nth-child(1) {left: 100%;transition: all 1s;}
+.neon-btn .neon-line:nth-child(2) {top: -100%;right: 0;width: 2px;height: 100%;background: linear-gradient(180deg, transparent, #2196f3);}
+.neon-btn:hover .neon-line:nth-child(2) {top: 100%;transition: all 1s;transition-delay: .25s;}
+.neon-btn .neon-line:nth-child(3) {bottom: 0;right: -100%;width: 100%;height: 2px;background: linear-gradient(270deg, transparent, #2196f3);}
+.neon-btn:hover .neon-line:nth-child(3) {right: 100%;transition: all 1s;transition-delay: .5s;}
+.neon-btn .neon-line:nth-child(4) {bottom: -100%;left: 0;width: 2px;height: 100%;background: linear-gradient(360deg, transparent, #2196f3);}
+.neon-btn:hover .neon-line:nth-child(4) {bottom: 100%;transition: all 1s;transition-delay: .75s;} */
 
 
-
-
-#wrap #main #section3 {width: 100%;}
 #wrap #main #section4 {width: 100%;}
 #wrap #main #section5 {width: 100%;}
 #wrap #main #section6 {width: 100%;}

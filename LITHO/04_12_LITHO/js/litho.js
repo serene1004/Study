@@ -769,21 +769,66 @@
             // 터치 스와이프 제작
             var touchStart = 0;
             var touchEnd = 0;
+            var touchD = false;
+            var touchYstart = 0;    // 
+            var touchYend = 0;
 
             $slideView.on({
                 mousedown:function(e){
+                    touchD = true;
                     e.preventDefault();
                     puaseTimerFn();
 
-                    touchStart = e.pageX; // = e.clientX;
+                    touchStart = e.clientX; // = e.clientX;
+                    touchYstart = e.clientY;
                 },
                 mouseup:function(e){
+                    touchD = false;
                     e.preventDefault();
                     puaseTimerFn();
 
-                    touchEnd = e.pageX;
+                    touchEnd = e.clientX;
+                    touchYend = e.clientY;
                     touchSwipeFn();
-                }
+
+                    if(touchYstart-touchYend < -50){    // 위에서 아래로 터치하면
+                        $('html,body').stop().animate({scrollTop:0}, 1000);
+                    }
+                    if(touchYstart-touchYend > 50){    // 아래에서 위로 터치하면
+                        $('html,body').stop().animate({scrollTop:$('#section2').offset().top}, 1000);
+                    }
+                },
+                mouseleave:function(e){
+                    if(touchD === true){
+                        puaseTimerFn();
+                        touchEnd = e.clientX;
+                        touchSwipeFn();
+                        touchD = false;
+                    }
+                },
+
+                touchstart:function(e){
+                    e.preventDefault();
+                    puaseTimerFn();
+
+                    touchStart = e.originalEvent.changedTouches[0].clientX;
+                    touchYstart = e.originalEvent.changedTouches[0].clientY;
+                },
+                touchend:function(e){
+                    e.preventDefault();
+                    puaseTimerFn();
+                    touchSwipeFn();
+
+                    touchEnd = e.originalEvent.changedTouches[0].clientX;
+                    touchYend = e.originalEvent.changedTouches[0].clientY;
+                    
+                    if(touchYstart-touchYend < -50){    // 위에서 아래로 터치하면
+                        $('html,body').stop().animate({scrollTop:0}, 1000);
+                    }
+                    if(touchYstart-touchYend > 50){    // 아래에서 위로 터치하면
+                        $('html,body').stop().animate({scrollTop:$('#section2').offset().top}, 1000);
+                    }
+                },
             });
             
             function touchSwipeFn(){
@@ -793,13 +838,11 @@
                 if((touchStart-touchEnd) > 0){
                     if (!$slide.is(':animated')) {
                         nextSlideCountFn();
-                        console.log('다음');
                     }
                 }
                 if((touchStart-touchEnd) < 0){
                     if (!$slide.is(':animated')) {
                         prevSlideCountFn();
-                        console.log('이전');
                     }
                 }
             };
@@ -933,16 +976,41 @@
 
             var touchS = 0;
             var touchE = 0;
+            var touchD = false;
             $slideView.on({
                 mousedown:function(e){
+                    touchD = true;
                     e.preventDefault();
                     timerFn();
                     touchS = e.clientX;
                 },
                 mouseup:function(e){
+                    touchD = false;
                     e.preventDefault();
                     timerFn();
                     touchE = e.clientX;
+                    touchSwipeFn();
+                },
+                mouseleave:function(e){
+                    if(touchD === true){
+                        timerFn();
+                        touchE = e.clientX;
+                        touchSwipeFn();
+                        touchD = false;
+                    }
+                },
+
+                touchstart:function(e){
+                    touchD = true;
+                    e.preventDefault();
+                    timerFn();
+                    touchS = e.originalEvent.changedTouches[0].clientX;
+                },
+                touchend:function(e){
+                    touchD = false;
+                    e.preventDefault();
+                    timerFn();
+                    touchE = e.originalEvent.changedTouches[0].clientX;
                     touchSwipeFn();
                 }
             });
@@ -1124,16 +1192,41 @@
             
             var touchS = 0;
             var touchE = 0;
+            var touchD = false;
             $s5SlideView.on({
                 mousedown:function(e){
+                    touchD = true;
                     e.preventDefault();
                     s5SlideTimerFn();
                     touchS = e.clientX;
                 },
                 mouseup:function(e){
+                    touchD = false;
                     e.preventDefault();
                     s5SlideTimerFn();
                     touchE = e.clientX;
+                    touchSwipeFn();
+                },
+                mouseleave:function(e){
+                    if(touchD === true){
+                        s5SlideTimerFn();
+                        touchE = e.clientX;
+                        touchSwipeFn();
+                        touchD = false;
+                    }
+                },
+
+                touchstart:function(e){
+                    touchD = true;
+                    e.preventDefault();
+                    s5SlideTimerFn();
+                    touchS = e.originalEvent.changedTouches[0].clientX;
+                },
+                touchend:function(e){
+                    touchD = false;
+                    e.preventDefault();
+                    s5SlideTimerFn();
+                    touchE = e.originalEvent.changedTouches[0].clientX;
                     touchSwipeFn();
                 }
             });
@@ -1525,7 +1618,7 @@
             var slideW = $('#section8 .slide').innerWidth();
             var touchS = 0;
             var touchE = 0;
-            var touchD = false;
+            var mouseDown = 0;
             var next = [0,1,2];
             var prev = [0,2,1];
 
@@ -1599,24 +1692,45 @@
 
             $slideView.on({
                 mousedown:function(e){
-                    touchD = true;
+                    mouseDown = 1;
                     e.preventDefault();
                     touchS = e.pageX;
                 },
                 mouseup:function(e){
-                    touchD = false;
+                    mouseDown = 0;
                     e.preventDefault();
                     touchE = e.pageX;
                     touchSwipeFn();
                 },
                 mouseleave:function(e){
-                    if(touchD === true){
+                    if(mouseDown === 1){
                         touchE = e.pageX;
                         touchSwipeFn();
-                        touchD = false;
+                        mouseDown = 0;
                     }
-                }
+                },
+
+                touchstart:function(e){
+                    mouseDown = 1;
+                    e.preventDefault();
+                    touchS = e.originalEvent.changedTouches[0].pageX;
+                },
+                touchend:function(e){
+                    mouseDown = 0;
+                    e.preventDefault();
+                    touchE = e.originalEvent.changedTouches[0].pageX;
+                    touchSwipeFn();
+                },
+                // // 터치무브는 사용안해도 큰 지장은 없음
+                // touchmove:function(e){
+                //     if(mouseDown === 1){
+                //         touchE = e.originalEvent.changedTouches[0].pageX;
+                //         touchSwipeFn();
+                //         mouseDown = 0;
+                //     }
+                // }
             });
+  
             function touchSwipeFn(){
                 if(touchS-touchE > 0){
                     if(!$slideWrap.is(':animated')){

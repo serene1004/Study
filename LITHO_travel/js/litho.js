@@ -65,6 +65,7 @@
             var cnt        = 0;
             var touchS     = 0;
             var touchE     = 0;
+            var touchD     = false;
             var next       = [];
             var prev       = [];
 
@@ -132,13 +133,22 @@
 
             $slideView.on({
                 mousedown:function(e){
+                    touchD = true;
                     e.preventDefault();
                     touchS = e.clientX;
                 },
                 mouseup:function(e){
+                    touchD = false;
                     e.preventDefault();
                     touchE = e.clientX;
                     touchSwipeFn();
+                },
+                mouseleave:function(e){
+                    if(touchD === true){
+                        touchE = e.clientX;
+                        touchSwipeFn();
+                        touchD = false;
+                    }
                 }
             });
 
