@@ -173,6 +173,132 @@
 
         },
         section4Fn:function(){
+            var $winW = $(window).width();
+            var $winH = $(window).height();
+            var $galleryBtn = $('#section4 .gallery-btn');
+            var $galleryImg = $('#section4 .gallery-img');
+            var $content = $('#section4 .content');
+            var $contentW = $('#section4 .content').innerWidth();
+            var $ul = $('#section4 .content .gallery-wrap'); // 갤러리 ul
+            var $li = $('#section4 .content .gallery-wrap > li'); // 갤러리 li
+            var liW = $contentW/cols;
+            var liH = liW*1;
+            var n = $li.length;
+            var cols = 4;
+            var rows = Math.ceil(n/cols);
+            // var imgW = $contentW/cols;   // li에서 패딩값을빼야나옴
+            // var imgH = imgW*1;
+            var btnNum = 0;
+
+
+            function galleryResizeFn(){
+                $contentW = $('#section4 .content').innerWidth();
+                
+                if($winW > 1200){
+                    cols = 4;
+                }
+                else if($winW > 980){
+                    cols = 3;
+                }
+                else if($winW > 680){
+                    cols = 2;
+                }
+
+                liW = $contentW/cols;
+                liH = liW*1;
+                $li.css({width:liW, height:liH});
+
+                if(btnNum === 0){
+                    n=8;
+                    rows = Math.ceil(n/cols);
+                    // $content.css({width:$contentW, height:liH*rows});
+                    $ul.css({width:$contentW, height:liH});
+                    $li.css({width:liW, height:liH});
+
+                    if(cols === 4){
+                        $li.eq(0).stop().show().animate({left:liW*0 ,top:liH*0}, 600);
+                        $li.eq(1).stop().show().animate({left:liW*1 ,top:liH*0}, 600);
+                        $li.eq(2).stop().show().animate({left:liW*2 ,top:liH*0}, 600);
+                        $li.eq(3).stop().show().animate({left:liW*3 ,top:liH*0}, 600);
+                        $li.eq(4).stop().show().animate({left:liW*0 ,top:liH*1}, 600);
+                        $li.eq(5).stop().show().animate({left:liW*1 ,top:liH*1}, 600);
+                        $li.eq(6).stop().show().animate({left:liW*2 ,top:liH*1}, 600);
+                        $li.eq(7).stop().show().animate({left:liW*3 ,top:liH*1}, 600);
+                    }
+
+                }
+                else if(btnNum === 1){
+                    n=3;
+                    rows = Math.ceil(n/cols);
+                    $ul.css({width:$contentW, height:liH});
+                    $li.css({width:liW, height:liH});
+                    
+                    $li.eq(1).stop().hide();
+                    $li.eq(2).stop().hide();
+                    $li.eq(3).stop().hide();
+                    $li.eq(4).stop().hide();
+                    $li.eq(5).stop().hide();
+
+                    if(cols === 4){
+                        $li.eq(0).stop().show().animate({left:liW*0 ,top:liH*0}, 600);
+                        $li.eq(6).stop().show().animate({left:liW*1 ,top:liH*0}, 600);
+                        $li.eq(7).stop().show().animate({left:liW*2 ,top:liH*0}, 600);
+                    }
+                }
+                else if(btnNum === 2){
+                    n=3;
+                    rows = Math.ceil(n/cols);
+                    $ul.css({width:$contentW, height:liH});
+                    $li.css({width:liW, height:liH});
+
+                    $li.eq(0).stop().hide();
+                    $li.eq(2).stop().hide();
+                    $li.eq(4).stop().hide();
+                    $li.eq(6).stop().hide();
+                    $li.eq(7).stop().hide();
+                    if(cols === 4){
+                        $li.eq(1).stop().show().animate({left:liW*0 ,top:liH*0}, 600);
+                        $li.eq(3).stop().show().animate({left:liW*1 ,top:liH*0}, 600);
+                        $li.eq(5).stop().show().animate({left:liW*2 ,top:liH*0}, 600);
+                    }
+                }
+                else if(btnNum === 3){
+                    n=2;
+                    rows = Math.ceil(n/cols);
+                    $ul.css({width:$contentW, height:liH});
+                    $li.css({width:liW, height:liH});
+
+                    $li.eq(0).stop().hide();
+                    $li.eq(1).stop().hide();
+                    $li.eq(3).stop().hide();
+                    $li.eq(5).stop().hide();
+                    $li.eq(6).stop().hide();
+                    $li.eq(7).stop().hide();
+                    if(cols === 4){
+                        $li.eq(2).stop().show().animate({left:liW*0 ,top:liH*0}, 600);
+                        $li.eq(4).stop().show().animate({left:liW*1 ,top:liH*0}, 600);
+                    }
+                }
+
+
+
+            }
+
+            $(window).resize(function(){
+                galleryResizeFn();
+            });
+            setTimeout(galleryResizeFn, 100);
+
+            $galleryBtn.each(function(idx){
+                $(this).on({
+                    click:function(){
+                        btnNum = idx;
+                        galleryResizeFn();
+                        $galleryBtn.removeClass('addNav');
+                        $(this).addClass('addNav');
+                    }
+                });
+            });
 
         },
         section5Fn:function(){

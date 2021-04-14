@@ -263,7 +263,7 @@
 #wrap #main #section4 .wrap .gap {margin: 0;}
 #wrap #main #section4 .wrap .gap .container {width: 100%;}
 
-#wrap #main #section4 .wrap .gap .container .title {padding-bottom: 30px;}
+#wrap #main #section4 .wrap .gap .container .title {padding-bottom: 12px;}
 #wrap #main #section4 .wrap .gap .container .title .left-title {float: left;}
 #wrap #main #section4 .wrap .gap .container .title .left-title h2 {font-size: 32.2px;color: #232323;font-weight: 600;line-height: 120%;letter-spacing: -1px;padding-bottom: 10px;}
 #wrap #main #section4 .wrap .gap .container .title .left-title p {font-size: 15px;color: #828282;line-height: 200%;font-family: 'Roboto';}
@@ -275,15 +275,15 @@
 #wrap #main #section4 .wrap .gap .container .title .right-title a:hover .ani-line {left: 100%;transition: all 1s;}
 
 #wrap #main #section4 .wrap .gap .container #gallery-nav {width: 100%;}
-#wrap #main #section4 .wrap .gap .container #gallery-nav ul {text-align: center;padding-bottom: 30px;}
+#wrap #main #section4 .wrap .gap .container #gallery-nav ul {text-align: center;padding-bottom: 10px;}
 #wrap #main #section4 .wrap .gap .container #gallery-nav ul li {display: inline-block;margin: 0 10px;}
 #wrap #main #section4 .wrap .gap .container #gallery-nav ul li a {display: block;font-size: 14px;padding: 5px 15px;color: #fff;text-transform: uppercase;background: #e9b777;border-radius: 15px;transition: all .4s;}
-#wrap #main #section4 .wrap .gap .container #gallery-nav ul li a:hover {box-shadow: 0 0 15px #ebb000, 0 0 25px #ebb000;background: #ebb000;}
+/* #wrap #main #section4 .wrap .gap .container #gallery-nav ul li a:hover {box-shadow: 0 0 15px #ebb000, 0 0 25px #ebb000;background: #ebb000;} */
 #wrap #main #section4 .wrap .gap .container #gallery-nav ul li a.addNav {box-shadow: 0 0 15px #ebb000, 0 0 25px #ebb000;background: #ebb000;}
 
-#wrap #main #section4 .wrap .gap .container .content {width: 100%;height: 554px;}/* 뭔가 박스구성을 잘못한듯?ㅋㅋ */
-#wrap #main #section4 .wrap .gap .container .content .gallery-wrap {position: relative;height: 262px;padding-bottom: 30px;}
-#wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col {width: 25%;height: 100%;position: absolute;top: 0;}
+#wrap #main #section4 .wrap .gap .container .content {width: 100%;height: calc(292.5px*2);}
+#wrap #main #section4 .wrap .gap .container .content .gallery-wrap {position: relative;width: 100%;height: 292.5px;}
+#wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col {width: 25%;height: 100%;position: absolute;}
 #wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col0 {left: calc(25%*0);top: calc(100%*0);}
 #wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col1 {left: calc(25%*1);top: calc(100%*0);}
 #wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col2 {left: calc(25%*2);top: calc(100%*0);}
@@ -293,8 +293,8 @@
 #wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col6 {left: calc(25%*2);top: calc(100%*1);}
 #wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col7 {left: calc(25%*3);top: calc(100%*1);}
 
-#wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col .gallery-gap {margin: 0 15px;}
-#wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col .gallery-gap .gallery-content {width: 100%;height: 262px;position: relative;border-radius: 10px;overflow: hidden;}
+#wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col .gallery-gap {width: 100%;height: 100%;padding: 15px;box-sizing: border-box;}
+#wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col .gallery-gap .gallery-content {width: 100%;height: 100%;position: relative;border-radius: 10px;overflow: hidden;}
 #wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col .gallery-gap .gallery-content .gallery-img {width: 100%;height: 100%;background: url() no-repeat 50% 50%;background-size: cover;position: relative;z-index: 1;transition: all .6s;}
 #wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col .gallery-gap .gallery-content:hover .gallery-img {transform: scale(1.1);}
 #wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col0 .gallery-gap .gallery-content .gallery-img {background-image: url(../img/home-travel-agency-destination-img01.jpg);}
@@ -324,10 +324,10 @@
 #wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col .gallery-gap .gallery-content .caption .caption-block h4 a {font-size: 14px;color: #fff;}
 
 
-
-
-
+/* section5 */
 #wrap #main #section5 {width: 100%;}
+
+
 #wrap #main #section6 {width: 100%;}
 #wrap #main #section7 {width: 100%;}
 #wrap #main #section8 {width: 100%;}
