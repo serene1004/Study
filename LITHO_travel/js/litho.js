@@ -216,14 +216,14 @@
                     $li.css({width:liW, height:liH});
 
                     if(cols === 4){
-                        $li.eq(0).stop().show().animate({left:liW*0 ,top:liH*0}, 600);
-                        $li.eq(1).stop().show().animate({left:liW*1 ,top:liH*0}, 600);
-                        $li.eq(2).stop().show().animate({left:liW*2 ,top:liH*0}, 600);
-                        $li.eq(3).stop().show().animate({left:liW*3 ,top:liH*0}, 600);
-                        $li.eq(4).stop().show().animate({left:liW*0 ,top:liH*1}, 600);
-                        $li.eq(5).stop().show().animate({left:liW*1 ,top:liH*1}, 600);
-                        $li.eq(6).stop().show().animate({left:liW*2 ,top:liH*1}, 600);
-                        $li.eq(7).stop().show().animate({left:liW*3 ,top:liH*1}, 600);
+                        $li.eq(0).stop().show(300).animate({left:liW*0 ,top:liH*0}, 600);
+                        $li.eq(1).stop().show(300).animate({left:liW*1 ,top:liH*0}, 600);
+                        $li.eq(2).stop().show(300).animate({left:liW*2 ,top:liH*0}, 600);
+                        $li.eq(3).stop().show(300).animate({left:liW*3 ,top:liH*0}, 600);
+                        $li.eq(4).stop().show(300).animate({left:liW*0 ,top:liH*1}, 600);
+                        $li.eq(5).stop().show(300).animate({left:liW*1 ,top:liH*1}, 600);
+                        $li.eq(6).stop().show(300).animate({left:liW*2 ,top:liH*1}, 600);
+                        $li.eq(7).stop().show(300).animate({left:liW*3 ,top:liH*1}, 600);
                     }
 
                 }
@@ -233,16 +233,16 @@
                     $ul.css({width:$contentW, height:liH});
                     $li.css({width:liW, height:liH});
                     
-                    $li.eq(1).stop().hide();
-                    $li.eq(2).stop().hide();
-                    $li.eq(3).stop().hide();
-                    $li.eq(4).stop().hide();
-                    $li.eq(5).stop().hide();
-
+                    
+                    $li.eq(1).stop().hide(300);
+                    $li.eq(2).stop().hide(300);
+                    $li.eq(3).stop().hide(300);
+                    $li.eq(4).stop().hide(300);
+                    $li.eq(5).stop().hide(300);
                     if(cols === 4){
-                        $li.eq(0).stop().show().animate({left:liW*0 ,top:liH*0}, 600);
-                        $li.eq(6).stop().show().animate({left:liW*1 ,top:liH*0}, 600);
-                        $li.eq(7).stop().show().animate({left:liW*2 ,top:liH*0}, 600);
+                        $li.eq(7).stop().show(300).animate({left:liW*0 ,top:liH*0}, 600);
+                        $li.eq(6).stop().show(300).animate({left:liW*1 ,top:liH*0}, 600);
+                        $li.eq(0).stop().show(300).animate({left:liW*2 ,top:liH*0}, 600);
                     }
                 }
                 else if(btnNum === 2){
@@ -251,15 +251,15 @@
                     $ul.css({width:$contentW, height:liH});
                     $li.css({width:liW, height:liH});
 
-                    $li.eq(0).stop().hide();
-                    $li.eq(2).stop().hide();
-                    $li.eq(4).stop().hide();
-                    $li.eq(6).stop().hide();
-                    $li.eq(7).stop().hide();
+                    $li.eq(0).stop().hide(300);
+                    $li.eq(2).stop().hide(300);
+                    $li.eq(4).stop().hide(300);
+                    $li.eq(6).stop().hide(300);
+                    $li.eq(7).stop().hide(300);
                     if(cols === 4){
-                        $li.eq(1).stop().show().animate({left:liW*0 ,top:liH*0}, 600);
-                        $li.eq(3).stop().show().animate({left:liW*1 ,top:liH*0}, 600);
-                        $li.eq(5).stop().show().animate({left:liW*2 ,top:liH*0}, 600);
+                        $li.eq(1).stop().show(300).animate({left:liW*0 ,top:liH*0}, 600);
+                        $li.eq(3).stop().show(300).animate({left:liW*1 ,top:liH*0}, 600);
+                        $li.eq(5).stop().show(300).animate({left:liW*2 ,top:liH*0}, 600);
                     }
                 }
                 else if(btnNum === 3){
@@ -268,15 +268,15 @@
                     $ul.css({width:$contentW, height:liH});
                     $li.css({width:liW, height:liH});
 
-                    $li.eq(0).stop().hide();
-                    $li.eq(1).stop().hide();
-                    $li.eq(3).stop().hide();
-                    $li.eq(5).stop().hide();
-                    $li.eq(6).stop().hide();
-                    $li.eq(7).stop().hide();
+                    $li.eq(0).stop().hide(300);
+                    $li.eq(1).stop().hide(300);
+                    $li.eq(3).stop().hide(300);
+                    $li.eq(5).stop().hide(300);
+                    $li.eq(6).stop().hide(300);
+                    $li.eq(7).stop().hide(300);
                     if(cols === 4){
-                        $li.eq(2).stop().show().animate({left:liW*0 ,top:liH*0}, 600);
-                        $li.eq(4).stop().show().animate({left:liW*1 ,top:liH*0}, 600);
+                        $li.eq(2).stop().show(300).animate({left:liW*0 ,top:liH*0}, 600);
+                        $li.eq(4).stop().show(300).animate({left:liW*1 ,top:liH*0}, 600);
                     }
                 }
 
