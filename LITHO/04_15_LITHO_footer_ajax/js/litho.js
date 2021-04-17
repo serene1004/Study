@@ -1859,16 +1859,37 @@
         demoModalFn:function(){
             // 모달창 사용 HTML overflow 감추기
             // 데모사이트를 부드럽게 슬라이딩 애니메이션 제작
+            var $document = $(document);
+            var $html = $('html');
             var $modalDemo = $('#modalDemo');
             var $modalBtnwrap = $('.modal-btn-wrap');
+            var $modalBtn = $('.modal-btn');
 
             $modalBtnwrap.on({
-                click:function(){
+                click:function(event){
+                    event.stopPropagation();
+                    $html.toggleClass('addModal');
                     $modalDemo.toggleClass('addModal');
                     $modalBtnwrap.toggleClass('addModal');
                 }
             });
+            $modalDemo.on({
+                click:function(event){
+                    event.stopPropagation();
+                    return false;
+                }
+            });
 
+            $document.on({
+                click:function(event){
+                    event.stopPropagation();
+                    if(event.target !== event.currnetTarget){
+                        $html.removeClass('addModal');
+                        $modalDemo.removeClass('addModal');
+                        $modalBtnwrap.removeClass('addModal');
+                    }
+                }
+            });
 
         }
     }   //객체 끝
