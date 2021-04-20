@@ -14,6 +14,7 @@
             that.section8Fn();
             that.section9Fn();
             that.section10Fn();
+            that.section11Fn();
             that.footerFn();
         },
         headerFn:function(){
@@ -62,7 +63,7 @@
             var $slide     = $('#section1 .slide');
             var slideW     = $('#section1 .slide').innerWidth();
             var n          = $('#section1 .slide').length;  // n=3
-            var $prevBtn   = $('#section1 .prev-btn'); 
+            var $prevBtn   = $('#section1 .prev-btn');
             var $nextBtn   = $('#section1 .next-btn'); 
             var cnt        = 0;
             var touchS     = 0;
@@ -527,7 +528,22 @@
                 cnt++;
                 slideFn();
             }
+            $prevBtn.on({
+                click:function(){
+                    if(!$slideWrap.is(':animated')){
+                        prevCountFn();
+                    }
+                }
+            });
+            $nextBtn.on({
+                click:function(){
+                    if(!$slideWrap.is(':animated')){
+                        nextCountFn();
+                    }
+                }
+            });
             
+
 
 
             $slideView.on({
@@ -573,6 +589,9 @@
 
         },
         section10Fn:function(){
+
+        },
+        section11Fn:function(){
 
         },
         footerFn:function(){

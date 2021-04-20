@@ -646,7 +646,7 @@
 
 
 /* 화면고정버튼 go-top */
-#wrap .go-top {position: fixed;bottom: 50px;right: 50px;z-index: 5;display: none;z-index: 3;}
+#wrap .go-top {position: fixed;bottom: 50px;right: 50px;z-index: 5;display: none;}
 #wrap .go-top a {display: inline-block;background: #fff;width: 34px;height: 34px;border-radius: 50%;text-align: center;box-shadow: 0 0 10px rgba(0, 0, 0, .1),0 0 15px rgba(0, 0, 0, .1);transition: margin .4s;}
 #wrap .go-top a:hover {margin-bottom: 3px;box-shadow: 0 0 10px rgba(0, 0, 0, .2),0 0 15px rgba(0, 0, 0, .3);}
 #wrap .go-top a i {line-height: 34px;color: #828282;}

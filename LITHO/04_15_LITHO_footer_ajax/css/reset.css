@@ -2,7 +2,7 @@
 * {margin: 0;padding: 0;vertical-align: middle;}
 html, body {width: 100%;height: 100%;}
 html{overflow-y:scroll}
-html.addModal{overflow:hidden}
+html.addScroll{overflow:hidden}
 body {font: normal 14px/1 'Roboto','Nanum Gothic','Noto Sans KR','Montserrat Alternates','arial','sans-serif';color: #444; background: #f7f7f7;}
 h1,h2,h3,h4,h5,h6 {font-weight: normal;font-size: 14px;}
 em, i, address {font-style: normal;}
