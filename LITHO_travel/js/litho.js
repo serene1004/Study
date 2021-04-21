@@ -3,6 +3,7 @@
         init:function(){
             var that = this;
 
+            that.scrollEventFn();
             that.headerFn();
             that.section1Fn();
             that.section2Fn();
@@ -17,14 +18,77 @@
             that.section11Fn();
             that.footerFn();
         },
+        scrollEventFn:function(){
+            var $win        = $(window);
+            var $header     = $('#header');
+            var $headerWrap = $('#header .wrap');
+            var $whiteLogo  = $('#header .white-logo');
+            var $blackLogo  = $('#header .black-logo');
+            var $navMainBtn = $('#header #nav .main-btn');
+            var $aside      = $('#header #aside li i');
+            var scrollOld   = 0;
+            var scrollNew   = 0;
+            var result      = null;
+            var that        = this;
+
+            function scrollFn(){
+                scrollNew = $win.scrollTop();
+                var scroll = function(){
+                    if( scrollOld - scrollNew > 0 ){result = 'Up';}
+                    else{result = 'Down';}
+                }
+                scroll();
+                
+                if( scrollNew <= 20 ){
+                    $header.removeClass('addDown');
+                    $headerWrap.removeClass('addDown');
+                    $whiteLogo.removeClass('addDown');
+                    $blackLogo.removeClass('addDown');
+                    $header.removeClass('addUp');
+                    $navMainBtn.removeClass('addDown');
+                    $aside.removeClass('addDown');
+                }
+                else{
+                    if( result === 'Up' ){
+                        if( that.btn === 1){    // 모바일모드
+
+                        }
+                        else{                   // pc모드
+                            $header.addClass('addDown');
+                            $headerWrap.addClass('addDown');
+                            $whiteLogo.addClass('addDown');
+                            $blackLogo.addClass('addDown');
+                            $navMainBtn.addClass('addDown');
+                            $aside.addClass('addDown');
+                            $header.removeClass('addUp');
+                        }
+                    }
+                    if( result === 'Down' ){
+                        if( that.btn === 1){    // 모바일모드
+
+                        }
+                        else{                   // pc모드
+                            $header.removeClass('addDown');
+                            $header.addClass('addUp');
+                        }
+                    }
+                };
+                scrollOld = scrollNew;
+            };
+
+            $win.scroll(function(){
+                scrollFn();
+            });            
+
+        },
         headerFn:function(){
-            var $nav     = $('#header #nav');
-            var $mainBtn = $('#header .main-btn');
-            var $sub     = $('#header .sub');
+            var $nav       = $('#header #nav');
+            var $mainBtn   = $('#header .main-btn');
+            var $sub       = $('#header .sub');
             var $subBtn    = $('#header .sub-btn');
-            var $subSub     = $('#header .sub-sub');
-            var $subSubBtn    = $('#header .sub-sub-btn');
-            var $subSubSub     = $('#header .sub-sub-sub');
+            var $subSub    = $('#header .sub-sub');
+            var $subSubBtn = $('#header .sub-sub-btn');
+            var $subSubSub = $('#header .sub-sub-sub');
 
             
             $mainBtn.on({
@@ -215,25 +279,27 @@
 
         },
         section4Fn:function(){
-            var $winW = $(window).width();
-            var $winH = $(window).height();
+            var $winW       = $(window).width();
+            var $winH       = $(window).height();
             var $galleryBtn = $('#section4 .gallery-btn');
             var $galleryImg = $('#section4 .gallery-img');
-            var $content = $('#section4 .content');
-            var $contentW = $('#section4 .content').innerWidth();
-            var $ul = $('#section4 .content .gallery-wrap'); // 갤러리 ul
-            var $li = $('#section4 .content .gallery-wrap > li'); // 갤러리 li
-            var liW = $contentW/cols;
-            var liH = liW*1;
-            var n = $li.length;
-            var cols = 4;
-            var rows = Math.ceil(n/cols);
-            // var imgW = $contentW/cols;   // li에서 패딩값을빼야나옴
-            // var imgH = imgW*1;
-            var btnNum = 0;
+            var $content    = $('#section4 .content');
+            var $contentW   = $('#section4 .content').innerWidth();
+            var $ul         = $('#section4 .content .gallery-wrap'); // 갤러리 ul
+            var $li         = $('#section4 .content .gallery-wrap > li'); // 갤러리 li
+            var liW         = $contentW/cols;
+            var liH         = liW*1;
+            var imgW        = Math.ceil(liW)-30;
+            var imgH        = imgW*1;
+            var n           = $li.length;
+            var cols        = 4;
+            var rows        = Math.ceil(n/cols);
+            var btnNum      = 0;
 
 
+            
             function galleryResizeFn(){
+                $winW = $(window).innerWidth();
                 $contentW = $('#section4 .content').innerWidth();
                 
                 if($winW > 1200){
@@ -246,9 +312,14 @@
                     cols = 2;
                 }
 
-                liW = $contentW/cols;
-                liH = liW*1;
+                liW  = $contentW/cols;
+                liH  = liW*1;
                 $li.css({width:liW, height:liH});
+                // 이미지 너비높이가 소수점으로 끝날때 이미지가 꿈틀?거리는 현상이 발생하는것을 발견함
+                // 강제로 이미지의 너비를 반올림하여 해당버그를 수정하였음
+                imgW = Math.ceil(liW)-30;
+                imgH = imgW*1;
+                $galleryImg.css({width:imgW,height:imgH});
 
                 if(btnNum === 0){
                     n=8;
@@ -256,16 +327,38 @@
                     // $content.css({width:$contentW, height:liH*rows});
                     $ul.css({width:$contentW, height:liH});
                     $li.css({width:liW, height:liH});
+                    $galleryImg.css({width:imgW,height:imgH});
+
 
                     if(cols === 4){
-                        $li.eq(0).stop().show(300).animate({left:liW*0 ,top:liH*0}, 600);
-                        $li.eq(1).stop().show(300).animate({left:liW*1 ,top:liH*0}, 600);
-                        $li.eq(2).stop().show(300).animate({left:liW*2 ,top:liH*0}, 600);
-                        $li.eq(3).stop().show(300).animate({left:liW*3 ,top:liH*0}, 600);
-                        $li.eq(4).stop().show(300).animate({left:liW*0 ,top:liH*1}, 600);
-                        $li.eq(5).stop().show(300).animate({left:liW*1 ,top:liH*1}, 600);
-                        $li.eq(6).stop().show(300).animate({left:liW*2 ,top:liH*1}, 600);
-                        $li.eq(7).stop().show(300).animate({left:liW*3 ,top:liH*1}, 600);
+                        $li.eq(0).stop().show(300).animate({left:liW*0,top:liH*0}, 600);
+                        $li.eq(1).stop().show(300).animate({left:liW*1,top:liH*0}, 600);
+                        $li.eq(2).stop().show(300).animate({left:liW*2,top:liH*0}, 600);
+                        $li.eq(3).stop().show(300).animate({left:liW*3,top:liH*0}, 600);
+                        $li.eq(4).stop().show(300).animate({left:liW*0,top:liH*1}, 600);
+                        $li.eq(5).stop().show(300).animate({left:liW*1,top:liH*1}, 600);
+                        $li.eq(6).stop().show(300).animate({left:liW*2,top:liH*1}, 600);
+                        $li.eq(7).stop().show(300).animate({left:liW*3,top:liH*1}, 600);
+                    }
+                    if(cols === 3){
+                        $li.eq(0).stop().show(300).animate({left:liW*0,top:liH*0}, 600);
+                        $li.eq(1).stop().show(300).animate({left:liW*1,top:liH*0}, 600);
+                        $li.eq(2).stop().show(300).animate({left:liW*2,top:liH*0}, 600);
+                        $li.eq(3).stop().show(300).animate({left:liW*0,top:liH*1}, 600);
+                        $li.eq(4).stop().show(300).animate({left:liW*1,top:liH*1}, 600);
+                        $li.eq(5).stop().show(300).animate({left:liW*2,top:liH*1}, 600);
+                        $li.eq(6).stop().show(300).animate({left:liW*0,top:liH*2}, 600);
+                        $li.eq(7).stop().show(300).animate({left:liW*1,top:liH*2}, 600);
+                    }
+                    if(cols === 2){
+                        $li.eq(0).stop().show(300).animate({left:liW*0,top:liH*0}, 600);
+                        $li.eq(1).stop().show(300).animate({left:liW*1,top:liH*0}, 600);
+                        $li.eq(2).stop().show(300).animate({left:liW*0,top:liH*1}, 600);
+                        $li.eq(3).stop().show(300).animate({left:liW*1,top:liH*1}, 600);
+                        $li.eq(4).stop().show(300).animate({left:liW*0,top:liH*2}, 600);
+                        $li.eq(5).stop().show(300).animate({left:liW*1,top:liH*2}, 600);
+                        $li.eq(6).stop().show(300).animate({left:liW*0,top:liH*3}, 600);
+                        $li.eq(7).stop().show(300).animate({left:liW*1,top:liH*3}, 600);
                     }
 
                 }
@@ -274,6 +367,7 @@
                     rows = Math.ceil(n/cols);
                     $ul.css({width:$contentW, height:liH});
                     $li.css({width:liW, height:liH});
+                    $galleryImg.css({width:imgW,height:imgH});
                     
                     
                     $li.eq(1).stop().hide(300);
@@ -286,12 +380,23 @@
                         $li.eq(6).stop().show(300).animate({left:liW*1 ,top:liH*0}, 600);
                         $li.eq(0).stop().show(300).animate({left:liW*2 ,top:liH*0}, 600);
                     }
+                    if(cols === 3){
+                        $li.eq(7).stop().show(300).animate({left:liW*0 ,top:liH*0}, 600);
+                        $li.eq(6).stop().show(300).animate({left:liW*1 ,top:liH*0}, 600);
+                        $li.eq(0).stop().show(300).animate({left:liW*2 ,top:liH*0}, 600);
+                    }
+                    if(cols === 2){
+                        $li.eq(7).stop().show(300).animate({left:liW*0 ,top:liH*0}, 600);
+                        $li.eq(6).stop().show(300).animate({left:liW*1 ,top:liH*0}, 600);
+                        $li.eq(0).stop().show(300).animate({left:liW*0 ,top:liH*1}, 600);
+                    }
                 }
                 else if(btnNum === 2){
                     n=3;
                     rows = Math.ceil(n/cols);
                     $ul.css({width:$contentW, height:liH});
                     $li.css({width:liW, height:liH});
+                    $galleryImg.css({width:imgW,height:imgH});
 
                     $li.eq(0).stop().hide(300);
                     $li.eq(2).stop().hide(300);
@@ -303,12 +408,23 @@
                         $li.eq(3).stop().show(300).animate({left:liW*1 ,top:liH*0}, 600);
                         $li.eq(5).stop().show(300).animate({left:liW*2 ,top:liH*0}, 600);
                     }
+                    if(cols === 3){
+                        $li.eq(1).stop().show(300).animate({left:liW*0 ,top:liH*0}, 600);
+                        $li.eq(3).stop().show(300).animate({left:liW*1 ,top:liH*0}, 600);
+                        $li.eq(5).stop().show(300).animate({left:liW*2 ,top:liH*0}, 600);
+                    }
+                    if(cols === 2){
+                        $li.eq(1).stop().show(300).animate({left:liW*0 ,top:liH*0}, 600);
+                        $li.eq(3).stop().show(300).animate({left:liW*1 ,top:liH*0}, 600);
+                        $li.eq(5).stop().show(300).animate({left:liW*0 ,top:liH*1}, 600);
+                    }
                 }
                 else if(btnNum === 3){
                     n=2;
                     rows = Math.ceil(n/cols);
                     $ul.css({width:$contentW, height:liH});
                     $li.css({width:liW, height:liH});
+                    $galleryImg.css({width:imgW,height:imgH});
 
                     $li.eq(0).stop().hide(300);
                     $li.eq(1).stop().hide(300);
@@ -320,9 +436,15 @@
                         $li.eq(2).stop().show(300).animate({left:liW*0 ,top:liH*0}, 600);
                         $li.eq(4).stop().show(300).animate({left:liW*1 ,top:liH*0}, 600);
                     }
+                    if(cols === 3){
+                        $li.eq(2).stop().show(300).animate({left:liW*0 ,top:liH*0}, 600);
+                        $li.eq(4).stop().show(300).animate({left:liW*1 ,top:liH*0}, 600);
+                    }
+                    if(cols === 2){
+                        $li.eq(2).stop().show(300).animate({left:liW*0 ,top:liH*0}, 600);
+                        $li.eq(4).stop().show(300).animate({left:liW*1 ,top:liH*0}, 600);
+                    }
                 }
-
-
 
             }
 
@@ -346,26 +468,26 @@
 
         },
         section5Fn:function(){
-            var $prevBtn = $('#section5 .prev-btn');
-            var $nextBtn = $('#section5 .next-btn');
-            var $stopBtn = $('#section5 .stop-btn');
-            var $playBtn = $('#section5 .play-btn');
+            var $prevBtn  = $('#section5 .prev-btn');
+            var $nextBtn  = $('#section5 .next-btn');
+            var $stopBtn  = $('#section5 .stop-btn');
+            var $playBtn  = $('#section5 .play-btn');
             var $stopPlay = $('#section5 .stop-play');
-            var $ul = $('#section5 ul');
-            var $li = $('#section5 li');
-            var cnt = 0;
-            var n = $('#section5 li').length;
-            var slideW = $('#section5').innerWidth();
-            var angle = 360/n;
-            var tZ = Math.round((slideW/2) / Math.tan(Math.PI/n));
+            var $ul       = $('#section5 ul');
+            var $li       = $('#section5 li');
+            var cnt       = 0;
+            var n         = $('#section5 li').length;
+            var slideW    = $('#section5').innerWidth();
+            var angle     = 360/n;
+            var tZ        = Math.round((slideW/2) / Math.tan(Math.PI/n));
 
-            var setId = null;
-            var setId2 = null;
-            var timercnt = 0;
+            var setId     = null;
+            var setId2    = null;
+            var timercnt  = 0;
 
-            var touchS     = 0;
-            var touchE     = 0;
-            var touchD     = false;
+            var touchS    = 0;
+            var touchE    = 0;
+            var touchD    = false;
 
 
             function slide3dFn(){
@@ -494,6 +616,9 @@
             var touchS           = 0;
             var touchE           = 0;
             var touchD           = false;
+            var setId            = null;
+            var setId2           = null;
+            var timercnt         = 0;
 
 
             function resizeFn(){
@@ -532,6 +657,7 @@
                 click:function(){
                     if(!$slideWrap.is(':animated')){
                         prevCountFn();
+                        timerFn();
                     }
                 }
             });
@@ -539,12 +665,116 @@
                 click:function(){
                     if(!$slideWrap.is(':animated')){
                         nextCountFn();
+                        timerFn();
                     }
                 }
             });
             
+            $slideView.on({
+                mousedown:function(e){
+                    touchD = true;
+                    e.preventDefault();
+                    touchS = e.clientX;
+                },
+                mouseup:function(e){
+                    touchD = false;
+                    e.preventDefault();
+                    touchE = e.clientX;
+                    touchSwipeFn();
+                },
+                mouseleave:function(e){
+                    if(touchD === true){
+                        touchE = e.clientX;
+                        touchSwipeFn();
+                        touchD = false;
+                    }
+                }
+            });
+
+            function touchSwipeFn(){
+                if(touchS-touchE > 30){
+                    if(!$slideWrap.is(':animated')){
+                        nextCountFn();
+                        timerFn();
+                    }
+                }
+                if(touchS-touchE < -30){
+                    if(!$slideWrap.is(':animated')){
+                        prevCountFn();
+                        timerFn();
+                    }
+                }
+            }            
+
+            function autoPlayFn(){
+                setId = setInterval(nextCountFn, 5000);
+            }
+            autoPlayFn();
+
+            function timerFn(){
+                timercnt = 0;
+                clearInterval(setId);
+                clearInterval(setId2);
+                setId2 = setInterval(function(){
+                    timercnt++;
+                    if (timercnt >= 5) {
+                        clearInterval(setId2);
+                        nextCountFn();
+                        autoPlayFn();
+                    }
+                }, 1000);
+            }
+
+        },
+        section8Fn:function(){
+
+        },
+        section9Fn:function(){
+            var $slideContainerW = $('#section9 .slide-container').innerWidth();
+            var $slideView       = $('#section9 .slide-view');
+            var $slideWrap       = $('#section9 .slide-wrap');
+            var $slide           = $('#section9 .slide');
+            var $slideW          = $slideContainerW/3;
+            var $slideH          = $slideW*0.763888889;
+            var cnt              = 0;
+            var touchS           = 0;
+            var touchE           = 0;
+            var touchD           = false;
+            var setId            = null;
+            var setId2           = null;
+            var timercnt         = 0;
 
 
+            function resizeFn(){
+                $slideContainerW = $('#section9 .slide-container').innerWidth();
+                $slideW = $slideContainerW/3;
+                $slideView.css({width:$slideW*3})
+                $slideWrap.css({width:$slideW*12,marginLeft: -$slideW*4});
+                $slide.css({width:$slideW});
+            }
+
+            $(window).resize(function(){
+                resizeFn();
+            });
+            setTimeout(resizeFn, 100);
+
+
+
+            function slideFn(){
+                $slideWrap.stop().animate({left:-$slideW*cnt}, 400, function(){
+                    if(cnt>3){cnt=0;}
+                    if(cnt<0){cnt=3;}
+                    $slideWrap.stop().animate({left:-$slideW*cnt},0)
+                })
+            }
+            function prevCountFn(){
+                cnt--;
+                slideFn();
+            }
+            function nextCountFn(){
+                cnt++;
+                slideFn();
+            }
 
             $slideView.on({
                 mousedown:function(e){
@@ -571,21 +801,35 @@
                 if(touchS-touchE > 30){
                     if(!$slideWrap.is(':animated')){
                         nextCountFn();
+                        timerFn();
                     }
                 }
                 if(touchS-touchE < -30){
                     if(!$slideWrap.is(':animated')){
                         prevCountFn();
+                        timerFn();
                     }
                 }
-            }            
+            }
 
+            function autoPlayFn(){
+                setId = setInterval(nextCountFn, 5000);
+            }
+            autoPlayFn();
 
-        },
-        section8Fn:function(){
-
-        },
-        section9Fn:function(){
+            function timerFn(){
+                timercnt = 0;
+                clearInterval(setId);
+                clearInterval(setId2);
+                setId2 = setInterval(function(){
+                    timercnt++;
+                    if (timercnt >= 5) {
+                        clearInterval(setId2);
+                        nextCountFn();
+                        autoPlayFn();
+                    }
+                }, 1000);
+            }
 
         },
         section10Fn:function(){

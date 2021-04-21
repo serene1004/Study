@@ -10,18 +10,27 @@
 
 /* header */
 #wrap #header {width: 100%;position: fixed;top: 0;left: 0;height: 80px;z-index: 3;}
+#wrap #header.addUp {top: -81px;}
+#wrap #header.addDown {background: #fff;}
 #wrap #header .wrap {width: 100%;height: 100%;border-bottom: 1px solid rgba(255, 255, 255, .1);}
+#wrap #header .wrap.addDown {box-shadow: 0 2px 10px rgba(0, 0, 0, .1);}
 #wrap #header .wrap .gap {margin: 0 35px;}
 #wrap #header .wrap .gap .container {margin: 0 15px;text-align: center;}
 
 /* header logo */
 #wrap #header .wrap .gap .container #logo {padding: 22px 0;float: left;}
+#wrap #header .wrap .gap .container #logo a {display: block;position: relative;}
+#wrap #header .wrap .gap .container #logo a .white-logo {display: block;position: relative;}
+#wrap #header .wrap .gap .container #logo a .white-logo.addDown {display: none;}
+#wrap #header .wrap .gap .container #logo a .black-logo {display: none;position: absolute;top: 0;left: 0;}
+#wrap #header .wrap .gap .container #logo a .black-logo.addDown {display: block;}
 
 /* header nav*/
 #wrap #header .wrap .gap .container #nav {display: inline-block;}
 #wrap #header .wrap .gap .container #nav > ul {width: 100%;}
 #wrap #header .wrap .gap .container #nav > ul > li {display: inline-block;position: relative;}
 #wrap #header .wrap .gap .container #nav > ul > li .main-btn {display: block;font-size: 14px;font-weight: 500;line-height: 200%;color: rgba(255, 255, 255, 1);margin: 0 18px;padding: 26px 0;transition: color .4s;}
+#wrap #header .wrap .gap .container #nav > ul > li .main-btn.addDown {color: #232323;}
 #wrap #header .wrap .gap .container #nav > ul > li .main-btn:hover {color: rgba(255, 255, 255, .5);}
 
 /* header nav sub */
@@ -135,6 +144,7 @@
 #wrap #header .wrap .gap .container #aside ul {display: block;width: 100%;}
 #wrap #header .wrap .gap .container #aside ul li {display: inline-block;padding: 0 5px;}
 #wrap #header .wrap .gap .container #aside ul li i {font-size: 14px;color: rgba(255, 255, 255, .9);font-weight: 500;line-height: 130%;}
+#wrap #header .wrap .gap .container #aside ul li i.addDown {color: #232323;}
 #wrap #header .wrap .gap .container #aside ul li .tel {margin-left: 5px;}
 #wrap #header .wrap .gap .container #aside ul li a {display: block;width: 100%;}
 #wrap #header .wrap .gap .container #aside ul li a i {font-size: 18px;color: rgba(255, 255, 255, .9);line-height: 160%;transition: color .4s;}
@@ -303,8 +313,8 @@
 
 #wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col .gallery-gap {width: 100%;height: 100%;padding: 15px;box-sizing: border-box;}
 #wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col .gallery-gap .gallery-content {width: 100%;height: 100%;position: relative;border-radius: 10px;overflow: hidden;}
-#wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col .gallery-gap .gallery-content .gallery-img {width: 100%;height: 100%;background: url() no-repeat 50% 50%;background-size: 100%;position: relative;z-index: 1;transition: all .6s;}
-#wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col .gallery-gap .gallery-content:hover .gallery-img {background-size: 110%;}
+#wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col .gallery-gap .gallery-content .gallery-img {width: 100%;height: 100%;background: url() no-repeat 50% 50%;background-size: cover;position: relative;z-index: 1;transition: all .6s;}
+#wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col .gallery-gap .gallery-content:hover .gallery-img {transform: scale(1.1);}
 #wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col0 .gallery-gap .gallery-content .gallery-img {background-image: url(../img/home-travel-agency-destination-img01.jpg);}
 #wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col1 .gallery-gap .gallery-content .gallery-img {background-image: url(../img/home-travel-agency-destination-img02.jpg);}
 #wrap #main #section4 .wrap .gap .container .content .gallery-wrap .col2 .gallery-gap .gallery-content .gallery-img {background-image: url(../img/home-travel-agency-destination-img03.jpg);}
@@ -411,7 +421,7 @@
 #wrap #main #section6 .wrap .gap .container .content ul li .content-gap {margin: 0 15px;}
 #wrap #main #section6 .wrap .gap .container .content ul li .content-gap .content-wrap {padding: 50px 0;background: #fff;position: relative;}
 #wrap #main #section6 .wrap .gap .container .content ul li .content-gap .content-wrap .content-img {padding-bottom: 30px;}
-#wrap #main #section6 .wrap .gap .container .content ul li .content-gap .content-wrap .content-img img {width: 50%;height: 50%;border-radius: 50%;transition: all .6s;}
+#wrap #main #section6 .wrap .gap .container .content ul li .content-gap .content-wrap .content-img img {width: 50%;height: 50%;border-radius: 50%;transform: rotate(.0001deg);transition: all .6s;}
 #wrap #main #section6 .wrap .gap .container .content ul li .content-gap .content-wrap:hover .content-img img {transform: rotateY(180deg);}
 #wrap #main #section6 .wrap .gap .container .content ul li .content-gap .content-wrap .caption {width: 100%;}
 #wrap #main #section6 .wrap .gap .container .content ul li .content-gap .content-wrap .caption h4 {font-size: 15px;color: #232323;line-height: 200%;}
@@ -526,10 +536,11 @@
 #wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap .caption .caption-gap {padding: 46px;}
 #wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap .caption .caption-gap > a {display: block;width: 100%;height: 100%;position: absolute;top: 0;left: 0;z-index: 2;}
 #wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap .caption .caption-gap .caption-wrap {position: relative;}
-#wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap .caption .caption-gap .caption-wrap > a {display: inline-block;border: 1px solid #fff;border-radius: 2px;transition: all .6s;}
-#wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap:hover .caption .caption-gap .caption-wrap > a {border: 1px solid #000;}
-#wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap .caption .caption-gap .caption-wrap > a > span {display: inline-block;font-size: 12px;color: #232323;padding: 8px 15px;background: #fff;text-transform: uppercase;transition: all .6s;}
-#wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap:hover .caption .caption-gap .caption-wrap > a > span {color: #fff;background: #000}
+#wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap .caption .caption-gap .caption-wrap > a {display: inline-block;background: #fff;border-radius: 2px;position: relative;overflow: hidden;}
+#wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap .caption .caption-gap .caption-wrap > a > span {display: inline-block;font-size: 12px;color: #232323;padding: 9px 15px;text-transform: uppercase;position: relative;z-index: 2;transition: all .4s;}
+#wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap:hover .caption .caption-gap .caption-wrap > a > span {color: #fff;}
+#wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap .caption .caption-gap .caption-wrap > a > i {position: absolute;top: 0;left: -135%;width: 125%;height: 100%;background: #232323;transform: skewX(-20deg);transition: all .4s;}
+#wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap:hover .caption .caption-gap .caption-wrap > a > i {left: -10%;}
 #wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap .caption .caption-gap .caption-wrap .caption-bottom {position: relative;padding-top: 150px;}
 #wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap .caption .caption-gap .caption-wrap .caption-bottom p {font-size: 18px;color: #fff;text-transform: uppercase;width: 50%;}
 #wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap .caption .caption-gap .caption-wrap .caption-bottom > span {display: inline-block;position: absolute;bottom: -20px;right: 0;background: #fff;width: 40px;height: 40px;border-radius: 50%;text-align: center;opacity: 0;transition: all .4s;}
@@ -561,10 +572,10 @@
 #wrap #main #section9 .wrap .gap .container .title .right-title a .ani-line:nth-child(4) {bottom: 0;left: 0;width: 2px;height: 100%;background: #000;}
 #wrap #main #section9 .wrap .gap .container .title .right-title a:hover .ani-line:nth-child(4) {bottom: 100%;transition: all .4s;}
 
-#wrap #main #section9 .wrap .gap .container .slide-container {width: 100%;}
-#wrap #main #section9 .wrap .gap .container .slide-container .slide-view {width: 100%;overflow: hidden;}
-#wrap #main #section9 .wrap .gap .container .slide-container .slide-view .slide-wrap {width: calc(390px*4);}
-#wrap #main #section9 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide {float: left;width: 390px;}
+#wrap #main #section9 .wrap .gap .container .slide-container {width: 100%;position: relative;}
+#wrap #main #section9 .wrap .gap .container .slide-container .slide-view {width: 100%;overflow: hidden;position: relative;}
+#wrap #main #section9 .wrap .gap .container .slide-container .slide-view .slide-wrap {width: calc(390px*12);margin-left: calc(-390px*4);position: relative;}
+#wrap #main #section9 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide {float: left;width: 390px;left: 0;position: relative;}
 #wrap #main #section9 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap {margin: 0 15px;padding: 15px 0;}
 #wrap #main #section9 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap .content {border-radius: 5px;box-shadow: 0 0 10px rgba(0, 0, 0, .1); }
 #wrap #main #section9 .wrap .gap .container .slide-container .slide-view .slide-wrap .slide .slide-gap .content .caption-gap {padding: 42px;}
@@ -614,6 +625,15 @@
 #wrap #main #section11 .wrap .gap .container .mail-box .box-gap .box-wrap {width: 100%;}
 #wrap #main #section11 .wrap .gap .container .mail-box .box-gap .box-wrap h2 {float: left;width: 40%;font-size: 25.2px;color: #232323;font-weight: 600;line-height: 55px;font-family: 'Roboto';}
 #wrap #main #section11 .wrap .gap .container .mail-box .box-gap .box-wrap .mail-form {float: left;width: 60%;}
+#wrap #main #section11 .wrap .gap .container .mail-box .box-gap .box-wrap .mail-form form {position: relative;}
+#wrap #main #section11 .wrap .gap .container .mail-box .box-gap .box-wrap .mail-form form .input-wrap {width: 100%;position: relative;z-index: 1;}
+#wrap #main #section11 .wrap .gap .container .mail-box .box-gap .box-wrap .mail-form form .input-wrap input {display: block;font-size: 15px;color: #828282;padding: 18px 365px 18px 25px;border: 1px solid transparent;border-radius: 5px;outline: 0;}
+#wrap #main #section11 .wrap .gap .container .mail-box .box-gap .box-wrap .mail-form form .submit-wrap {position: absolute;z-index: 2;top: 13px;right: 25px;}
+#wrap #main #section11 .wrap .gap .container .mail-box .box-gap .box-wrap .mail-form form .submit-wrap::before {content: '';display: block;position: absolute;top: 4px;left: -20px;width: 1px;height: 20px;background: #828282;}
+#wrap #main #section11 .wrap .gap .container .mail-box .box-gap .box-wrap .mail-form form .submit-wrap button {cursor: pointer;border: 0;outline: 0;background: #fff;}
+#wrap #main #section11 .wrap .gap .container .mail-box .box-gap .box-wrap .mail-form form .submit-wrap button span {display: inline-block;padding: 5px;}
+#wrap #main #section11 .wrap .gap .container .mail-box .box-gap .box-wrap .mail-form form .submit-wrap button span i:nth-child(1) {display: inline-block;font-size: 16px;color: #212529;margin-right: 5px;}
+#wrap #main #section11 .wrap .gap .container .mail-box .box-gap .box-wrap .mail-form form .submit-wrap button span i:nth-child(2) {display: inline-block;font-size: 13px;color: #212529;}
 
 #wrap #main #section11 .wrap .gap .container .title {padding-bottom: 70px;}
 #wrap #main #section11 .wrap .gap .container .title .left-title {float: left;}
@@ -637,7 +657,8 @@
 #wrap #main #section11 .wrap .gap .container .content ul li {float: left;width: 25%;}
 #wrap #main #section11 .wrap .gap .container .content ul li .content-gap {padding: 15px;}
 #wrap #main #section11 .wrap .gap .container .content ul li .content-gap .content-wrap {width: 100%;}
-#wrap #main #section11 .wrap .gap .container .content ul li .content-gap .content-wrap .content-img {width: 100%;position: relative;}
+#wrap #main #section11 .wrap .gap .container .content ul li .content-gap .content-wrap .content-img {width: 100%;position: relative;transform: rotate(.0001deg);transition: all .4s;}
+#wrap #main #section11 .wrap .gap .container .content ul li .content-gap .content-wrap:hover .content-img {transform: rotate(-5deg);}
 #wrap #main #section11 .wrap .gap .container .content ul li .content-gap .content-wrap .content-img a {display: block;width: 100%;height: 100%;position: absolute;top: 0;left: 0;}
 #wrap #main #section11 .wrap .gap .container .content ul li .content-gap .content-wrap .content-img img {width: 100%;}
 #wrap #main #section11 .wrap .gap .container .content ul li .content-gap .content-wrap h3 {width: 90%;padding-top: 40px;}
@@ -648,4 +669,25 @@
 
 
 /* footer */
-#wrap #footer {width: 100%;position: relative;z-index: 1;}
+#wrap #footer {width: 100%;position: relative;z-index: 1;background: url(../img/home-travel-agency-footer-bg.jpg) no-repeat 50% 50% fixed;background-size: cover;}
+#wrap #footer .wrap {width: 100%;max-width: 1170px;margin: 0 auto;}
+#wrap #footer .wrap .gap {width: 100%;}
+#wrap #footer .wrap .gap .container {width: 100%;}
+
+#wrap #footer .wrap .gap .container .top-content {padding: 90px 0;}
+#wrap #footer .wrap .gap .container .top-content ul {width: 100%;}
+#wrap #footer .wrap .gap .container .top-content ul li {float: left;width: 25%;}
+#wrap #footer .wrap .gap .container .top-content ul li dl {margin: 0 15px;}
+#wrap #footer .wrap .gap .container .top-content ul li dl dt {font-size: 14px;font-weight: 600;color: #fff;line-height: 150%;padding-bottom: 15px;}
+#wrap #footer .wrap .gap .container .top-content ul li dl dd {width: 100%;padding-bottom: 5px;}
+#wrap #footer .wrap .gap .container .top-content ul li dl dd a {display: block;font-size: 15px;color: #8890a4;line-height: 200%;}
+
+#wrap #footer .wrap .gap .container .bottom-content {padding: 15px 0 90px 0;}
+#wrap #footer .wrap .gap .container .bottom-content .footer-logo {float: left;width: 360px;margin: 0 15px;}
+#wrap #footer .wrap .gap .container .bottom-content .footer-logo a {display: block;width: 100%;}
+#wrap #footer .wrap .gap .container .bottom-content .footer-logo a img {display: block;}
+#wrap #footer .wrap .gap .container .bottom-content .title {float: right;width: 750px;margin: 0 15px;text-align: right;}
+#wrap #footer .wrap .gap .container .bottom-content .title h3 {width: 100%;}
+#wrap #footer .wrap .gap .container .bottom-content .title h3 span {font-size: 15px;color: #8890a4;line-height: 200%;}
+#wrap #footer .wrap .gap .container .bottom-content .title h3 a {display: inline-block;font-size: 15px;color: #fff;line-height: 200%;position: relative;}
+#wrap #footer .wrap .gap .container .bottom-content .title h3 a i {position: absolute;bottom: 4px;left: 0;width: 100%;height: 1px;background: #fff;}

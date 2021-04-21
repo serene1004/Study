@@ -1,0 +1,144 @@
+환경설정 path 연결
+C:\AutoSet10\server\MariaDB10\bin
+내pc - 속성 - 고급시스템설정 - 고급 - 환경변수 - 시스템변수 - 경로새로만들기(붙여넣기)
+
+c:\users\user>mysql -u root -p
+enter password : autoset
+enter password : *******
+
+// 데이터베이스 확인하기
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| test               |
++--------------------+
+4 rows in set (0.123 sec)
+
+// 데이터베이스 만들기(create)
+MariaDB [(none)]> create database member;
+Query OK, 1 row affected (0.039 sec)
+
+// 데이터베이스만들기 create + 새로만들데이터베이스
+MariaDB [(none)]> create database ec;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| ec                 |
+| information_schema |
+| member             |
+| mysql              |
+| performance_schema |
+| test               |
++--------------------+
+6 rows in set (0.001 sec)
+
+// 생성된 데이터베이스 삭제(drop)
+MariaDB [(none)]> drop database ec;
+Query OK, 0 rows affected, 2 warnings (0.186 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| member             |
+| mysql              |
+| performance_schema |
+| test               |
++--------------------+
+5 rows in set (0.001 sec)
+
+
+
+1. 데이터베이스 생성하기 : 학교 데이터베이스 생성
+2. 데이터베이스 사용하기 : 사용(use) 데이트베이스
+3. 테이블 생성하기 : 학생 성적표 테이블 생성 
+////////////////////////
+
+create table sungjuk(
+    idx int(11) auto_increment not null,
+    no varchar(13) not null,
+    name varchar(30) not null,
+    kor int(11) not null,
+    eng int(11) not null,
+    mat int(11) not null,
+    bigo varchar(20) null,
+    primary key(idx, no)
+);
+
+MariaDB [school]> create table sungjuk(
+    ->     idx int(11) auto_increment not null,
+    ->     no varchar(13) not null,
+    ->     name varchar(30) not null,
+    ->     kor int(11) not null,
+    ->     eng int(11) not null,
+    ->     mat int(11) not null,
+    ->     bigo varchar(20) null,
+    ->     primary key(idx, no)
+    -> );
+Query OK, 0 rows affected (0.150 sec)
+
+// 생성된 쿼리확인하기(desc)
+MariaDB [school]> desc student;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| idx   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(30) | NO   |     | NULL    |                |
+| kor   | int(11)     | NO   |     | NULL    |                |
+| eng   | int(11)     | NO   |     | NULL    |                |
+| mat   | int(11)     | NO   |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+5 rows in set (0.003 sec)
+
+////////////
+학생주소록 테이블생성
+
+create table address(
+    idx int  auto_increment not null,
+    no   varchar(13) not null,
+    name varchar(30) not null,
+    hp   varchar(13) not null,
+    tel  varchar(13) not null,
+    addr varchar(250) not null,
+    primary key(idx, no)
+);
+
+MariaDB [school]> create table address(
+    ->     idx int  auto_increment not null,
+    ->     no   varchar(13) not null,
+    ->     name varchar(30) not null,
+    ->     hp   varchar(13) not null,
+    ->     tel  varchar(13) not null,
+    ->     addr varchar(250) not null,
+    ->     primary key(idx, no)
+    -> );
+Query OK, 0 rows affected (0.216 sec)
+
+MariaDB [school]> show tables;
++------------------+
+| Tables_in_school |
++------------------+
+| address          |
+| sungjuk          |
++------------------+
+2 rows in set (0.000 sec)
+
+//////////////////////////////////////
+교수 테이블 생성
+
+create table professor(
+    idx int  auto_increment not null,
+    no   varchar(13) not null,
+    name varchar(30) not null,
+    part varchar(30) not null,
+    hp   varchar(13) not null,
+    primary key(idx, no)
+);
