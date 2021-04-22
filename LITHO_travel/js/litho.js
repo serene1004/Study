@@ -254,25 +254,64 @@
 
         },
         section3Fn:function(){
+            var $imgBox = $('#section3 .img-box');
             var $content = $('#section3 .content');
+            var $contentBtn = $('#section3 .content span a');
             var $contentW = $('#section3 .content').innerWidth();
+            var $contentH = $contentW*0.768235294;
             var x = 0;
             var y = 0;
 
 
-            $content.on({
+            function resizeFn(){
+                $contentW = $('#section3 .content').innerWidth();
+                $contentH = $contentW*0.768235294;
+                $content.css({height:$contentH});
+            }
+            $(window).resize(function(){
+                resizeFn();
+            });
+            setTimeout(resizeFn, 100);
+            
+            // https://lithohtml.themezaa.com/home-travel-agency.html# 원사이트 이벤트
+            $imgBox.on({
                 mousemove:function(event){
-                    // 마우스가 위치한곳의 z축값이 높아짐?
-                    // 대상을 사진으로하면 사진전체가 올라와지니까 사진이아닌 다른것?으로 지정해야ㅕ할듯..
-                    // 사진의 중심점을 기준으로 z축값의 변화가있는것같아보임
-                    // console.log('X값',event.clientX);
-                    // console.log('Y값',event.clientY);
-                    x = event.clientX*0.2;
-                    y = event.clientY*0.2;
-                    $content.css({transform:'perspective('+ 2000 +'px) translateZ('+ -y +'px) translateZ('+ -x +'px)'});
-                    // x = event.clientX/($contentW/4);
-                    // y = event.clientY/($contentW/4);
-                    // $content.css({transform:'skewX('+ -x +'deg) skewY('+ y +'deg)'});
+                    // 사진의 중심이 기준이되서 마우스위치에따라서 상하좌우로 rotateXY값이 변화
+                    // $contentBtn << 얘가 중심점이면해결될듯?
+
+                    // 북서 X:- Y:+    북 X:- Y:0   북동 X:- Y:-
+                    // 서쪽 X:0 Y:+        센터     동쪽 X:0 Y:-
+                    // 남서 X:+ Y:+    남 X:+ Y:0   남동 X:+ Y:-
+
+                    // 북서 x:  y:    북동 x:  y:   북동 x:  y: 
+                    // 서쪽 x:  y:    센터 x:  y:   동쪽 x:  y: 
+                    // 남서 x:  y:    남동 x:  y:   남동 x:  y: 
+                    // if(event.clientX > 555, event.clientY < 350){
+                    //     y = y*-1;
+                    //     $content.css({transform:'perspective('+ 1110 +'px) rotateX('+ -20 +'deg) rotateY('+ -20 +'deg)'});
+                    // }
+
+                    // if(event.clientX < 555, event.clientY > 350){
+                    //     x = x*-1;
+                    //     $content.css({transform:'perspective('+ 1110 +'px) rotateX('+ 20 +'deg) rotateY('+ 20 +'deg)'});
+                    // }
+                    
+                    // console.log('x:',event.clientX);
+                    // console.log('y:',event.clientY);
+
+                    // console.log(event.clientX);
+                    // console.log(event.clientY);
+                    // console.log('X-Y : ',event.clientX-event.clientY);
+                    // console.log('Y-X : ',event.clientY-event.clientX);
+                    // console.log('Y+X : ',event.clientY+event.clientX);
+                    // console.log('-X-Y : ',-event.clientX-event.clientY);
+                    x = event.clientX*0.05;
+                    y = event.clientY*0.05;
+
+                    // console.log('x:',x);
+                    // console.log('y:',y);
+                    $imgBox.css({transform:'perspective('+ x +'px) rotateX('+ .2 +'deg) rotateY('+ .2 +'deg)'});
+                    // 각도는 클라이언트값에 비례해서 증가 감소하게 설정하면될듯
                 }
             });
 
@@ -302,13 +341,13 @@
                 $winW = $(window).innerWidth();
                 $contentW = $('#section4 .content').innerWidth();
                 
-                if($winW > 1200){
+                if($winW > 980){
                     cols = 4;
                 }
-                else if($winW > 980){
+                else if($winW > 600){
                     cols = 3;
                 }
-                else if($winW > 680){
+                else{
                     cols = 2;
                 }
 
@@ -324,7 +363,7 @@
                 if(btnNum === 0){
                     n=8;
                     rows = Math.ceil(n/cols);
-                    // $content.css({width:$contentW, height:liH*rows});
+                    $content.css({height:liH*rows});
                     $ul.css({width:$contentW, height:liH});
                     $li.css({width:liW, height:liH});
                     $galleryImg.css({width:imgW,height:imgH});
@@ -365,6 +404,7 @@
                 else if(btnNum === 1){
                     n=3;
                     rows = Math.ceil(n/cols);
+                    $content.css({height:liH*rows});
                     $ul.css({width:$contentW, height:liH});
                     $li.css({width:liW, height:liH});
                     $galleryImg.css({width:imgW,height:imgH});
@@ -394,6 +434,7 @@
                 else if(btnNum === 2){
                     n=3;
                     rows = Math.ceil(n/cols);
+                    $content.css({height:liH*rows});
                     $ul.css({width:$contentW, height:liH});
                     $li.css({width:liW, height:liH});
                     $galleryImg.css({width:imgW,height:imgH});
@@ -422,6 +463,7 @@
                 else if(btnNum === 3){
                     n=2;
                     rows = Math.ceil(n/cols);
+                    $content.css({height:liH*rows});
                     $ul.css({width:$contentW, height:liH});
                     $li.css({width:liW, height:liH});
                     $galleryImg.css({width:imgW,height:imgH});
