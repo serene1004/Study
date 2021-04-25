@@ -1,0 +1,21 @@
+닷홈id.dothome.co.kr/myadmin/
+
+litho 프로젝트 내부에 AJAX로 연동된 response.php 에 DB연결, 저장하기 위한 서버 프로그래밍
+
+
+0-0.  닷홈 서버에 인증(서버이름, 사용자이름(id), 비밀번호, 베이터베이스이름)
+0-1. header.php (db 인증)
+0-2. footer.php (db 닫기)
+0-3. 만들어진 php 서브스크립트 파일을 litho 폴더에 저장
+
+1-1. 닷홈 데이터베이스에 테이블(create_email_table.php) 생성
+1-2. 닷홈 서버에 접속하여 완성된 서버스크립트 파일들을 ftp를 이용하여 업로드
+     경로 : serene.dothome.co.kr/litho/
+1-3. 웹브라우저에서 url 입력실행
+     url : serene.dothome.co.kr/litho/create_email_table.php
+
+2-1. 만들어진 테이블(create_email_table.php)에 폼(form)에 데이터를 입력해야하므로
+     입력 & 출력(목록) 폼 제작(form_input_email.html)
+
+2-2. 폼 데이터를 받아서 저장할 서버스크립트화면을(form_response_insert.php) 제작     
+2-3. 목록보기를 클릭하면 결과화면 출력

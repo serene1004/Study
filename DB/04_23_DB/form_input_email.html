@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./form_css/reset.css">
+    <link rel="stylesheet" href="./form_css/style.css">
+
+</head>
+<body>
+    <div id="wrap">
+        <section id="email-form">
+            <div class="wrap">
+                <div class="gap">
+                    <div class="container">
+                        <div class="title">
+                            <h2>LITHO EMAIL INPUT FORM</h2>
+                        </div>
+                        <div class="content">
+                            <ul>
+                                <li>
+                                    <div class="content-gap">
+                                        <div class="content-wrap">
+                                            <form name="email_form" id="email_form" method="POST" action="./form_response_insert.php">
+                                                <div>
+                                                    <input type="email" name="email" id="email" value="" placeholder="이메일주소를 입력하세요.">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="content-gap">
+                                        <div class="content-wrap">
+                                            <!-- 전송(querySelector) -->
+                                            <button type="submit" onclick="javascript:document.querySelector('#email_form').submit();">전송</button>
+                                            <!-- <button type="submit" onclick="javascript:form.email_form.submit();">전송(form)</button> -->
+                                            <button type="button" onclick="javascript:location.href='./select_email_list.php'">목록보기</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+
+<!-- serene.dothome.co.kr/litho/form_input_email.html -->

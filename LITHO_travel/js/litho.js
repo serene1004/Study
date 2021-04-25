@@ -17,6 +17,8 @@
             that.section10Fn();
             that.section11Fn();
             that.footerFn();
+            that.goTopFn();
+            that.modalFn();
         },
         scrollEventFn:function(){
             var $win        = $(window);
@@ -251,16 +253,37 @@
 
         },
         section2Fn:function(){
+            var $contentWrap = $('#section2 .content-wrap');
+            var t = 0;
+
+
+            $(window).scroll(function(){
+                if($(window).scrollTop() >= 200){
+                    if(t === 0){
+                        t = 1;
+                        $contentWrap.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() === $('#section1').offset().top){
+                    t = 0;
+                    $contentWrap.removeClass('addScroll');
+                }
+            });
 
         },
         section3Fn:function(){
-            var $imgBox = $('#section3 .img-box');
-            var $content = $('#section3 .content');
+            var $imgBox     = $('#section3 .img-box');
+            var $content    = $('#section3 .content');
             var $contentBtn = $('#section3 .content span a');
-            var $contentW = $('#section3 .content').innerWidth();
-            var $contentH = $contentW*0.768235294;
-            var x = 0;
-            var y = 0;
+            var $contentW   = $('#section3 .content').innerWidth();
+            var $contentH   = $contentW*0.768235294;
+            var x           = 0;
+            var y           = 0;
+            var $h2         = $('#section3 h2');
+            var $list1         = $('#section3 .list1');
+            var $list2         = $('#section3 .list2');
+            var $titleBtn   = $('#section3 .title-btn');
+            var t           = 0;
 
 
             function resizeFn(){
@@ -272,8 +295,7 @@
                 resizeFn();
             });
             setTimeout(resizeFn, 100);
-            
-            // https://lithohtml.themezaa.com/home-travel-agency.html# 원사이트 이벤트
+
             $imgBox.on({
                 mousemove:function(event){
                     // 사진의 중심이 기준이되서 마우스위치에따라서 상하좌우로 rotateXY값이 변화
@@ -310,10 +332,47 @@
 
                     // console.log('x:',x);
                     // console.log('y:',y);
-                    $imgBox.css({transform:'perspective('+ x +'px) rotateX('+ .2 +'deg) rotateY('+ .2 +'deg)'});
+                    // $imgBox.css({transform:'perspective('+ 1110 +'px) rotateX('+ 20 +'deg) rotateY('+ 20 +'deg)'});
                     // 각도는 클라이언트값에 비례해서 증가 감소하게 설정하면될듯
                 }
             });
+            
+
+            $(window).scroll(function(){
+                if($(window).scrollTop() >= 420){
+                    if(t === 0){
+                        t = 1;
+                        $imgBox.addClass('addScroll');
+                        $h2.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() >= 520){
+                    if(t === 1){
+                        t = 2;
+                        $list1.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() >= 620){
+                    if(t === 2){
+                        t = 3;
+                        $list2.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() >= 770){
+                    if(t === 3){
+                        t = 4;
+                        $titleBtn.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() === $('#section1').offset().top){
+                    t = 0;
+                    $imgBox.removeClass('addScroll');
+                    $h2.removeClass('addScroll');
+                    $list1.removeClass('addScroll');
+                    $list2.removeClass('addScroll');
+                    $titleBtn.removeClass('addScroll');
+                }
+            });            
 
 
         },
@@ -334,7 +393,58 @@
             var cols        = 4;
             var rows        = Math.ceil(n/cols);
             var btnNum      = 0;
+            var $title      = $('#section4 .title');
+            var $galleryNav = $('#section4 #gallery-nav');
+            var $col        = $('#section4 .col');
+            var $galContent = $('#section4 .gallery-content');
+            var t           = 0;
 
+
+            $(window).scroll(function(){
+                if($(window).scrollTop() >= $('#section3').offset().top-70){
+                    if(t === 0){
+                        t = 1;
+                        $title.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() >= $('#section3').offset().top){
+                    if(t === 1){
+                        t = 2;
+                        $galleryNav.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() >= $('#section3').offset().top+100){
+                    if(t === 2){
+                        t = 3;
+                        $galContent.eq(0).addClass('addScroll');
+                        $galContent.eq(1).addClass('addScroll');
+                        $galContent.eq(2).addClass('addScroll');
+                        $galContent.eq(3).addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() >= $('#section3').offset().top+400){
+                    if(t === 3){
+                        t = 4;
+                        $galContent.eq(4).addClass('addScroll2');
+                        $galContent.eq(5).addClass('addScroll2');
+                        $galContent.eq(6).addClass('addScroll2');
+                        $galContent.eq(7).addClass('addScroll2');
+                    }
+                }
+                if($(window).scrollTop() === $('#section1').offset().top){
+                    t = 0;
+                    $title.removeClass('addScroll');
+                    $galleryNav.removeClass('addScroll');
+                    $galContent.eq(0).removeClass('addScroll');
+                    $galContent.eq(1).removeClass('addScroll');
+                    $galContent.eq(2).removeClass('addScroll');
+                    $galContent.eq(3).removeClass('addScroll');
+                    $galContent.eq(4).removeClass('addScroll2');
+                    $galContent.eq(5).removeClass('addScroll2');
+                    $galContent.eq(6).removeClass('addScroll2');
+                    $galContent.eq(7).removeClass('addScroll2');
+                }
+            });
 
             
             function galleryResizeFn(){
@@ -531,6 +641,23 @@
             var touchE    = 0;
             var touchD    = false;
 
+            var $content = $('#section5 .content');
+            var t = 0;
+
+
+            $(window).scroll(function(){
+                if($(window).scrollTop() >= $('#section4').offset().top+300){
+                    if(t === 0){
+                        t = 1;
+                        $content.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() === $('#section1').offset().top){
+                    t = 0;
+                    $content.removeClass('addScroll');
+                }
+            });
+
 
             function slide3dFn(){
                 $ul.css({transform: 'perspective('+ (tZ*3) +'px) translateZ('+ -tZ +'px) rotateY('+ (-angle*cnt) +'deg)'});
@@ -642,7 +769,38 @@
 
         },
         section6Fn:function(){
+            var $title = $('#section6 .title');
+            var $li = $('#section6 li');
+            var $bottomBtn = $('#section6 .bottom-btn');
+            var t = 0;
 
+
+            $(window).scroll(function(){
+                if($(window).scrollTop() >= $('#section5').offset().top){
+                    if(t === 0){
+                        t = 1;
+                        $title.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() >= $('#section5').offset().top+150){
+                    if(t === 1){
+                        t = 2;
+                        $li.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() >= $('#section5').offset().top+550){
+                    if(t === 2){
+                        t = 3;
+                        $bottomBtn.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() === $('#section1').offset().top){
+                    t = 0;
+                    $title.removeClass('addScroll');
+                    $li.removeClass('addScroll');
+                    $bottomBtn.removeClass('addScroll');
+                }
+            });
         },
         section7Fn:function(){
             var $slideContainerW = $('#section7 .slide-container').innerWidth();
@@ -662,6 +820,29 @@
             var setId2           = null;
             var timercnt         = 0;
 
+            var $title = $('#section7 .title');
+            var $slideContainer = $('#section7 .slide-container');
+            var t = 0;
+
+            $(window).scroll(function(){
+                if($(window).scrollTop() >= $('#section6').offset().top+100){
+                    if(t === 0){
+                        t = 1;
+                        $title.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() >= $('#section5').offset().top+250){
+                    if(t === 1){
+                        t = 2;
+                        $slideContainer.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() === $('#section1').offset().top){
+                    t = 0;
+                    $title.removeClass('addScroll');
+                    $slideContainer.removeClass('addScroll');
+                }
+            });
 
             function resizeFn(){
                 $slideContainerW = $('#section7 .slide-container').innerWidth();
@@ -769,6 +950,21 @@
 
         },
         section8Fn:function(){
+            var $li = $('#section8 li');
+            var t = 0;
+
+            $(window).scroll(function(){
+                if($(window).scrollTop() >= $('#section7').offset().top+100){
+                    if(t === 0){
+                        t = 1;
+                        $li.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() === $('#section1').offset().top){
+                    t = 0;
+                    $li.removeClass('addScroll');
+                }
+            });
 
         },
         section9Fn:function(){
@@ -786,6 +982,37 @@
             var setId2           = null;
             var timercnt         = 0;
 
+            var $title = $('#section9 .title');
+            var $slideContainer = $('#section9 .slide-container');
+            var $img = $('#section9 img');
+            var t = 0;
+
+            $(window).scroll(function(){
+                if($(window).scrollTop() >= $('#section8').offset().top-100){
+                    if(t === 0){
+                        t = 1;
+                        $title.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() >= $('#section8').offset().top){
+                    if(t === 1){
+                        t = 2;
+                        $slideContainer.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() >= $('#section8').offset().top+500){
+                    if(t === 2){
+                        t = 3;
+                        $img.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() === $('#section1').offset().top){
+                    t = 0;
+                    $title.removeClass('addScroll');
+                    $slideContainer.removeClass('addScroll');
+                    $img.removeClass('addScroll');
+                }
+            });
 
             function resizeFn(){
                 $slideContainerW = $('#section9 .slide-container').innerWidth();
@@ -875,14 +1102,117 @@
 
         },
         section10Fn:function(){
+            var $title = $('#section10 .title');
+            var t = 0;
+
+            $(window).scroll(function(){
+                if($(window).scrollTop() >= $('#section9').offset().top+200){
+                    if(t === 0){
+                        t = 1;
+                        $title.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() === $('#section1').offset().top){
+                    t = 0;
+                    $title.removeClass('addScroll');
+                }
+            });
 
         },
         section11Fn:function(){
+            var $mailBox = $('#section11 .mail-box');
+            var $title = $('#section11 .title');
+            var $li = $('#section11 li');
+            var t = 0;
 
+            $(window).scroll(function(){
+                if($(window).scrollTop() >= $('#section10').offset().top-200){
+                    if(t === 0){
+                        t = 1;
+                        $mailBox.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() >= $('#section10').offset().top-100){
+                    if(t === 1){
+                        t = 2;
+                        $title.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() >= $('#section10').offset().top){
+                    if(t === 2){
+                        t = 3;
+                        $li.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() === $('#section1').offset().top){
+                    t = 0;
+                    $mailBox.removeClass('addScroll');
+                }
+            });
         },
         footerFn:function(){
 
         },
+        goTopFn:function(){
+            var $goTop = $('.go-top');
+            var $goTopBtn = $('.gotop-Btn');
+            var t = 0;
+
+            $goTopBtn.on({
+                click:function(e){
+                    e.preventDefault();
+                    var url = $(this).attr('href');
+                    if(!$('html,body').is(':animated')){
+                        $('html,body').stop().animate({scrollTop:$(url).offset().top}, 600);
+                    }
+                }
+            });
+
+
+            $(window).scroll(function(){
+                if($(this).scrollTop()>=100){
+                    if(t===0){
+                        t=1;
+                        $goTop.stop().fadeIn(400);
+                    }
+                }
+                else{
+                    t=0;
+                    $goTop.stop().fadeOut(400);
+                }
+            });
+
+        },
+        modalFn:function(){
+            var $modal     = $('#modal');
+            var $modalWrap = $('#modal .modal-btn-wrap');
+            var $demoBtn   = $('#modal .demo-btn');
+            var $closeBtn  = $('#modal .close-btn');
+            var t = 0;
+
+            $modalWrap.on({
+                click:function(){
+                    $modal.toggleClass('addModal');
+                    $modalWrap.toggleClass('addModal');
+                    $demoBtn.toggleClass('addModal');
+                    $closeBtn.toggleClass('addModal');
+                }
+            });
+
+            $(window).scroll(function(){
+                if($(this).scrollTop()>=100){
+                    if(t===0){
+                        t=1;
+                        $modalWrap.stop().fadeIn(400);
+                    }
+                }
+                else{
+                    t=0;
+                    $modalWrap.stop().fadeOut(400);
+                }
+            });
+
+        }
     }
 
     litho.init();
