@@ -28,10 +28,13 @@
             var $blackLogo  = $('#header .black-logo');
             var $navMainBtn = $('#header #nav .main-btn');
             var $aside      = $('#header #aside li i');
+            var $bar        = $('#header .bar');
             var scrollOld   = 0;
             var scrollNew   = 0;
             var result      = null;
             var that        = this;
+
+
 
             function scrollFn(){
                 scrollNew = $win.scrollTop();
@@ -91,7 +94,11 @@
             var $subSub    = $('#header .sub-sub');
             var $subSubBtn = $('#header .sub-sub-btn');
             var $subSubSub = $('#header .sub-sub-sub');
-
+            var $mobileBtn = $('#header .mobile-btn');
+            var $bar       = $('#header .bar');
+            var pc         = 0;
+            var mobile     = 0;
+            var that = this;
             
             $mainBtn.on({
                 mouseenter:function(){
@@ -116,6 +123,53 @@
                 mouseleave:function(){
                     $sub.hide();
                     $subSub.hide();
+                }
+            });
+
+            function pcFn(){
+
+            }
+
+            function mobileFn(){
+
+            }
+
+
+            $(window).resize(function(){
+                pcMobileFn();
+            });
+            setTimeout(pcMobileFn, 100);
+
+            function pcMobileFn(){
+                if($(window).innerWidth() > 980 ){
+                    pc = 1;
+                    mobile = 0;
+                    pcFn();
+                    that.btn = 0;
+                }
+                else{
+                    pc = 0;
+                    mobile = 1;
+                    mobileFn();
+                }
+            };
+
+            $mobileBtn.on({
+                click:function(){
+                    if($(window).scrollTop() === 0){
+
+                    }
+                    else{
+                        if($bar.hasClass('addBlack') === true
+                        ){
+    
+                        }
+                        else{
+
+                        }
+                    }
+                    $bar.toggleClass('addMobile');
+                    return that.btn === 0 ? that.btn = 1 : that.btn = 0;
                 }
             });
             
@@ -273,18 +327,18 @@
         },
         section3Fn:function(){
             var $imgBox     = $('#section3 .img-box');
+            var $imgGap     = $('#section3 .img-gap');
             var $content    = $('#section3 .content');
-            var $contentBtn = $('#section3 .content span a');
             var $contentW   = $('#section3 .content').innerWidth();
             var $contentH   = $contentW*0.768235294;
             var x           = 0;
             var y           = 0;
             var $h2         = $('#section3 h2');
-            var $list1         = $('#section3 .list1');
-            var $list2         = $('#section3 .list2');
+            var $list1      = $('#section3 .list1');
+            var $list2      = $('#section3 .list2');
             var $titleBtn   = $('#section3 .title-btn');
             var t           = 0;
-
+            
 
             function resizeFn(){
                 $contentW = $('#section3 .content').innerWidth();
@@ -299,7 +353,6 @@
             $imgBox.on({
                 mousemove:function(event){
                     // 사진의 중심이 기준이되서 마우스위치에따라서 상하좌우로 rotateXY값이 변화
-                    // $contentBtn << 얘가 중심점이면해결될듯?
 
                     // 북서 X:- Y:+    북 X:- Y:0   북동 X:- Y:-
                     // 서쪽 X:0 Y:+        센터     동쪽 X:0 Y:-
@@ -327,12 +380,15 @@
                     // console.log('Y-X : ',event.clientY-event.clientX);
                     // console.log('Y+X : ',event.clientY+event.clientX);
                     // console.log('-X-Y : ',-event.clientX-event.clientY);
+
                     x = event.clientX*0.05;
                     y = event.clientY*0.05;
-
+                    x = x-33.5;
+                    y = y-33;
                     // console.log('x:',x);
                     // console.log('y:',y);
-                    // $imgBox.css({transform:'perspective('+ 1110 +'px) rotateX('+ 20 +'deg) rotateY('+ 20 +'deg)'});
+                    $('.pos').text('x= ' + x + ' / y= '+ y);
+                    $imgGap.css({transform:'perspective(1000px) rotateX('+ y +'deg) rotateY('+ -x +'deg) scale3d(1,1,1)'});
                     // 각도는 클라이언트값에 비례해서 증가 감소하게 설정하면될듯
                 }
             });
@@ -451,10 +507,10 @@
                 $winW = $(window).innerWidth();
                 $contentW = $('#section4 .content').innerWidth();
                 
-                if($winW > 980){
+                if($winW > 963){
                     cols = 4;
                 }
-                else if($winW > 600){
+                else if($winW > 683){
                     cols = 3;
                 }
                 else{
@@ -660,7 +716,7 @@
 
 
             function slide3dFn(){
-                $ul.css({transform: 'perspective('+ (tZ*3) +'px) translateZ('+ -tZ +'px) rotateY('+ (-angle*cnt) +'deg)'});
+                $ul.css({transform: 'perspective('+ 1647 +'px) translateZ('+ -549 +'px) rotateY('+ (-angle*cnt) +'deg)'});
             }
             function prevCountFn(){
                 cnt--;
@@ -774,6 +830,30 @@
             var $bottomBtn = $('#section6 .bottom-btn');
             var t = 0;
 
+            var $h2    = $('#section6 h2');
+            var $h2W   = $('#section6 h2').innerWidth();
+            var h2Size = $h2W*0.055042735;
+
+            // function resizeFn(){
+            //     $h2W   = $('#section6 h2').innerWidth();
+            //     h2Size = $h2W*0.055042735;
+
+            //     if($(window).innerWidth() > 980){
+            //         $h2.css({fontSize:h2Size});
+            //     }
+            //     else if($(window).innerWidth() > 600){
+            //         $h2.css({fontSize:h2Size*1.25});
+            //     }
+            //     else{
+            //         $h2.css({fontSize:h2Size*1.5});
+            //     }
+            // }
+
+            // $(window).resize(function(){
+            //     resizeFn();
+            // });
+            // setTimeout(resizeFn, 100);
+
 
             $(window).scroll(function(){
                 if($(window).scrollTop() >= $('#section5').offset().top){
@@ -844,14 +924,40 @@
                 }
             });
 
-            function resizeFn(){
-                $slideContainerW = $('#section7 .slide-container').innerWidth();
-                $slideW = $slideContainerW/4;
-                $slideView.css({width:$slideW*4})
-                $slideWrap.css({width:$slideW*15,marginLeft: -$slideW*5});
-                $slide.css({width:$slideW});
 
-                $captionGap.css({height:imgH});
+            function resizeFn(){
+                if($(window).innerWidth() > 980){
+                    $slideContainerW = $('#section7 .slide-container').innerWidth();
+                    $slideW = $slideContainerW/4;
+                    $slideView.css({width:$slideW*4})
+                    $slideWrap.css({width:$slideW*15,marginLeft: -$slideW*5});
+                    $slide.css({width:$slideW});
+                    $captionGap.css({height:imgH});
+                }
+                else if($(window).innerWidth() > 850){
+                    $slideContainerW = $('#section7 .slide-container').innerWidth();
+                    $slideW = $slideContainerW/3;
+                    $slideView.css({width:$slideW*3})
+                    $slideWrap.css({width:$slideW*15,marginLeft: -$slideW*5});
+                    $slide.css({width:$slideW});
+                    $captionGap.css({height:imgH});
+                }
+                else if($(window).innerWidth() > 600){
+                    $slideContainerW = $('#section7 .slide-container').innerWidth();
+                    $slideW = $slideContainerW/2;
+                    $slideView.css({width:$slideW*2})
+                    $slideWrap.css({width:$slideW*15,marginLeft: -$slideW*5});
+                    $slide.css({width:$slideW});
+                    $captionGap.css({height:imgH});
+                }
+                else{
+                    $slideContainerW = $('#section7 .slide-container').innerWidth();
+                    $slideW = $slideContainerW/1;
+                    $slideView.css({width:$slideW*1})
+                    $slideWrap.css({width:$slideW*15,marginLeft: -$slideW*5});
+                    $slide.css({width:$slideW});
+                    $captionGap.css({height:imgH});
+                }
             }
 
             $(window).resize(function(){
@@ -1015,11 +1121,27 @@
             });
 
             function resizeFn(){
-                $slideContainerW = $('#section9 .slide-container').innerWidth();
-                $slideW = $slideContainerW/3;
-                $slideView.css({width:$slideW*3})
-                $slideWrap.css({width:$slideW*12,marginLeft: -$slideW*4});
-                $slide.css({width:$slideW});
+                if($(window).innerWidth() > 980){
+                    $slideContainerW = $('#section9 .slide-container').innerWidth();
+                    $slideW = $slideContainerW/3;
+                    $slideView.css({width:$slideW*3})
+                    $slideWrap.css({width:$slideW*12,marginLeft: -$slideW*4});
+                    $slide.css({width:$slideW});
+                }
+                else if($(window).innerWidth() > 750){
+                    $slideContainerW = $('#section9 .slide-container').innerWidth();
+                    $slideW = $slideContainerW/2;
+                    $slideView.css({width:$slideW*2})
+                    $slideWrap.css({width:$slideW*12,marginLeft: -$slideW*4});
+                    $slide.css({width:$slideW});
+                }
+                else{
+                    $slideContainerW = $('#section9 .slide-container').innerWidth();
+                    $slideW = $slideContainerW/1;
+                    $slideView.css({width:$slideW*1})
+                    $slideWrap.css({width:$slideW*12,marginLeft: -$slideW*4});
+                    $slide.css({width:$slideW});
+                }
             }
 
             $(window).resize(function(){
@@ -1184,31 +1306,58 @@
 
         },
         modalFn:function(){
-            var $modal     = $('#modal');
-            var $modalWrap = $('#modal .modal-btn-wrap');
-            var $demoBtn   = $('#modal .demo-btn');
-            var $closeBtn  = $('#modal .close-btn');
+            var $modal        = $('#modal');
+            var $modalBtnWrap = $('#modal .modal-btn-wrap');
+            var $demoBtn      = $('#modal .demo-btn');
+            var $closeBtn     = $('#modal .close-btn');
+            var $html         = $('html');
+            var $modalBlind   = $('#wrap .modal-blind');
             var t = 0;
 
-            $modalWrap.on({
+            $demoBtn.on({
                 click:function(){
-                    $modal.toggleClass('addModal');
-                    $modalWrap.toggleClass('addModal');
-                    $demoBtn.toggleClass('addModal');
-                    $closeBtn.toggleClass('addModal');
+                    $html.addClass('addModal');
+                    $modal.addClass('addModal');
+                    $modalBtnWrap.addClass('addModal');
+                    $modalBlind.addClass('addModal');
+                    $demoBtn.addClass('addModal');
+                    $closeBtn.addClass('addModal');
                 }
             });
+
+            $closeBtn.on({
+                click:function(){
+                    $html.removeClass('addModal');
+                    $modal.removeClass('addModal');
+                    $modalBtnWrap.removeClass('addModal');
+                    $modalBlind.removeClass('addModal');
+                    $demoBtn.removeClass('addModal');
+                    $closeBtn.removeClass('addModal');
+                }
+            });
+
+            $modalBlind.on({
+                click:function(){
+                    $html.removeClass('addModal');
+                    $modal.removeClass('addModal');
+                    $modalBtnWrap.removeClass('addModal');
+                    $demoBtn.removeClass('addModal');
+                    $closeBtn.removeClass('addModal');
+                    $modalBlind.removeClass('addModal');
+                }
+            });
+            
 
             $(window).scroll(function(){
                 if($(this).scrollTop()>=100){
                     if(t===0){
                         t=1;
-                        $modalWrap.stop().fadeIn(400);
+                        $modalBtnWrap.stop().fadeIn(400);
                     }
                 }
                 else{
                     t=0;
-                    $modalWrap.stop().fadeOut(400);
+                    $modalBtnWrap.stop().fadeOut(400);
                 }
             });
 
