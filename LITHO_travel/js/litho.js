@@ -35,7 +35,6 @@
             var that        = this;
 
 
-
             function scrollFn(){
                 scrollNew = $win.scrollTop();
                 var scroll = function(){
@@ -99,46 +98,72 @@
             var pc         = 0;
             var mobile     = 0;
             var that = this;
-            
-            $mainBtn.on({
-                mouseenter:function(){
-                    $sub.hide();
-                    $(this).next().show();
-                }
-            });
-            $subBtn.on({
-                mouseenter:function(){
-                    $subSub.hide();
-                    $(this).next().show();
-                }
-            });
-            $subSubBtn.on({
-                mouseenter:function(){
-                    $subSubSub.hide();
-                    $(this).next().show();
-                }
-            })
-
-            $nav.on({
-                mouseleave:function(){
-                    $sub.hide();
-                    $subSub.hide();
-                }
-            });
 
             function pcFn(){
+                $sub.css({display:'none'});
+                $subSub.css({display:'none'});
+                $subSubSub.css({display:'none'});
+                $nav.css({display:'inline-block'});
+                $bar.removeClass('addMobile');
 
+                $mainBtn.on({
+                    mouseenter:function(){
+                        $sub.hide();
+                        $(this).next().show();
+                    }
+                });
+                $subBtn.on({
+                    mouseenter:function(){
+                        $subSub.hide();
+                        $(this).next().show();
+                    }
+                });
+                $subSubBtn.on({
+                    mouseenter:function(){
+                        $subSubSub.hide();
+                        $(this).next().show();
+                    }
+                });
+    
+                $nav.on({
+                    mouseleave:function(){
+                        $sub.hide();
+                        $subSub.hide();
+                    }
+                });
             }
 
             function mobileFn(){
+                $nav.css({display:'none'});
+                $mainBtn.off('mouseenter');
+                $subBtn.off('mouseenter');
+                $subSubBtn.off('mouseenter');
+                $nav.off('mouseleave');
 
+                $mainBtn.on({
+                    click:function(){
+                        $sub.stop().slideUp();
+                        $(this).next().stop().slideToggle(400);
+                    }
+                });
+                $subBtn.on({
+                    click:function(){
+                        $subSub.stop().slideUp();
+                        $(this).next().stop().slideToggle(400);
+                    }
+                });
+                $subSubBtn.on({
+                    click:function(){
+                        $subSubSub.stop().slideUp();
+                        $(this).next().stop().slideToggle(400);
+                    }
+                });
             }
-
 
             $(window).resize(function(){
                 pcMobileFn();
             });
-            setTimeout(pcMobileFn, 100);
+            setTimeout(pcMobileFn, 10);
 
             function pcMobileFn(){
                 if($(window).innerWidth() > 980 ){
@@ -155,23 +180,14 @@
             };
 
             $mobileBtn.on({
-                click:function(){
-                    if($(window).scrollTop() === 0){
-
-                    }
-                    else{
-                        if($bar.hasClass('addBlack') === true
-                        ){
-    
-                        }
-                        else{
-
-                        }
-                    }
+                click:function(event){
+                    event.preventDefault();
                     $bar.toggleClass('addMobile');
+                    $nav.stop().slideToggle(400);
                     return that.btn === 0 ? that.btn = 1 : that.btn = 0;
                 }
             });
+
             
         },
         section1Fn:function(){
@@ -195,6 +211,13 @@
             function resizeFn(){
                 $winW = $(window).width();
                 $winH = $(window).height();
+                
+                if($winW > 583){
+                    $winH = $(window).height();
+                }
+                else{
+                    $winH = 750;
+                }
                 $slide.css({width:$winW,height:$winH});
                 $section1.css({width:$winW,height:$winH});
             }
@@ -348,7 +371,7 @@
             $(window).resize(function(){
                 resizeFn();
             });
-            setTimeout(resizeFn, 100);
+            setTimeout(resizeFn, 10);
 
             $imgBox.on({
                 mousemove:function(event){
@@ -395,26 +418,26 @@
             
 
             $(window).scroll(function(){
-                if($(window).scrollTop() >= 420){
+                if($(window).scrollTop() >= 450){
                     if(t === 0){
                         t = 1;
                         $imgBox.addClass('addScroll');
                         $h2.addClass('addScroll');
                     }
                 }
-                if($(window).scrollTop() >= 520){
+                if($(window).scrollTop() >= 550){
                     if(t === 1){
                         t = 2;
                         $list1.addClass('addScroll');
                     }
                 }
-                if($(window).scrollTop() >= 620){
+                if($(window).scrollTop() >= 650){
                     if(t === 2){
                         t = 3;
                         $list2.addClass('addScroll');
                     }
                 }
-                if($(window).scrollTop() >= 770){
+                if($(window).scrollTop() >= 750){
                     if(t === 3){
                         t = 4;
                         $titleBtn.addClass('addScroll');
@@ -457,7 +480,7 @@
 
 
             $(window).scroll(function(){
-                if($(window).scrollTop() >= $('#section3').offset().top-70){
+                if($(window).scrollTop() >= $('#section3').offset().top-80){
                     if(t === 0){
                         t = 1;
                         $title.addClass('addScroll');
@@ -469,7 +492,7 @@
                         $galleryNav.addClass('addScroll');
                     }
                 }
-                if($(window).scrollTop() >= $('#section3').offset().top+100){
+                if($(window).scrollTop() >= $('#section3').offset().top+120){
                     if(t === 2){
                         t = 3;
                         $galContent.eq(0).addClass('addScroll');
@@ -478,7 +501,7 @@
                         $galContent.eq(3).addClass('addScroll');
                     }
                 }
-                if($(window).scrollTop() >= $('#section3').offset().top+400){
+                if($(window).scrollTop() >= $('#section3').offset().top+370){
                     if(t === 3){
                         t = 4;
                         $galContent.eq(4).addClass('addScroll2');
@@ -697,9 +720,15 @@
             var touchE    = 0;
             var touchD    = false;
 
-            var $content = $('#section5 .content');
+            var $content  = $('#section5 .content');
             var t = 0;
 
+            function resizeFn(){
+                $ul.css({transform: 'perspective(0) translateZ(0) rotateY(0)'});
+            }
+            $(window).resize(function(){
+                resizeFn();
+            });
 
             $(window).scroll(function(){
                 if($(window).scrollTop() >= $('#section4').offset().top+300){
@@ -714,33 +743,61 @@
                 }
             });
 
-
             function slide3dFn(){
                 $ul.css({transform: 'perspective('+ 1647 +'px) translateZ('+ -549 +'px) rotateY('+ (-angle*cnt) +'deg)'});
             }
+            function prevSlideFn(){
+                $li.css({zIndex:1}).stop().animate({opacity:1}, 0);
+                $li.eq(cnt).css({zIndex:2});
+                $li.eq(cnt===2?0:cnt+1).css({zIndex:3}).stop().animate({opacity:1},0).animate({opacity:0}, 600);
+            }
+            function nextSlideFn(){
+                $li.css({zIndex:1});
+                $li.eq(cnt-1).css({zIndex:2});
+                $li.eq(cnt).css({zIndex:3}).stop().animate({opacity:0},0).animate({opacity:1}, 600);
+            }
+
             function prevCountFn(){
-                cnt--;
-                slide3dFn();
+                if($(window).innerWidth() > 963){
+                    cnt--;
+                    slide3dFn()
+                }
+                else{
+                    cnt--;
+                    if(cnt<0){cnt=2;}
+                    prevSlideFn()
+                }
             }
             function nextCountFn(){
-                cnt++;
-                slide3dFn();
+                if($(window).innerWidth() > 963){
+                    cnt++;
+                    slide3dFn()
+                }
+                else{
+                    cnt++;
+                    if(cnt>2){cnt=0;}
+                    nextSlideFn()
+                }
             }
 
             $prevBtn.on({
                 click:function(){
-                    prevCountFn();
-                    timerFn();
-                    $playBtn.removeClass('addBtn');
-                    $stopBtn.removeClass('addBtn');
+                    if(!$li.is(':animated')){
+                        prevCountFn();
+                        timerFn();
+                        $playBtn.removeClass('addBtn');
+                        $stopBtn.removeClass('addBtn');
+                    }
                 }
             });
             $nextBtn.on({
                 click:function(){
-                    nextCountFn();
-                    timerFn();
-                    $playBtn.removeClass('addBtn');
-                    $stopBtn.removeClass('addBtn');
+                    if(!$li.is(':animated')){
+                        nextCountFn();
+                        timerFn();
+                        $playBtn.removeClass('addBtn');
+                        $stopBtn.removeClass('addBtn');
+                    }
                 }
             });
 
@@ -809,16 +866,20 @@
 
             function touchSwipeFn(){
                 if(touchS-touchE > 30){
-                    nextCountFn();
-                    timerFn();
-                    $playBtn.removeClass('addBtn');
-                    $stopBtn.removeClass('addBtn');
+                    if(!$li.is(':animated')){
+                        nextCountFn();
+                        timerFn();
+                        $playBtn.removeClass('addBtn');
+                        $stopBtn.removeClass('addBtn');
+                    }
                 }
                 if(touchS-touchE < -30){
-                    prevCountFn();
-                    timerFn();
-                    $playBtn.removeClass('addBtn');
-                    $stopBtn.removeClass('addBtn');
+                    if(!$li.is(':animated')){
+                        prevCountFn();
+                        timerFn();
+                        $playBtn.removeClass('addBtn');
+                        $stopBtn.removeClass('addBtn');
+                    }
                 }
             }            
 
@@ -868,7 +929,7 @@
                         $li.addClass('addScroll');
                     }
                 }
-                if($(window).scrollTop() >= $('#section5').offset().top+550){
+                if($(window).scrollTop() >= $('#section5').offset().top+600){
                     if(t === 2){
                         t = 3;
                         $bottomBtn.addClass('addScroll');
@@ -911,7 +972,7 @@
                         $title.addClass('addScroll');
                     }
                 }
-                if($(window).scrollTop() >= $('#section5').offset().top+250){
+                if($(window).scrollTop() >= $('#section6').offset().top+250){
                     if(t === 1){
                         t = 2;
                         $slideContainer.addClass('addScroll');
