@@ -1,8 +1,9 @@
 ;(function($){
     var litho = {
+        btn:0,
         init:function(){
             var that = this;
-
+            
             that.scrollEventFn();
             that.headerFn();
             that.section1Fn();
@@ -34,16 +35,19 @@
             var result      = null;
             var that        = this;
 
+            var $nav = $('#header #nav');
+            var $bar = $('#header .bar');
 
+            
             function scrollFn(){
                 scrollNew = $win.scrollTop();
                 var scroll = function(){
-                    if( scrollOld - scrollNew > 0 ){result = 'Up';}
+                    if(scrollOld - scrollNew > 0){result = 'Up';}
                     else{result = 'Down';}
                 }
                 scroll();
                 
-                if( scrollNew <= 20 ){
+                if(scrollNew <= 20){
                     $header.removeClass('addDown');
                     $headerWrap.removeClass('addDown');
                     $whiteLogo.removeClass('addDown');
@@ -53,9 +57,13 @@
                     $aside.removeClass('addDown');
                 }
                 else{
-                    if( result === 'Up' ){
-                        if( that.btn === 1){    // 모바일모드
-
+                    if(result === 'Up'){
+                        if(that.btn === 1){    // 모바일모드
+                            // $header.removeClass('addDown');
+                            // $header.removeClass('addUp');
+                            // $nav.stop().slideUp();
+                            // $bar.removeClass('addMobile');
+                            // that.btn = 0;
                         }
                         else{                   // pc모드
                             $header.addClass('addDown');
@@ -67,9 +75,13 @@
                             $header.removeClass('addUp');
                         }
                     }
-                    if( result === 'Down' ){
-                        if( that.btn === 1){    // 모바일모드
-
+                    if(result === 'Down'){
+                        if(that.btn === 1){    // 모바일모드
+                            // $header.removeClass('addDown');
+                            // $header.addClass('addUp');
+                            // $nav.stop().slideUp();
+                            // $bar.removeClass('addMobile');
+                            // that.btn = 0;
                         }
                         else{                   // pc모드
                             $header.removeClass('addDown');
@@ -107,26 +119,30 @@
                 $bar.removeClass('addMobile');
 
                 $mainBtn.on({
-                    mouseenter:function(){
+                    mouseenter:function(event){
+                        event.preventDefault();
                         $sub.hide();
                         $(this).next().show();
                     }
                 });
                 $subBtn.on({
-                    mouseenter:function(){
+                    mouseenter:function(event){
+                        event.preventDefault();
                         $subSub.hide();
                         $(this).next().show();
                     }
                 });
                 $subSubBtn.on({
-                    mouseenter:function(){
+                    mouseenter:function(event){
+                        event.preventDefault();
                         $subSubSub.hide();
                         $(this).next().show();
                     }
                 });
     
                 $nav.on({
-                    mouseleave:function(){
+                    mouseleave:function(event){
+                        event.preventDefault();
                         $sub.hide();
                         $subSub.hide();
                     }
@@ -139,21 +155,28 @@
                 $subBtn.off('mouseenter');
                 $subSubBtn.off('mouseenter');
                 $nav.off('mouseleave');
+                $bar.removeClass('addMobile');
 
                 $mainBtn.on({
-                    click:function(){
+                    click:function(event){
+                        event.preventDefault();
                         $sub.stop().slideUp();
+                        $subSub.stop().slideUp();
+                        $subSubSub.stop().slideUp();
                         $(this).next().stop().slideToggle(400);
                     }
                 });
                 $subBtn.on({
-                    click:function(){
+                    click:function(event){
+                        event.preventDefault();
                         $subSub.stop().slideUp();
+                        $subSubSub.stop().slideUp();
                         $(this).next().stop().slideToggle(400);
                     }
                 });
                 $subSubBtn.on({
-                    click:function(){
+                    click:function(event){
+                        event.preventDefault();
                         $subSubSub.stop().slideUp();
                         $(this).next().stop().slideToggle(400);
                     }
@@ -182,8 +205,12 @@
             $mobileBtn.on({
                 click:function(event){
                     event.preventDefault();
+                    $sub.stop().slideUp();
+                    $subSub.stop().slideUp();
+                    $subSubSub.stop().slideUp();
                     $bar.toggleClass('addMobile');
                     $nav.stop().slideToggle(400);
+                    // console.log(that.btn);
                     return that.btn === 0 ? that.btn = 1 : that.btn = 0;
                 }
             });
@@ -212,11 +239,11 @@
                 $winW = $(window).width();
                 $winH = $(window).height();
                 
-                if($winW > 583){
+                if($winW > 600){
                     $winH = $(window).height();
                 }
                 else{
-                    $winH = 750;
+                    $winH = 600;
                 }
                 $slide.css({width:$winW,height:$winH});
                 $section1.css({width:$winW,height:$winH});
@@ -258,7 +285,7 @@
                 for(var i=0; i<cnt; i++){
                     var temp = next.shift();
                                next.push(temp);
-                            //    console.log('푸쉬이후',next);
+                        //    console.log('푸쉬이후',next);
                  }
 
                 for(var i=0; i<n; i++){
@@ -951,7 +978,7 @@
             var $slideW          = $slideContainerW/4;
             var $prevBtn         = $('#section7 .prev-btn');
             var $nextBtn         = $('#section7 .next-btn');
-            var imgH             = $('#section7 img').height;
+            // var $imgH            = $('#section7 .content-img').height();
             var $captionGap      = $('#section7 .caption-gap');
             var cnt              = 0;
             var touchS           = 0;
@@ -960,6 +987,8 @@
             var setId            = null;
             var setId2           = null;
             var timercnt         = 0;
+            
+            // console.log($imgH);
 
             var $title = $('#section7 .title');
             var $slideContainer = $('#section7 .slide-container');
@@ -993,7 +1022,7 @@
                     $slideView.css({width:$slideW*4})
                     $slideWrap.css({width:$slideW*15,marginLeft: -$slideW*5});
                     $slide.css({width:$slideW});
-                    $captionGap.css({height:imgH});
+                    // $captionGap.css({height:$imgH});
                 }
                 else if($(window).innerWidth() > 850){
                     $slideContainerW = $('#section7 .slide-container').innerWidth();
@@ -1001,7 +1030,7 @@
                     $slideView.css({width:$slideW*3})
                     $slideWrap.css({width:$slideW*15,marginLeft: -$slideW*5});
                     $slide.css({width:$slideW});
-                    $captionGap.css({height:imgH});
+                    // $captionGap.css({height:$imgH});
                 }
                 else if($(window).innerWidth() > 600){
                     $slideContainerW = $('#section7 .slide-container').innerWidth();
@@ -1009,7 +1038,7 @@
                     $slideView.css({width:$slideW*2})
                     $slideWrap.css({width:$slideW*15,marginLeft: -$slideW*5});
                     $slide.css({width:$slideW});
-                    $captionGap.css({height:imgH});
+                    // $captionGap.css({height:$imgH});
                 }
                 else{
                     $slideContainerW = $('#section7 .slide-container').innerWidth();
@@ -1017,7 +1046,7 @@
                     $slideView.css({width:$slideW*1})
                     $slideWrap.css({width:$slideW*15,marginLeft: -$slideW*5});
                     $slide.css({width:$slideW});
-                    $captionGap.css({height:imgH});
+                    // $captionGap.css({height:$imgH});
                 }
             }
 

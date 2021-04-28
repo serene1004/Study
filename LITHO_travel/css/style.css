@@ -614,7 +614,7 @@
 #wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap .caption .caption-gap .caption-wrap .caption-bottom p {font-size: 18px;color: #fff;text-transform: uppercase;width: 60%;}
 #wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap .caption .caption-gap .caption-wrap .caption-bottom > span {display: inline-block;position: absolute;bottom: -20px;right: 0;background: #fff;width: 40px;height: 40px;border-radius: 50%;text-align: center;opacity: 0;transition: all .4s;}
 #wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap:hover .caption .caption-gap .caption-wrap .caption-bottom > span {bottom: 0;opacity: 1;}
-#wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap .caption .caption-gap .caption-wrap .caption-bottom > span > a {display: block;font-size: 15px;color: #232323;line-height: 39px;}
+#wrap #main #section8 .wrap .gap .container .content ul li .content-gap .content-wrap .caption .caption-gap .caption-wrap .caption-bottom > span > a {display: block;font-size: 15px;color: #232323;line-height: 38px;}
 
 
 /* section9 */
