@@ -110,7 +110,7 @@
 
 
             // 5월 달력일자 출력
-            firstDay = new Date('2021-5-0').getDay();     // 5월1일의 요일을 출력
+            firstDay = new Date('2021-5-1').getDay();     // 5월1일의 요일을 출력
             lastDate = new Date(2021, 5, 0).getDate();    // 5월의 마지막날을 출력
 
             for(var i=1; i<=lastDate; i++){

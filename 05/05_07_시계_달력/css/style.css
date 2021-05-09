@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+#wrap {}
+
+#wrap #header {z-index: 3;position: fixed;top: 0;left: 0;width: 100%;height: 100px;background: rgba(255, 255, 255, 1);color: #343434;font-size: 30px;box-shadow: 0 0 5px rgba(0, 0, 0, .3);text-align: center;line-height: 100px;}
+
+
+#wrap #main {z-index: 1;position: relative;width: 100%;height: auto;}
+#wrap #main #section01 {width: 100%;height: 969px;color: #fff;font-size: 50px;text-align: center;background: url(../img/main_visual_bg.jpg);}
+#wrap #main #section01 .wrap {width: 100%;height: 100%;}
+#wrap #main #section01 .wrap .gap {margin: 0;height: 100%;}
+#wrap #main #section01 .wrap .gap .container {width: 100%;height: 100%;position: relative;}
+#wrap #main #section01 .wrap .gap .container .content {width: 100%;max-width: 1000px;height: 100%;margin: 0 auto;background: url(../img/main_visual.jpg) no-repeat 50% 0;background-size: cover;}
+#wrap #main #section01 .wrap .gap .container .content .timer-box {width: 490px;height: 490px;margin: 0 auto;position: relative;top: 100px;}
+#wrap #main #section01 .wrap .gap .container .content .timer-box .timer-img {width: 100%;display: block;position: absolute;top: 0;left: 0;}
+#wrap #main #section01 .wrap .gap .container .content .timer-box .timer-img img {width: 100%;}
+#wrap #main #section01 .wrap .gap .container .content .timer-box .timer-img01 {z-index: 1;transform: rotate(-1deg);} /* 1시간 30도, 1분 6도, 1초 6도 */
+#wrap #main #section01 .wrap .gap .container .content .timer-box .timer-img02 {z-index: 2;} /* transform: rotate(calc(6deg*20)); */
+#wrap #main #section01 .wrap .gap .container .content .timer-box .timer-img03 {z-index: 3;} /* transform: rotate(calc(6deg*40)); */
+#wrap #main #section01 .wrap .gap .container .content .timer-box .timer-img04 {z-index: 4;} /* transform: rotate(calc(30deg*6)); */
+#wrap #main #section01 .wrap .gap .container .content .timer-box .timer-img05 {z-index: 5;}
+
+#wrap #main #section01 .wrap .gap .container .content .date-box {position: absolute;top: 10%;left: 45%;}
+#wrap #main #section01 .wrap .gap .container .content .date-box span {font-size: 20px;}
+
+#wrap #main #section01 .wrap .gap .container .btn-box {position: absolute;top: 580px;left: 130px;}
+#wrap #main #section01 .wrap .gap .container .btn-box button {padding: 10px 20px;background: #454545;color: #f7f7f7;border: 0;border-radius: 5px;cursor: pointer;}
+#wrap #main #section01 .wrap .gap .container .btn-box .prev-btn {margin-right: 40px;}
+#wrap #main #section01 .wrap .gap .container .btn-box .prev-btn:hover {background: #f7f7f7;color: #454545;}
+#wrap #main #section01 .wrap .gap .container .btn-box .next-btn {}
+#wrap #main #section01 .wrap .gap .container .btn-box .next-btn:hover {background: #f7f7f7;color: #454545;}
+
+#wrap #main #section01 .wrap .gap .container .calender {position: absolute;top: 150px;left: 50px;width: 350px;line-height: 100%;cursor: pointer;}
+#wrap #main #section01 .wrap .gap .container .calender table {width: 100%;}
+#wrap #main #section01 .wrap .gap .container .calender table caption {font-size: 20px;}
+#wrap #main #section01 .wrap .gap .container .calender table th {width: 50px;height: 50px;text-align: center;font-size: 16px;user-select: none;}
+#wrap #main #section01 .wrap .gap .container .calender table td {width: 50px;height: 50px;text-align: center;font-size: 16px;user-select: none;transition: all .3s;}
+#wrap #main #section01 .wrap .gap .container .calender table td:hover {background: rgba(255, 255, 255, .2);border-radius: 10px;}
+#wrap #main #section01 .wrap .gap .container .calender table .today {background: rgb(125, 255, 255);color: #232323;border-radius: 10px;}
+#wrap #main #section01 .wrap .gap .container .calender table .sun {color: rgb(255, 125, 120);}
+#wrap #main #section01 .wrap .gap .container .calender table .sat {color: rgb(120, 125, 255);}
+#wrap #main #section01 .wrap .gap .container .calender table .prev-month {opacity: .3;}
+#wrap #main #section01 .wrap .gap .container .calender table .next-month {opacity: .3;}
+
+
+#wrap #footer {z-index: 2;position: relative;width: 100%;height: 400px;background: #343434;}

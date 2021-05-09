@@ -16,6 +16,7 @@
             var month = null;
             var date  = null;
             var day   = null;
+            yoil    = ['SUN', 'MON', 'TUE', 'WEN', 'THU', 'FRI', 'SAT'];
 
             var timerImg02 = $('.timer-img02');
             var timerImg03 = $('.timer-img03');
@@ -94,7 +95,19 @@
             //     fastTimer.html(txt3);
             // },10)
 
+            var lastDate = null;
+            var firstDay = null;
+        
+            firstDay = new Date('2021-6-1').getDay();
+            lastDate = new Date(2021, 6, 0).getDate();
+
+            for(var i=1; i<=lastDate; i++){
+                var day = new Date('2021-6-'+i).getDay();
+                console.log(i +'일 ' + yoil[day]);
+            }
+
         }
+        
 
     }   // timer 끝
 
