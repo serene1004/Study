@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+#wrap {}
+
+#wrap #header {z-index: 3;position: fixed;top: 0;left: 0;width: 100%;height: 100px;background: rgba(255, 255, 255, .8);color: #343434;font-size: 30px;box-shadow: 0 0 5px rgba(0, 0, 0, .3);text-align: center;line-height: 100px;}
+
+
+#wrap #main {z-index: 1;position: relative;width: 100%;height: auto;}
+#wrap #main #section01 {width: 100%;height: 969px;color: #fff;font-size: 50px;text-align: center;}
+#wrap #main #section01 .wrap {width: 100%;height: 100%;}
+#wrap #main #section01 .wrap .gap {margin: 0;height: 100%;}
+#wrap #main #section01 .wrap .gap .container {width: 100%;height: 100%;position: relative;}
+#wrap #main #section01 .wrap .gap .container .content {width: 100%;max-width: 1000px;height: 100%;margin: 0 auto;}
+#wrap #main #section01 .wrap .gap .container .content .btn-box {width: 100%;padding-top: 130px;text-align: right;}
+#wrap #main #section01 .wrap .gap .container .content .btn-box button {width: 200px;height: 50px;border: 0;cursor: pointer;font-size: 15px;background: #000;color: #fff;transition: all .3s;}
+#wrap #main #section01 .wrap .gap .container .content .btn-box button:hover {background: #ccc;}
+
+#wrap #main #section01 .wrap .gap .container .content .sungjuk {width: 100%;text-align: center;display: flex;justify-content: center;}
+#wrap #main #section01 .wrap .gap .container .content .sungjuk caption {color: #000;font-size: 30px;padding: 30px 0;}
+#wrap #main #section01 .wrap .gap .container .content .sungjuk th {height: 45px;font-size: 20px;border: 1px solid #ccc;padding: 0 40px;color: #232323;background: #dff;}
+#wrap #main #section01 .wrap .gap .container .content .sungjuk td {height: 40px;font-size: 15px;border: 1px solid #ccc;color: #232323;background: #fff;}
+
+#wrap #main #section01 .wrap .gap .container .content .address {width: 100%;text-align: center;display: flex;justify-content: center;}
+#wrap #main #section01 .wrap .gap .container .content .address caption {color: #000;font-size: 30px;padding: 30px 0;}
+#wrap #main #section01 .wrap .gap .container .content .address th {height: 45px;font-size: 20px;border: 1px solid #ccc;padding: 0 40px;color: #232323;background: #dff;}
+#wrap #main #section01 .wrap .gap .container .content .address td {height: 40px;font-size: 15px;border: 1px solid #ccc;color: #232323;background: #fff;}
+
+
+
+#wrap #footer {z-index: 2;position: relative;width: 100%;height: 400px;background: #343434;}
