@@ -10,7 +10,7 @@
 #wrap #main #section01 .wrap {width: 100%;height: 100%;}
 #wrap #main #section01 .wrap .gap {margin: 0;height: 100%;}
 #wrap #main #section01 .wrap .gap .container {width: 100%;height: 100%;position: relative;}
-#wrap #main #section01 .wrap .gap .container .content {width: 100%;max-width: 1000px;height: 100%;margin: 0 auto;}
+#wrap #main #section01 .wrap .gap .container .content {width: 100%;max-width: 1200px;height: 100%;margin: 0 auto;}
 #wrap #main #section01 .wrap .gap .container .content .btn-box {width: 100%;padding-top: 130px;text-align: right;}
 #wrap #main #section01 .wrap .gap .container .content .btn-box button {width: 200px;height: 50px;border: 0;cursor: pointer;font-size: 15px;background: #000;color: #fff;transition: all .3s;}
 #wrap #main #section01 .wrap .gap .container .content .btn-box button:hover {background: #ccc;}

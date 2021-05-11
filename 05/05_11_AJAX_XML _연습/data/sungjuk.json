@@ -1,0 +1,14 @@
+{
+    "성적표":[
+        {"num":"2020A0001", "name":"sasa", "kor":95, "eng":80, "mat":80},
+        {"num":"2020A0002", "name":"sese", "kor":80, "eng":65, "mat":90},
+        {"num":"2020A0003", "name":"sisi", "kor":75, "eng":75, "mat":70},
+        {"num":"2020A0004", "name":"soso", "kor":65, "eng":80, "mat":100},
+        {"num":"2020A0005", "name":"susu", "kor":100, "eng":90, "mat":95},
+        {"num":"2020A0006", "name":"dada", "kor":95, "eng":95, "mat":90},
+        {"num":"2020A0007", "name":"dede", "kor":65, "eng":55, "mat":65},
+        {"num":"2020A0008", "name":"didi", "kor":75, "eng":100, "mat":75},
+        {"num":"2020A0009", "name":"dodo", "kor":85, "eng":70, "mat":85},
+        {"num":"2020A0010", "name":"dudu", "kor":85, "eng":80, "mat":95}
+    ]
+}

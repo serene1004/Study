@@ -1,0 +1,10 @@
+2020A0001_sasa_010-1234-5678_sasa@naver.com_서울시 강남구&
+2020A0002_sese_010-4343-7788_sese@naver.com_서울시 강동구&
+2020A0003_sisi_010-9595-5959_sisi@naver.com_서울시 서초구&
+2020A0004_soso_010-8700-0078_soso@naver.com_서울시 강북구&
+2020A0005_susu_010-3737-3377_susu@naver.com_서울시 용산구&
+2020A0006_dada_010-1588-1588_dada@naver.com_서울시 마포구&
+2020A0007_dede_010-1001-0110_dede@naver.com_서울시 양천구&
+2020A0008_didi_010-7890-0987_didi@naver.com_서울시 강서구&
+2020A0009_dodo_010-1020-2030_dodo@naver.com_서울시 동작구&
+2020A0010_dudu_010-5432-1000_dudu@naver.com_서울시 송파구

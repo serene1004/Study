@@ -8,9 +8,12 @@
         },
         ajaxJsonFn:function(){
             var a = [];
+            var b = [];
             var $jsonBtn = $('.json-btn');
+            var $addrBtn = $('.address-btn');
             var txt = '';
-            var $tBody = $('tbody');
+            var $tBody = $('.sungjuk tbody');
+            var $addrTBody = $('.address tbody');
             var rank = 1;   // 순위는 자신을 1로 설정 후 자신보다 큰사람이 있을경우 +1씩
             var imsi = null;
 
@@ -74,6 +77,7 @@
                                 txt += '</tr>';
                             }
                             $tBody.html(txt);
+                            txt = '';
                             
                         },
                         error: function(){
@@ -81,6 +85,41 @@
                         }
                     });
 
+                }
+            });
+
+            $addrBtn.on({
+                click:function(event){
+                    event.preventDefault();
+
+                    $.ajax({
+                        url:'./data/sungjuk.json',
+                        dataType:'JSON',
+                        success: function(result){
+                            
+                            $.each(result.주소록, function(idx, object){
+                                b[idx] = [];
+                                b[idx][0] = object.번호;
+                                b[idx][1] = object.이름;
+                                b[idx][2] = object.전화번호;
+                                b[idx][3] = object.지역;
+                                b[idx][4] = object.등급;
+                            });
+                            for(var i=0; i<b.length; i++){
+                                txt += '<tr>';
+                                for(var j=0; j<5; j++){
+                                    txt +='<td>'+ b[i][j] +'</td>';
+                                }
+                                txt += '</tr>';
+                            }
+                            $addrTBody.html(txt);
+                            txt = '';
+                        },
+                        error: function(){
+                            alert('ajax error');
+                        }
+
+                    });
                 }
             });
 

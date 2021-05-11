@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+#wrap {width: 100%;}
+
+#wrap #header {z-index: 3;position: fixed;top: 0;left: 0;width: 100%;height: 80px;line-height: 80px;font-size: 30px;color: #343434;background: rgba(255, 255, 255, .8);box-shadow: 0 0 5px rgba(0, 0, 0, .3);text-align: center;}
+
+
+#wrap #main {z-index: 2;position: relative;width: 100%;height: auto;}
+#wrap #main #section01 {width: 100%;height: 100%;color: #fff;font-size: 50px;text-align: center;}
+#wrap #main #section01 .wrap {width: 100%;height: 100%;}
+#wrap #main #section01 .wrap .gap {margin: 0;height: 100%;}
+#wrap #main #section01 .wrap .gap .container {width: 100%;height: 100%;position: relative;}
+#wrap #main #section01 .wrap .gap .container .content {width: 100%;max-width: 1200px;height: 100%;margin: 0 auto;padding: 80px 0;}
+
+#wrap #main #section01 .wrap .gap .container .content .json {width: 100%;}
+#wrap #main #section01 .wrap .gap .container .content .json .btn-box {width: 100%;padding-top: 50px;text-align: right;}
+#wrap #main #section01 .wrap .gap .container .content .json .btn-box button {padding: 5px 20px;border: 0;cursor: pointer;font-size: 16px;background: #abc;color: #fff;border-radius: 10px;outline: 0;transition: all .3s;}
+#wrap #main #section01 .wrap .gap .container .content .json .btn-box button:hover {background: #dcb;}
+#wrap #main #section01 .wrap .gap .container .content .json .sungjuk {width: 100%;text-align: center;display: flex;justify-content: center;}
+#wrap #main #section01 .wrap .gap .container .content .json .sungjuk caption {color: #000;font-size: 25px;padding: 30px 0;}
+#wrap #main #section01 .wrap .gap .container .content .json .sungjuk th {height: 45px;font-size: 18px;border: 1px solid #ccc;padding: 0 40px;color: #232323;background: #dff;}
+#wrap #main #section01 .wrap .gap .container .content .json .sungjuk td {height: 40px;font-size: 15px;border: 1px solid #ccc;color: #232323;background: #fff;}
+
+#wrap #main #section01 .wrap .gap .container .content .xml {width: 100%;}
+#wrap #main #section01 .wrap .gap .container .content .xml .btn-box {width: 100%;padding-top: 50px;text-align: right;}
+#wrap #main #section01 .wrap .gap .container .content .xml .btn-box button {padding: 5px 20px;border: 0;cursor: pointer;font-size: 16px;background: #abc;color: #fff;border-radius: 10px;outline: 0;transition: all .3s;}
+#wrap #main #section01 .wrap .gap .container .content .xml .btn-box button:hover {background: #dcb;}
+#wrap #main #section01 .wrap .gap .container .content .xml .sungjuk {width: 100%;text-align: center;display: flex;justify-content: center;}
+#wrap #main #section01 .wrap .gap .container .content .xml .sungjuk caption {color: #000;font-size: 25px;padding: 30px 0;}
+#wrap #main #section01 .wrap .gap .container .content .xml .sungjuk th {height: 45px;font-size: 18px;border: 1px solid #ccc;padding: 0 40px;color: #232323;background: #dff;}
+#wrap #main #section01 .wrap .gap .container .content .xml .sungjuk td {height: 40px;font-size: 15px;border: 1px solid #ccc;color: #232323;background: #fff;}
+
+#wrap #main #section01 .wrap .gap .container .content .txt {width: 100%;}
+#wrap #main #section01 .wrap .gap .container .content .txt .btn-box {width: 100%;padding-top: 50px;text-align: right;}
+#wrap #main #section01 .wrap .gap .container .content .txt .btn-box button {padding: 5px 20px;border: 0;cursor: pointer;font-size: 16px;background: #abc;color: #fff;border-radius: 10px;outline: 0;transition: all .3s;}
+#wrap #main #section01 .wrap .gap .container .content .txt .btn-box button:hover {background: #dcb;}
+#wrap #main #section01 .wrap .gap .container .content .txt .sungjuk {width: 100%;text-align: center;display: flex;justify-content: center;}
+#wrap #main #section01 .wrap .gap .container .content .txt .sungjuk caption {color: #000;font-size: 25px;padding: 30px 0;}
+#wrap #main #section01 .wrap .gap .container .content .txt .sungjuk th {height: 45px;font-size: 18px;border: 1px solid #ccc;padding: 0 40px;color: #232323;background: #dff;}
+#wrap #main #section01 .wrap .gap .container .content .txt .sungjuk th:nth-child(3) {padding: 0 80px;}
+#wrap #main #section01 .wrap .gap .container .content .txt .sungjuk th:nth-child(4) {padding: 0 80px;}
+#wrap #main #section01 .wrap .gap .container .content .txt .sungjuk th:nth-child(5) {padding: 0 170px;}
+#wrap #main #section01 .wrap .gap .container .content .txt .sungjuk td {height: 40px;font-size: 15px;border: 1px solid #ccc;color: #232323;background: #fff;}
+
+
+
+#wrap #footer {z-index: 1;position: relative;width: 100%;height: 200px;background: #abccba;}
