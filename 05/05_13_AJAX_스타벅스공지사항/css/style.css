@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+#wrap {width: 100%;}
+
+#wrap #header {z-index: 3;position: absolute;top: 0;left: 0;width: 100%;height: 80px;line-height: 80px;font-size: 30px;color: #343434;background: #f6f5ef;box-shadow: 0 0 3px rgba(0, 0, 0, .2);text-align: center;}
+
+
+#wrap #main {z-index: 2;position: relative;width: 100%;height: auto;}
+#wrap #main #section01 {width: 100%;height: 100%;color: #fff;background: #fff;font-size: 50px;text-align: center;}
+#wrap #main #section01 .wrap {width: 100%;height: 100%;}
+#wrap #main #section01 .wrap .gap {margin: 0;height: 100%;}
+#wrap #main #section01 .wrap .gap .container {width: 100%;height: 100%;position: relative;}
+#wrap #main #section01 .wrap .gap .container .content {width: 100%;max-width: 1100px;height: 100%;margin: 0 auto;padding: 80px 0;}
+
+#wrap #main #section01 .wrap .gap .container .content .board {width: 100%;text-align: center;display: flex;flex-direction: column;}
+#wrap #main #section01 .wrap .gap .container .content .board caption {color: #000;font-size: 25px;padding: 30px 0;text-align: left;}
+#wrap #main #section01 .wrap .gap .container .content .board th {height: 40px;font-size: 15px;border: 1px solid #343434;color: #232323;background: #fff;border-right: 0;border-left: 0;}
+#wrap #main #section01 .wrap .gap .container .content .board th:nth-child(1) {width: 60px;}
+#wrap #main #section01 .wrap .gap .container .content .board th:nth-child(2) {width: 800px;}
+#wrap #main #section01 .wrap .gap .container .content .board th:nth-child(3) {width: 120px;}
+#wrap #main #section01 .wrap .gap .container .content .board th:nth-child(4) {width: 100px;}
+#wrap #main #section01 .wrap .gap .container .content .board td {height: 50px;font-size: 14px;border: 1px solid #ccc;color: #666;background: #fff;border-right: 0;border-left: 0;}
+#wrap #main #section01 .wrap .gap .container .content .board td:nth-child(2) {text-align: left;text-indent: 15px;}
+
+#wrap #main #section01 .wrap .gap .container .content .board .pageNation {display: flex;justify-content: center;width: 100%;height: 50px;}
+#wrap #main #section01 .wrap .gap .container .content .board .pageNation .prev-box {float: left;display: block;height: 35px;margin-top: 15px;}
+#wrap #main #section01 .wrap .gap .container .content .board .pageNation .next-box {float: left;display: block;height: 35px;margin-top: 15px;}
+#wrap #main #section01 .wrap .gap .container .content .board .pageNation .next-box a {display: block;width: 26px;height: 26px;}
+#wrap #main #section01 .wrap .gap .container .content .board .pageNation .prev-box a {display: block;width: 26px;height: 26px;}
+#wrap #main #section01 .wrap .gap .container .content .board .pageNation .prev-box a i {display: block;width: 100%;height: 100%;color: #232323;border: 1px solid #ccc;border-radius: 5px;box-sizing: border-box;}
+#wrap #main #section01 .wrap .gap .container .content .board .pageNation .next-box a i {display: block;width: 100%;height: 100%;color: #232323;border: 1px solid #ccc;border-radius: 5px;box-sizing: border-box;}
+
+#wrap #main #section01 .wrap .gap .container .content .board .pageNation .page-box {float: left;width: auto;height: 100%;margin: 0 15px;}
+#wrap #main #section01 .wrap .gap .container .content .board .pageNation .page-box ul {width: auto;height: 100%;}
+#wrap #main #section01 .wrap .gap .container .content .board .pageNation .page-box ul li {display: inline-block;width: 20px;height: 20px;margin: 0 3px;}
+#wrap #main #section01 .wrap .gap .container .content .board .pageNation .page-box ul li a {display: block;font-size: 13px;color: #555555;width: 100%;height: 100%;line-height: 20px;}
+#wrap #main #section01 .wrap .gap .container .content .board .pageNation .page-box ul li a.addPage {color: #0d5f34;border-bottom: 1px solid #0d5f34;font-weight: 600;}
+
+
+
+#wrap #footer {z-index: 1;position: relative;width: 100%;height: 200px;background: #abccba;background: #fff;}

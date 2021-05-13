@@ -147,7 +147,7 @@
 #wrap #main #section3 .wrap .gap {width: 100%;height: 100%;}
 #wrap #main #section3 .wrap .gap .container {width: 100%;height: 100%;}
 
-#wrap #main #section3 .wrap .gap .container .top-box {width: 100%;height: 500px;}
+#wrap #main #section3 .wrap .gap .container .top-box {width: 100%;height: 500px;position: relative;}
 #wrap #main #section3 .wrap .gap .container .top-box .title {float: left;width: 460px;height: 100%;}
 #wrap #main #section3 .wrap .gap .container .top-box .title h4 {font-size: 18px;color: #080e32;letter-spacing: 3px;opacity: .7;line-height: 150%;padding-top: 185px;font-family: 'Roboto';}
 #wrap #main #section3 .wrap .gap .container .top-box .title h2 {font-size: 55px;color: #232323;font-weight: 300;line-height: 150%;letter-spacing: -1px;padding-top: 15px;}
@@ -159,7 +159,7 @@
 #wrap #main #section3 .wrap .gap .container .top-box .inquiry-board .board-gap .board a {display: block;width: 100%;height: 100%;position: absolute;top: 0;left: 0;}
 #wrap #main #section3 .wrap .gap .container .top-box .inquiry-board .board-gap .board h2 {font-size: 25px;color: #fff;line-height: 200% ;}
 #wrap #main #section3 .wrap .gap .container .top-box .inquiry-board .board-gap .board p {font-size: 15px;color: #fff;padding-bottom: 20px;}
-#wrap #main #section3 .wrap .gap .container .top-box .inquiry-board .board-gap .board span {display: inline-block;font-size: 16px;color: #abff98;line-height: 160%;letter-spacing: 3px;font-family: 'Roboto';transition: all .4s;}
+#wrap #main #section3 .wrap .gap .container .top-box .inquiry-board .board-gap .board span {display: inline-block;font-size: 16px;color: #abff98;line-height: 160%;letter-spacing: 3px;font-family: 'Roboto';transition: all .4s cubic-bezier(0.18, 0.89, 0.32, 1.28);}
 #wrap #main #section3 .wrap .gap .container .top-box .inquiry-board .board-gap:hover .board span {margin-left: 20px;}
 
 #wrap #main #section3 .wrap .gap .container .top-box .notice {float: left;width: 360px;height: 100%;position: relative;}
@@ -198,28 +198,59 @@
 
 
 
-#wrap #main #section3 .wrap .gap .container .bottom-box {width: 100%;height: 469px;}
+#wrap #main #section3 .wrap .gap .container .bottom-box {width: 100%;height: 469px;position: relative;}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info {float: left;width: 940px;height: 100%;position: relative;}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul {width: 100%;height: 100%;}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul li {float: left;width: 20%;padding: 30px 0;position: relative;}
-#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li a {display: block;width: 100%;height: 100%;position: absolute;top: 0;left: 0;}
-#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap {padding: 90px 30px 30px 30px;border-right: 1px solid #e9edf1;box-sizing: border-box;position: relative;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap {padding: 90px 30px 30px 30px;border-right: 1px solid #e9edf1;box-sizing: border-box;position: relative;cursor: pointer;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap a {display: block;width: 100%;height: 100%;position: absolute;top: 0;left: 0;}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(5) .info-gap {border-right: 0;}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap::after {content: '';display: block;width: 100%;height: 100%;position: absolute;z-index: 1;top: 0;left: 0;background: transparent;transform-origin: 50% 50%;transform: scale(.95);transition: all .6s;}
-#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:hover .info-gap:after {background: #2275c8;transform: scale(1);}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap:hover::after {background: #2275c8;transform: scale(1);}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap .info-content {width: 100%;position: relative;z-index: 2;}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap .info-content span {display: block;font-size: 25px;font-weight: 700;line-height: 150%;color: #dae1e7;padding-top: 30px;transition: all .6s;}
-#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:hover .info-gap .info-content span {color: #4194e4;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap:hover .info-content span {color: #4194e4;}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap .info-content .icon-wrap {}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap .info-content .icon-wrap i {}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap .info-content h4 {font-size: 17px;font-weight: 400;line-height: 150%;color: #333;padding-top: 30px;transition: all .6s;}
-#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:hover .info-gap .info-content h4 {color: #fff;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap:hover .info-content h4 {color: #fff;}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap .info-content p {font-size: 15px;font-weight: 300;line-height: 150%;padding: 10px 0 50px 0;margin-right: 5px;transition: all .6s;}
-#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:hover .info-gap .info-content p {color: #fff;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap:hover .info-content p {color: #fff;}
 
 
-#wrap #main #section3 .wrap .gap .container .bottom-box .event {float: left;width: 360px;height: 100%;position: relative;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event {float: left;width: 360px;height: 100%;background-image: linear-gradient(to top, rgb(15, 22, 66) 0%, rgb(35, 42, 86) 100%);}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .event-gap {padding: 40px;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .event-gap .event-content {width: 100%;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .event-gap .event-content h4 {font-size: 13px;color: #b0b8bf;line-height: 150%;letter-spacing: 4px;padding-top: 10px;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .event-gap .event-content h2 {font-size: 25px;color: #fff;line-height: 160%;padding-top: 5px;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .event-gap .event-content ul {padding-top: 30px;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .event-gap .event-content ul li {width: 100%;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .event-gap .event-content ul li a {display: block;font-size: 15px;color: #fff;font-weight: 300;line-height: 200%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap {position: absolute;top: 50px;right: 25px;width: 50px;height: 50px;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn {display: block;position: relative;width: 100%;height: 100%;box-sizing: border-box;overflow: hidden;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn .neon-line {position: absolute;display: block;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn .neon-line:nth-child(1) {top: 0;left: 0;width: 100%;height: 2px;background: linear-gradient(90deg, #f00000, #fffc30);transition: all .4s;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn:hover .neon-line:nth-child(1) {left: 100%;transition: all .2s;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn .neon-line:nth-child(2) {top: 0;right: 0;width: 2px;height: 100%;background: linear-gradient(180deg, #fffc30, #52cc00);transition: all .4s;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn:hover .neon-line:nth-child(2) {top: 100%;transition: all .2s;transition-delay: .2s;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn .neon-line:nth-child(3) {bottom: 0;right: 0;width: 100%;height: 2px;background: linear-gradient(270deg, #52cc00, #30cfff);transition: all .4s;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn:hover .neon-line:nth-child(3) {right: 100%;transition: all .2s;transition-delay: .4s;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn .neon-line:nth-child(4) {bottom: 0;left: 0;width: 2px;height: 100%;background: linear-gradient(360deg, #30cfff, #f00000);transition: all .4s;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn:hover .neon-line:nth-child(4) {bottom: 100%;transition: all .2s;transition-delay: .6s;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn .neon-line:nth-child(5) {top: 0;left: -100%;width: 100%;height: 2px;background: linear-gradient(90deg, #f00000, #fffc30);}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn:hover .neon-line:nth-child(5) {left: 0;transition: all .2s;transition-delay: .8s;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn .neon-line:nth-child(6) {top: -100%;right: 0;width: 2px;height: 100%;background: linear-gradient(180deg, #fffc30, #52cc00);}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn:hover .neon-line:nth-child(6) {top: 0;transition: all .2s;transition-delay: 1s;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn .neon-line:nth-child(7) {bottom: 0;right: -100%;width: 100%;height: 2px;background: linear-gradient(270deg, #52cc00, #30cfff);}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn:hover .neon-line:nth-child(7) {right: 0;transition: all .2s;transition-delay: 1.2s;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn .neon-line:nth-child(8) {bottom: -100%;left: 0;width: 2px;height: 100%;background: linear-gradient(360deg, #30cfff, #f00000);}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn:hover .neon-line:nth-child(8) {bottom: 0;transition: all .2s;transition-delay: 1.4s;}
+
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn .bar1 {display: block;width: 20px;height: 2px;position: absolute;top: 23px;left: 14px;background: #777b7b;transition: all .4s;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn .bar2 {display: block;width: 20px;height: 2px;position: absolute;top: 23px;left: 14px;background: #777b7b;transform: rotate(90deg);transition: all .4s;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn:hover .bar1 {background: #d6dbde;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .event .btn-wrap .event-btn:hover .bar2 {background: #d6dbde;}
 
 
 
