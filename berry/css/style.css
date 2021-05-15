@@ -255,5 +255,5 @@
 
 
 /* footer */
-#wrap #footer {width: 100%;position: relative;z-index: 1;}
+#wrap #main #footer {width: 100%;height: 200px;background: #000;}
 

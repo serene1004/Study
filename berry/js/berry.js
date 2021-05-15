@@ -8,7 +8,7 @@
             that.section2Fn();
             that.section3Fn();
             that.footerFn();
-
+            that.mouseWheelFn();
         },
 
         headerFn:function(){
@@ -121,6 +121,45 @@
 
         },
         footerFn:function(){
+
+        },
+        mouseWheelFn:function(){
+            var $main = $('#main');
+            var $section = $('.section');
+            var wheelDelta = 0;
+            var cnt = 0;
+
+
+            $main.on('mousewheel DOMMouseScroll',function(event){
+                event.preventDefault();
+
+                if(event.originalEvent.wheelDelta){
+                    wheelDelta = event.originalEvent.wheelDelta;
+                }
+                else{    // 파이어폭스
+                    wheelDelta = event.detail*-1
+                }
+
+                if (!$('html,body').is(':animated')){
+                    if(wheelDelta < 0){
+                        cnt++;
+                        if(cnt>=3){
+                            cnt=3;
+                            $('html,body').stop().animate({scrollTop:$section.eq(cnt-1).offset().top+200}, 800);
+                        }
+                        else{
+                            $('html,body').stop().animate({scrollTop:$section.eq(cnt).offset().top}, 800, 'swing');
+                        }
+                    }
+                    else{
+                        cnt--;
+                        if(cnt<0){cnt=0;}
+                        $('html,body').stop().animate({scrollTop:$section.eq(cnt).offset().top}, 800, 'swing');
+                    }
+                    console.log(cnt);
+                }
+            });
+
 
         }
         

@@ -27,6 +27,7 @@
             var startNum = 0;
             var endNum = list;
             var cnt = 0;
+            var btn = true;
 
 
             function ajaxRunFn(){
@@ -63,6 +64,7 @@
 
                         $prevBtn.on({
                             click:function(){
+                                btn = true;
                                 cnt--;
                                 if(cnt<0){
                                     cnt=0;
@@ -72,6 +74,7 @@
                         });
                         $nextBtn.on({
                             click:function(){
+                                btn = true;
                                 cnt++;
                                 if(cnt>pageGroup-1){
                                     cnt=pageGroup-1;
@@ -83,6 +86,7 @@
 
                         $firstpageBtn.on({
                             click:function(){
+                                btn = true;
                                 cnt=0;
                                 pageNationFn();
                             }
@@ -90,9 +94,9 @@
 
                         $lastpageBtn.on({
                             click:function(){
-                                // cnt=pageGroup-1;
-                                // pageNationFn();
-                                lastPageBtnFn();
+                                btn = false;
+                                cnt=pageGroup-1;
+                                pageNationFn();
                             }
                         });
 
@@ -103,58 +107,52 @@
                             gruopStartNum = cnt * pageNumList;
                             groupEndNum = gruopStartNum + pageNumList;
 
-                            if(groupEndNum > totalPageNum){
-                                groupEndNum = totalPageNum;
-                            }
-                            
-                            for(var i=gruopStartNum; i<groupEndNum; i++){
-                                if(i%pageNumList===0){
-                                    txt += '<li><a href="#" class="page-btn addPage">'+ (i+1) +'</a></li>'
+                            if(btn == true){
+                                if(groupEndNum > totalPageNum){
+                                    groupEndNum = totalPageNum;
                                 }
-                                else{
-                                    txt += '<li><a href="#" class="page-btn">'+ (i+1) +'</a></li>'
+                                
+                                for(var i=gruopStartNum; i<groupEndNum; i++){
+                                    if(i%pageNumList===0){
+                                        txt += '<li><a href="#" class="page-btn addPage">'+ (i+1) +'</a></li>'
+                                    }
+                                    else{
+                                        txt += '<li><a href="#" class="page-btn">'+ (i+1) +'</a></li>'
+                                    }
+                                }
+                                $pageBox.html(txt);
+                                $pageBtn = $('.page-box li .page-btn');
+    
+                                startNum = parseInt($pageBtn.eq(0).text()-1)*list;
+                                endNum = startNum+list;
+                                
+                                if(endNum > total){
+                                    endNum = total;
+                                }                                
+                            }
+                            else{
+                                for(var i=gruopStartNum; i<groupEndNum; i++){
+                                    if(i%pageNumList===9){
+                                        txt += '<li><a href="#" class="page-btn addPage">'+ (i+1) +'</a></li>'
+                                    }
+                                    else{
+                                        txt += '<li><a href="#" class="page-btn">'+ (i+1) +'</a></li>'
+                                    }
+                                }
+                                $pageBox.html(txt);
+                                $pageBtn = $('.page-box li .page-btn');
+    
+                                startNum = parseInt($pageBtn.eq(9).text()-1)*list;
+                                endNum = startNum+list;
+                            
+                                if(endNum > total){
+                                    endNum = total;
                                 }
                             }
-                            $pageBox.html(txt);
-                            $pageBtn = $('.page-box li .page-btn');
-
-                            startNum = parseInt($pageBtn.eq(0).text()-1)*list;
-                            endNum = startNum+list;
-                            
-                            if(endNum > total){
-                                endNum = total;
-                            }
-
                             listOutputFn();
                         }
                         setTimeout(pageNationFn, 100);
 
-                        function lastPageBtnFn(){
-                            txt='';
-                            $pageBox.html(txt);
-                            cnt=pageGroup-1;
-                            gruopStartNum = cnt * pageNumList;
-                            groupEndNum = gruopStartNum + pageNumList;
-
-                            for(var i=gruopStartNum; i<groupEndNum; i++){
-                                if(i%pageNumList===9){
-                                    txt += '<li><a href="#" class="page-btn addPage">'+ (i+1) +'</a></li>'
-                                }
-                                else{
-                                    txt += '<li><a href="#" class="page-btn">'+ (i+1) +'</a></li>'
-                                }
-                            }
-                            $pageBox.html(txt);
-                            $pageBtn = $('.page-box li .page-btn');
-
-                            startNum = parseInt($pageBtn.eq(9).text()-1)*list;
-                            endNum = startNum+list;
-                        
-                            if(endNum > total){
-                                endNum = total;
-                            }
-                            listOutputFn();
-                        }
                         
                         $pageBox.on('click', '.page-btn', function(event){
                             event.preventDefault();
