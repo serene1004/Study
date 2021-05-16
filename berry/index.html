@@ -65,6 +65,20 @@
                                         </li>
                                     </ul>
                                 </nav>
+                                <div class="searchbox">
+                                    <form name="searchform" id="searchform" method="POST" action="">
+                                        <div class="input-wrap">
+                                            <input type="text" name="search" id="search" value="" placeholder="Search">
+                                            <span class="under-line1"></span>
+                                            <span class="under-line2"></span>
+                                        </div>
+                                        <div class="submit-wrap">
+                                            <button type="submit" id="submitBtn">
+                                                <span><i class="fas fa-search"></i></span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         <aside id="aside">
@@ -133,22 +147,24 @@
                                             <li class="slide slide0"></li>
                                         </ul>
                                     </div>
-                                    <div class="slide-btn">
-                                        <a href=""></a>
-                                        <a href=""></a>
+                                    <div class="btn-wrap">
+                                        <a href="javascript:" class="prev-btn"><i class="fas fa-long-arrow-alt-left"></i></a>
+                                        <div class="count-wrap">
+                                            <h4><span class="now-page"></span><span>/</span><span class="total-page"></span></h4>
+                                        </div>
+                                        <a href="javascript:" class="next-btn"><i class="fas fa-long-arrow-alt-right"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="right-box">
                                 <div class="top-box">
+                                    <div class="slide-area"></div>
                                     <div class="slide-container">
                                         <div class="slide-view">
                                             <ul class="slide-wrap clearfix">
-                                                <li class="slide slide2"></li>
                                                 <li class="slide slide0"></li>
                                                 <li class="slide slide1"></li>
                                                 <li class="slide slide2"></li>
-                                                <li class="slide slide0"></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -175,16 +191,17 @@
                                             <p>다양한 프로그램을 체험하여 역사와 문화를 <br>배워갈 수 있습니다.</p>
                                         </div>
                                     </div>
-                                    <div class="bottom-slide">
-                                        <div class="slide-container">
-                                            <div class="slide-view">
-                                                <ul class="slide-wrap clearfix">
-                                                    <li class="slide slide2"></li>
-                                                    <li class="slide slide0"></li>
-                                                    <li class="slide slide1"></li>
-                                                    <li class="slide slide2"></li>
-                                                    <li class="slide slide0"></li>
-                                                </ul>
+                                    <div class="bottom-box">                                        
+                                        <div class="slide-area"></div>
+                                        <div class="left-slide">
+                                            <div class="slide-container">
+                                                <div class="slide-view">
+                                                    <ul class="slide-wrap clearfix">
+                                                        <li class="slide slide0"></li>
+                                                        <li class="slide slide1"></li>
+                                                        <li class="slide slide2"></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -282,8 +299,22 @@
                             </div>    
                             <div class="right-box">
                                 <div class="slide-container">
+                                    <div class="btn-wrap">
+                                        <a href="javascript:" class="prev-btn"><i class="fas fa-long-arrow-alt-left"></i></a>
+                                        <div class="count-wrap">
+                                            <h4><span class="now-page"></span><span>/</span><span class="total-page"></span></h4>
+                                        </div>
+                                        <a href="javascript:" class="next-btn"><i class="fas fa-long-arrow-alt-right"></i></a>
+                                    </div>
                                     <div class="slide-view">
                                         <ul class="slide-wrap clearfix">
+                                            <li class="slide slide1">
+                                                <div class="caption-gap">
+                                                    <div class="caption">
+                                                        <h3>CAMPING</h3>
+                                                    </div>
+                                                </div>
+                                            </li>
                                             <li class="slide slide2">
                                                 <div class="caption-gap">
                                                     <div class="caption">
@@ -316,6 +347,13 @@
                                                 <div class="caption-gap">
                                                     <div class="caption">
                                                         <h3>TOURISM</h3>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="slide slide1">
+                                                <div class="caption-gap">
+                                                    <div class="caption">
+                                                        <h3>CAMPING</h3>
                                                     </div>
                                                 </div>
                                             </li>
@@ -507,7 +545,22 @@
                 <div class="wrap">
                     <div class="gap">
                         <div class="container">
-                            
+                            <div class="info clearfix">
+                                <ul>
+                                    <li><a href="javascript:">문의하기</a></li>
+                                    <li><a href="javascript:">회원이용약관</a></li>
+                                    <li><a href="javascript:">개인정보처리방침</a></li>
+                                    <li><a href="javascript:">사이트맵</a></li>
+                                    <li><a href="javascript:">관리자</a></li>
+                                </ul>
+                                <div class="tel">
+                                    <a href="javascript:">TEL. 054-956-7514</a>
+                                </div>
+                            </div>
+                            <address>경상북도 고령군 쌍림면 영서로 3181 고령 베리숲마을 용담문화센터</address>
+                            <div class="copyright">
+                                <p>COPYRIGHT © 2020 용담권역창조마을. ALL RIGHTS RESERVED. DESIGN BY KOWEB.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
