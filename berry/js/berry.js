@@ -15,10 +15,15 @@
 
         },
         section1Fn:function(){
+            var $winW  = $(window).width();
+            var $winH  = $(window).height();
+            var leftW  = 0.651;
+            var rightW = 0.349;
+
             var $leftSlideView = $('#section1 .left-box .slide-view');
             var $leftSlideWrap = $('#section1 .left-box .slide-wrap');
             var $leftSlide  = $('#section1 .left-box .slide');
-            var $leftSlideW = $('#section1 .left-box .slide').innerWidth();
+            var $leftSlideW = $leftSlide.innerWidth();
             var $prevBtn = $('#section1 .prev-btn');
             var $nextBtn = $('#section1 .next-btn');
             var cnt = 0;
@@ -39,6 +44,21 @@
 
             $nowPage.html(cnt+1);
             $totalPage.html($rightSlide.length);
+
+            function resizeFn(){
+                $winW = $(window).width();
+
+                $leftSlide.css({width:$winW*leftW});
+                $leftSlideW = $leftSlide.innerWidth();
+                $leftSlideWrap.css({width:$leftSlideW*5});
+
+                $rightSlide.css({width:$winW*rightW});
+            }
+
+            $(window).resize(function(){
+                resizeFn();
+            });
+            setTimeout(resizeFn, 100);
 
             function leftSlideFn(){
                 $leftSlideWrap.stop().animate({left:-$leftSlideW*cnt}, 800, function(){
@@ -154,10 +174,15 @@
             
         },
         section2Fn:function(){
+            var $winW  = $(window).width();
+            var $winH  = $(window).height();
+            var leftW  = 0.651;
+            var rightW = 0.349;
+
             var $centerSlideView = $('#section2 .center-slide .slide-view');
             var $centerSlideWrap = $('#section2 .center-slide .slide-wrap');
             var $centerSlide = $('#section2 .center-slide .slide');
-            var $centerSlideW = $('#section2 .center-slide .slide').innerWidth();
+            var $centerSlideW = $centerSlide.innerWidth();
             var $prevBtn = $('#section2 .prev-btn');
             var $nextBtn = $('#section2 .next-btn');
             var cnt = 0;
@@ -168,12 +193,13 @@
             var TouchYstart = 0;
             var TouchYend   = 0;
 
+            var $slideArea  = $('#section2 .slide-area');
             var $leftSlide  = $('#section2 .left-slide .slide');
-            var $leftSlideW = $('#section2 .left-slide .slide').innerWidth();
+            var $leftSlideW = $leftSlide.innerWidth();
 
             var $rightSlideWrap = $('#section2 .right-box .slide-wrap');
             var $rightSlide  = $('#section2 .right-box .slide');
-            var $rightSlideW = $('#section2 .right-box .slide').innerWidth();
+            var $rightSlideW = $rightSlide.innerWidth();
             var btn = null;
 
             var $nowPage = $('#section2 .now-page');
@@ -181,6 +207,27 @@
 
             $nowPage.html(cnt+1);
             $totalPage.html($leftSlide.length);
+
+            function resizeFn(){
+                $winW = $(window).width();
+                
+                $centerSlide.css({width:$winW*(leftW/2)});
+                $centerSlideW = $centerSlide.innerWidth();
+                $centerSlideWrap.css({width:$centerSlideW*5});
+
+                $leftSlide.css({width:$winW*(leftW/2)});
+                $leftSlideW = $leftSlide.innerWidth();
+                $slideArea.css({width:$leftSlideW});
+
+                $rightSlide.css({width:$winW*(rightW/2)});
+                $rightSlideW = $rightSlide.innerWidth();
+                $rightSlideWrap.css({width:$rightSlideW*9});
+            }
+
+            $(window).resize(function(){
+                resizeFn();
+            });
+            setTimeout(resizeFn, 100);
 
             function centerSlideFn(){
                 $centerSlideWrap.stop().animate({left:-$centerSlideW*cnt}, 800, function(){
