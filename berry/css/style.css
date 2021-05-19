@@ -244,7 +244,6 @@
 #wrap #main #section3 .wrap .gap .container .top-box .notice .notice-gap .notice-content .btn-wrap .notice-btn:hover .bar2 {background: #b0b8bf;transform: rotate(315deg);}
 
 
-
 #wrap #main #section3 .wrap .gap .container .bottom-box {width: 100%;height: 48.4004%;position: relative;}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info {float: left;width: 72.3077%;height: 100%;position: relative;}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul {width: 100%;height: 100%;}
@@ -300,8 +299,18 @@
 #wrap #main #section3 .wrap .gap .container .bottom-box .event .event-gap .event-content .btn-wrap .event-btn:hover .bar2 {background: #fff;transform: rotate(315deg);}
 
 
+#wrap #main #section3 .wrap .gap .container .img-box {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
+#wrap #main #section3 .wrap .gap .container .img-box img {width: auto;position: absolute;}
+#wrap #main #section3 .wrap .gap .container .img-box img:nth-child(1) {top: 0;left: 10%;transform-origin: 50% 50%;opacity: 0;transform: translateY(-30px);transition: all .5s;transition-delay: 1s;}
+#wrap #main #section3 .wrap .gap .container .img-box img:nth-child(2) {top: 30%;left: 0;transform-origin: 50% 50%;opacity: 0;transform: rotate(180deg);transition: all .5s;}
+#wrap #main #section3 .wrap .gap .container .img-box img:nth-child(3) {bottom: 0;left: 5%;transform-origin: 50% 50%;opacity: 0;transform: rotate(180deg);transition: all .5s;transition-delay: .5s;}
+#wrap #main #section3 .wrap .gap .container .img-box img:nth-child(1).addAni {opacity: 1;transform: translateY(0);}
+#wrap #main #section3 .wrap .gap .container .img-box img:nth-child(2).addAni {opacity: 1;transform: rotate(0);}
+#wrap #main #section3 .wrap .gap .container .img-box img:nth-child(3).addAni {opacity: 1;transform: rotate(0);}
 
-/* footer */
+
+
+/* main footer */
 #wrap #main #footer {width: 100%;height: 200px;background-image: linear-gradient(to bottom, rgb(15, 22, 66) 0%, #02082c 100%);position: relative;}
 #wrap #main #footer .wrap {max-width: 1300px;height: 100%;margin: 0 auto;}
 #wrap #main #footer .wrap .gap {width: 100%;}
@@ -322,4 +331,5 @@
 
 #wrap #main #footer .wrap .gap .container #go-top {position: absolute;top: 0;left: 50%;width: 100px;height: 100px;background: #2979ca;margin-left: -50px;}
 #wrap #main #footer .wrap .gap .container #go-top a {display: block;width: 100%;height: 100%;text-align: center;position: relative;}
-#wrap #main #footer .wrap .gap .container #go-top a i {background: url(../img/sp_com.png) no-repeat;}
+#wrap #main #footer .wrap .gap .container #go-top a i {background: url(../img/sp_com.png) no-repeat;background-position: -162px 0px;width: 30px;height: 8px;position: absolute;top: 10px;left: 50%;transform: rotate(90deg);transform-origin: 0 100%;margin-left: -4px;}
+#wrap #main #footer .wrap .gap .container #go-top a span {display: block;padding-top: 60px;font-size: 15px;color: #fff;font-weight: 500;}

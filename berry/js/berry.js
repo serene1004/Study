@@ -191,12 +191,6 @@
             var $nextBtn = $('#section2 .next-btn');
             var cnt = 0;
 
-            var TouchS      = 0;
-            var TouchE      = 0;
-            var TouchDelta  = false;
-            var TouchYstart = 0;
-            var TouchYend   = 0;
-
             var $slideArea  = $('#section2 .slide-area');
             var $leftSlide  = $('#section2 .left-slide .slide');
             var $leftSlideW = $leftSlide.innerWidth();
@@ -319,6 +313,8 @@
             var $winW  = $(window).width();
             var $winH  = $(window).height();
             var $section3 = $('#section3');
+            var $img = $('#section3 .img-box img');
+            var t = 0;
 
             function resizeFn(){
                 $winW = $(window).width();
@@ -331,6 +327,19 @@
                 resizeFn();
             });
             setTimeout(resizeFn, 100);
+
+            $(window).scroll(function(){
+                if($(window).scrollTop() >= $('#section3').offset().top){
+                    if(t === 0){
+                        t = 1;
+                        $img.addClass('addAni');
+                    }
+                }
+                if($(window).scrollTop() === $('#section2').offset().top){
+                    t = 0;
+                    $img.removeClass('addAni');
+                }
+            });
 
         },
         footerFn:function(){
