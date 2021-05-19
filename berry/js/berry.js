@@ -19,6 +19,7 @@
             var $winH  = $(window).height();
             var leftW  = 0.651;
             var rightW = 0.349;
+            var $section1 = $('#section1');
 
             var $leftSlideView = $('#section1 .left-box .slide-view');
             var $leftSlideWrap = $('#section1 .left-box .slide-wrap');
@@ -47,12 +48,14 @@
 
             function resizeFn(){
                 $winW = $(window).width();
+                $winH  = $(window).height();
 
                 $leftSlide.css({width:$winW*leftW});
                 $leftSlideW = $leftSlide.innerWidth();
                 $leftSlideWrap.css({width:$leftSlideW*5});
 
                 $rightSlide.css({width:$winW*rightW});
+                $section1.css({width:$winW,height:$winH})
             }
 
             $(window).resize(function(){
@@ -178,6 +181,7 @@
             var $winH  = $(window).height();
             var leftW  = 0.651;
             var rightW = 0.349;
+            var $section2 = $('#section2');
 
             var $centerSlideView = $('#section2 .center-slide .slide-view');
             var $centerSlideWrap = $('#section2 .center-slide .slide-wrap');
@@ -210,6 +214,7 @@
 
             function resizeFn(){
                 $winW = $(window).width();
+                $winH  = $(window).height();
                 
                 $centerSlide.css({width:$winW*(leftW/2)});
                 $centerSlideW = $centerSlide.innerWidth();
@@ -221,7 +226,9 @@
 
                 $rightSlide.css({width:$winW*(rightW/2)});
                 $rightSlideW = $rightSlide.innerWidth();
-                $rightSlideWrap.css({width:$rightSlideW*9});
+                $rightSlideWrap.css({width:$rightSlideW*8});
+
+                $section2.css({width:$winW,height:$winH})
             }
 
             $(window).resize(function(){
@@ -230,10 +237,30 @@
             setTimeout(resizeFn, 100);
 
             function centerSlideFn(){
-                $centerSlideWrap.stop().animate({left:-$centerSlideW*cnt}, 800, function(){
+                if(btn === false){
+                    $centerSlide.stop().animate({opacity:0}, 550, function(){
+                        if(cnt===2){
+                            $centerSlide.eq(3).stop().animate({opacity:1});
+                        }
+                    });
+                    $centerSlide.eq(cnt===2?0:cnt+1).stop().animate({opacity:1},0);
+                    
+                }
+                if(btn === true){
+                    $centerSlide.stop().animate({opacity:1});
+                    $centerSlide.eq(cnt).stop().delay(150).animate({opacity:0}, 600);
+                }
+                $centerSlideWrap.stop().delay(300).animate({left:-$centerSlideW*cnt}, 600, function(){
                     if(cnt>2){cnt=0;}
                     if(cnt<0){cnt=2;}
                     $centerSlideWrap.stop().animate({left:-$centerSlideW*cnt}, 0)
+                })
+            }
+            function rightSlideFn(){
+                $rightSlideWrap.stop().animate({left:-$rightSlideW*cnt}, 600, function(){
+                    if(cnt>2){cnt=0;}
+                    if(cnt<0){cnt=2;}
+                    $rightSlideWrap.stop().animate({left:-$rightSlideW*cnt}, 0)
                 })
             }
             function leftSlideFn(){
@@ -248,19 +275,12 @@
                     $leftSlide.eq(cnt).css({zIndex:3}).stop().animate({opacity:0},0).animate({opacity:1}, 800);
                 }
             }
-            function rightSlideFn(){
-                $rightSlideWrap.stop().animate({left:-$rightSlideW*cnt}, 800, function(){
-                    if(cnt>2){cnt=0;}
-                    if(cnt<0){cnt=2;}
-                    $rightSlideWrap.stop().animate({left:-$rightSlideW*cnt}, 0)
-                })
-            }
             
             function prevCountFn(){
+                btn = false;
                 cnt --;
                 centerSlideFn();
                 rightSlideFn();
-                btn = false;
                 if(cnt<0){
                     cnt=2;
                 }
@@ -268,10 +288,10 @@
                 $nowPage.html(cnt+1);
             }
             function nextCountFn(){
+                btn = true;
                 cnt ++;
                 centerSlideFn();
                 rightSlideFn();
-                btn = true;
                 if(cnt>2){
                     cnt=0;
                 }
@@ -280,81 +300,41 @@
             }
             $prevBtn.on({
                 click:function(){
-                    if(!$centerSlideWrap.is(':animated')){
+                    if(!$centerSlideWrap.is(':animated')&&!$leftSlide.is(':animated')){
                         prevCountFn();
                     }
                 }
             });
             $nextBtn.on({
                 click:function(){
-                    if(!$centerSlideWrap.is(':animated')){
+                    if(!$centerSlideWrap.is(':animated')&&!$leftSlide.is(':animated')){
                         nextCountFn();
                     }
                 }
             });
-
-            $centerSlideView.on({
-                mousedown:function(e){
-                    TouchDelta = true;
-                    e.preventDefault();
-                    TouchS = e.clientX;
-                },
-                mouseup:function(e){
-                    TouchDelta = false;
-                    e.preventDefault();
-                    TouchE = e.clientX;
-                    TouchSwipeFn();
-                },
-                mouseleave:function(e){
-                    if(TouchDelta === true){
-                        TouchDelta = false;
-                        e.preventDefault();
-                        TouchE = e.clientX;
-                        TouchSwipeFn();
-                    }
-                },
-
-                touchstart:function(e){
-                    TouchDelta = true;
-                    e.preventDefault();
-                    TouchS = e.originalEvent.changedTouches[0].clientX;
-                    TouchYstart = e.originalEvent.changedTouches[0].clientY;
-                },
-                touchend:function(e){
-                    TouchDelta = false;
-                    e.preventDefault();
-                    TouchE = e.originalEvent.changedTouches[0].clientX;
-                    TouchYend = e.originalEvent.changedTouches[0].clientY;
-
-                    TouchSwipeFn();
-                    // if(TouchYstart-TouchYend < -50){
-                    //     $('html,body').stop().animate({scrollTop: $('#section1').offset().top }, 600);
-                    // }
-                    // if(TouchYstart-TouchYend > 50){
-                    //     $('html,body').stop().animate({scrollTop: $('#section3').offset().top }, 600);
-                    // }
-                }
-            });
-            function TouchSwipeFn(){
-                if(TouchS-TouchE > 30){
-                    if(!$centerSlideWrap.is(':animated')){
-                        nextCountFn();
-                    }
-                }
-                if(TouchS-TouchE < -30){
-                    if(!$centerSlideWrap.is(':animated')){
-                        prevCountFn();
-                    }
-                }
-            }
-
 
 
         },
         section3Fn:function(){
+            var $winW  = $(window).width();
+            var $winH  = $(window).height();
+            var $section3 = $('#section3');
+
+            function resizeFn(){
+                $winW = $(window).width();
+                $winH  = $(window).height();
+
+                $section3.css({width:$winW,height:$winH})
+            }
+
+            $(window).resize(function(){
+                resizeFn();
+            });
+            setTimeout(resizeFn, 100);
 
         },
         footerFn:function(){
+
 
         },
         mouseWheelFn:function(){
@@ -363,6 +343,16 @@
             var wheelDelta = 0;
             var cnt = 0;
 
+            var $goTopBtn = $('#footer .gotop-btn');
+
+            $goTopBtn.on({
+                click:function(event){
+                    event.preventDefault();
+                    cnt=0;
+                    var url = $(this).attr('href');
+                    $('html,body').stop().animate({scrollTop:$(url).offset().top}, 800);
+                }
+            });
 
             $main.on('mousewheel DOMMouseScroll',function(event){
                 event.preventDefault();
@@ -392,7 +382,7 @@
                     }
                 }
             });
-
+            
 
         }
         
