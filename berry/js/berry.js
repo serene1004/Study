@@ -41,6 +41,8 @@
 
             var $nowPage = $('#section1 .now-page');
             var $totalPage = $('#section1 .total-page');
+            var $plus = $('#section1 .plus');
+            var $market = $('#section1 .market');
             
 
             $nowPage.html(cnt+1);
@@ -174,6 +176,13 @@
                 }
             }
 
+            $plus.on({
+                click:function(){
+                    $(this).toggleClass('addClick');
+                    $market.toggleClass('addClick');
+                }
+            });
+
             
         },
         section2Fn:function(){
@@ -202,6 +211,10 @@
 
             var $nowPage = $('#section2 .now-page');
             var $totalPage = $('#section2 .total-page');
+
+            var $plus = $('#section1 .plus');
+            var $market = $('#section1 .market');
+            var t = 0;
 
             $nowPage.html(cnt+1);
             $totalPage.html($leftSlide.length);
@@ -307,6 +320,21 @@
                 }
             });
 
+            $(window).scroll(function(){
+                if($(window).scrollTop() >= $('#section2').offset().top){
+                    if(t === 0){
+                        t = 1;
+                        $plus.addClass('addScroll');
+                        $market.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() === $('#section1').offset().top){
+                    t = 0;
+                    $plus.removeClass('addScroll');
+                    $market.removeClass('addScroll');
+                }
+            });
+
 
         },
         section3Fn:function(){
@@ -378,7 +406,7 @@
                         cnt++;
                         if(cnt>=3){
                             cnt=3;
-                            $('html,body').stop().animate({scrollTop:$section.eq(cnt-1).offset().top+200}, 800);
+                            $('html,body').stop().animate({scrollTop:$section.eq(cnt-1).offset().top+200}, 800, 'swing');
                         }
                         else{
                             $('html,body').stop().animate({scrollTop:$section.eq(cnt).offset().top}, 800, 'swing');
