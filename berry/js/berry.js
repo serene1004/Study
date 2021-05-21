@@ -13,6 +13,16 @@
 
         headerFn:function(){
 
+
+            var $headerBox = $('#header .header-box');
+            var $aside = $('#header #aside');
+
+            setTimeout(function(){
+                $headerBox.addClass('addAni');
+                $aside.addClass('addAni');
+            }, 800);
+
+
         },
         section1Fn:function(){
             var $winW  = $(window).width();
@@ -43,10 +53,21 @@
             var $totalPage = $('#section1 .total-page');
             var $plus = $('#section1 .plus');
             var $market = $('#section1 .market');
-            
 
-            $nowPage.html(cnt+1);
-            $totalPage.html($rightSlide.length);
+            var $btnWrap = $('#section1 .btn-wrap');
+            var $leftBox = $('#section1 .left-box');
+            var $rightTopBox = $('#section1 .right-box .top-box');
+            var $rightBottomBox = $('#section1 .right-box .bottom-box');
+            
+            // 시작시 실행
+            setTimeout(function(){
+                $nowPage.html(cnt+1);
+                $totalPage.html($rightSlide.length);
+                $leftBox.addClass('addAni');
+                $rightTopBox.addClass('addAni');
+                $rightBottomBox.addClass('addAni');
+                $btnWrap.addClass('addAni');
+            }, 0);
 
             function resizeFn(){
                 $winW = $(window).width();
@@ -216,8 +237,11 @@
             var $market = $('#section1 .market');
             var t = 0;
 
-            $nowPage.html(cnt+1);
-            $totalPage.html($leftSlide.length);
+
+            setTimeout(function(){
+                $nowPage.html(cnt+1);
+                $totalPage.html($leftSlide.length);
+            }, 0);
 
             function resizeFn(){
                 $winW = $(window).width();
