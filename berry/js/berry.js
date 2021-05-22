@@ -73,7 +73,7 @@
                 $winW = $(window).width();
                 $winH  = $(window).height();
 
-                $leftSlide.css({width:$winW*leftW});
+                $leftSlide.css({width:Math.round($winW*leftW)});
                 $leftSlideW = $leftSlide.innerWidth();
                 $leftSlideWrap.css({width:$leftSlideW*5});
 
@@ -247,7 +247,7 @@
                 $winW = $(window).width();
                 $winH  = $(window).height();
                 
-                $centerSlide.css({width:$winW*(leftW/2)});
+                $centerSlide.css({width:Math.round($winW*(leftW/2))});
                 $centerSlideW = $centerSlide.innerWidth();
                 $centerSlideWrap.css({width:$centerSlideW*5});
 
@@ -395,6 +395,18 @@
 
         },
         footerFn:function(){
+            var $familyBtn = $('#footer .family-btn');
+
+
+
+
+            $familyBtn.on({
+                click:function(){
+                    $(this).toggleClass('addClick');
+                }
+            });
+
+
 
 
         },

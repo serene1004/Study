@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#wrap {width: 100%;position: relative;z-index: 1;}
+#wrap {width: 100%;position: relative;z-index: 1;overflow: hidden;}
 
 /* header */
 #wrap #header {position: absolute;z-index: 3;top: 0;left: 0;width: 100%;height: 0;}
@@ -133,11 +133,17 @@
 #wrap #main #section1 .wrap .gap .container .strawberry-box .plus .bar2 {width: 2px;height: 12px;}
 #wrap #main #section1 .wrap .gap .container .strawberry-box .plus.addClick {transform: rotate(90deg);}
 #wrap #main #section1 .wrap .gap .container .strawberry-box .plus.addClick .bar1 {width: 0;}
-#wrap #main #section1 .wrap .gap .container .strawberry-box .market {width: 255px;height: 255px;position: absolute;z-index: 1;top: -50%;right: 12px;background: #48943f;box-shadow: 0 0 20px rgba(71, 148, 63, .5),0 0 20px rgba(71, 148, 63, .5);border-radius: 50%;transform: scale(0);transform-origin: 90% 75%;transition: all .3s cubic-bezier(0.2, 0.9, 0.3, 1.2);}
+
+#wrap #main #section1 .wrap .gap .container .strawberry-box .market {width: 255px;height: 255px;position: absolute;z-index: 1;top: -50%;right: 12px;display: flex;flex-direction: column;justify-content: center;align-items: center;background: #48943f;box-shadow: 0 0 20px rgba(71, 148, 63, .5),0 0 20px rgba(71, 148, 63, .5);border-radius: 50%;transform: scale(0);transform-origin: 90% 75%;transition: all .3s cubic-bezier(0.2, 0.9, 0.3, 1.2);}
 #wrap #main #section1 .wrap .gap .container .strawberry-box .market.addClick {transform: scale(1);}
 #wrap #main #section1 .wrap .gap .container .strawberry-box .market.addScroll {transition: all 0s;}
 #wrap #main #section1 .wrap .gap .container .strawberry-box .market.addClick.addScroll {top: 50%; right: -25%;transition: all 0s;}
-#wrap #main #section1 .wrap .gap .container .strawberry-box img {width: auto;animation: strawberry 80s linear infinite;}
+#wrap #main #section1 .wrap .gap .container .strawberry-box .market > span:nth-child(1) {display: inline-block;}
+#wrap #main #section1 .wrap .gap .container .strawberry-box .market > span:nth-child(1) > img {width: auto;}
+#wrap #main #section1 .wrap .gap .container .strawberry-box .market > span:nth-child(2) {display: inline-block;padding-top: 15px;font-size: 16px;color: #fff;font-weight: 300;line-height: 150%;text-align: center;}
+#wrap #main #section1 .wrap .gap .container .strawberry-box .market > span:nth-child(3) {display: inline-block;padding-top: 15px;font-size: 20px;color: #fff;transform: skew(-10deg);}
+
+#wrap #main #section1 .wrap .gap .container .strawberry-box > img {width: auto;animation: strawberry 80s linear infinite;}
 
 @keyframes strawberry {
       0% {transform: rotate(0);}
@@ -353,14 +359,23 @@
 #wrap #main #footer .wrap .gap .container .info ul li:first-child a {color: #a0cfff;}
 
 #wrap #main #footer .wrap .gap .container .info .tel {float: right;padding: 30px 0;height: 18px;}
-#wrap #main #footer .wrap .gap .container .info .tel a {display: inline-block;font-size: 15px;color: #fff;font-weight: 300;line-height: 120%;}
+#wrap #main #footer .wrap .gap .container .info .tel a {display: inline-block;font-size: 16px;color: #fff;font-weight: 300;line-height: 120%;}
 
 #wrap #main #footer .wrap .gap .container address {font-size: 15px;color: #fff;font-weight: 300;line-height: 150%;padding-bottom: 20px;}
 #wrap #main #footer .wrap .gap .container .copyright {width: 100%;}
 #wrap #main #footer .wrap .gap .container .copyright p {font-size: 14px;color: #fff;font-weight: 300;line-height: 150%;opacity: .5;letter-spacing: 1px;}
 
+#wrap #main #footer .wrap .gap .container .familysite {position: absolute;bottom: 0;right: 0;width: 200px;overflow: hidden;}
+#wrap #main #footer .wrap .gap .container .familysite .family-btn {display: inline-block;width: 100%;padding: 10px 0;border-bottom: 1px solid rgba(255,255,255,0.5);background:transparent;position: relative;z-index: 2;}
+#wrap #main #footer .wrap .gap .container .familysite .family-btn.addClick {border-top: 1px dashed rgba(255,255,255,0.5);}
+#wrap #main #footer .wrap .gap .container .familysite .family-btn span {display: inline-block;float: left;font-size: 16px;color: rgba(255,255,255,0.5);letter-spacing: 2px;text-indent: 20px;}
+#wrap #main #footer .wrap .gap .container .familysite .family-btn i {display: inline-block;float: right;border: 5px solid rgba(255,255,255,0.5);border-left: 3px solid transparent;border-right: 3px solid transparent;border-bottom: 5px solid transparent;margin-top: 5px;}
+#wrap #main #footer .wrap .gap .container .familysite .family-btn.addClick i {border-top: 5px solid transparent;border-bottom: 5px solid rgba(255,255,255,0.5);margin-top: 0px;}
+
+#wrap #main #footer .wrap .gap .container .familysite .family-list {position: absolute;z-index: 1;top: 0;left: 0;}
+
 #wrap #main #footer .wrap .gap .container #go-top {position: absolute;top: 0;left: 50%;width: 100px;height: 100px;background: #2979ca;margin-left: -50px;}
-#wrap #main #footer .wrap .gap .container #go-top a {display: block;width: 100%;height: 100%;text-align: center;position: relative;}
-#wrap #main #footer .wrap .gap .container #go-top a i {background: url(../img/sp_com.png) no-repeat;background-position: -162px 0px;width: 30px;height: 8px;position: absolute;top: 10px;left: 50%;transform: rotate(90deg);transform-origin: 0 100%;margin-left: -4px;}
-#wrap #main #footer .wrap .gap .container #go-top a span {display: block;padding-top: 60px;font-size: 15px;color: #fff;font-weight: 500;}
+#wrap #main #footer .wrap .gap .container #go-top .gotop-btn {display: block;width: 100%;height: 100%;text-align: center;position: relative;}
+#wrap #main #footer .wrap .gap .container #go-top .gotop-btn i {background: url(../img/sp_com.png) no-repeat;background-position: -162px 0px;width: 30px;height: 8px;position: absolute;top: 10px;left: 50%;transform: rotate(90deg);transform-origin: 0 100%;margin-left: -4px;}
+#wrap #main #footer .wrap .gap .container #go-top .gotop-btn span {display: block;padding-top: 60px;font-size: 15px;color: #fff;font-weight: 500;}
 
