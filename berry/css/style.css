@@ -192,6 +192,7 @@
 #wrap #main #section1 .wrap .gap .container .right-box .top-box .slide-container .slide-view .slide-wrap .slide1 {background-image: url(../img/img_visual0202.jpg);z-index: 2;}
 #wrap #main #section1 .wrap .gap .container .right-box .top-box .slide-container .slide-view .slide-wrap .slide2 {background-image: url(../img/img_visual0302.jpg);z-index: 1;}
 
+/* section1 bottom-box img */
 #wrap #main #section1 .wrap .gap .container .right-box .bottom-box {width: 100%;height: 48.4004%;background: url(../img/img_popupzone.jpg) no-repeat 50% 50%;background-size: cover;position: relative;}
 #wrap #main #section1 .wrap .gap .container .right-box .bottom-box::before {content: '';display: block;position: absolute;z-index: 5;top: 0;left: 0;width: 100%;height: 100%;background: #fff;transition: all 1.5s cubic-bezier(.9, 0, .1, 1);}
 #wrap #main #section1 .wrap .gap .container .right-box .bottom-box.addAni::before {left: 100%;}

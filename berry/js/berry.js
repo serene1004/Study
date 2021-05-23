@@ -54,18 +54,22 @@
             });
 
 
-            $mainBtn.on({
-                click:function(){
-                    $mainLi.removeClass('addClick');
-                    $(this).parent().addClass('addClick');
-
-                    $sub.stop().slideUp(500);
-                    $(this).next().stop().slideDown(500);
-                },
-            });
-
             $mainBtn.each(function(idx){
                 $(this).on({
+                    click:function(e){
+                        e.preventDefault();
+                        if ($mainLi.eq(idx).hasClass('addClick') === false){
+                            $mainLi.removeClass('addClick')
+                        }
+                        $(this).parent().toggleClass('addClick');
+
+                        if ($mainBtn.eq(idx).hasClass('addClick') === false){
+                            $mainBtn.removeClass('addClick')
+                        }
+                        $sub.stop().slideUp(500);
+                        $(this).next().stop().slideToggle(500);
+    
+                    },
                     mouseenter:function(){
                         if(idx === 0){
                             $MenuAreaBg.css({background:'url(./img/img_subVisual01.jpg) no-repeat 100% 50%',backgroundSize: 'cover'});
@@ -86,7 +90,7 @@
                             $MenuAreaBg.css({background:'url(./img/img_subVisual06.jpg) no-repeat 100% 50%',backgroundSize: 'cover'});
                         }
                     }
-                })
+                });
             })
 
 
