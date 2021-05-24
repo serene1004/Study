@@ -457,15 +457,15 @@
 #wrap #main #footer .wrap .gap .container .copyright p {font-size: 14px;color: #fff;font-weight: 300;line-height: 150%;opacity: .5;letter-spacing: 1px;}
 
 /* main footer familysite */
-#wrap #main #footer .wrap .gap .container .familysite {position: absolute;bottom: 0;right: 0;width: 200px;height: 130px;overflow: hidden;}
+#wrap #main #footer .wrap .gap .container .familysite {position: absolute;bottom: 0;right: 0;width: 200px;height: 120px;overflow: hidden;}
 #wrap #main #footer .wrap .gap .container .familysite .family-btn {display: inline-block;width: 100%;padding: 10px 0;border-bottom: 1px solid rgba(255,255,255,0.5);background:#02082c;position: absolute;bottom: 0;left: 0;z-index: 2;}
 #wrap #main #footer .wrap .gap .container .familysite .family-btn.addClick {border-top: 1px dashed rgba(255,255,255,0.5);}
 #wrap #main #footer .wrap .gap .container .familysite .family-btn span {display: inline-block;float: left;font-size: 16px;color: rgba(255,255,255,0.5);letter-spacing: 2px;text-indent: 20px;}
 #wrap #main #footer .wrap .gap .container .familysite .family-btn i {display: inline-block;float: right;border: 5px solid rgba(255,255,255,0.5);border-left: 3px solid transparent;border-right: 3px solid transparent;border-bottom: 5px solid transparent;margin-top: 6px;}
 #wrap #main #footer .wrap .gap .container .familysite .family-btn.addClick i {border-top: 5px solid transparent;border-bottom: 5px solid rgba(255,255,255,0.5);margin-top: 0px;}
 
-#wrap #main #footer .wrap .gap .container .familysite .family-list {position: absolute;z-index: 1;bottom: -50px;left: 0;width: 100%;padding: 10px 0;background:#02082c;transition: all .6s;}
-#wrap #main #footer .wrap .gap .container .familysite .family-list.addClick {transform: translateY(-92px);}
+#wrap #main #footer .wrap .gap .container .familysite .family-list {position: absolute;z-index: 1;bottom: -50px;left: 0;width: 100%;padding: 5px 0;background:#02082c;transition: all .6s;}
+#wrap #main #footer .wrap .gap .container .familysite .family-list.addClick {transform: translateY(-88px);}
 #wrap #main #footer .wrap .gap .container .familysite .family-list li {padding: 5px 0;}
 #wrap #main #footer .wrap .gap .container .familysite .family-list li a {display: inline-block;color: #fff;font-size: 13px;font-weight: 300;text-indent: 10px;}
 
