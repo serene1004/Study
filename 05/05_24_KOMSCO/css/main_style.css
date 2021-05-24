@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+#wrap #header {top:0;}
+
+#wrap #mainsub #section1 {width:100%;height:440px;position: relative;overflow: hidden;}
+#wrap #mainsub #section1 .wrap {width: 100%;height: 100%;max-width: 1300px;margin: 0 auto;}
+#wrap #mainsub #section1 .wrap .gap {margin: 0 10px;height: 100%;}
+#wrap #mainsub #section1 .wrap .gap .container {width: 100%;height: 100%;}
+
+#wrap #mainsub #section1 .wrap .gap .container .title {position: relative;top: 50%;margin-top: 0;}
+#wrap #mainsub #section1 .wrap .gap .container .title h2 {color: rgba(255,255,255,1);padding-bottom: 20px;}
+#wrap #mainsub #section1 .wrap .gap .container .title h2 span {font-size: 38px;display: inline-block;}
+#wrap #mainsub #section1 .wrap .gap .container .title h2 strong {font-size: 38px;display: inline-block;margin-left: 10px;}
+#wrap #mainsub #section1 .wrap .gap .container .title h3 {font-size: 15px;color: rgba(255,255,255,0.4);}
+
+#wrap #mainsub #section1 .wrap .gap .container .nav {position: absolute;bottom: 0;left: 50%;width: 100%;height: 60px;margin-left: -640px;background: #1a5bb1;}
+#wrap #mainsub #section1 .wrap .gap .container .nav span {display: inline-block;height: 100%;}
+#wrap #mainsub #section1 .wrap .gap .container .nav span:nth-child(1) {width: 60px;background: #3c73bd;margin-right: 25px;}
+#wrap #mainsub #section1 .wrap .gap .container .nav span:nth-child(1) a {background: url(../img/main/navi_home_ico.png) no-repeat 50% 50%;}
+#wrap #mainsub #section1 .wrap .gap .container .nav span a {display: block;height: 100%;line-height: 60px;font-size: 15px;color: #fff;}
+#wrap #mainsub #section1 .wrap .gap .container .nav span:hover a {text-decoration: underline;}
+#wrap #mainsub #section1 .wrap .gap .container .nav span i {display: block;height: 100%;width: 30px;background: url(../img/main/navi_arrow.png) no-repeat 50% 50%;}
+
+#wrap #mainsub #section2 {width:100%;height:1000px;}
+#wrap #mainsub #section2 .wrap {width: 100%;max-width: 1300px;margin: 0 auto;}
+#wrap #mainsub #section2 .wrap .gap {margin: 0 10px;}
+#wrap #mainsub #section2 .wrap .gap .container {width: 100%;}
+#wrap #mainsub #section2 .wrap .gap .container .main-sub-wrap {float: left;width: 24.6154%;position: relative;height: 1000px;}
+#wrap #mainsub #section2 .wrap .gap .container .main-sub-wrap > ul {width: 270px;}
+#wrap #mainsub #section2 .wrap .gap .container .main-sub-wrap > ul > li {border-bottom: 1px solid #ddd;}
+#wrap #mainsub #section2 .wrap .gap .container .main-sub-wrap > ul > li > a {position: relative;display: block;padding: 15px 30px 15px 15px;font-size: 17px;color: #222;font-weight: 600;line-height: 22px;}
+#wrap #mainsub #section2 .wrap .gap .container .main-sub-wrap > ul > li > .main-sub {width: 100%;display: none;}
+#wrap #mainsub #section2 .wrap .gap .container .main-sub-wrap > ul > li.addActive > .main-sub {border-top: 3px solid #1a5bb1;display: block;}
+#wrap #mainsub #section2 .wrap .gap .container .main-sub-wrap > ul > li > .main-sub ul {padding: 15px;}
+#wrap #mainsub #section2 .wrap .gap .container .main-sub-wrap > ul > li > .main-sub ul li {list-style: square;color: #1a5bb1;;margin-left: 15px;padding: 5px 0;}
+#wrap #mainsub #section2 .wrap .gap .container .main-sub-wrap > ul > li > .main-sub ul li a {display: inline-block;font-size: 15px;color: #222;line-height: 19px;}
+#wrap #mainsub #section2 .wrap .gap .container .main-sub-wrap > ul > li > .main-sub ul li:hover a {color: #1a5bb1;}
+
+#wrap #mainsub #section2 .wrap .gap .container .content {float: left;width: 73.8462%;position: relative;height: 1000px;padding: 35px 0 60px 0;}
+#wrap #mainsub #section2 .wrap .gap .container .content .content-title {padding-bottom: 18px;border-bottom: 1px solid #e2e3e4;}
+#wrap #mainsub #section2 .wrap .gap .container .content .content-title h2 {float: left;font-size: 32px;line-height: 38px;color: #222;font-weight: 700;}
+#wrap #mainsub #section2 .wrap .gap .container .content .content-title .title-icon {float: right;line-height: 38px;}
+
+#wrap #mainsub #section2 .wrap .gap .container .content .content-text {padding-top: 30px;}
+#wrap #mainsub #section2 .wrap .gap .container .content .content-text p {margin-bottom: 15px;color: #555;line-height: 23px;}
