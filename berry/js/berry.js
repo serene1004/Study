@@ -43,9 +43,10 @@
                     $rightMenuArea.toggleClass('addBtn');
 
                     $MenuAreaBg.removeClass('addBtn');
+
                     setTimeout(function(){
                         $MenuAreaBg.addClass('addBtn');
-                        $headerBox.toggleClass('addHide ');
+                        $headerBox.toggleClass('addHide');
                     }, 1200);
 
                     $mainLi.removeClass('addClick');

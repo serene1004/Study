@@ -382,6 +382,31 @@
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap .info-content .icon-wrap {text-align: left;}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap .info-content .icon-wrap i {display: inline-block;}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap .info-content .icon-wrap i svg {height: 58px;}
+
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(1) .info-gap:hover .info-content .icon-wrap i svg path {fill: #fff;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(1) .info-gap:hover .info-content .icon-wrap i svg path:nth-child(1) {fill: none;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(1) .info-gap:hover .info-content .icon-wrap i svg path:nth-child(2) {fill: none;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(1) .info-gap:hover .info-content .icon-wrap i svg rect {fill: #fff;}
+
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(2) .info-gap:hover .info-content .icon-wrap i svg path {fill:#fff;}
+
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(3) .info-gap:hover .info-content .icon-wrap i svg path {stroke:#fff;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(3) .info-gap:hover .info-content .icon-wrap i svg polygon {stroke: #fff;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(3) .info-gap:hover .info-content .icon-wrap i svg line {stroke: #fff;}
+
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(4) .info-gap:hover .info-content .icon-wrap i svg path {fill: #fff;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(4) .info-gap:hover .info-content .icon-wrap i svg path:nth-child(1) {fill: none;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(4) .info-gap:hover .info-content .icon-wrap i svg path:nth-child(2) {fill: none;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(4) .info-gap:hover .info-content .icon-wrap i svg path:nth-child(7) {fill: none;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(4) .info-gap:hover .info-content .icon-wrap i svg path:nth-child(8) {fill: none;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(4) .info-gap:hover .info-content .icon-wrap i svg path:nth-child(9) {fill: none;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(4) .info-gap:hover .info-content .icon-wrap i svg path:nth-child(10) {fill: none;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(4) .info-gap:hover .info-content .icon-wrap i svg path:nth-child(11) {fill: none;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(4) .info-gap:hover .info-content .icon-wrap i svg path:nth-child(12) {fill: none;}
+
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(5) .info-gap:hover .info-content .icon-wrap i svg path {fill: #fff;}
+#wrap #main #section3 .wrap .gap .container .bottom-box .info ul li:nth-child(5) .info-gap:hover .info-content .icon-wrap i svg polygon {fill: #fff;}
+
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap .info-content h4 {font-size: 17px;font-weight: 400;line-height: 150%;color: #333;padding-top: 30px;transition: all .6s;}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap:hover .info-content h4 {color: #fff;}
 #wrap #main #section3 .wrap .gap .container .bottom-box .info ul li .info-gap .info-content p {font-size: 15px;font-weight: 300;line-height: 150%;padding: 10px 0 30px 0;margin-right: 5px;transition: all .6s;}
@@ -441,7 +466,7 @@
 #wrap #main #footer .wrap .gap .container {width: 100%;position: relative;}
 
 /* main footer info */
-#wrap #main #footer .wrap .gap .container .info {width: 100%;}
+#wrap #main #footer .wrap .gap .container .info {width: 100%;position: relative;z-index: 1;}
 #wrap #main #footer .wrap .gap .container .info ul {float: left;}
 #wrap #main #footer .wrap .gap .container .info ul li {display: inline-block;padding: 30px 0;margin-right: 40px}
 #wrap #main #footer .wrap .gap .container .info ul li a {display: block;font-size: 15px;color: #fff;font-weight: 300;line-height: 120%;}
@@ -470,7 +495,7 @@
 #wrap #main #footer .wrap .gap .container .familysite .family-list li a {display: inline-block;color: #fff;font-size: 13px;font-weight: 300;text-indent: 10px;}
 
 /* main footer go-top */
-#wrap #main #footer .wrap .gap .container #go-top {position: absolute;top: 0;left: 50%;width: 100px;height: 100px;background: #2979ca;margin-left: -50px;}
+#wrap #main #footer .wrap .gap .container #go-top {position: absolute;z-index: 2;top: 0;left: 50%;width: 100px;height: 100px;background: #2979ca;margin-left: -50px;}
 #wrap #main #footer .wrap .gap .container #go-top .gotop-btn {display: block;width: 100%;height: 100%;text-align: center;position: relative;}
 #wrap #main #footer .wrap .gap .container #go-top .gotop-btn i {background: url(../img/sp_com.png) no-repeat;background-position: -162px 0px;width: 30px;height: 8px;position: absolute;top: 10px;left: 50%;transform: rotate(90deg);transform-origin: 0 100%;margin-left: -4px;}
 #wrap #main #footer .wrap .gap .container #go-top .gotop-btn span {display: block;padding-top: 60px;font-size: 15px;color: #fff;font-weight: 500;}
