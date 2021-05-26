@@ -132,6 +132,11 @@
             var $leftBox = $('#section1 .left-box');
             var $rightTopBox = $('#section1 .right-box .top-box');
             var $rightBottomBox = $('#section1 .right-box .bottom-box');
+
+            var setId    = null;
+            var setId2   = null;
+            var timercnt = 0;
+            var $progressbar = $('#section1 .progress-bar');
             
             // 시작시 실행
             setTimeout(function(){
@@ -189,6 +194,7 @@
                 }
                 rightSlideFn();
                 $nowPage.html(cnt+1);
+                progressFn();
             }
             function nextCountFn(){
                 cnt ++;
@@ -199,11 +205,13 @@
                 }
                 rightSlideFn();
                 $nowPage.html(cnt+1);
+                progressFn();
             }
             $prevBtn.on({
                 click:function(){
                     if(!$leftSlideWrap.is(':animated')){
                         prevCountFn();
+                        slideTimerFn();
                     }
                 }
             });
@@ -211,6 +219,7 @@
                 click:function(){
                     if(!$leftSlideWrap.is(':animated')){
                         nextCountFn();
+                        slideTimerFn();
                     }
                 }
             });
@@ -262,11 +271,13 @@
                 if(TouchS-TouchE > 30){
                     if(!$leftSlideWrap.is(':animated')){
                         nextCountFn();
+                        slideTimerFn();
                     }
                 }
                 if(TouchS-TouchE < -30){
                     if(!$leftSlideWrap.is(':animated')){
                         prevCountFn();
+                        slideTimerFn();
                     }
                 }
             }
@@ -277,6 +288,33 @@
                     $market.toggleClass('addClick');
                 }
             });
+
+            function autoPlayFn(){
+                setId = setInterval(nextCountFn, 5000);
+                $progressbar.addClass('addAni');
+            }
+            autoPlayFn();
+
+            function slideTimerFn(){
+                timercnt = 0;
+                clearInterval(setId);
+                clearInterval(setId2);
+                setId2 = setInterval(function(){
+                    timercnt++;
+                    if (timercnt >= 5) {
+                        clearInterval(setId2);
+                        nextCountFn();
+                        autoPlayFn();
+                    }
+                }, 1000);
+            }
+
+            function progressFn(){
+                $progressbar.removeClass('addAni');
+                setTimeout(function(){
+                    $progressbar.addClass('addAni');
+                }, 10)
+            }
 
             
         },

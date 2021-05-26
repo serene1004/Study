@@ -111,7 +111,7 @@
 #wrap #main #section1 .wrap .gap .container .left-box .menu-area.addBtn .menu-title h2 {opacity: 1;}
 
 /* section1 left-main-menu */
-#wrap #main #section1 .wrap .gap .container .left-box .menu-area > ul {position: relative;z-index: 2;width: 180px;margin-left: 40%;padding-top: 12%;}
+#wrap #main #section1 .wrap .gap .container .left-box .menu-area > ul {position: relative;z-index: 2;width: 180px;margin-left: 40%;padding-top: 200px;}
 #wrap #main #section1 .wrap .gap .container .left-box .menu-area > ul > li {padding: 15px 0;}
 #wrap #main #section1 .wrap .gap .container .left-box .menu-area > ul > li > a {display: block;font-size: 30px;color: #fff;font-weight: 500;position: relative;opacity: 0;transition: all .6s;transition-delay: 1s;}
 #wrap #main #section1 .wrap .gap .container .left-box .menu-area.addBtn > ul > li > a {opacity: 1;}
@@ -166,6 +166,15 @@
 #wrap #main #section1 .wrap .gap .container .left-box .slide-container .btn-wrap .count-wrap h4 span {display: inline-block;font-size: 15px;color: #bbb;font-weight: 600;}
 #wrap #main #section1 .wrap .gap .container .left-box .slide-container .btn-wrap .count-wrap h4 .now-page   {color: #9ad8ff;margin-right: 10px;}
 #wrap #main #section1 .wrap .gap .container .left-box .slide-container .btn-wrap .count-wrap h4 .total-page {color: #fff;margin-left: 10px;}
+
+/* section1 slide-progressbar */
+#wrap #main #section1 .wrap .gap .container .left-box .slide-container .progress-bar {position: absolute;z-index: 2;bottom: 0;left: 50%;margin-left: -150px;width: 1px;height: 150px;background: rgba(255, 255, 255, .5);overflow: hidden;}
+#wrap #main #section1 .wrap .gap .container .left-box .slide-container .progress-bar .bar {position: absolute;z-index: 1;top: -30px;left: 0;width: 1px;height: 30px;background: #fff;}
+#wrap #main #section1 .wrap .gap .container .left-box .slide-container .progress-bar.addAni .bar {transform: translateY(180px);animation: progressbar 5s;}
+@keyframes progressbar {
+    0% {transform: translateY(0);}
+  100% {transform: translateY(180px);}
+}
 
 
 /* section1 right-menu-area */

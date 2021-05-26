@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WINDOW 팝업창</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/reset.css">
+
+</head>
+<body>
+    <div id="popup-wrap">
+        <div class="gap">
+            <div class="container">
+                <div class="content">
+                    <h2>이것은 쿠키다</h2>
+                    <div class="button-box">
+                        <form name="popupForm">
+                            <span>
+                                <input type="checkbox" name="coockiecheck" id="check" value="">
+                                <label for="check">오늘 하루동안 열지 않음</label>
+                            </span>
+                            <button class="close-btn">X</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        var $closeBtn = document.querySelector('.close-btn');
+        var today = null;
+        var txt = '';
+
+        // 1-1 쿠키설정 함수
+        function setCookieFn(name, value, expires){
+            today = new Date();
+            today.setDate(today.getDate()+expires);
+
+            txt += name + '=' + value + ';'
+            txt += 'expires=' + today.toUTCString() + ';';
+            
+            document.cookie = txt;
+            // console.log(txt);
+        }
+
+        // 1-2 쿠키설정 버튼 클릭이벤트
+        $closeBtn.addEventListener('click', function(event){
+            event.preventDefault();
+            if(popupForm.coockiecheck.checked){
+                setCookieFn('popup_20210526', 'no', 1);
+            }
+            self.close();
+            // window.close();
+        });
+
+        
+    </script>
+</body>
+</html>
