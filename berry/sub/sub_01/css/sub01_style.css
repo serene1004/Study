@@ -11,7 +11,7 @@
 #wrap #main #section1 .wrap .gap .container .sub-content .sub-nav ul li a {display: block;font-size: 17px;color: #8d8d8d;padding: 30px 45px;position: relative;z-index: 2;}
 #wrap #main #section1 .wrap .gap .container .sub-content .sub-nav ul li.addClick a {color: #fff;}
 #wrap #main #section1 .wrap .gap .container .sub-content .sub-nav ul li i {display: none;position: absolute;z-index: 1;top: -25px;left: -5%;width: 110%;height: 125px;background: #2275c8;}
-#wrap #main #section1 .wrap .gap .container .sub-content .sub-nav ul li.addClick i {display: block;}
+#wrap #main #section1 .wrap .gap .container .sub-content .sub-nav ul li.addClick i {display: block;box-shadow: 0 5px 30px rgba(34, 117, 200, .6);}
 #wrap #main #section1 .wrap .gap .container .sub-content .sub-nav ul li i img {width: 50px;position: absolute;bottom: 0;right: 10px;}
 
 #wrap #main #section1 .wrap .gap .container .sub-content .content-nav {max-width: 1200px;margin: 0 auto;padding-top: 110px;position: relative;}

@@ -51,13 +51,13 @@
                 prevLastDate = new Date(y, m-1, 0).getDate();
 
                 function thisMonthFn(){
-                    if(m < 10){m = '0' + m;}
+                    if (m < 10) {m = '0' + m;}
                     $thisMonth.html(y +'.'+ m);
                     $scheduleH3.html(y +'-'+ m + '-' + date);
                 }
                 thisMonthFn();
 
-                if(m == month && y == year){
+                if (m == month && y == year){
                     $td.eq(firstDay-1+date).addClass('today');
                 }
 
@@ -94,7 +94,7 @@
             $calPrevBtn.on({
                 click:function(){
                     m--;
-                    if(m<1){m=12;y--;}
+                    if (m<1) {m=12;y--;}
                     $('td').removeClass('prev-month');
                     $('td').removeClass('next-month');
                     $('td').removeClass('today');
@@ -105,7 +105,7 @@
             $calNextBtn.on({
                 click:function(){
                     m++;
-                    if(m>12){m=1;y++;}
+                    if (m>12) {m=1;y++;}
                     $('td').removeClass('prev-month');
                     $('td').removeClass('next-month');
                     $('td').removeClass('today');
@@ -116,20 +116,31 @@
 
             $td.on({
                 click:function(){
-                    $td.removeClass('addClick');
-                    $(this).addClass('addClick');
+                    if ($(this).hasClass('prev-month') || $(this).hasClass('next-month')) {
 
-                    var clickM = '';
-                    var txt = '';
-                    txt = $(this).text();
+                    } else {
+                        $td.removeClass('addClick');
+                        $(this).addClass('addClick');
+    
+                        var clickM = '';
+                        var txt = '';
+                        txt = $(this).text();
+    
+                        // 날짜를 클릭시 오른쪽의 현재날짜가 클릭한 날짜로 바뀌면서
+                        // 해당 날짜의 예약리스트?가 표시가되도록 데이터를 변경
+                        // 이전, 다음달의 날짜에는 클릭 안되게 or 이전 ,다음달 날짜 클릭시 해당월로 이동하여 클릭한 날짜에 이벤트추가도 괜찮을듯
+                        if (m < 10){
+                            clickM = '0' + m;
+                        } else {
+                            clickM = m;
+                        }
+                        if (txt < 10) {
+                            txt = '0' + txt;
+                        }
+                        $scheduleH3.html(y +'-'+ clickM + '-' + txt);
+                        txt = '';
+                    }
 
-                    // 날짜를 클릭시 오른쪽의 현재날짜가 클릭한 날짜로 바뀌면서
-                    // 해당 날짜의 예약리스트?가 표시가되도록 데이터를 변경
-                    if(m < 10){clickM = '0' + m;}
-                    else{clickM = m;}
-                    if(txt < 10){txt = '0' + txt;}
-                    $scheduleH3.html(y +'-'+ clickM + '-' + txt);
-                    txt = '';
                 }
             });
 
