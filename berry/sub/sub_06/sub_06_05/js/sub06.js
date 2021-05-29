@@ -40,8 +40,8 @@
 
                             a[idx][0] = obj.no;
                             a[idx][1] = obj.title;
-                            a[idx][2] = obj.date;
-                            a[idx][3] = obj.name;
+                            a[idx][2] = obj.name;
+                            a[idx][3] = obj.date;
 
                         });
 
