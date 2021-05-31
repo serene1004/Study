@@ -57,31 +57,31 @@
                 }
                 thisMonthFn();
 
-                if (m == month && y == year){
+                if (m == month && y == year) {
                     $td.eq(firstDay-1+date).addClass('today');
                 }
 
-                for(var i=1; i<=lastDate; i++){
-                    if(col!==null){
+                for (var i=1; i<=lastDate; i++) {
+                    if (col!==null) {
                         $td.eq(col).html(i);
                         col++;
                     }
                 }
 
-                for(var i=firstDay-1; i>=0; i--){
+                for (var i=firstDay-1; i>=0; i--) {
                     $td.eq(i).html(prevLastDate).addClass('prev-month');
                     prevLastDate--;
                 }
                 
-                for(var i=col; i<=$td.length; i++){
+                for (var i=col; i<=$td.length; i++) {
                     nextMonthCnt++;
                     $td.eq(i).html(nextMonthCnt).addClass('next-month');
                 }
 
-                for(var i=0; i<=$td.length; i+=7){
+                for (var i=0; i<=$td.length; i+=7) {
                     $td.eq(i).addClass('sun');
                 }
-                for(var i=6; i<=$td.length; i+=7){
+                for (var i=6; i<=$td.length; i+=7) {
                     $td.eq(i).addClass('sat');
                 }
 

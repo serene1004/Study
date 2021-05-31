@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+
+
+    <script src="./js/lib/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app"> <!-- 뷰 선택자 -->
+        <div id="wrap">
+            <!-- 머스테쉬 : 수염모양의 중괄호 2개 {{}} -->
+            <!-- 디렉티브 v-bind: 태그요소에 속성을 지정한다 -->
+            <h2 v-bind:title="x">{{ subject }}</h2>
+            <img v-bind:src="image" v-bind:alt="alttext" v-bind:title="alttext" style="width: 500px;" height="300px">
+        </div>
+    </div>
+
+    <script>
+        // 생성자는 반드시 첫글자를 대문자로 표기
+        new Vue({
+            el:'#app',
+            data:{
+                subject:'뷰 인스턴스 생성과 루트 영역',
+                x:'요소 타이틀 입니다',
+                image:'./img/img1.jpg',
+                alttext:'돌고래 사진입니다'
+            }
+        });
+    </script>
+
+    <div id="main">
+        <div id="wrap">
+            <h1 v-bind:title="y">{{ name }}</h1>
+            <img v-bind:src="img" v-bind:alt="alttext" v-bind:title="alttext" style="width: 500px;" height="300px">
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el:'#main',
+            data:{
+                y:'돌고래 제목이다',
+                name:'돌고래다',
+                img:'./img/img1.jpg',
+                alttext:'돌고래 사진'
+            }
+        });
+    </script>
+</body>
+</html>

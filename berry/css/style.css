@@ -107,7 +107,7 @@
 
 /* section1 left-menu-title */
 #wrap #main #section1 .wrap .gap .container .left-box .menu-area .menu-title {position: absolute;top: 85px;left: 80px;}
-#wrap #main #section1 .wrap .gap .container .left-box .menu-area .menu-title h2 {width: 190px;height: 48px;background: url(../img/logo.svg) no-repeat 50% 0;background-size: cover;opacity: 0;transition: all .3s;transition-delay: 1.5s;}
+#wrap #main #section1 .wrap .gap .container .left-box .menu-area .menu-title h2 {width: 190px;height: 48px;font-size: 0;background: url(../img/logo.svg) no-repeat 50% 0;background-size: cover;opacity: 0;transition: all .3s;transition-delay: 1.5s;}
 #wrap #main #section1 .wrap .gap .container .left-box .menu-area.addBtn .menu-title h2 {opacity: 1;}
 
 /* section1 left-main-menu */
