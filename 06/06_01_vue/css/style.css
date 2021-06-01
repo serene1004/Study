@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+body {margin-top:100px}
+
+.svg {width:300px;height:300px;margin:0 auto;}
+.svg a {display:block;border-radius:50%;overflow: hidden;transform:scale(1);transition:all .3s;}/* 이렇게해줘야지 svg원형 밖에 보이지않는 a링크부분도 짤림 */
+.svg a:hover {transform:scale(1.2,1.2)}/* 이렇게해줘야지 svg원형 밖에 보이지않는 a링크부분도 짤림 */
+.svg a .circle1 {transition:all .3s;}
+.svg a:hover .circle1 {fill:#a8bd;}/* fill svg에 바로써두되고 여기써두되고 */
+
+
+#svg2 {margin:50px auto 0;}

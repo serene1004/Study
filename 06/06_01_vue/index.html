@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>svg</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+    <!-- xml웹 기반 백터방식 그래픽 이미지 포맷 -->
+    <div id="svg1" class="svg"> <!-- svg는 꼭 랩핑박스필요 -->
+        <a href="#">
+            <svg viewBox='0 0 500 500'><!-- viewBox = 'x축 y축 넓이 높이' 이걸잡아줘야지 반응형가능 랩핑박스의 크기를 기준으로 움직임 -->
+                <circle class="circle1" cx="250" cy="250" r="250" fill="#c99";></circle> <!-- cx원의 x축 cy y축 이걸로 원의 가운데점 찍고(viewBox의 절반), r이 반지름 -->
+            </svg>
+        </a>
+    </div>
+
+    <div id="svg2" class="svg"> 
+        <a href="#">
+            <svg viewBox='0 0 104 104'>
+                <circle class="circle1" cx="52" cy="52" r="50" stroke-width='4' stroke="#b0b" fill='#309'></circle><!-- 반지름은 stroke넓이 그냥 빼고 안에서만 나누기 2 -->
+            </svg>
+        </a>
+    </div>
+
+    <div id="svg3"> 
+        <a href="#">
+            <svg viewBox='0 0 100 100'>
+                <text font-size="30px">
+                    <tspan>WEB PUBLISHER</tspan>
+                </text>
+            </svg>
+        </a>
+    </div>
+</body>
+</html>

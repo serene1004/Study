@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+
+
+    <script src="./js/lib/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app"> <!-- 뷰 선택자 -->
+        <div id="wrap">
+            <!-- 머스테쉬 : 수염모양의 중괄호 2개 {{}} (태그요소 무시하고 모두 텍스트로 인식함)-->
+            <!-- 디렉티브 v-bind: 태그요소에 속성을 지정한다 -->
+            <h2 v-bind:title="x">{{ subject1 }}</h2>
+            <h2 v-html="subject2" title="x"></h2>
+            <h2 v-text="subject3" title="x"></h2>
+            <!-- <h2 v-html 디렉티브> 태그요소를 인식  -->
+            <!-- <h2 v-text 디렉티브> 태그요소를 모두 무시하고 텍스트로 인식  -->
+            <!-- 자바스크립트에서 요소.html
+            자바스크립트에서 요소.text
+            자바스크립트에서 요소.innerHTML -->
+            <img :src="image" :alt="alttext" :title="alttext" style="width: 500px; height:auto">
+            <!-- v-bind: 는 :로 줄여서 사용가능함 -->
+            <button v-on:click="ckickEventFn">버튼클릭이벤트</button>
+            <button @click="ckickEventFn">v-on: = @</button>
+            <button @click="cnt++">+</button>
+            <button @click="cnt--">-</button>
+            <h1>{{cnt}}</h1>
+            <h1>{{cnt>10 ? cnt=1 : cnt}}</h1>
+        </div>
+    </div>
+
+    <script>
+        // 생성자는 반드시 첫글자를 대문자로 표기
+        //  뷰인스턴스가 아래와같이 생성됨
+        new Vue({
+            el:'#app',
+            data:{
+                subject1:'<a href="#">Hello Vue.js</a>',
+                subject2:'<a href="#">Hello Vue.js</a>',
+                subject3:'<a href="#">Hello Vue.js</a>',
+                x:'요소 타이틀 입니다',
+                image:'./img/img1.jpg',
+                alttext:'돌고래 사진입니다',
+                cnt:0,
+            },
+            methods:{
+                ckickEventFn:function(){
+                    this.cnt++;
+                    if (this.cnt > 10) {
+                        this.cnt = 1;
+                    }
+
+                    this.subject3 = '제목-' + this.cnt + '회 메서드에서 변경된 내용입니다.'
+
+                }
+            }
+        });
+    </script>
+    <hr>
+
+    <div id="main">
+        <div id="wrap">
+            <h1 v-bind:title="titleClass">{{ name }}</h1>
+            <img v-bind:src="img" v-bind:alt="alttext" v-bind:title="alttext" style="width: 500px; height:auto">
+            <button @click="eventFn">버튼이다</button>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el:'#main',
+            data:{
+                titleClass:'돌고래 제목이다',
+                name:'돌고래다',
+                img:'./img/img1.jpg',
+                alttext:'돌고래 사진',
+                cnt:0
+            },
+            methods:{
+                eventFn:function(){
+                    this.cnt++;
+                    if (this.cnt > 1) {
+                        this.cnt = 0;
+                    }
+                    this.name = '돌고래다' + this.cnt
+                }
+            }
+        });
+    </script>
+
+    <hr>
+    <style>
+        .class1 {font-size: 30px;color: #38a;}
+        .class2 {font-size: 40px;color: #a83;}
+    </style>
+
+    <div id="app2">
+        <h2 :class="titleClass">{{msg}}</h2>
+        <div>
+            <h3 :class="{'class1':x, 'class2':y}">콘텐츠 내용 1</h3>
+            <h3 :style="txtClass1">콘텐츠 내용 2</h3>
+            <h3 :style="txtClass2">콘텐츠 내용 3</h3>
+            <img :style="imgClass" src="./img/img1.jpg" alt="">
+        </div>
+
+    </div>
+    <script>
+        new Vue ({
+            el:'#app2',
+            data:{
+                msg:'스타일 속성 지정하기',
+                titleClass:'class2',
+                x:true,
+                y:false,
+                imgClass:{
+                    width:'500px',
+                    height:'auto',
+                    borderRadius:'50%'
+                },
+                txtClass1:{
+                    fontSize:'20px',
+                    color:'#c77',
+                    backgroundColor:'#f0f0ff'
+                },
+                txtClass2:{
+                    fontSize:'20px',
+                    color:'#dff',
+                    backgroundColor:'#ff0f00'
+                }
+            }
+        });
+    </script>
+    <hr>
+
+    <div id="app3">
+
+        <!-- v-if 조건이 참이면 요소가 보이고, 거짓이면 요소자체가 사라짐
+        v-show display:block;
+        v-hide display:none; -->
+
+        <h1 v-show='title'>v-if 와 v-show 비교</h1>
+        <h1 v-if='title'>v-if 와 v-show 비교</h1>
+        <ul>
+            <li v-if='jum>90'>수</li>
+            <li v-else-if='jum>=80'>우</li>
+            <li v-else-if='jum>=70'>미</li>
+            <li v-else-if='jum>=60'>양</li>
+            <li v-else>가</li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app3',
+            data:{
+                jum:85, // 참, 거짓 true, false
+                title:false
+            },
+            methods:{
+
+            }
+        });
+    </script>
+
+</body>
+</html>
