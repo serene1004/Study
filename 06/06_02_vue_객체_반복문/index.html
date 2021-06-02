@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js 프레임워크 웹앱개발</title>
+
+    <script src="./js/lib/vue.js"></script>
+    <script src="./icon/fontawesome.js"></script>
+
+    <style>
+        body {text-align:center;}
+        .wrap {padding:100px 0;}
+        .wrap table {margin:0 auto;border-collapse: collapse;}/* 보더 두줄로보이는거 막는거 */
+        .wrap table caption {padding:50px 0;font-size:30px;}
+        .wrap table th ,
+        .wrap table td {border:1px solid #ddd;padding:10px 40px;}
+    </style>
+
+</head>
+<body>
+
+    <div id="app"><!-- 루트영역(컴포넌트) -->
+        <div class="wrap">
+            <h1>v-for 디렉티브(반복문)을 활용한 배열객체</h1>
+            <tamplate><!-- 내용부분(템플릿) -->
+                <table>
+                    <caption>고객 리스트</caption>
+                    <tr>
+                        <th>번호</th>
+                        <th>이름</th>
+                        <th>휴대전화</th>
+                    </tr>
+                    <!-- 반복이 일어날부분에 v-for='변수 in 객체이름' -->
+                    <tr v-for='item in list'>
+                        <td>{{item.no}} </td><!-- {{변수.필드명}} -->
+                        <td>{{item.name}} </td>
+                        <td>{{item.phone}} </td>
+                    </tr>
+                </table>
+            </tamplate>
+        </div>
+    </div>
+
+    <script>
+        new Vue ({
+            el:'#app',
+            data:{
+                list:[
+                  {no:01, name:'이순신', phone:'010-5408-1518'},   /* json data랑 동일하게 쓰는데 단, 필드명엔 ""꼭 안붙여도 무관 */
+                  {no:02, name:'강감찬', phone:'010-3478-8477'},  
+                  {no:03, name:'유재석', phone:'010-4215-0156'},  
+                  {no:04, name:'이효리', phone:'010-8952-4154'},  
+                  {no:05, name:'김태희', phone:'010-7521-5214'},  
+                  {no:06, name:'강동원', phone:'010-7565-4521'},  
+                  {no:07, name:'이동욱', phone:'010-8326-7562'},  
+                  {no:08, name:'박보영', phone:'010-2354-1568'},  
+                  {no:09, name:'한소희', phone:'010-4845-4545'},  
+                  {no:10, name:'남주혁', phone:'010-7845-0456'}
+                ]
+
+            },
+            methods:{
+
+            }
+        });
+    </script>
+
+    <!-- v-model 디렉티브 반복문 -->
+    <div id="app2">
+        <div class="wrap">
+            <div class="title">
+                <h1>오늘 날짜 : {{today.getFullYear()}}-{{today.getMonth()+1}}-{{today.getDate()}} </h1> <!-- {{년}}-{{월}}-{{일}} -->
+            </div>
+            <div class="content">
+                <h2>좋아하는 과일</h2>
+                <select name="fruit" id="fruit" v-model='selectFruit'><!-- v-model='변수' -->
+                    <option value="">좋아하는 과일을 선택하세요!</option>
+                    <option value="딸기">딸기</option>
+                    <option value="참외">참외</option>
+                    <option value="오렌지">오렌지</option>
+                    <option value="바나나">바나나</option>
+                    <option value="수박">수박</option>
+                    <option value="자몽">자몽</option>
+                    <option value="체리">체리</option>
+                    <option value="블루베리">블루베리</option>
+                </select>
+                <h2>내가 좋아하는 과일은 {{selectFruit}} 입니다.</h2>
+            </div>
+
+            <br>
+            <hr>
+            <br>
+
+            <div class="content"> <!-- 예진아 이거 아직 오류 상태임! 글고 선생님은 위에 저 옵션나열해둔거 지우고 지금 이거만 뒀는데 난 나중에 헷갈릴꺼같아소 위에꺼 살려두고 v-model 이름에 2붙여서 구분해뒀어!!!! -->
+                <h2>좋아하는 과일(배열로)</h2>
+                <select name="fruit" id="fruit" v-model='selectFruit2'><!-- v-model='변수' -->
+                    <option value="">좋아하는 과일을 선택하세요!</option>
+                    <option v-for='row in fruitList' :value="row.과일명">{{row.과일명}}</option>
+
+                </select>
+                <h2>내가 좋아하는 과일은 {{selectFruit2}} 입니다.</h2>
+            </div>
+        </div>
+    </div>
+    <script>
+        new Vue ({
+            el:'#app2',
+            data:{
+                fruitList:[ // option을 배열로 넣기
+                    {과일명:'딸기'},
+                    {과일명:'참외'},
+                    {과일명:'오렌지'},
+                    {과일명:'바나나'},
+                    {과일명:'수박'},
+                    {과일명:'자몽'},
+                    {과일명:'체리'},
+                    {과일명:'블루베리'}
+                ],
+                today: new Date(),
+                selectFruit:'', /* 초기값넣어주고싶으면 여기에 머 딸기 이런 초기값 넣어주면뎀 
+                                단, 이전에 html처럼 위에 option 상자 중 하나에 selected 써둬도 그게 선택된게 초기값으로 가진않음 >> data에 적힌게 우선이되기때문!*/
+                selectFruit2:''
+            }
+        });
+    </script>
+    <hr>
+    <div id="app3">
+        <div class="wrap">
+            <h1>체크박스 v-model</h1>
+            <div class="check-box">
+                <input v-model="chk" type="checkbox" name="chk1" id="idChk1" value="달리기">
+                <label for="idChk1">달리기</label>
+                <input v-model="chk" type="checkbox" name="chk2" id="idChk2" value="등산">
+                <label for="idChk2">등산</label>
+                <input v-model="chk" type="checkbox" name="chk3" id="idChk3" value="수영">
+                <label for="idChk3">수영</label>
+                <input v-model="chk" type="checkbox" name="chk4" id="idChk4" value="낚시">
+                <label for="idChk4">낚시</label>
+                <input v-model="chk" type="checkbox" name="chk5" id="idChk5" value="스키">
+                <label for="idChk5">스키</label>
+            </div>
+            <h2>당신의 취미는 {{chk}} 입니다.</h2>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el:'#app3',
+            data:{
+                chk:[]  // 체크박스는 항목이 여러개이므로 반드시 배열처리하여 값을 입력받는다.
+            }
+        })
+    </script>
+    <hr>
+    <div id="app4">
+        <div class="wrap">
+            <h1>라디오버튼 v-model</h1>
+            <div class="radio">
+                <input v-model="gender" type="radio" name="radio" id="idRadio1" value="남자">
+                <label for="idRadio1">남자</label>
+                <input v-model="gender" type="radio" name="radio" id="idRadio2" value="여자">
+                <label for="idRadio2">여자</label>
+
+            </div>
+            <h2>당신의 성별은 {{gender}} 입니다.</h2>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el:'#app4',
+            data:{
+                gender:''
+            }
+        })
+    </script>
+    <hr>
+    <div id="app5">
+        <div class="wrap">
+            <h1>입력상자 input</h1>
+            <div class="input-box">
+                <label for="idName"></label>
+                <input v-model="name" type="text" name="name" id="idName" value="">
+                <br>
+                <label for="idPay"></label>
+                <input v-model="pay" type="text" name="pay" id="idPay" value="">
+
+            </div>
+            <h2>당신의 이름은 {{name}} 입니다.</h2>
+            <h2>당신의 급여는 {{resultFn}} 입니다.</h2>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el:'#app5',
+            data:{
+                name:'',
+                pay:''
+            },
+            computed:{
+                resultFn:function(){
+                    var regExp = /\D/;  // 숫자가 아닌것 정규표현식
+                    // var regExp = /\d/;  // 숫자만
+                    
+                    if (regExp.test(this.pay)) {    // 문자는 지우고 숫자만 입력이 되도록
+                        this.pay='';    // 숫자가 아니면 지워지도록
+                    } else {
+                        return resultFn = this.pay; // 리턴값을 되돌려줘서 화면에 바로 출력이되도록
+                    }
+                }
+            },
+            watch:{     // 감시자 supervisor 감독자
+                name:function(){ // 루트에 있는 변수 중 이름 사용 변화를 감지한다
+                    console.log('이름의 변화를 감지', this.name);
+                },
+                pay:function(){ // 루트에 있는 변수 중 이름 사용 변화를 감지한다
+                    console.log('급여의 변화를 감지', this.pay);
+                }
+            }
+        })
+    </script>
+    <hr>
+    <div id="app6">
+        <div class="wrap">
+            <h1>입력상자 input</h1>
+            <div class="input-box">
+                <label for="app6idName"></label>
+                <input v-model="name" type="text" name="name" id="app6idName" value="">
+                <br>
+                <label for="app6idPay"></label>
+                <input v-model="pay" type="text" name="pay" id="app6idPay" value="">
+
+            </div>
+            <h2>당신의 이름은 {{name}} 입니다.</h2>
+            <h2>당신의 급여는 {{pay}} 입니다.</h2>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el:'#app6',
+            data:{
+                name:'',
+                pay:''
+            },
+            // computed:{
+            //     새로운변수 : function(){}
+            // },
+            watch:{     // 감시자 supervisor 감독자
+                pay:function(){
+                    // 급여 입력값
+                    var regExp = /\D/;  // /\D/ = /[^0-9]/ 숫자가 아닌것
+                    if (regExp.test(this.pay)) {
+                        this.pay = '';
+                    }
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

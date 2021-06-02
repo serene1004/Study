@@ -19,6 +19,8 @@
             var $span = $('#section1 .link-wrap > span');
             var $arrow = $('#section1 .link-wrap > span > i');
             var $profile = $('#section1 .profile > ul > li');
+            var $skills = $('#section1 .skills > ul > li');
+            var $progressbar = $('#section1 .skills .progress-bar');
             
 
             function resizeFn(){
@@ -48,15 +50,25 @@
                         if (idx === 0) {
                             $section1.css({background: 'url(./img/main2.jpg) no-repeat 50% 50%', backgroundSize: 'cover'});
                             $profile.removeClass('addAni');
+                            $skills.removeClass('addAni');
+                            $progressbar.removeClass('addAni');
                         } else if (idx === 1) {
                             $section1.css({background: 'url(./img/main3.jpg) no-repeat 50% 50%', backgroundSize: 'cover'});
                             $profile.removeClass('addAni');
+                            $skills.removeClass('addAni');
+                            $progressbar.removeClass('addAni');
                         } else if (idx === 2) {
                             $section1.css({background: 'url(./img/main1.jpg) no-repeat 50% 50%', backgroundSize: 'cover'});
                             $profile.addClass('addAni');
+                            $skills.addClass('addAni');
+                            setTimeout(function(){
+                                $progressbar.addClass('addAni');
+                            }, 2000)
                         } else if (idx === 3) {
                             $section1.css({background: 'url(./img/main4.jpg) no-repeat 50% 50%', backgroundSize: 'cover'});
                             $profile.removeClass('addAni');
+                            $skills.removeClass('addAni');
+                            $progressbar.removeClass('addAni');
                         }
                     }
                 });
@@ -213,6 +225,7 @@
             var $section = $('.section');
             var wheelDelta = 0;
             var cnt = 0;
+            var $a = $('#section1 .link-wrap > span > a');
 
             var $goTopBtn = $('.gotop-btn');
 
@@ -223,6 +236,23 @@
                     var url = $(this).attr('href');
                     $('html,body').stop().animate({scrollTop:$(url).offset().top}, 800);
                 }
+            });
+
+            $a.each(function(idx){
+                $(this).on({
+                    click:function(event){
+                        event.preventDefault();
+                        if (idx === 0) {
+                            cnt=1;
+                        } else if (idx === 1) {
+                            cnt=2;
+                        } else if (idx === 3) {
+                            cnt=3;
+                        }
+                        var url = $(this).attr('href');
+                        $('html,body').stop().animate({scrollTop:$(url).offset().top}, 800);
+                    }
+                });
             });
 
 
