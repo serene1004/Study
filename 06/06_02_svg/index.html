@@ -9,24 +9,26 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/lib/jquery-1.12.4.min.js"></script>
 
+    <style>
+        body {padding-top:50px;}
+        
+        .svg {width:600px;height:600px;margin:50px auto;transform:scale(1,1);transition:all .6s;transform:rotate(-90deg);}
+        .svg a {display:block;border-radius:50%;overflow:hidden;}
+        .svg a .circle {fill:#fff;stroke:#39c;/* stroke-dashoffset:900;stroke-dasharray:900; */}
+        /* .svg:hover {transform:scale(1.3,1.3);} */
+    
+    </style>
+
 </head>
 <body>
-    <!-- xml웹 기반 백터방식 그래픽 이미지 포맷 -->
-    <div id="svg1" class="svg"> <!-- svg는 꼭 랩핑박스필요 -->
-        <a href="#">
-            <svg viewBox='0 0 500 500'><!-- viewBox = 'x축 y축 넓이 높이' 이걸잡아줘야지 반응형가능 랩핑박스의 크기를 기준으로 움직임 -->
-                <circle class="circle" cx="250" cy="250" r="250" fill="#c99";></circle> <!-- cx원의 x축 cy y축 이걸로 원의 가운데점 찍고(viewBox의 절반), r이 반지름 -->
-            </svg>
-        </a>
-    </div>
 
-    <div id="svg2" class="svg"> 
+    <div id="svg2"  class="svg">
         <a href="#">
-            <svg viewBox='0 0 104 104'>
-                <circle class="circle" cx="52" cy="52" r="50" stroke-width='4' stroke="#b0b" fill='#309'></circle><!-- 반지름은 stroke넓이 그냥 빼고 안에서만 나누기 2 -->
-            </svg>
+          <svg viewBox='0 0 100 100'>
+              <circle class="circle" cx='50' cy='50' r='48' stroke-width='4'></circle>
+          </svg>
         </a>
-    </div>
+      </div>
 
 </body>
 <script src="./js/main_script.js"></script>

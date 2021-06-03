@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+
+    
+    <script src="./js/lib/vue.js"></script>
+    <script src="./icon/fontawesome.js"></script>
+
+
+</head>
+<body>
+
+    <div id="app">
+        <div class="wrap">
+            <h2>{{title}}</h2>
+            <list-component v-for="record in list" :propsdata="record"></list-component>
+        </div>
+    </div>
+    <script>
+        Vue.component('list-component',{
+            props:['propsdata'],
+            template:'<tr>\
+                            <td>{{propsdata.번호}}</td>\
+                            <td>{{propsdata.이름}}</td>\
+                            <td>{{propsdata.과일}}</td>\
+                        </tr>'
+        })
+
+        new Vue({
+            el:'#app',
+            data:{
+                title:'제목입니다.',
+                list:[
+                    {번호:1, 이름:'susu', 과일:'수박'},
+                    {번호:2, 이름:'sasa', 과일:'딸기'},
+                    {번호:3, 이름:'soso', 과일:'체리'},
+                    {번호:4, 이름:'sisi', 과일:'사과'},
+                    {번호:5, 이름:'sese', 과일:'오렌지'},
+                    {번호:6, 이름:'dada', 과일:'포도'},
+                    {번호:7, 이름:'dudu', 과일:'망고'},
+                    {번호:8, 이름:'dede', 과일:'블루베리'},
+                    {번호:9, 이름:'didi', 과일:'키위'},
+                    {번호:10, 이름:'dodo', 과일:'바나나'}
+                ]
+            }
+        });
+    </script>
+
+</body>
+</html>

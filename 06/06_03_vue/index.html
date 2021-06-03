@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+
+    
+    <script src="./js/lib/vue.js"></script>
+    <script src="./icon/fontawesome.js"></script>
+
+
+</head>
+<body>
+
+    <!-- 전역컴포넌트와 템플리트 -->
+    <div id="app1">
+        <div class="wrap">
+            <h1><mark>{{title}}</mark></h1>
+            <!-- JSX 가상 태그 요소들 -->
+            <!-- 컴포넌트 가상요소 이름은 캐밥기법(스네이크 기법) -->
+            <!-- 그러면 뷰는 컴포넌트를 파스칼 기법으로 변형해서 사용됨 <headercomponent></headercomponent> -->
+            <header-component v-bind:props1="props1"></header-component>
+            <main-component :props2="props2" :props3="props3"></main-component>
+            <footer-component v-bind:props4="props4"></footer-component>
+        </div>
+    </div>
+    <script>
+        // 단일(싱글) 전역 컴포넌트 등록의 위치는 뷰 인스턴스 위에 등록한다.
+        // Vue.component('가상컴포넌트이름',{템플리트});
+        // 템플리트 작성 주의사항 : 반드시 템플리트 내용은 랩핑처리하여 코딩한다.
+        // 템플리트에서 줄의 끝은 반드시 역슬래쉬로 마감
+        Vue.component('header-component',{
+            props:['props1'],   // 프롭스 속성 이름은 반드시 소문자로만 사용
+            template:'<header id="header">\
+                            <h2><i><mark>{{props1}}</mark>header-component</i></h2>\
+                        </header>'
+        });
+
+        Vue.component('main-component',{
+            props:['props2', 'props3'],
+            template:'<div class="main-wrap">\
+                            <main id="main">\
+                                <section id="section1">\
+                                    <div class="wrap">\
+                                        <div class="gap">\
+                                            <div class="container">\
+                                                <h2><mark>{{props2}}</mark>섹션1번 영역</h2>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                </section>\
+                                <section id="section2">\
+                                    <div class="wrap">\
+                                        <div class="gap">\
+                                            <div class="container">\
+                                                <h2><mark>{{props3}}</mark>섹션2번 영역</h2>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                </section>\
+                            </main>\
+                        </div>'
+        });
+
+        Vue.component('footer-component',{
+            props:['props4'],
+            template:'<div class="footer-wrap">\
+                            <footer id="footer">\
+                                <h2><mark>{{props4}}</mark>푸터영역</h2>\
+                            </footer>\
+                        </div>'
+        });
+        
+        new Vue({
+            el:'#app1',
+            data:{
+                title:'전역컴포넌트와 템플리트',
+                props1:'상위 컴포넌트에서 하위컴포넌트에게로 전달(통신)한 내용을 전달한다.',
+                props2:'섹션1의 props',
+                props3:'섹션2의 props',
+                props4:'footer의 props'
+            }
+        });
+    </script>
+    <style>
+        #header {height: 130px;background: #c99;}
+        #main #section1 {height: 300px;background: #dff;}
+        #main #section2 {height: 300px;background: #ddf;}
+        #footer {height: 200px;background: #444;}
+    </style>
+    <hr>
+
+    <div id="app10">
+        <div class="wrap">
+            <h2>{{subject}}</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>이름</th>
+                        <th>영화장르</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr is="list-component" v-for="record in list" :propsdata="record"></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        Vue.component('list-component',{
+            props:['propsdata'],
+            template:'<tr>\
+                            <td>{{propsdata.번호}}</td>\
+                            <td>{{propsdata.이름}}</td>\
+                            <td>{{propsdata.영화장르}}</td>\
+                        </tr>'
+        });
+
+        new Vue({
+            el:'#app10',
+            data:{
+                subject:'전역 컴포넌트와 통신',
+                list:[
+                    {번호:1, 이름:'susu', 영화장르:'재난'},
+                    {번호:2, 이름:'sasa', 영화장르:'공포'},
+                    {번호:3, 이름:'soso', 영화장르:'액션'},
+                    {번호:4, 이름:'sisi', 영화장르:'판타지'},
+                    {번호:5, 이름:'sese', 영화장르:'코미디'},
+                    {번호:6, 이름:'dada', 영화장르:'멜로'},
+                    {번호:7, 이름:'dudu', 영화장르:'전쟁'},
+                    {번호:8, 이름:'dede', 영화장르:'SF'},
+                    {번호:9, 이름:'didi', 영화장르:'범죄'},
+                    {번호:10, 이름:'dodo', 영화장르:'히어로'}
+                ]
+            }
+        });
+    </script>
+    <style>
+        table {border-collapse: collapse;}
+        th {border: 1px solid #444;}
+        td {border: 1px solid #444;}
+    </style>
+</body>
+</html>

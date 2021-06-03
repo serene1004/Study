@@ -6,6 +6,7 @@
             this.section2Fn();
             this.section3Fn();
             this.section4Fn();
+            this.section5Fn();
             this.wheelEventFn();
         },
         section1Fn:function(){
@@ -65,7 +66,7 @@
                                 $progressbar.addClass('addAni');
                             }, 2000)
                         } else if (idx === 3) {
-                            $section1.css({background: 'url(./img/main4.jpg) no-repeat 50% 50%', backgroundSize: 'cover'});
+                            $section1.css({background: 'url(./img/main5.jpg) no-repeat 50% 50%', backgroundSize: 'cover'});
                             $profile.removeClass('addAni');
                             $skills.removeClass('addAni');
                             $progressbar.removeClass('addAni');
@@ -220,6 +221,51 @@
             });
 
         },
+        section5Fn:function(){
+            var $winW  = $(window).width();
+            var $winH  = $(window).height();
+            var $section5 = $('#section5');
+            var $p = $('#section5 .title > p');
+            var $h2 = $('#section5 .title > h2');
+            var $ulH3 = $('#section5 .title > ul > h3');
+            var $li = $('#section5 .title > ul > li');
+            var $btnWrap = $('#section5 .title .btn-wrap');
+            var t = 0;
+
+            function resizeFn(){
+                $winW = $(window).width();
+                $winH  = $(window).height();
+
+                $section5.css({width:$winW,height:$winH})
+            }
+
+            $(window).resize(function(){
+                resizeFn();
+            });
+            setTimeout(resizeFn, 100);
+
+            $(window).scroll(function(){
+                if($(window).scrollTop() >= $('#section5').offset().top){
+                    if(t === 0){
+                        t = 1;
+                        $btnWrap.addClass('addScroll');
+                        $p.addClass('addScroll');
+                        $h2.addClass('addScroll');
+                        $ulH3.addClass('addScroll');
+                        $li.addClass('addScroll');
+                    }
+                }
+                if($(window).scrollTop() === $('#section4').offset().top){
+                    t = 0;
+                    $btnWrap.removeClass('addScroll');
+                    $p.removeClass('addScroll');
+                    $h2.removeClass('addScroll');
+                    $ulH3.removeClass('addScroll');
+                    $li.removeClass('addScroll');
+                }
+            });
+
+        },
         wheelEventFn:function(){
             var $main = $('#main');
             var $section = $('.section');
@@ -247,7 +293,7 @@
                         } else if (idx === 1) {
                             cnt=2;
                         } else if (idx === 3) {
-                            cnt=3;
+                            cnt=4;
                         }
                         var url = $(this).attr('href');
                         $('html,body').stop().animate({scrollTop:$(url).offset().top}, 800);
@@ -268,8 +314,8 @@
                 if (!$('html,body').is(':animated')) {
                     if(wheelDelta < 0) {
                         cnt++;
-                        if (cnt>=3) {
-                            cnt=3;
+                        if (cnt>=4) {
+                            cnt=4;
                             $('html,body').stop().animate({scrollTop:$section.eq(cnt).offset().top}, 800, 'swing');
                         } else {
                             $('html,body').stop().animate({scrollTop:$section.eq(cnt).offset().top}, 800, 'swing');
