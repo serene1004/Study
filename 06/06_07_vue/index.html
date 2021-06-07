@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+
+    
+    <script src="./js/lib/vue.js"></script>
+    <script src="./icon/fontawesome.js"></script>
+
+    <style>
+        * {margin: 0;padding: 0;vertical-align: middle;}
+        html,body {width: 100%;height: 100%;}   
+        html {overflow-y: scroll;}
+        body {font:normal 16px/1 'arial';text-align: center;}
+
+        .wrap {padding: 100px 0;}
+
+
+    </style>
+
+</head>
+<body>
+
+    <div id="app">
+        <div class="wrap">
+            <header-component @clickemit="addnumfn" @clickemit2="addnum2fn" :props1="num" :props2="initFn"></header-component>
+        </div>
+    </div>
+    <script>
+        var com1Component = {
+            props:['props1', 'props2'],
+            template:'\
+                        <div>\
+                            <button @click="methodsCallFn">증가버튼</button>\
+                            <button @click="methodsCall2Fn">감소버튼</button>\
+                            <h1 style="padding-top:20px">{{props1}}</h1>\
+                            <h1 style="padding-top:20px">선택과목 : {{props2.과목}}</h1>\
+                        </div>',
+            methods:{
+                methodsCallFn:function(){
+                    this.$emit('clickemit');    // click => clickemit 이벤트 생성
+                },
+                methodsCall2Fn:function(){
+                    this.$emit('clickemit2');
+                }
+            }
+        }
+
+        new Vue ({
+            el:'#app',
+            data:{
+                arrdata:[
+                    {과목:'국어'},
+                    {과목:'영어'},
+                    {과목:'수학'},
+                    {과목:'사회'},
+                    {과목:'과학'},
+                    {과목:'도덕'},
+                    {과목:'미술'},
+                    {과목:'음악'},
+                    {과목:'체육'},
+                    {과목:'역사'},
+                    {과목:'외국어'}
+                ],
+                num:0,
+                subject:''
+            },
+            computed:{  // 로딩시 그리고 num 증감에 따른 배열에 변화를 프롭스에게 리턴시켜줌.
+                initFn:function(){
+                    return this.subject = this.arrdata[this.num];
+                }
+            },
+            watch:{
+              subject:function(){
+                  console.log(this.subject);
+                  console.log(this.num);
+              }  
+            },
+            methods:{
+                addnumfn:function(){
+                    this.num++;
+                    if (this.num > this.arrdata.length-1) {
+                        this.num=this.arrdata.length-1;
+                    }
+                    this.subject = this.arrdata[this.num];  // 선택한 배열 값을 과목에 저장
+                },
+                addnum2fn:function(){
+                    this.num--;
+                    if (this.num < 0) {
+                        this.num=0;
+                    }
+                    this.subject = this.arrdata[this.num];
+                }
+            },
+            components:{
+                'header-component':com1Component
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+
+    
+    <script src="./js/lib/vue.js"></script>
+    <script src="./icon/fontawesome.js"></script>
+
+    <style>
+        * {margin: 0;padding: 0;vertical-align: middle;}
+        html,body {width: 100%;height: 100%;}   
+        html {overflow-y: scroll;}
+        body {font:normal 16px/1 'arial';text-align: center;}
+
+        .wrap {padding: 100px 0;}
+
+
+    </style>
+
+</head>
+<body>
+
+    <div id="app">
+        <div class="wrap">
+            <header-component @clickemit="upFn" @clickemit2="downFn" :props1="num" :props2="initFn"></header-component>
+
+        </div>
+    </div>
+    <script>
+        var com1Component = {
+            props:['props1', 'props2'],
+            template:'\
+                        <div>\
+                            <button @click="methodsCallFn">증가 버튼</button>\
+                            <button @click="methodsCall2Fn">감소 버튼</button>\
+                            <h2 style="padding-top:20px">{{props1}}</h2>\
+                            <h2 style="padding-top:20px">지역 : {{props2.지역}}</h2>\
+                        </div>',
+            methods:{
+                methodsCallFn:function(){
+                    this.$emit('clickemit');
+                },
+                methodsCall2Fn:function(){
+                    this.$emit('clickemit2');
+                }
+            }
+        }
+
+        new Vue ({
+            el:'#app',
+            data:{
+                arr:[
+                    {지역:'서울'},
+                    {지역:'대전'},
+                    {지역:'대구'},
+                    {지역:'부산'},
+                    {지역:'제주'},
+                    {지역:'강원'},
+                    {지역:'경기'},
+                    {지역:'광주'},
+                    {지역:'울산'},
+                    {지역:'인천'}
+                ],
+                num:0,
+                subject:''
+            },
+            computed:{
+                initFn:function(){
+                    return this.subject = this.arr[this.num];
+                }
+            },
+            watch:{
+              subject:function(){
+                  console.log(this.subject);
+                  console.log(this.num);
+              }  
+            },
+            methods:{
+                upFn:function(){
+                    this.num++;
+                    if (this.num > this.arr.length-1) {
+                        this.num=this.arr.length-1;
+                    }
+                    this.subject = this.arr[this.num];
+                },
+                downFn:function(){
+                    this.num--;
+                    if (this.num < 0) {
+                        this.num=0;
+                    }
+                    this.subject = this.arr[this.num];
+                }
+            },
+            components:{
+                'header-component':com1Component
+            }
+        });
+    </script>
+
+</body>
+</html>

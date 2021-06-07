@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+
+    
+    <script src="./js/lib/vue.js"></script>
+    <script src="./icon/fontawesome.js"></script>
+
+    <style>
+        body {text-align:center;}
+        .wrap {padding:100px 0;}
+        .wrap table {margin:0 auto;border-collapse: collapse;}/* 보더 두줄로보이는거 막는거 */
+        .wrap table caption {padding:50px 0;font-size:30px;}
+        .wrap table th ,
+        .wrap table td {border:1px solid #ddd;padding:10px 40px;}
+    </style>
+
+</head>
+<body>
+
+    <div id="app">
+        <div class="wrap">
+            <h1>{{subject}}</h1>
+
+            <header-com v-bind:propsdata="title"></header-com>
+        </div>
+    </div>
+
+    <script>
+
+        var headerComp = {
+            props:['propsdata'],
+            template:'\
+                        <div class="wrap">\
+                            <h2><mark>{{propsdata}}</mark></h2>\
+                            <div>\
+                                <img src="./img/blog_4.jpg" alt="">\
+                            </div>\
+                        </div>'
+        };
+        new Vue({
+            el:'#app',
+            data:{
+                subject:'제목입니다.',
+                title:'지역 컴포넌트 제목입니다.'
+            },
+            components:{
+                'header-com':headerComp
+            }
+        })
+    </script>
+
+</body>
+</html>
