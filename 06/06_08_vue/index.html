@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+
+    
+    <script src="./js/lib/vue.js"></script>
+    <script src="./icon/fontawesome.js"></script>
+
+    <style>
+        * {margin: 0;padding: 0;vertical-align: middle;}
+        html,body {width: 100%;height: 100%;}   
+        html {overflow-y: scroll;}
+        body {font:normal 16px/1 'arial';text-align: center;}
+
+        .wrap {padding: 100px 0;}
+
+    </style>
+
+</head>
+<body>
+
+    <div id="app">
+        <div class="wrap">
+            <ol>
+                <list-component v-for="item in dataList" :propsdata="item"></list-component>
+            </ol>
+            <button @click='fetchFn'>클릭</button>
+        </div>
+    </div>
+    <script>
+        // Vue.js를 사용
+        // 지역컴포넌트를 등록하고 배열반복문처리
+        // props 연결데이터 템플리트에게 전달하기
+        // 템플리트에서 props를 이용하여 데이터를 받는다.
+        var listComponent = {
+            props:['propsdata'],
+            template:'<li>{{propsdata.name}}{{propsdata.age}}{{propsdata.address}}</li>'
+        }
+
+        new Vue({
+            el:'#app',
+            data:{
+                dataList:[]
+            },
+            components:{
+                'list-component':listComponent
+            },
+            created(){  // ECMA 6 Script 메서드 표기법 created:fuction(){}
+
+            },
+            methods:{
+                fetchFn(){
+                    fetch('./data/data.json')
+                    .then((res) => {
+                        return res.json();
+                    })
+                    .then((result) => {
+                        this.dataList = result.item
+                    })
+                    .catch((error) => {
+                        console.log('Fetch Error', error);
+                    });
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

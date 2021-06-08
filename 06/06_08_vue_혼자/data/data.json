@@ -1,0 +1,10 @@
+{
+    "item":[
+        {"name":"sasa", "age":20, "address":"서울"},
+        {"name":"soso", "age":22, "address":"부산"},
+        {"name":"susu", "age":28, "address":"제주"},
+        {"name":"sisi", "age":23, "address":"대전"},
+        {"name":"sese", "age":29, "address":"세종"},
+        {"name":"dada", "age":25, "address":"인천"}
+    ]
+}
