@@ -97,7 +97,6 @@
                 }
             })
 
-
             
         },
         section2Fn:function(){
