@@ -13,12 +13,16 @@
             var $winW  = $(window).width();
             var $winH  = $(window).height();
             var $section1 = $('#section1');
+            var $introBox = $('#section1 .intro-box');
+            var $introBoxH1 = $('#section1 .intro-box > h1');
+            var $introBoxP = $('#section1 .intro-box > p');
+            var $introBoxSpan = $('#section1 .intro-box > span');
+            var $intro = $('#section1 .intro');
             var $cube = $('#wrap .cube');
+            var $timeA = $('#section1 .weather .time li > a');
             var x = 0;
             var y = 0;
             var $a = $('#section1 .link-wrap > span > a');
-            var $span = $('#section1 .link-wrap > span');
-            var $arrow = $('#section1 .link-wrap > span > i');
             var $profile = $('#section1 .profile > ul > li');
             var $skills = $('#section1 .skills > ul > li');
             var $progressbar = $('#section1 .skills .progress-bar');
@@ -42,6 +46,15 @@
                     y = event.clientY*0.2;
 
                     $cube.css({transform:'perspective(600px) rotateX('+ (y-90) +'deg) rotateY('+ (x-90) +'deg) scale3d(1,1,1)'});
+                },
+                click:function(){
+                    $intro.addClass('addAni');
+                    $introBoxH1.hide(0);
+                    $introBoxP.hide(0);
+                    $introBoxSpan.hide(0);
+                    setTimeout(function(){
+                        $introBox.hide(0);
+                    }, 1500)
                 }
             });
 
@@ -51,24 +64,24 @@
                         $a.removeClass('addAni');
                         $(this).addClass('addAni');
                         if (idx === 0) {
-                            $section1.css({background: 'url(./img/main2.jpg) no-repeat 50% 50%', backgroundSize: 'cover'});
+                            // $section1.css({background: 'url(./img/main2.jpg) no-repeat 50% 50%', backgroundSize: 'cover'});
                             $profile.removeClass('addAni');
                             $skills.removeClass('addAni');
                             $progressbar.removeClass('addAni');
                         } else if (idx === 1) {
-                            $section1.css({background: 'url(./img/main3.jpg) no-repeat 50% 50%', backgroundSize: 'cover'});
+                            // $section1.css({background: 'url(./img/main3.jpg) no-repeat 50% 50%', backgroundSize: 'cover'});
                             $profile.removeClass('addAni');
                             $skills.removeClass('addAni');
                             $progressbar.removeClass('addAni');
                         } else if (idx === 2) {
-                            $section1.css({background: 'url(./img/main1.jpg) no-repeat 50% 50%', backgroundSize: 'cover'});
+                            // $section1.css({background: 'url(./img/main1.jpg) no-repeat 50% 50%', backgroundSize: 'cover'});
                             $profile.addClass('addAni');
                             $skills.addClass('addAni');
                             setTimeout(function(){
                                 $progressbar.addClass('addAni');
                             }, 2000)
                         } else if (idx === 3) {
-                            $section1.css({background: 'url(./img/main5.jpg) no-repeat 50% 50%', backgroundSize: 'cover'});
+                            // $section1.css({background: 'url(./img/main5.jpg) no-repeat 50% 50%', backgroundSize: 'cover'});
                             $profile.removeClass('addAni');
                             $skills.removeClass('addAni');
                             $progressbar.removeClass('addAni');
@@ -77,13 +90,12 @@
                 });
             });
 
-            $span.on({
-                mouseenter:function(){
-                    $arrow.css({display:'none'});
-                    $(this).children(0).css({display:'block'});
-                    $(this).children(2).css({display:'block'});
+            $timeA.on({
+                click:function(){
+                    $timeA.removeClass('addClick')
+                    $(this).addClass('addClick');
                 }
-            });
+            })
 
 
             
@@ -291,11 +303,11 @@
                     click:function(event){
                         event.preventDefault();
                         if (idx === 0) {
-                            cnt=1;
+                            cnt=0;
                         } else if (idx === 1) {
-                            cnt=2;
+                            cnt=0;
                         } else if (idx === 3) {
-                            cnt=4;
+                            cnt=1;
                         }
                         var url = $(this).attr('href');
                         $('html,body').stop().animate({scrollTop:$(url).offset().top}, 800);
