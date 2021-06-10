@@ -134,17 +134,23 @@
                 hour   = today.getHours();
                 if (hour<10) {
                     hour='0'+hour;
-                } else {hour=hour;}
+                } else {
+                    hour=hour;
+                }
 
                 minute = today.getMinutes();
                 if (minute<10) {
                     minute='0'+minute;
-                } else {minute=minute;}
+                } else {
+                    minute=minute;
+                }
 
                 second = today.getSeconds();
                 if (second<10) {
                     second='0'+second;
-                } else {second=second;}
+                } else {
+                    second=second;
+                }
 
                 txt = hour + ' : ' + minute + ' : ' + second + '';
                 $a.eq(0).html(txt);
