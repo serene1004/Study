@@ -5,14 +5,13 @@
             this.section1Fn();
             this.section2Fn();
             this.section3Fn();
-            this.section4Fn();
-            this.section5Fn();
             this.wheelEventFn();
         },
         section1Fn:function(){
             var $winW  = $(window).width();
             var $winH  = $(window).height();
             var $section1 = $('#section1');
+            var $modal = $('#modal');
             var $introBox = $('#section1 .intro-box');
             var $introBoxH1 = $('#section1 .intro-box > h1');
             var $introBoxP = $('#section1 .intro-box > p');
@@ -25,6 +24,8 @@
             var $middayImg = $('#section1 .weather .midday > img');
             var x = 0;
             var y = 0;
+            var xPercent = 0.095;   // event.client에 곱해질 %변수
+            var yPercent = 0.2;
             var $a = $('#section1 .link-wrap > span > a');
             var $profile = $('#section1 .profile > ul > li');
             var $profileA = $('#section1 .profile > ul > li > a');
@@ -44,15 +45,11 @@
             });
             setTimeout(resizeFn, 100);
 
-            $section1.on({
-                mousemove:function(event){
-                    x = event.clientX*0.095;
-                    y = event.clientY*0.2;
-                    $cube.css({transform:'perspective(600px) rotateX('+ (y-90) +'deg) rotateY('+ (x-90) +'deg) scale3d(1,1,1)'});
-
-                    $middayImg.eq(2).css({transform:'translateX('+ event.clientX +'px) translateY('+ event.clientY +'px) rotate(-60deg)'})
-                },
+            $modal.on({
                 click:function(){
+                    $('html').removeClass('addModal');
+                    $modal.hide(0);
+                    
                     $intro.addClass('addAni');
                     $introBoxH1.hide(0);
                     $introBoxP.hide(0);
@@ -61,6 +58,25 @@
                         $introBox.hide(0);
                     }, 1500)
                 }
+            });
+
+            $section1.on({
+                mousemove:function(event){
+                    x = event.clientX*xPercent;
+                    y = event.clientY*yPercent;
+                    $cube.css({transform:'perspective(600px) rotateX('+ (y-90) +'deg) rotateY('+ (x-90) +'deg) scale3d(1,1,1)'});
+
+                    $middayImg.eq(2).css({transform:'translateX('+ event.clientX +'px) translateY('+ event.clientY +'px) rotate(-60deg)'})
+                },
+                // click:function(){
+                //     $intro.addClass('addAni');
+                //     $introBoxH1.hide(0);
+                //     $introBoxP.hide(0);
+                //     $introBoxSpan.hide(0);
+                //     setTimeout(function(){
+                //         $introBox.hide(0);
+                //     }, 1500)
+                // }
             });
 
             $a.each(function(idx){
@@ -165,10 +181,10 @@
             var $winW  = $(window).width();
             var $winH  = $(window).height();
             var $section2 = $('#section2');
-            var $p = $('#section2 .title > p');
-            var $h2 = $('#section2 .title > h2');
-            var $H3 = $('#section2 .title > h3');
-            var $li = $('#section2 .title > ul > li');
+            var $p = $('#section2 .title p');
+            var $h2 = $('#section2 .title h2');
+            var $H3 = $('#section2 .title h3');
+            var $li = $('#section2 .title ul > li');
             var $btnWrap = $('#section2 .title .btn-wrap');
             var t = 0;
 
@@ -207,139 +223,7 @@
 
         },
         section3Fn:function(){
-            var $winW  = $(window).width();
-            var $winH  = $(window).height();
-            var $section3 = $('#section3');
-            var $p = $('#section3 .title > p');
-            var $h2 = $('#section3 .title > h2');
-            var $H3 = $('#section3 .title > h3');
-            var $li = $('#section3 .title > ul > li');
-            var $btnWrap = $('#section3 .title .btn-wrap');
-            var t = 0;
-
-            function resizeFn(){
-                $winW = $(window).width();
-                $winH  = $(window).height();
-
-                $section3.css({width:$winW,height:$winH})
-            }
-
-            $(window).resize(function(){
-                resizeFn();
-            });
-            setTimeout(resizeFn, 100);
-
-            $(window).scroll(function(){
-                if($(window).scrollTop() >= $('#section3').offset().top){
-                    if(t === 0){
-                        t = 1;
-                        $btnWrap.addClass('addScroll');
-                        $p.addClass('addScroll');
-                        $h2.addClass('addScroll');
-                        $H3.addClass('addScroll');
-                        $li.addClass('addScroll');
-                    }
-                }
-                if($(window).scrollTop() === $('#section2').offset().top){
-                    t = 0;
-                    $btnWrap.removeClass('addScroll');
-                    $p.removeClass('addScroll');
-                    $h2.removeClass('addScroll');
-                    $H3.removeClass('addScroll');
-                    $li.removeClass('addScroll');
-                }
-            });
-
-        },
-        section4Fn:function(){
-            var $winW  = $(window).width();
-            var $winH  = $(window).height();
-            var $section4 = $('#section4');
-            var $p = $('#section4 .title > p');
-            var $h2 = $('#section4 .title > h2');
-            var $H3 = $('#section4 .title > h3');
-            var $li = $('#section4 .title > ul > li');
-            var $btnWrap = $('#section4 .title .btn-wrap');
-            var t = 0;
-
-            function resizeFn(){
-                $winW = $(window).width();
-                $winH  = $(window).height();
-
-                $section4.css({width:$winW,height:$winH})
-            }
-
-            $(window).resize(function(){
-                resizeFn();
-            });
-            setTimeout(resizeFn, 100);
-
-            $(window).scroll(function(){
-                if($(window).scrollTop() >= $('#section4').offset().top){
-                    if(t === 0){
-                        t = 1;
-                        $btnWrap.addClass('addScroll');
-                        $p.addClass('addScroll');
-                        $h2.addClass('addScroll');
-                        $H3.addClass('addScroll');
-                        $li.addClass('addScroll');
-                    }
-                }
-                if($(window).scrollTop() === $('#section3').offset().top){
-                    t = 0;
-                    $btnWrap.removeClass('addScroll');
-                    $p.removeClass('addScroll');
-                    $h2.removeClass('addScroll');
-                    $H3.removeClass('addScroll');
-                    $li.removeClass('addScroll');
-                }
-            });
-
-        },
-        section5Fn:function(){
-            var $winW  = $(window).width();
-            var $winH  = $(window).height();
-            var $section5 = $('#section5');
-            var $p = $('#section5 .title > p');
-            var $h2 = $('#section5 .title > h2');
-            var $H3 = $('#section5 .title > h3');
-            var $li = $('#section5 .title > ul > li');
-            var $btnWrap = $('#section5 .title .btn-wrap');
-            var t = 0;
-
-            function resizeFn(){
-                $winW = $(window).width();
-                $winH  = $(window).height();
-
-                $section5.css({width:$winW,height:$winH})
-            }
-
-            $(window).resize(function(){
-                resizeFn();
-            });
-            setTimeout(resizeFn, 100);
-
-            $(window).scroll(function(){
-                if($(window).scrollTop() >= $('#section5').offset().top){
-                    if(t === 0){
-                        t = 1;
-                        $btnWrap.addClass('addScroll');
-                        $p.addClass('addScroll');
-                        $h2.addClass('addScroll');
-                        $H3.addClass('addScroll');
-                        $li.addClass('addScroll');
-                    }
-                }
-                if($(window).scrollTop() === $('#section4').offset().top){
-                    t = 0;
-                    $btnWrap.removeClass('addScroll');
-                    $p.removeClass('addScroll');
-                    $h2.removeClass('addScroll');
-                    $H3.removeClass('addScroll');
-                    $li.removeClass('addScroll');
-                }
-            });
-
+            
         },
         wheelEventFn:function(){
             var $main = $('#main');
@@ -366,7 +250,7 @@
                         if (idx === 0) {
                             cnt=0;
                         } else if (idx === 1) {
-                            cnt=0;
+                            cnt=2;
                         } else if (idx === 3) {
                             cnt=1;
                         }
@@ -389,8 +273,8 @@
                 if (!$('html,body').is(':animated')) {
                     if(wheelDelta < 0) {
                         cnt++;
-                        if (cnt>=4) {
-                            cnt=4;
+                        if (cnt>=2) {
+                            cnt=2;
                             $('html,body').stop().animate({scrollTop:$section.eq(cnt).offset().top}, 800, 'swing');
                         } else {
                             $('html,body').stop().animate({scrollTop:$section.eq(cnt).offset().top}, 800, 'swing');
