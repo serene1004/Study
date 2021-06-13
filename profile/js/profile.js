@@ -223,7 +223,32 @@
 
         },
         section3Fn:function(){
-            
+            var $section3 = $('#section3');
+            var $fireworkI = $('.firework i');
+            var $firework = $('.firework i > span');
+            var $ignite = $('.firework span > i');
+
+
+            $section3.on({
+                click:function(){
+                    $ignite.addClass('addAni');
+                    setTimeout(function(){
+                        $fireworkI.addClass('addAni');
+                    }, 4500);
+                    setTimeout(function(){
+                        $firework.addClass('addAni');
+                    }, 5000)
+
+                    setTimeout(function(){
+                        $ignite.removeClass('addAni');
+                        $fireworkI.removeClass('addAni');
+                        $firework.removeClass('addAni');
+                    }, 21000)
+                }
+            });
+
+
+
         },
         wheelEventFn:function(){
             var $main = $('#main');
