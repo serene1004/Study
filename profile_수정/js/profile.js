@@ -192,7 +192,7 @@
                 $winW = $(window).width();
                 $winH  = $(window).height();
 
-                $section2.css({width:$winW,height:$winH})
+                $section2.css({width:$winW,height:$winH});
             }
 
             $(window).resize(function(){
