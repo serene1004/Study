@@ -200,6 +200,7 @@
             });
             setTimeout(resizeFn, 100);
 
+
             $(window).scroll(function(){
                 if($(window).scrollTop() >= $('#section2').offset().top){
                     if(t === 0){

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스와이프 드래그앤 드롭 슬라이드</title>
+
+  <script src="./js/lib/jquery.min.js"></script>
+  <script src="./js/lib/jquery.easing.1.3.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+
+    * {margin:0;padding:0;vertical-align:middle;}
+    html,body {width:100%;height:100%;}
+    html {overflow-y:scroll;}
+    body {font:normal 16px/1 'arial'}
+    ul,li {list-style:none;}
+    
+
+    .wrap {width:100%;}
+    .wrap .title {padding:100px 0; text-align:center;font-size:1vw;}
+    .wrap .slide-container {width:100%;}
+    .wrap .slide-container .slide-view {position:relative;width:100%;overflow:hidden;}
+    .wrap .slide-container .slide-view .slide-wrap {width:600%;position:relative;display:flex;flex-flow:row nowrap;pointer-events:none;/* 플랙스 콘테이너박스 */}
+    .wrap .slide-container .slide-view .slide-wrap .slide {width:100%;height:500px;font-size:6vw;text-transform:uppercase;/* 플렉스아이템 */ display:flex;justify-content:center;/* 좌우가운데 */align-items:center;/* 상하가운데 */color:#fff;pointer-events:none;}
+    .wrap .slide-container .slide-view .slide-wrap .slide:nth-child(1) {background:#99c;}
+    .wrap .slide-container .slide-view .slide-wrap .slide:nth-child(2) {background:#cc9;}
+    .wrap .slide-container .slide-view .slide-wrap .slide:nth-child(3) {background:#99c;}
+    .wrap .slide-container .slide-view .slide-wrap .slide:nth-child(4) {background:#9c9;}
+    .wrap .slide-container .slide-view .slide-wrap .slide:nth-child(5) {background:#cc9;}
+    .wrap .slide-container .slide-view .slide-wrap .slide:nth-child(6) {background:#99c;}
+
+
+  </style>
+
+</head>
+<body>
+
+
+  <div class="wrap">
+    
+    <div class="title"><h1>스와이프 드래그앤 드롭 슬라이드</h1></div>
+
+    <div class="slide-container">
+      <div class="slide-view">
+        <ul class="slide-wrap">
+          <li class="slide">slide1</li>
+          <li class="slide">slide2</li>
+          <li class="slide">slide3</li>
+          <li class="slide">slide4</li>
+          <li class="slide">slide5</li>
+          <li class="slide">slide6</li>
+        </ul>
+      </div>
+    </div>
+  </div>  
+
+
+<script>
+
+  (function($, window, document){
+    var document = $(document);
+    var slideView = $('.slide-view');
+    var slidewrap = $('.slide-wrap');
+    var slideW = $('.slide').innerWidth();
+    var mDown = null;  
+    var drgStart = null; 
+    var drgEnd = null; 
+    var st = null;
+    var ed = null;
+    var cnt = 0;
+    var t = 0;
+
+    
+        //스와이프 드래그앤 드롭
+        //1 마우스 다운 이벤트
+        slideView.on('mousedown', function(event){
+            event.preventDefault();
+            mDown = true; //마우스 드래그 시작을 알림
+            st = event.clientX; //이전, 다음을 구분하기위해 사용
+            drgStart = event.offsetX - slidewrap.offset().left; //드래그 시작위치의 offsetX 가로축 값
+            t = 0;
+        });
+
+        //2 document 마우스 업 이벤트
+        $(document).on('mouseup', function(event){          
+            console.log( event );
+            mDown = false; //마우스 드래그 종료를 알림
+            ed = event.clientX; //이전, 다음을 구분하기위해 사용
+
+            //반드시 슬라이드 애니메이트를 마우스 업에 넣는다.
+            //이유는 드래그가 끝난건 마우스 업이기때문에
+            slidewrap.stop().animate({ left: -slideW*cnt },1000, 'easeOutExpo');            
+        });
+
+        function nextCountFn(){
+          cnt++;
+        }
+        function prevCountFn(){
+          cnt--;
+        }
+
+
+
+
+        //3 마우스 무브 이벤트
+        slideView.on('mousemove', function(event){
+            if( !mDown ){ return } //마우스 업이면 마우스 무브 종료
+            // if( mDown === false ){ return }
+
+            drgEnd = event.offsetX;
+
+            //스와이프
+            if( (st-ed) > 0 ){
+              if( t==0 ){
+                  t=1;
+                  nextCountFn(); //다음 슬라이드 카운트
+              }
+            }
+            if( (st-ed) < 0 ){
+              if( t==0 ){
+                  t=1;
+                  prevCountFn(); //이전 슬라이드 카운트
+              }
+            }
+
+            slidewrap.css({ left: (drgEnd - drgStart) });
+            
+        });
+
+
+      
+
+  })(jQuery, window, document);
+  
+</script>
+
+</body>
+</html>
