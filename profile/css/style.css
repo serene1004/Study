@@ -264,11 +264,11 @@
 .title .btn-wrap .link-btn:hover .neon-line:nth-child(8) {bottom: 0;transition: all .2s;transition-delay: .4s;}
 
 /* title portfolio */
-.portfolio {position: absolute;z-index: 1;top: 150px;left: 0;}
-.title01 {opacity: 1;}
-.title02 {opacity: 0;}
-.title03 {opacity: 0;}
-.title04 {opacity: 0;}
+.portfolio {position: absolute;top: 150px;left: 0;}
+.title01 {opacity: 1;z-index: 3;}
+.title02 {opacity: 0;z-index: 2;}
+.title03 {opacity: 0;z-index: 1;}
+.title04 {opacity: 0;z-index: 1;}
 
 
 #wrap #main #section2 {width: 100%;height: 969px;background: linear-gradient(180deg, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #f0f0f0, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff, #fff) fixed;position: relative;overflow: hidden;}
@@ -305,8 +305,8 @@
 /* content slide */
 .content .slide-container {position: relative;width: 90%;height: 300px;box-shadow: 2px 3px 5px rgba(0, 0, 0, .5);}
 .content .slide-container .slide-view {width: 100%;height: 100%;overflow: hidden;}
-.content .slide-container .slide-view .slide-wrap {width: calc(585px*4);height: 100%;}
-.content .slide-container .slide-view .slide-wrap .slide {float: left;width: 585px;height: 300px;background: url() no-repeat 50% 50%;background-size: cover;}
+.content .slide-container .slide-view .slide-wrap {width: 400%;height: 100%;display: flex;flex-direction: row;}
+.content .slide-container .slide-view .slide-wrap .slide {width: 100%;height: 100%;background: url() no-repeat 50% 50%;background-size: cover;}
 .content .slide-container .slide-view .slide-wrap .slide0 {background-image: url(../img/slide01.jpg);}
 .content .slide-container .slide-view .slide-wrap .slide1 {background-image: url(../img/slide02.jpg);}
 .content .slide-container .slide-view .slide-wrap .slide2 {background-image: url(../img/slide03.jpg);}
