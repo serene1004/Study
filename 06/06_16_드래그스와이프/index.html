@@ -54,27 +54,40 @@
             var cnt = 0;
             var t = 0;
 
-            var st = null;  // 이전, 다음을 구분하기위한 변수
-            var ed = null;  // 이전, 다음을 구분하기위한 변수
+            var st = null;  // 이전, 다음을 애니메이션을 위해 사용하는 변수
+            var ed = null;  // 이전, 다음을 애니메이션을 위해 사용하는 변수
             
 
             $slideView.on('mousedown', function(event){
                 event.preventDefault();
                 t = 0;
+                
                 mDown = true;   // 드래그 시작
                 // event.offsetX = 드래그 시작위치의 offsetX 가로축의 값
                 start = event.offsetX - $slideWrap.offset().left;
-                st = event.clientX; // 이전, 다음을 구분하기 위해 사용
-                console.log('클라이언트스타트', st);
+                st = event.clientX; // 이전, 다음을 애니메이션을 위해 사용
             });
 
 
             $document.on('mouseup', function(event){
                 event.preventDefault();
-                ed = event.clientX; // 이전, 다음을 구분하기 위해 사용
+                // 이전, 다음을 애니메이션을 위해 사용
+                ed = event.clientX;
+
                 mDown = false;   // 드래그 종료
-                console.log('클라이언트엔드', ed);
-                // 슬라이드 애니메이션은 마우스업에 배치
+                if ((st-ed) < -100) {
+                    if (t === 0) {
+                        t = 1;
+                        prevCountFn();
+                    }
+                }
+                if ((st-ed) > 100) {
+                    if (t === 0) {
+                        t = 1;
+                        nextCountFn();
+                    }
+                }
+
                 $slideWrap.stop().animate({left: -$slideW*cnt}, 600);
             });
 
@@ -94,26 +107,8 @@
             $slideView.on('mousemove', function(event){
                 if (mDown === true) {
                     end = event.offsetX;
-                    console.log('오프셋엔드', end);
                     $slideWrap.css({left:end-start});
-                    
-                    if ((st-ed) < 0) {
-                        if (t === 0) {
-                            t = 1;
-                            prevCountFn();
-                        }
-                    }
-                    if ((st-ed) > 0) {
-                        if (t === 0) {
-                            t = 1;
-                            nextCountFn();
-                        }
-                    }
                 }
-
-                // if (mDown === false) {
-                //     return
-                // }
             });
 
 
