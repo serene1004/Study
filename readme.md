@@ -1,5 +1,3 @@
 ### study ###
-```javascript
-var a = 0;
-```
-homestudy
+
+SCSS 공부중입니다.
