@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin: 0;padding: 0;box-sizing: border-box;font-size: 14px;}
+        .container {display: flex;flex-direction: column;justify-content: center;max-width: 1200px;margin: 0 auto;}
+        .dragdrop-area .dragdrop-wrap:first-child {margin-bottom: 30px;}
+        .dragdrop-area .dragdrop-wrap:last-child .dragdrop-box {height: auto;}
+        .dragdrop-area .dragdrop-title {color: var(--content-text);font-weight: 600;margin-bottom: 10px;}
+        .dragdrop-area .dragdrop-box {display: flex;border: 1px solid #cdcdcd;box-sizing: border-box;height: 120px;user-select:none}
+        .dragdrop-area #dragdrop-basebox,
+        .dragdrop-area #dragdrop-box01,
+        .dragdrop-area #dragdrop-box02,
+        .dragdrop-area #dragdrop-box03,
+        .dragdrop-area #dragdrop-box04,
+        .dragdrop-area #dragdrop-box05 {width: calc(100% - 80px);padding: 10px;border-bottom: 0;min-height: 60px;}
+        .dragdrop-area #dragdrop-basebox span,
+        .dragdrop-area #dragdrop-box01 span,
+        .dragdrop-area #dragdrop-box02 span,
+        .dragdrop-area #dragdrop-box03 span,
+        .dragdrop-area #dragdrop-box04 span,
+        .dragdrop-area #dragdrop-box05 span  {display: inline-block;width: auto;;color: #191919;border: 1px solid #cdcdcd;border-radius: 20px;margin: 5px;padding: 5px 10px;cursor: pointer;}
+        .dragdrop-area #dragdrop-basebox span img {display: none;}
+        .dragdrop-area #dragdrop-box01 span img,
+        .dragdrop-area #dragdrop-box02 span img,
+        .dragdrop-area #dragdrop-box03 span img,
+        .dragdrop-area #dragdrop-box04 span img,
+        .dragdrop-area #dragdrop-box05 span img {margin-left: 5px;margin-bottom: -5px;}
+
+        .dragdrop-bottom-box {display: flex;flex-direction: column;width: 100%;}
+        .dragdrop-bottom-box li {display: flex;}
+        .dragdrop-bottom-box li .dragdrop-cont-title {background: #fbfbfc;width: 80px;line-height: 56px;padding: 0 10px;}
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="container">
+            <div class="dragdrop-area">
+                <div class="dragdrop-wrap">
+                    <div class="dragdrop-title">Item Box</div>
+                    <div class="dragdrop-box invite-member">
+                        <div id="dragdrop-basebox" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <span draggable="true" ondragstart="drag(event)" id="drag01" name="drag">Item01<img src="./icon_del.png" alt=""></span>
+                            <span draggable="true" ondragstart="drag(event)" id="drag02" name="drag">Item02<img src="./icon_del.png" alt=""></span>
+                            <span draggable="true" ondragstart="drag(event)" id="drag03" name="drag">Item03<img src="./icon_del.png" alt=""></span>
+                            <span draggable="true" ondragstart="drag(event)" id="drag04" name="drag">Item04<img src="./icon_del.png" alt=""></span>
+                            <span draggable="true" ondragstart="drag(event)" id="drag05" name="drag">Item05<img src="./icon_del.png" alt=""></span>
+                            <span draggable="true" ondragstart="drag(event)" id="drag06" name="drag">Item06<img src="./icon_del.png" alt=""></span>
+                            <span draggable="true" ondragstart="drag(event)" id="drag07" name="drag">Item07<img src="./icon_del.png" alt=""></span>
+                            <span draggable="true" ondragstart="drag(event)" id="drag08" name="drag">Item08<img src="./icon_del.png" alt=""></span>
+                            <span draggable="true" ondragstart="drag(event)" id="drag09" name="drag">Item09<img src="./icon_del.png" alt=""></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dragdrop-wrap">
+                    <div class="dragdrop-title">Item content-Box</div>
+                    <div class="dragdrop-box invite-member">
+                        <ul class="dragdrop-bottom-box">
+                            <li>
+                                <span class="dragdrop-cont-title">A01</span>
+                                <div id="dragdrop-box01" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <span draggable="true" ondragstart="drag(event)" id="drag10" name="drag">Item10<img src="./icon_del.png" alt=""></span>
+                                    <span draggable="true" ondragstart="drag(event)" id="drag11" name="drag">Item11<img src="./icon_del.png" alt=""></span>
+                                    <span draggable="true" ondragstart="drag(event)" id="drag12" name="drag">Item12<img src="./icon_del.png" alt=""></span>
+                                    <span draggable="true" ondragstart="drag(event)" id="drag13" name="drag">Item13<img src="./icon_del.png" alt=""></span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="dragdrop-cont-title">B02</span>
+                                <div id="dragdrop-box02" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <span draggable="true" ondragstart="drag(event)" id="drag14" name="drag">Item13<img src="./icon_del.png" alt=""></span>
+                                    <span draggable="true" ondragstart="drag(event)" id="drag15" name="drag">Item14<img src="./icon_del.png" alt=""></span>
+                                    <span draggable="true" ondragstart="drag(event)" id="drag16" name="drag">Item15<img src="./icon_del.png" alt=""></span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="dragdrop-cont-title">C03</span>
+                                <div id="dragdrop-box03" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <span draggable="true" ondragstart="drag(event)" id="drag17" name="drag">Item16<img src="./icon_del.png" alt=""></span>
+                                    <span draggable="true" ondragstart="drag(event)" id="drag18" name="drag">Item17<img src="./icon_del.png" alt=""></span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="dragdrop-cont-title">D04</span>
+                                <div id="dragdrop-box04" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <span draggable="true" ondragstart="drag(event)" id="drag19" name="drag">Item18<img src="./icon_del.png" alt=""></span>
+                                    <span draggable="true" ondragstart="drag(event)" id="drag20" name="drag">Item19<img src="./icon_del.png" alt=""></span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="dragdrop-cont-title">E05</span>
+                                <div id="dragdrop-box05" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <span draggable="true" ondragstart="drag(event)" id="drag21" name="drag">Item20<img src="./icon_del.png" alt=""></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function allowDrop(e) {
+        e.preventDefault();
+    }
+
+    function drag(e) {
+        e.dataTransfer.setData("text", e.target.id);
+    }
+
+    function drop(e) {
+        e.preventDefault();
+        var data = e.dataTransfer.getData("text");
+        if (e.target.getAttribute('name') != 'drag') {
+            if(e.target.nodeName == 'IMG') {
+                e.target.parentElement.parentElement.appendChild(document.getElementById(data));
+            } else if(e.target.nodeName == 'DIV') {
+                e.target.appendChild(document.getElementById(data));
+            }
+        } else {
+			e.target.parentElement.append(document.getElementById(data));
+		}
+    }
+</script>
+</html>
