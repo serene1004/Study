@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin: 0;padding: 0;box-sizing: border-box;}
+        html, body {width: 100%;height: 100%;}
+        #wrap {height: 100%;}
+        .container {background: rgba(100, 200, 250, .1);width: 50%;height: 50%;margin: 0 auto;display: flex;flex-direction: column;justify-content: center;align-items: center;}
+        .btn-wrap {margin-bottom: 20px;}
+        button {background: rgb(200, 213, 255);margin: 0 10px;padding: 10px 20px;font-size: 16px;border: 0;border-radius: 5px;cursor: pointer;transition: background .6s;}
+        button:hover {background: rgb(150, 174, 255);transition: background .6s;}
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="container">
+            <div class="btn-wrap">
+                <button id="btn01">몸무게</button>
+                <button id="btn02">지출</button>
+            </div>
+            <p class="result-area"></p>
+        </div>
+    </div>
+</body>
+<script>
+    function weight () {
+        var userName     = prompt('이름');
+        var userHeight   = prompt('키');
+        var userWeight   = prompt('몸무게');
+        var normalWeight = (userHeight-100)*0.9;
+    
+        // var result = userWeight >= normalWeight - 5 && userWeight <= normalWeight + 5;
+        // result = result ? "정상 체중" : "비정상 체중";
+        if (userWeight >= normalWeight - 5 && userWeight <= normalWeight + 5) {
+            result = "정상체중";
+        } else if (userWeight <= normalWeight + 5) {
+            result = "저체중";
+        } else if (userWeight >= normalWeight - 5) {
+            result = "과체중";
+        }
+        document.querySelector('.result-area').innerHTML = (userName + " 은 " + result + "임")
+    }
+
+    function expenditure () {
+        var userName = prompt('이름');
+        var price01  = prompt('밥');
+        var price02  = prompt('커피');
+        var price03  = prompt('교통비');
+        var userExpenditure = Number(price01) + Number(price02) + Number(price03);
+
+        // console.log(userExpenditure);
+        // console.log(typeof userExpenditure);
+        if (userExpenditure <= 10000 && userExpenditure >= 12000) {
+            result = "적당히 씀";
+        } else if (userExpenditure < 10000) {
+            result = "지출이 적음";
+        } else if (userExpenditure > 12000) {
+            result = "지출이 많음";
+        }
+        document.querySelector('.result-area').innerHTML = (userName + " 은 " + result);
+    }
+
+    document.querySelector('#btn01').addEventListener('click', function () {
+        weight ();
+    });
+    document.querySelector('#btn02').addEventListener('click', function () {
+        expenditure();
+    });
+
+</script>
+</html>
