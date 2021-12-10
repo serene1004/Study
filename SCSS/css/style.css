@@ -18,7 +18,7 @@
   background: rgba(150, 200, 250, 0.3);
 }
 
-.wrap {
+#wrap {
   width: 100%;
   height: 100%;
   background: #f7f7f7;
@@ -28,7 +28,7 @@
   background: #fff;
 }
 
-.wrap #header {
+#wrap #header {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }

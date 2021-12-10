@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* 주석을안달면 utf-8이 안나오나? */
-#app {
+#wrap {
   width: 100%;
   height: 100%;
   position: relative;

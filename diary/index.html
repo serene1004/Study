@@ -10,23 +10,13 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/lib/jquery-3.5.1.min.js"></script>
     <script src="./js/style.js"></script>
-    <script src="./js/lib/vue.js"></script>
 
 </head>
 <body>
-    <div id="app">
-        <h2 v-bind:title="newDataLoad">{{ message }}</h2>
-        <p v-if="seen">안녕하세요 Vue.js</p>
+    <div id="wrap">
+        <div class="container">
+            <h1>구상중</h1>
+        </div>
     </div>
 </body>
-<script>
-    var app = new Vue({
-        el:'#app',
-        data: {
-            message:'Hello World',
-            newDataLoad:'이 페이지는 '+ new Date() + '에 로드 되었습니다.',
-            seen:true
-        }
-    });
-</script>
 </html>
