@@ -1,0 +1,120 @@
+@charset "UTF-8";
+// 변수 (Variables)
+// 변수로 만들어 사용이가능. 지역변수 전역변수 둘다가능.
+$color-bg : #f7f7f7;
+$color-white : #fff;
+$color-text : #444;
+$color-alert-msg : #f44;
+$color-skyblue : skyblue;
+$color-shadow : rgba(0, 0, 0, .2);
+$color-mainbg : rgba(200, 150, 200, .3);
+// 이런식으로 글자 보관가능...근데 이거는 많이쓸려나?
+$smile : unquote($string: "'^^'");
+
+// 1. 문법(Syntax)
+// 1-1) 주석(Comment)
+// 한줄주석은 컴파일 되지 않음
+/* 여러줄 주석은 컴파일됨ㅇㅇ */
+
+// 1-2) 데이터의 종류(data, types)
+// Number, Strings, Colors, Booleans, Nulls, Lists, Maps
+
+// 1-3) 중첩(Nesting), &(Ampersand 상위선택자),  @at-root (중첩 벗어나기), !global, !default 등..
+.container {
+    // 이런식으로 지역변수로 만들어서 사용도 가능.
+    $maxW : 1200px;
+    max-width: $maxW;
+    margin: 0 auto;
+    color: $color-text;
+    .logo {color: $color-alert-msg;
+        // & (Ampersand 상위 선택자 참조)
+        // .logo.logo-hi 가 선택됨
+        &.logo-hi {font-size: 24px;}
+    }
+    // !global 전역설정 이후의 변수값이 변경됨.
+    // !global로인해 color-mainbg 의 색이 rgba(150, 200, 250, .3) 로 변경됨.
+    $color-mainbg : rgba(150, 200, 250, .3) !global;
+    #nav {
+        // !default 기존값이 있을경우 현재 설정하는 변수값은 사용하지 않음.
+        $color-mainbg : rgba(200, 250, 200, .5) !default;
+        background: $color-mainbg;
+    }
+}
+.wrap {width: 100%;height: 100%;background: $color-bg;
+    // @at-root (중첩 벗어나기)
+    // @at-root의 대상(#header)만 선택됨
+    @at-root #header {background: #fff;}
+    #header {box-shadow: 0 0 10px $color-shadow;}
+    // 아래처럼 속성의 중첩이 가능.
+    // #header {
+    //     font: {
+    //         weight: bold;
+    //         size: 24px;
+    //     }
+    //     margin: {
+    //         top: 0;
+    //         left: 0;
+    //     }
+    // }
+}
+
+// 2. 가져오기(Import)
+// - 정해진 규칙이있음.
+// - 상단에 선언해야함.
+
+// 2-1) 파일가져오기
+// - @import "header", "footer";
+
+// 2-2) 파일분할(Partials)
+// - 하위 파일 생성시 파일이름 앞에 _를 붙여야함. (ex. _header.scss, _footer.scss)
+
+// 3. 연산(Operations)
+// - 산술연산자
+// - 비교연산자
+// - 논리(Boolean 참거짓ㅇㅇ)연산자
+
+// 4. 숫자(Numbers)
+// 4-1) 상대적 단위 연산
+// - 연산은 px단위로 하고, 그 외 상대적 단위(%, em, vw 등)는 clac()로 연산해야함.
+
+// 4-2) 나누기 연산시 주의사항
+// - width: (200px / 2); height: $height / 2; 처럼 띄어쓰기 잘해야함ㅇㅇ
+
+// 5. 문자(Strings)
+
+// 6. 색상(Colors)
+// 6-1) 색상값의 연산도 가능
+// - color:#123455 + #789010; background: rgba(50, 100, 150, .5) + rgba(10, 20, 30, .5);
+
+// 6-2) opacify() 더불투명하게, transparentize() 더투명하게
+// - $colorB-opacity : rgba(10, 20, 30, .5);
+// - color: opacify($colorB-opacity, .4);   .의 선명도를 .4만큼 더 불투명하게
+// - background-color: transparentize($colorB-opacity , .2); .5의 선명도를 .2만큼 더 투명하게
+
+// 7. 논리(Boolean)
+// - and, or, not
+$w-boolean: 80px;
+#header .container {
+    // $w-boolean 이게 100px보다 크면인데 부정일때 아래높이를 실행함
+    @if not($w-boolean > 100px) {
+        height: 100px;
+    }
+}
+
+// 8. 재활용(Mixins)
+// - 선택자, 속성재활용 가능
+@mixin boxTheme($boxTheme: #f4f4f4) {
+    background: $boxTheme;
+    width: 100%;
+    height: 500px;
+    font-size: 14px;
+}
+#section01 {
+    @include boxTheme
+}
+#section02 {
+    @include boxTheme($boxTheme: #fff)
+}
+#section03 {
+    @include boxTheme($boxTheme: #ddd)
+}
