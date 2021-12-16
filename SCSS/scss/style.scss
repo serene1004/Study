@@ -24,9 +24,14 @@ $smile : unquote($string: "'^^'");
     // 이런식으로 지역변수로 만들어서 사용도 가능.
     $maxW : 1200px;
     max-width: $maxW;
+    height: 100%;
     margin: 0 auto;
     color: $color-text;
     .logo {color: $color-alert-msg;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         // & (Ampersand 상위 선택자 참조)
         // .logo.logo-hi 가 선택됨
         &.logo-hi {font-size: 24px;}
@@ -39,12 +44,29 @@ $smile : unquote($string: "'^^'");
         $color-mainbg : rgba(200, 250, 200, .5) !default;
         background: $color-mainbg;
     }
+    #aside {
+        li {
+            display: flex;
+            justify-content: center;
+            width: 30px;
+            font-size: 24px;
+            a {
+                color: $color-text;transition: color .4s;
+                &:hover {color: #999;transition: color .4s;}
+            }
+        }
+    }
 }
-#wrap {width: 100%;height: 100%;background: $color-bg;
+.wrap {width: 100%;height: 100%;background: $color-bg;
     // @at-root (중첩 벗어나기)
     // @at-root의 대상(#header)만 선택됨
     @at-root #header {background: #fff;}
-    #header {box-shadow: 0 0 10px $color-shadow;}
+    #header {box-shadow: 0 0 10px $color-shadow;
+        ul {height: 100%;display: flex;justify-content: center;align-items: center;}
+    }
+    .gap {
+        height: 100%;
+    }
     // 아래처럼 속성의 중첩이 가능.
     // #header {
     //     font: {
@@ -98,6 +120,7 @@ $w-boolean: 80px;
     // $w-boolean 이게 100px보다 크면인데 부정일때 아래높이를 실행함
     @if not($w-boolean > 100px) {
         height: 100px;
+        display: flex;
     }
 }
 
@@ -110,11 +133,297 @@ $w-boolean: 80px;
     font-size: 14px;
 }
 #section01 {
-    @include boxTheme
+    // 이런식으로 믹스인을 가져올수있음.
+    // 섹션들의 공통된 css가 많다면 이런식으로 불러와서 적용가능할듯함
+    @include boxTheme;
+
+    .gap {height: 100%;}
+
+    ul {height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        li {
+            width: 200px;
+            height: 300px;
+            border-radius: 30px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            .content-item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: calc(100% - 4px);
+                height: calc(100% - 4px);
+                background: #f7f7f7;
+                color: $color-text;
+                font-size: 20px;
+                font-weight: bold;
+                position: relative;z-index: 2;
+                border-radius: 28px;
+            }
+            .content-line {
+                position: absolute;z-index: 1;
+                width: 60%;
+                height: 120%;
+                background-image: linear-gradient(to right, #f00, #fc0);
+                animation: ani-line 4s linear infinite;
+                @keyframes ani-line {
+                    0% {transform: rotate(0);}
+                    100% {transform: rotate(360deg);}
+                }
+            }
+            .line01 {
+                width: 10%;
+                animation: ani-line01 6s linear infinite;
+                @keyframes ani-line01 {
+                    0% {transform: rotate(0);}
+                    100% {transform: rotate(360deg);}
+                }
+            }
+            .line02 {
+                width: 10%;
+                animation: ani-line02 6s linear infinite;
+                @keyframes ani-line02 {
+                    0% {transform: rotate(30deg);}
+                    100% {transform: rotate(390deg);}
+                }
+            }
+            .line03 {
+                width: 10%;
+                animation: ani-line03 6s linear infinite;
+                @keyframes ani-line03 {
+                    0% {transform: rotate(60deg);}
+                    100% {transform: rotate(420deg);}
+                }
+            }
+            .line04 {
+                width: 10%;
+                animation: ani-line04 6s linear infinite;
+                @keyframes ani-line04 {
+                    0% {transform: rotate(90deg);}
+                    100% {transform: rotate(450deg);}
+                }
+            }
+            .line05 {
+                width: 10%;
+                animation: ani-line05 6s linear infinite;
+                @keyframes ani-line05 {
+                    0% {transform: rotate(120deg);}
+                    100% {transform: rotate(480deg);}
+                }
+            }
+            .line06 {
+                width: 10%;
+                animation: ani-line06 6s linear infinite;
+                @keyframes ani-line06 {
+                    0% {transform: rotate(150deg);}
+                    100% {transform: rotate(510deg);}
+                }
+            }
+        }
+    }
 }
 #section02 {
-    @include boxTheme($boxTheme: #fff)
+    @include boxTheme($boxTheme: #2a2a2a);
+    height: 969px;
+    position: relative;
+    overflow: hidden;
+
+    i {
+        position: absolute;top: 0;
+        max-width: 3px;
+        height: 150px;
+        background-image: linear-gradient(transparent, #fff);
+        border-radius: 0 0 6px 6px;
+        animation: shooting-star 3s ease-in infinite;
+        @keyframes shooting-star {
+            0% {transform: translateY(-150px) rotate(30deg);}
+            100% {transform: translateY(calc(100vh + 150px)) translateX(-400px) rotate(15deg);}
+        }
+    }
 }
 #section03 {
-    @include boxTheme($boxTheme: #ddd)
+    @include boxTheme($boxTheme: #cdf);
+}
+
+
+// 매개변수(parameter)와 인자(argument)
+// function abc(arg) {
+// 
+// }
+// abc(1);
+// arg = parameter
+// 1 = argument
+// parameter는 변수, 변수에 들어가는 값은 argument
+
+@mixin alert-msg() {
+    .alert-msg {
+        color: $color-alert-msg;
+        font-size: 14px;
+    }
+    @content;
+}
+
+@include alert-msg() {
+
+}
+
+@mixin mix-content($color-alert-msg, $color-mainbg) {
+    color: $color-alert-msg;
+    background: $color-mainbg;
+}
+
+div.mixcont {
+    // 안에 들어있는 인자값(argument)을 바꿀수있음.
+    @include mix-content(skyblue, #fdd)
+}
+
+// 9. 확장(Extend)
+.extendA {
+    color:red;
+}
+.extendB {
+    @extend .extendA;
+    background:blue;
+}
+// 아래의 코드처럼 작성됨.
+// .extendA, div.extendB {color: red;}
+// .extendB {background: blue;}
+
+// 10. 함수(Functions)
+// @function 함수이름($매개변수) {
+//     @return 값
+// }
+$function-width: 1200px;
+
+@function functionA($number: 1, $columns: 12){
+    @return $function-width * ($number / $columns);
+}
+
+.functionB {
+    width : $function-width;
+
+    .function01 {
+        width : functionA(8);
+    }
+    .function02 {
+        width : functionA(3);
+    }
+    .function03 {
+        width : functionA();
+    }
+}
+// 아래의 코드처럼 작성됨.
+// .functionB {width: 1200px;}
+// .functionB .function1 {width: 800px;}
+// .functionB .function2 {width: 300px;}
+// .functionB .function3 {width: 100px;}
+
+// 11. 함수(if)
+// if(조건, 표현식1, 표현식2)
+$if-width : 500px;
+.ifA {
+    width: if($if-width > 300px, $if-width, null);
+}
+.ifB {
+    width: if($if-width < 300px, $if-width, 300px);
+}
+
+// 12. 지시어
+// 12-1) @if
+// @if (조건1) {
+//      조건1이 참일때
+// } @else if (조건2) {
+//      조건2가 참일때
+// } @else {
+//      모두거짓일때
+// }
+$if-bg: true;
+.if-bg01 {
+    @if $if-bg {
+        background:red;
+    }
+}
+
+$if-bg-color: orange;
+.if-bg02 {
+    @if $if-bg-color == strawberry {
+        color:pink;
+    } @else if $if-bg-color == orange {
+        color:green;
+    } @else if $if-bg-color == banana {
+        color:yellow;
+    } @else {
+        color: black;
+    }
+}
+
+// 이런식으로도 가능.
+@function ifC($size) {
+    @if $size >= 0 and $size <= 200px {
+        @return 200px;
+    } @else {
+        @return 400px;
+    }
+}
+.ifD {
+    width: ifC(150px);
+    height: ifC(350px);
+}
+
+// 12-3) @for
+// through - 종료 만큼 반복
+// @for $변수 from 시작 through 종료 {
+//      반복내용
+// }
+
+// to - 종료 직전까지 반복
+// @for $변수 from 시작 to 종료 {
+//      반복내용
+// }
+@for $i from 1 through 3 {
+    .for-through:nth-child(#{$i}){
+        width: 20px * $i
+    }
+}
+@for $i from 1 to 3 {
+    .for-to:nth-child(#{$i}){
+        width: 20px * $i
+    }
+}
+
+// 12-4) @each
+// - List와 Map 데이터를 반복할 때 사용함
+// @each $변수 in 데이터 {
+//      반복내용
+// }
+$each-ex: (apple, orange, banana, mango);
+
+.eachA {
+    @each $eachB in $each-ex {
+        li.#{$eachB} {
+            background:red;
+        }
+    }
+}
+.eachC {
+    @each $eachD in $each-ex {
+        $i: index($each-ex, $eachD);
+        li:nth-child(#{$i}) {
+            left: 50px * $i;
+        }
+    }
+}
+$each-apple: (apple, korea);
+$each-orange: (orange, china);
+$each-banana: (banana, japan);
+
+@each $eachE, $country in $each-apple, $each-orange, $each-banana {
+    .eachF-#{$eachE} {
+        background: blue;
+    }
 }
