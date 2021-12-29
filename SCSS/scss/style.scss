@@ -247,7 +247,60 @@ $w-boolean: 80px;
     }
 }
 #section03 {
-    @include boxTheme($boxTheme: #cdf);
+    @include boxTheme($boxTheme: #f7f7f7);
+
+    ul {
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        li {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
+
+            .ribbon {
+                position: absolute;
+                top: 30px;
+                left: -15px;
+                width: 90%;
+                height: 30px;
+                background: #ddf;
+                border-radius: 15px;
+                border-bottom-left-radius: 0;
+                display: flex;
+                align-items: center;
+                font-weight: bold;
+                text-indent: 30px;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    z-index: 2;
+                    top: 30px;
+                    left: 0;
+                    width: 15px;
+                    height: 25px;
+                    background: #bcbcff;
+                    border-top-left-radius: 15px;
+                    border-bottom-left-radius: 15px;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    z-index: 1;
+                    top: 30px;
+                    left: 0;
+                    width: 15px;
+                    height: 15px;
+                    background: #ddf;
+                }
+            }
+        }
+    }
 }
 
 

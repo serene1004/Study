@@ -1,9 +1,234 @@
 @charset "UTF-8";
-/* 주석을안달면 utf-8이 안나오나? */
+/* @charset "UTF-8" 선언 */
 #wrap {
   width: 100%;
   height: 100%;
   position: relative;
   z-index: 1;
   text-align: center;
+  color: #444;
+}
+
+#diary-bg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.1)), to(rgba(255, 255, 255, 0.2)));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2));
+  overflow: hidden;
+}
+
+#diary-bg i {
+  position: absolute;
+}
+
+#diary-bg .sun {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin-left: -40px;
+  border-radius: 50%;
+  background: radial-gradient(rgba(255, 0, 0, 0.7), rgba(255, 255, 0, 0.7));
+  -webkit-box-shadow: 0 0 30px rgba(255, 255, 0, 0.7), 0 0 50px rgba(255, 255, 0, 0.5), 0 0 70px #ffbe46;
+          box-shadow: 0 0 30px rgba(255, 255, 0, 0.7), 0 0 50px rgba(255, 255, 0, 0.5), 0 0 70px #ffbe46;
+  -webkit-animation: bgSun 30s linear infinite;
+          animation: bgSun 30s linear infinite;
+}
+
+@-webkit-keyframes bgSun {
+  0% {
+    -webkit-transform: translateX(0vw) translateY(30vh);
+            transform: translateX(0vw) translateY(30vh);
+  }
+  40% {
+    -webkit-transform: translateX(40vw) translateY(5vh);
+            transform: translateX(40vw) translateY(5vh);
+  }
+  50% {
+    -webkit-transform: translateX(50vw) translateY(0);
+            transform: translateX(50vw) translateY(0);
+  }
+  60% {
+    -webkit-transform: translateX(60vw) translateY(5vh);
+            transform: translateX(60vw) translateY(5vh);
+  }
+  100% {
+    -webkit-transform: translateX(100vw) translateY(30vh);
+            transform: translateX(100vw) translateY(30vh);
+  }
+}
+
+@keyframes bgSun {
+  0% {
+    -webkit-transform: translateX(0vw) translateY(30vh);
+            transform: translateX(0vw) translateY(30vh);
+  }
+  40% {
+    -webkit-transform: translateX(40vw) translateY(5vh);
+            transform: translateX(40vw) translateY(5vh);
+  }
+  50% {
+    -webkit-transform: translateX(50vw) translateY(0);
+            transform: translateX(50vw) translateY(0);
+  }
+  60% {
+    -webkit-transform: translateX(60vw) translateY(5vh);
+            transform: translateX(60vw) translateY(5vh);
+  }
+  100% {
+    -webkit-transform: translateX(100vw) translateY(30vh);
+            transform: translateX(100vw) translateY(30vh);
+  }
+}
+
+#diary-bg .cloud {
+  -webkit-animation: bgCloud 30s linear infinite;
+          animation: bgCloud 30s linear infinite;
+}
+
+@-webkit-keyframes bgCloud {
+  0% {
+    -webkit-transform: translateX(-50vw);
+            transform: translateX(-50vw);
+  }
+  50% {
+    -webkit-transform: translateX(0) translateY(-100px);
+            transform: translateX(0) translateY(-100px);
+  }
+  100% {
+    -webkit-transform: translateX(50vw) translateY(0);
+            transform: translateX(50vw) translateY(0);
+  }
+}
+
+@keyframes bgCloud {
+  0% {
+    -webkit-transform: translateX(-50vw);
+            transform: translateX(-50vw);
+  }
+  50% {
+    -webkit-transform: translateX(0) translateY(-100px);
+            transform: translateX(0) translateY(-100px);
+  }
+  100% {
+    -webkit-transform: translateX(50vw) translateY(0);
+            transform: translateX(50vw) translateY(0);
+  }
+}
+
+#diary-bg .cloud::after {
+  content: '';
+  display: inline-block;
+  width: 72px;
+  height: 72px;
+  background: url(../img/cloud48.png) no-repeat center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#diary-bg .rain {
+  background: skyblue;
+  -webkit-animation: bgRainy 1s linear infinite;
+          animation: bgRainy 1s linear infinite;
+}
+
+@-webkit-keyframes bgRainy {
+  0% {
+    -webkit-transform: translateY(-100px) rotate(10deg);
+            transform: translateY(-100px) rotate(10deg);
+  }
+  100% {
+    -webkit-transform: translateY(calc(100vh + 100px)) rotate(10deg) translateX(-200px);
+            transform: translateY(calc(100vh + 100px)) rotate(10deg) translateX(-200px);
+  }
+}
+
+@keyframes bgRainy {
+  0% {
+    -webkit-transform: translateY(-100px) rotate(10deg);
+            transform: translateY(-100px) rotate(10deg);
+  }
+  100% {
+    -webkit-transform: translateY(calc(100vh + 100px)) rotate(10deg) translateX(-200px);
+            transform: translateY(calc(100vh + 100px)) rotate(10deg) translateX(-200px);
+  }
+}
+
+#diary-bg .wind {
+  -webkit-animation: bgWindy 5s linear infinite;
+          animation: bgWindy 5s linear infinite;
+}
+
+@-webkit-keyframes bgWindy {
+  0% {
+    -webkit-transform: translateX(-50vw) translateY(-50vh) rotate(15deg);
+            transform: translateX(-50vw) translateY(-50vh) rotate(15deg);
+  }
+  100% {
+    -webkit-transform: translateX(50vw) translateY(50vh) rotate(15deg);
+            transform: translateX(50vw) translateY(50vh) rotate(15deg);
+  }
+}
+
+@keyframes bgWindy {
+  0% {
+    -webkit-transform: translateX(-50vw) translateY(-50vh) rotate(15deg);
+            transform: translateX(-50vw) translateY(-50vh) rotate(15deg);
+  }
+  100% {
+    -webkit-transform: translateX(50vw) translateY(50vh) rotate(15deg);
+            transform: translateX(50vw) translateY(50vh) rotate(15deg);
+  }
+}
+
+#diary-bg .wind::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url(../img/wind24.png) no-repeat center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#diary-bg .snow {
+  -webkit-animation: bgSnowy 10s linear infinite;
+          animation: bgSnowy 10s linear infinite;
+}
+
+@-webkit-keyframes bgSnowy {
+  0% {
+    -webkit-transform: translateY(-100px) rotate(10deg);
+            transform: translateY(-100px) rotate(10deg);
+  }
+  100% {
+    -webkit-transform: translateY(calc(100vh + 100px)) rotate(10deg) translateX(-200px);
+            transform: translateY(calc(100vh + 100px)) rotate(10deg) translateX(-200px);
+  }
+}
+
+@keyframes bgSnowy {
+  0% {
+    -webkit-transform: translateY(-100px) rotate(10deg);
+            transform: translateY(-100px) rotate(10deg);
+  }
+  100% {
+    -webkit-transform: translateY(calc(100vh + 100px)) rotate(10deg) translateX(-200px);
+            transform: translateY(calc(100vh + 100px)) rotate(10deg) translateX(-200px);
+  }
+}
+
+#diary-bg .snow::after {
+  content: '*';
+  font-size: 32px;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
