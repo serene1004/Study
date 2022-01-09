@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        html, body {width: 100%;height: 100%;box-sizing: border-box;overflow:hidden;}
+        #wrap {width: 100%;height: 100%;position: relative;}
+        #wrap .container {width: 1180px;height: 100%;margin: 0 auto;display: flex;justify-content: center;align-items: center;position: relative;}
+        canvas {width: 300px !important;height: 300px !important;pointer-events: none;}
+        #doughnut-chart {max-width: 500px;width: 100%;transform: rotate(-90deg);}
+        #doughnut-chart circle {fill: transparent;stroke-width: 2;}
+        /* #doughnut-chart circle:nth-child(1) {animation: dash01 1s linear;}
+        #doughnut-chart circle:nth-child(2) {animation: dash02 1s linear;}
+        #doughnut-chart circle:nth-child(3) {animation: dash03 1s linear;}
+        @keyframes dash01 {
+            from {stroke-dashoffset: 50.74880440414281;}
+            to {stroke-dashoffset: 0;}
+        } 
+        @keyframes dash02 {
+            from {stroke-dashoffset: 0;}
+            to {stroke-dashoffset: -50.74880440414281;}
+        } 
+        @keyframes dash03 {
+            from {stroke-dashoffset: -153.93804002589985;}
+            to {stroke-dashoffset: -204.68684443004267;}
+        }  */
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="container">
+            <canvas id="myChart"></canvas>
+            <svg id="doughnut-chart" viewBox="0 0 100 100">
+                <!-- stroke-dasharray="20 5" 20px만큼 선을 그리고 5px만큼 공백을-->
+                <!-- <circle cx="50" cy="50" r="35" stroke-dasharray="20 5"></circle> -->
+                <!-- <path d="
+                M 50 10
+                A 40 40, 0, 0, 0, 50 90"
+                stroke="green"
+                fill="transparent" /> -->
+                <!-- <path d="
+                M 50 90
+                A 40 40, 0, 0, 0, 50 10"
+                stroke="green"
+                fill="transparent" /> -->
+            </svg>
+        </div>
+    </div>
+</body>
+<script>
+    var ctx = document.getElementById('myChart');
+    var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [30, 91, 9],
+                backgroundColor: ['#af8bcb', '#2bb6a8', '#fa9e9e'],
+                cutout:500
+            }]
+        }
+    });
+</script>
+<script>
+    let radius = 35;
+    let diameter = 2 * Math.PI * radius;
+    let dataset = [30, 91, 9];
+    let dataColor = ['#af8bcb', '#2bb6a8', '#fa9e9e'];
+    let total = dataset.reduce((r, v) => r + v, 0);
+
+    console.log('지름', diameter); // 219.9114857512855 지름
+
+    let  acc = dataset.reduce((arr, v, i) => {
+        let last = arr[arr.length - 1];
+        return [...arr, last + v];
+    }, [0]);
+
+    let svg = document.getElementById('doughnut-chart');
+
+    dataset.forEach((data, i) => {
+        let ratio = data / total;
+        let fillSpace = diameter * ratio;
+        let emptySpace = diameter - fillSpace;
+        let offset = (acc[i] / total) * diameter;
+        let circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', '50');
+        circle.setAttribute('cy', '50');
+        circle.setAttribute('r', String(radius));
+        circle.setAttribute('stroke', dataColor[i]);
+        circle.setAttribute('stroke-dasharray', `${fillSpace} ${emptySpace}`);
+        circle.setAttribute('stroke-dashoffset', String(-offset));
+
+        svg.appendChild(circle);
+    });
+
+    // let acc = dataset.reduce((result, value) => 
+    //     [...result, result[result.length - 1] + value], [0]
+    // )
+    // console.log('acc', acc);    // [0, 30, 121, 130]
+
+    // dataset.forEach(data => {
+    //     let ratio = data / total;
+    //     let strokeLength = diameter * ratio;
+    //     let spaceLength = diameter - strokeLength;
+    //     console.log(`stroke-dasharray = ${strokeLength} ${spaceLength}`);
+    //     // (cx + r, cy) 좌표
+    //     // stroke-dasharray = 50.74880440414281 169.1626813471427
+    //     // stroke-dasharray = 153.93804002589985 65.97344572538566
+    //     // stroke-dasharray = 15.224641321242844 204.68684443004267
+    // });
+
+    // dataset.forEach((data, i) => {
+    //     let offset = (acc[i] / total) * diameter;
+    //     console.log(`stroke-dashoffset = ${-offset}`);
+    //     // stroke-dashoffset = 0
+    //     // stroke-dashoffset = -50.74880440414281
+    //     // stroke-dashoffset = -204.68684443004267
+    // });
+</script>
+</html>
