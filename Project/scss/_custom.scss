@@ -1,0 +1,64 @@
+/* selection */
+::selection {background: #191919;color: #fff;}
+
+/* custom scrollbar */
+/* scrollbar-Width, Track, Handle, hover */
+::-webkit-scrollbar {width: 10px;height: 10px;}
+::-webkit-scrollbar-track {background: #f1f1f1;}
+::-webkit-scrollbar-thumb {background: #000;}
+::-webkit-scrollbar-thumb:hover {background: #000;}
+
+/* checkbox custom */
+input[type="checkbox"]+label {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+    background: transparent;
+    border: 1px solid #000;
+    position: relative;
+    text-indent: 24px;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: 3px;
+        width: 5px;
+        height: 10px;
+        border: solid #000;
+        border-width: 0 3px 3px 0;
+        border-radius: 3px;
+        transform-origin: 50%;
+        transform: rotate(45deg) scale(0);
+        transition: all .1s;
+    }
+}
+
+input[type="checkbox"]:checked+label {
+
+    &::after {
+        transform: rotate(45deg) scale(1);
+        animation: aniChecked .2s;
+
+        @keyframes aniChecked {
+            0% {
+                transform: rotate(45deg) scale(0);
+            }
+
+            80% {
+                transform: rotate(45deg) scale(1.25);
+            }
+
+            100% {
+                transform: rotate(45deg) scale(1);
+            }
+        }
+    }
+}
+
+input[type="checkbox"] {
+    display: none;
+}
