@@ -1,12 +1,12 @@
 /* selection */
-::selection {background: #191919;color: #fff;}
+::selection {background: #1a1a1a;color: #fff;}
 
 /* custom scrollbar */
 /* scrollbar-Width, Track, Handle, hover */
-::-webkit-scrollbar {width: 10px;height: 10px;}
-::-webkit-scrollbar-track {background: #f1f1f1;}
-::-webkit-scrollbar-thumb {background: #000;}
-::-webkit-scrollbar-thumb:hover {background: #000;}
+::-webkit-scrollbar {width: 0;height: 0;}
+::-webkit-scrollbar-track {background: transparent;}
+::-webkit-scrollbar-thumb {background: #7a7a7a;border-radius: 3px;}
+::-webkit-scrollbar-thumb:hover {background: #1a1a1a;}
 
 /* checkbox custom */
 input[type="checkbox"]+label {
