@@ -64,4 +64,41 @@ function svgCircleAnimation () {
 svgCircleAnimation ();
 
 
+function changeBackground () {
+    let list = document.querySelectorAll('.section_05 .container li');
+    let listCnt = list.length;
+    let backgroundList = document.querySelectorAll('.section_05 .bg_container li');
+    
+    for (let i = 0; i < listCnt; i++) {
+        list[i].addEventListener('mouseenter', function() {
+            for (let j = 0; j < listCnt; j++) {
+                backgroundList[j].classList.remove('on');
+                backgroundList[i].classList.add('on');
+            }
+        })
+    }
+}
+changeBackground ()
+
+function headerShowHide () {
+    let header = document.querySelector('.header');
+    let scrollTopBefore = document.querySelector('.main').scrollTop;
+
+    document.querySelector('.main').addEventListener('scroll', function() {
+        let scrollTop = document.querySelector('.main').scrollTop;
+
+        if (scrollTop > 50) {
+            if (scrollTopBefore < scrollTop ) {
+                header.classList.add('hide')
+            } else {
+                header.classList.remove('hide')
+            }
+        } 
+
+        scrollTopBefore = scrollTop; 
+    });
+}
+headerShowHide ()
+
+
 // 현재 보여지고있는 화면에서 그라디언트가 움직이고있음. 이건어케하는거지?
