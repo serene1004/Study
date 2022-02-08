@@ -3,24 +3,26 @@ function introAnimation () {
     let introBar = document.querySelectorAll('.intro_bg div');
     let introBarCnt = introBar.length;
 
-    intro.onclick = function(){
-        for (let i = 0; i < introBarCnt; i ++) {
-            if (i % 2 === 0) {
-                introBar[i].style.transform = 'skew(30deg) translateX('+ (20+(10*i)) + 'vw) translateY(-100vh)';
-            } else if (i % 2 === 1) {
-                introBar[i].style.transform = 'skew(30deg) translateX('+ (20+(10*i)) + 'vw) translateY(100vh)';
+    document.addEventListener('DOMContentLoaded', function(){
+        intro.onclick = function(){
+            for (let i = 0; i < introBarCnt; i ++) {
+                if (i % 2 === 0) {
+                    introBar[i].style.transform = 'skew(30deg) translateX('+ (20+(10*i)) + 'vw) translateY(-100vh)';
+                } else if (i % 2 === 1) {
+                    introBar[i].style.transform = 'skew(30deg) translateX('+ (20+(10*i)) + 'vw) translateY(100vh)';
+                }
             }
-        }
-
-        setTimeout(function(){
-            intro.style.opacity = 0;
-
+    
             setTimeout(function(){
-                intro.style.display = 'none';
-            }, 1000)
-            backgroundVideo();
-        }, 1500)
-    }
+                intro.style.opacity = 0;
+    
+                setTimeout(function(){
+                    intro.style.display = 'none';
+                }, 1000)
+                backgroundVideo();
+            }, 1500)
+        }
+    });
 }
 introAnimation();
 
@@ -82,23 +84,70 @@ changeBackground ()
 
 function headerShowHide () {
     let header = document.querySelector('.header');
-    let scrollTopBefore = document.querySelector('.main').scrollTop;
+    let scrollYBefore = window.scrollY;
 
-    document.querySelector('.main').addEventListener('scroll', function() {
-        let scrollTop = document.querySelector('.main').scrollTop;
-
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.scrollY;
+        
         if (scrollTop > 50) {
-            if (scrollTopBefore < scrollTop ) {
+            if (scrollYBefore < scrollTop) {
                 header.classList.add('hide')
             } else {
                 header.classList.remove('hide')
             }
         } 
-
-        scrollTopBefore = scrollTop; 
+        scrollYBefore = scrollTop;
     });
 }
 headerShowHide ()
+
+function movingImage () {
+    let posTop = document.querySelector('.section_04').offsetTop;
+    let img = document.querySelectorAll('.img_box div');
+    let imgCnt = img.length;
+    let windowW = window.innerWidth;
+    let windowH = window.innerHeight;
+
+    window.addEventListener('resize', function(){
+        let resizePosTop = document.querySelector('.section_04').offsetTop;
+        let resizeWindowW = window.innerWidth;
+        let resizeWindowH = window.innerHeight;
+        
+        posTop = resizePosTop;
+        windowW = resizeWindowW;
+        windowH = resizeWindowH;
+    });
+
+
+    window.addEventListener('scroll', function() {
+        let windowScrollY = window.scrollY;
+
+        if (windowW > windowH) {
+            if (posTop < windowScrollY) {
+                for (let i = 0; i < imgCnt; i++) {
+                    img[i].style.marginTop = posTop + (i*(posTop/10)) - windowScrollY + 'px';
+                    if (posTop + i*(posTop/15) < windowScrollY) {
+                        img[i].style.opacity = .3;
+                    } else if (posTop + i*(posTop/15) > windowScrollY) {
+                        img[i].style.opacity = 0;
+                    }
+                }
+            }
+        } else if (windowW < windowH) { // 창너비가 창높이보다 작을때
+            if (posTop < windowScrollY) {
+                for (let i = 0; i < imgCnt; i++) {
+                    img[i].style.marginTop = posTop + (i*(posTop/50)) - windowScrollY + 'px';
+                    if (posTop + i*(posTop/250) < windowScrollY) {
+                        img[i].style.opacity = .3;
+                    } else if (posTop + i*(posTop/250) > windowScrollY) {
+                        img[i].style.opacity = 0;
+                    }
+                }
+            }
+        }
+    });
+}
+movingImage ()
 
 
 // 현재 보여지고있는 화면에서 그라디언트가 움직이고있음. 이건어케하는거지?

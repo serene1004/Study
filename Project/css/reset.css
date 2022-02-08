@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 * {margin: 0;padding: 0;box-sizing: border-box;}
-html {overflow-y: auto;}
-html, body {width: 100%;height: 100%;font-family: 'Pretendard';letter-spacing: 1px;}
+html {overflow-y: scroll;}
+html, body {width: 100%;font-family: 'Pretendard';letter-spacing: 1px;}
 
 h1, h2, h3, h4, h5, h6 {font-size: initial;font-weight: normal;}
 ul, li {list-style: none;}
