@@ -1,3 +1,9 @@
+window.onload = function() {
+    setTimeout(function () {
+        scrollTo(0,0);
+    }, 100);
+}
+
 function introAnimation () {
     let intro = document.querySelector('.intro_bg');
     let introBar = document.querySelectorAll('.intro_bg div');
@@ -19,6 +25,7 @@ function introAnimation () {
                 setTimeout(function(){
                     intro.style.display = 'none';
                 }, 1000)
+                document.querySelector('html').classList.add('on');
                 backgroundVideo();
             }, 1500)
         }
@@ -77,6 +84,11 @@ function changeBackground () {
                 backgroundList[j].classList.remove('on');
                 backgroundList[i].classList.add('on');
             }
+        }),
+        list[i].addEventListener('mouseleave', function() {
+            for (let j = 0; j < listCnt; j++) {
+                backgroundList[j].classList.remove('on');
+            }
         })
     }
 }
@@ -122,13 +134,13 @@ function movingImage () {
     window.addEventListener('scroll', function() {
         let windowScrollY = window.scrollY;
 
-        if (windowW > windowH) {
+        if (windowW > windowH) { // 창너비가 창높이보다 클때
             if (posTop < windowScrollY) {
                 for (let i = 0; i < imgCnt; i++) {
                     img[i].style.marginTop = posTop + (i*(posTop/10)) - windowScrollY + 'px';
-                    if (posTop + i*(posTop/15) < windowScrollY) {
-                        img[i].style.opacity = .3;
-                    } else if (posTop + i*(posTop/15) > windowScrollY) {
+                    if (posTop + i*(posTop/20) < windowScrollY) {
+                        img[i].style.opacity = .4;
+                    } else if (posTop + i*(posTop/20) > windowScrollY) {
                         img[i].style.opacity = 0;
                     }
                 }
@@ -137,9 +149,9 @@ function movingImage () {
             if (posTop < windowScrollY) {
                 for (let i = 0; i < imgCnt; i++) {
                     img[i].style.marginTop = posTop + (i*(posTop/50)) - windowScrollY + 'px';
-                    if (posTop + i*(posTop/250) < windowScrollY) {
-                        img[i].style.opacity = .3;
-                    } else if (posTop + i*(posTop/250) > windowScrollY) {
+                    if (posTop + i*(posTop/500) < windowScrollY) {
+                        img[i].style.opacity = .4;
+                    } else if (posTop + i*(posTop/500) > windowScrollY) {
                         img[i].style.opacity = 0;
                     }
                 }
@@ -149,5 +161,6 @@ function movingImage () {
 }
 movingImage ()
 
-
+// 섹션6번에서 이미지가 스크롤값에 따라 background-position-y 값이 변경함.
+// 클래스 추가로 그라디언트 이미지에서 사진으로 변경후 scale(1.1) > (1)이벤트필요
 // 현재 보여지고있는 화면에서 그라디언트가 움직이고있음. 이건어케하는거지?
