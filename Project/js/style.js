@@ -135,7 +135,7 @@ function movingImage () {
         let windowScrollY = window.scrollY;
 
         if (windowW > windowH) { // 창너비가 창높이보다 클때
-            if (posTop < windowScrollY) {
+            if (posTop < windowScrollY+10) {
                 for (let i = 0; i < imgCnt; i++) {
                     img[i].style.marginTop = posTop + (i*(posTop/10)) - windowScrollY + 'px';
                     if (posTop + i*(posTop/20) < windowScrollY) {
