@@ -1,6 +1,6 @@
 # **BEM** #
 
-## **1. BEM의 기본구조** ##
+## **1. BEM의 기본구조**
 BEM은 Block, Element, Modifier를 뜻하며, 각각 __ 와 -- 로 구분
 
     .header__navigation--navi-text {
@@ -15,7 +15,7 @@ BEM은 Class만을 사용하며, **어떤 목적인가**에 따라 네이밍함
 
 <br>
 
-## **2. Block / Element / Modifier** ##
+## **2. Block / Element / Modifier**
 
 ## **Block** ##
 ![block](./img/block.png)
@@ -29,7 +29,7 @@ BEM은 Class만을 사용하며, **어떤 목적인가**에 따라 네이밍함
 
 <br>
 
-## **Element** ##
+## **Element**
 ![element](./img/element.png)
 
 **블럭을 구성하는 단위**로 의존적인 형태
@@ -57,7 +57,7 @@ BEM은 Class만을 사용하며, **어떤 목적인가**에 따라 네이밍함
 
 <br>
 
-## **Modifier** ##
+## **Modifier**
 ![modifier](./img/modifier.png)
 
 **블럭이나 엘리먼트의 속성**을 담당
