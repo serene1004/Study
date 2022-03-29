@@ -92,7 +92,7 @@ function changeBackground () {
         })
     }
 }
-changeBackground ()
+changeBackground ();
 
 function headerShowHide () {
     let header = document.querySelector('.header');
@@ -111,7 +111,7 @@ function headerShowHide () {
         scrollYBefore = scrollTop;
     });
 }
-headerShowHide ()
+headerShowHide ();
 
 function movingImage () {
     let posTop = document.querySelector('.section_04').offsetTop;
@@ -130,7 +130,6 @@ function movingImage () {
         windowH = resizeWindowH;
     });
 
-
     window.addEventListener('scroll', function() {
         let windowScrollY = window.scrollY;
 
@@ -146,7 +145,7 @@ function movingImage () {
                 }
             }
         } else if (windowW < windowH) { // 창너비가 창높이보다 작을때
-            if (posTop < windowScrollY) {
+            if (posTop < windowScrollY+10) {
                 for (let i = 0; i < imgCnt; i++) {
                     img[i].style.marginTop = posTop + (i*(posTop/50)) - windowScrollY + 'px';
                     if (posTop + i*(posTop/500) < windowScrollY) {
@@ -159,8 +158,37 @@ function movingImage () {
         }
     });
 }
-movingImage ()
+movingImage ();
 
-// 섹션6번에서 이미지가 스크롤값에 따라 background-position-y 값이 변경함.
-// 클래스 추가로 그라디언트 이미지에서 사진으로 변경후 scale(1.1) > (1)이벤트필요
-// 현재 보여지고있는 화면에서 그라디언트가 움직이고있음. 이건어케하는거지?
+// section_06의 left_box 백그라운드 이미지의 positionY값을 변경하는 함수
+function imgPositionY () {
+    let pos6Top = document.querySelector('.section_06').offsetTop;
+    let imgBox = document.querySelectorAll('.left_box');
+
+    window.addEventListener('resize', function(){
+        let resizePosTop = document.querySelector('.section_06').offsetTop;
+        let resizeWindowW = window.innerWidth;
+        let resizeWindowH = window.innerHeight;
+        
+        pos6Top = resizePosTop;
+        windowW = resizeWindowW;
+        windowH = resizeWindowH;
+    });
+
+    window.addEventListener('scroll', function() {
+        let windowScrollY = window.scrollY;
+
+        if (pos6Top < windowScrollY) {
+            if (pos6Top+(pos6Top-imgBox[0].offsetTop) < windowScrollY) {
+                imgBox[0].style.backgroundPositionY = (pos6Top-imgBox[0].offsetTop)/2-(pos6Top - windowScrollY)/5+'px';
+            }
+            if (imgBox[0].offsetTop < windowScrollY) {
+                imgBox[1].style.backgroundPositionY = (imgBox[0].offsetTop-imgBox[1].offsetTop)/2-(pos6Top - windowScrollY)/5+'px';
+            }
+            if (imgBox[1].offsetTop < windowScrollY) {
+                imgBox[2].style.backgroundPositionY = (imgBox[1].offsetTop-imgBox[2].offsetTop)/2-(pos6Top - windowScrollY)/5+'px';
+            }
+        }
+    })
+}
+imgPositionY ();
